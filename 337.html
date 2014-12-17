@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="bootstrap-table/bootstrap-table.css">
+    <script src="assets/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="bootstrap-table/bootstrap-table.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Issues <a href="https://github.com/wenzhixin/bootstrap-table/issues/337">#337</a></h1>
+        <table id="table"
+               data-toggle="table"
+               data-show-refresh="true"
+               data-show-toggle="true"
+               data-show-columns="true"
+               data-icons-prefix="fa"
+               data-icons="icons"
+               data-url="data1.json">
+            <thead>
+            <tr>
+                <th data-field="id">ID</th>
+                <th data-field="name">Item Name</th>
+                <th data-field="price">Item Price</th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+<script>
+    window.icons = {
+        refresh: 'fa-refresh',
+        toggle: 'fa-toggle-on',
+        columns: 'fa-th-list'
+    };
+</script>
+</body>
+</html>

@@ -1,4 +1,4 @@
-bootstrap-table-issues
+bootstrap-table-examples
 ======================
 
-issues test
+Bootstrap Table Examples

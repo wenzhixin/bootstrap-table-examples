@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap-table/bootstrap-table.css">
+    <script src="assets/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="bootstrap-table/bootstrap-table.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Use responseHandler option to handle your response data(<a href="https://github.com/wenzhixin/bootstrap-table/issues/">#353</a>).</h1>
+        <table id="table"></table>
+    </div>
+<script>
+    $(function () {
+        $('#table').bootstrapTable({
+            url: '353.json',
+            columns: [{
+                field: 'date',
+                title: 'Date Stamp',
+                sortable: true
+            }, {
+                field: 'm_type',
+                title: 'Type',
+                sortable: true
+            }, {
+                field: 'msdn',
+                title: 'MSDN',
+                sortable: true
+            }, {
+                field: 'file_name',
+                title: 'File Name',
+                sortable: true
+            }, {
+                field: 'message',
+                title: 'Message',
+                sortable: true
+            }],
+            responseHandler: function (res) {
+                return res.messages;
+            }
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Support for data-field with dot notation</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap-table/bootstrap-table.css">
+    <script src="assets/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://rawgit.com/wagnerjs/bootstrap-table/master/src/bootstrap-table.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Support for data-field with dot notation(<a href="https://github.com/wenzhixin/bootstrap-table/pull/350">#350</a>).</h1>
+        <table id="table"
+               data-toggle="table"
+               data-search="true"
+               data-show-refresh="true"
+               data-show-toggle="true"
+               data-show-columns="true"
+               data-url="350.json">
+            <thead>
+            <tr>
+                <th data-field="github.name" data-sortable="true">Name</th>
+                <th data-field="github.count.stargazers" data-sortable="true">Stargazers</th>
+                <th data-field="github.count.forks" data-sortable="true">Forks</th>
+                <th data-field="github.description" data-sortable="true">Description</th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+<script>
+    var $table = $('#table');
+    $(function () {
+        $table.on('sort.bs.table', function (event, name, order) {
+            console.log(name, order);
+        });
+    });
+</script>
+</body>
+</html>

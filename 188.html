@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Show Export button only</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap-table/bootstrap-table.css">
+    <script src="assets/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="bootstrap-table/bootstrap-table.js"></script>
+    <script src="bootstrap-table/extensions/export/bootstrap-table-export.js"></script>
+    <script src="https://rawgit.com/kayalshri/tableExport.jquery.plugin/master/tableExport.js"></script>
+    <script src="https://rawgit.com/kayalshri/tableExport.jquery.plugin/master/jquery.base64.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Show Export button only(<a href="https://github.com/wenzhixin/bootstrap-table/issues/188">#188</a>).</h1>
+        <table id="table"
+               data-toggle="table"
+               data-show-export="true"
+               data-url="data1.json">
+            <thead>
+            <tr>
+                <th data-field="id">ID</th>
+                <th data-field="name">Item Name</th>
+                <th data-field="price">Item Price</th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+</body>
+</html>

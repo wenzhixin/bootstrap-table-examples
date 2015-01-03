@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>How to pass parameter to server</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap-table/bootstrap-table.css">
+    <script src="assets/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="bootstrap-table/bootstrap-table.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>How to pass parameter to server(<a href="https://github.com/wenzhixin/bootstrap-table/issues/152">#152</a>).</h1>
+        <table id="table"
+               data-toggle="table"
+               data-url="http://mikepenz.com/jsfiddle/"
+               data-pagination="true"
+               data-side-pagination="server"
+               data-page-list="[5, 10, 20, 50, 100, 200]"
+               data-search="true"
+               data-height="400"
+               data-query-params="queryParams">
+            <thead>
+            <tr>
+                <th data-field="id">ID</th>
+                <th data-field="name">Item Name</th>
+                <th data-field="price">Item Price</th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+<script>
+    function queryParams(params) {
+        params.your_param1 = 1; // add param1
+        params.your_param2 = 2; // add param2
+        // console.log(JSON.stringify(params));
+        // {"limit":10,"offset":0,"order":"asc","your_param1":1,"your_param2":2}
+        return params;
+    }
+</script>
+</body>
+</html>

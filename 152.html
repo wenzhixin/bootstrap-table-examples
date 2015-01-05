@@ -11,9 +11,10 @@
 </head>
 <body>
     <div class="container">
-        <h1>How to pass parameter to server(<a href="https://github.com/wenzhixin/bootstrap-table/issues/152">#152</a>).</h1>
-        <table id="table"
-               data-toggle="table"
+        <h1>How to pass parameter to server(<a href="https://github.com/wenzhixin/bootstrap-table/issues/152">#152</a> <a href="https://github.com/wenzhixin/bootstrap-table/issues/152#issuecomment-61213273">@61213273</a> ).</h1>
+        <b id="get">Method: Get</b>
+        <table data-toggle="table"
+               data-toolbar="#get"
                data-url="http://mikepenz.com/jsfiddle/"
                data-pagination="true"
                data-side-pagination="server"
@@ -21,6 +22,25 @@
                data-search="true"
                data-height="400"
                data-query-params="queryParams">
+            <thead>
+            <tr>
+                <th data-field="id">ID</th>
+                <th data-field="name">Item Name</th>
+                <th data-field="price">Item Price</th>
+            </tr>
+            </thead>
+        </table>
+        <b id="post">Method: Post</b>
+        <table data-toggle="table"
+               data-toolbar="#post"
+               data-url="http://mikepenz.com/jsfiddle/"
+               data-pagination="true"
+               data-side-pagination="server"
+               data-page-list="[5, 10, 20, 50, 100, 200]"
+               data-search="true"
+               data-height="400"
+               data-method="post"
+               data-query-params="postQueryParams">
             <thead>
             <tr>
                 <th data-field="id">ID</th>
@@ -37,6 +57,12 @@
         // console.log(JSON.stringify(params));
         // {"limit":10,"offset":0,"order":"asc","your_param1":1,"your_param2":2}
         return params;
+    }
+
+    function postQueryParams(params) {
+        params.your_param1 = 1; // add param1
+        params.your_param2 = 2; // add param2
+        return JSON.stringify(params); // body data
     }
 </script>
 </body>

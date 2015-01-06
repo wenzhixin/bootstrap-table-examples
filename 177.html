@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>The Multiple Fields in Column</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap-table/bootstrap-table.css">
+    <link rel="stylesheet" href="assets/examples.css">
+    <script src="assets/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="bootstrap-table/bootstrap-table.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="ribbon">
+            <a href="https://github.com/wenzhixin/bootstrap-table-examples/blob/master/177.html">View Source on GitHub</a>
+        </div>
+        <h1>The Multiple Fields in Column(<a href="https://github.com/wenzhixin/bootstrap-table/issues/177">#177</a>.)</h1>
+        <table id="table"></table>
+    </div>
+<script>
+    var data = [
+        {
+            "firstName": "zhixin",
+            "lastName": "wen",
+            "field1": "field1",
+            "field2": "field2",
+            "field3": "field3"
+        }
+    ];
+
+    $(function () {
+        $('#table').bootstrapTable({
+            data: data,
+            columns: [{
+                field: 'fullName',
+                title: 'Full Name',
+                formatter: function (value, row) {
+                    return [row.firstName, row.lastName].join(' ');
+                }
+            }, {
+                field: 'field',
+                title: 'Field',
+                formatter: function (value, row) {
+                    return [row.field1, row.field2, row.field3].join('+');
+                }
+            }]
+        });
+    });
+</script>
+</body>
+</html>

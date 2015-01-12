@@ -8,7 +8,10 @@
     <link rel="stylesheet" href="assets/examples.css">
     <script src="assets/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="https://rawgit.com/wagnerjs/bootstrap-table/master/src/bootstrap-table.js"></script>
+    <script src="bootstrap-table/bootstrap-table.js"></script>
+    <script src="bootstrap-table/extensions/flatJSON/bootstrap-table-flatJSON.js"></script>
+    <script src="https://rawgit.com/djhvscf/bootstrap-table-flatJSON/master/src/bootstrap-table-flatJSON.js"></script>
+    <script src="ga.js"></script>
 </head>
 <body>
     <div class="container">
@@ -22,6 +25,7 @@
                data-show-refresh="true"
                data-show-toggle="true"
                data-show-columns="true"
+               data-flat="true"
                data-url="350.json">
             <thead>
             <tr>

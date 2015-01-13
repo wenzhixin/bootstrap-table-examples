@@ -14,6 +14,7 @@ Bootstrap Table Examples
 * [Custom fontawsome icons](http://issues.wenzhixin.net.cn/bootstrap-table/337.html)
 * [Support for data-field with dot notation](http://issues.wenzhixin.net.cn/bootstrap-table/350.html)
 * [Use responseHandler option to handle your response data](http://issues.wenzhixin.net.cn/bootstrap-table/353.html)
+* [Using table content in a HTML form](http://issues.wenzhixin.net.cn/bootstrap-table/371.html)
 * [Use Flat UI to style the checkboxes](http://issues.wenzhixin.net.cn/bootstrap-table/383.html)
 * [Override default queryParam variables](http://issues.wenzhixin.net.cn/bootstrap-table/386.html)
 * [Refresh method with new url](http://issues.wenzhixin.net.cn/bootstrap-table/409.html)

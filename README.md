@@ -17,4 +17,5 @@ Bootstrap Table Examples
 * 371. [Using table content in a HTML form](http://issues.wenzhixin.net.cn/bootstrap-table/371.html)
 * 383. [Use Flat UI to style the checkboxes](http://issues.wenzhixin.net.cn/bootstrap-table/383.html)
 * 386. [Override default queryParam variables](http://issues.wenzhixin.net.cn/bootstrap-table/386.html)
+* 395. [Enable/disable delete button on click checkbox](http://issues.wenzhixin.net.cn/bootstrap-table/395.html)
 * 409. [Refresh method with new url](http://issues.wenzhixin.net.cn/bootstrap-table/409.html)

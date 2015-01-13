@@ -14,7 +14,7 @@ fs.readdir('.', function (err, list) {
                 m = content.match(/<title>(.*)<\/title>/);
 
             if (m) {
-                markdown.push('* ' + '[' + m[1] + '](' + baseUrl + file + ')');
+                markdown.push('* ' + file.split('.')[0] + '. [' + m[1] + '](' + baseUrl + file + ')');
             }
         }
     });

@@ -6,7 +6,8 @@ fs.readdir('.', function (err, list) {
         console.log(err);
         return;
     }
-    var markdown = [fs.readFileSync('./README.conf').toString()];
+    var content = fs.readFileSync('./index.html.conf').toString(),
+        html = [];
 
     list.forEach(function (file) {
         if (/^\d+.html$/.test(file)) {
@@ -14,9 +15,9 @@ fs.readdir('.', function (err, list) {
                 m = content.match(/<title>(.*)<\/title>/);
 
             if (m) {
-                markdown.push('* ' + file.split('.')[0] + '. [' + m[1] + '](' + baseUrl + file + ')');
+                html.push('<li>' + file.split('.')[0] + '. <a href="' + file + '">' + m[1] + '</a></li>');
             }
         }
     });
-    fs.writeFileSync('./README.md', markdown.join('\n'));
+    fs.writeFileSync('./index.html', content.replace('@@list@@', html.join('\n')));
 });

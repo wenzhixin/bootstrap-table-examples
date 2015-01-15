@@ -19,3 +19,4 @@ Bootstrap Table Examples
 * 386. [Override default queryParam variables](http://issues.wenzhixin.net.cn/bootstrap-table/386.html)
 * 395. [Enable/disable delete button on click checkbox](http://issues.wenzhixin.net.cn/bootstrap-table/395.html)
 * 409. [Refresh method with new url](http://issues.wenzhixin.net.cn/bootstrap-table/409.html)
+* 424. [Toggle pagination](http://issues.wenzhixin.net.cn/bootstrap-table/424.html)

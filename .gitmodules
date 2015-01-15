@@ -1,0 +1,3 @@
+[submodule "assets/bootstrap-table"]
+	path = assets/bootstrap-table
+	url = git@github.com:wenzhixin/bootstrap-table.git

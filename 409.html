@@ -23,7 +23,7 @@
         <table id="table"
                data-toggle="table"
                data-toolbar=".toolbar"
-               data-url="data1.json">
+               data-url="json/data1.json">
             <thead>
             <tr>
                 <th data-field="id">ID</th>
@@ -38,7 +38,7 @@
     $(function () {
         $('#refresh').click(function () {
             $table.bootstrapTable('refresh', {
-                url: '409.json'
+                url: 'json/409.json'
             });
         });
     });

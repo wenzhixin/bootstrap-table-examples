@@ -11,10 +11,11 @@
     <script src="assets/bootstrap-table/src/bootstrap-table.js"></script>
     <script>
         $.extend($.fn.bootstrapTable.defaults, {
-            method: 'post',
+//            method: 'post',
             pagination: true,
             sidePagination: 'server',
-            contentType: 'application/x-www-form-urlencoded; charset=UTF-8'
+//            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+            showRefresh: true
         });
         $.extend($.fn.bootstrapTable.columnDefaults, {
             align: 'center',

@@ -13,4 +13,4 @@ content = sprintf(content, {
     title: title
 });
 
-fs.writeFileSync(sprintf('./%s.html', title), content);
+fs.writeFileSync(sprintf('./%s.html', title.replace(/\//, '-')), content);

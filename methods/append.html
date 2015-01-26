@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>append</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/bootstrap-table/src/bootstrap-table.css">
+    <link rel="stylesheet" href="../assets/examples.css">
+    <script src="../assets/jquery.min.js"></script>
+    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../assets/bootstrap-table/src/bootstrap-table.js"></script>
+    <script src="../ga.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="ribbon">
+            <a href="https://github.com/wenzhixin/bootstrap-table-examples/blob/master/methods/append.html" target="_blank">View Source on GitHub</a>
+        </div>
+        <h1>append</h1>
+        <p>Append the data to table: <code>$table.bootstrapTable('append', data);</code></p>
+        <div id="toolbar">
+            <button id="button" class="btn btn-default">append</button>
+        </div>
+        <table id="table"
+               data-toggle="table"
+               data-toolbar="#toolbar"
+               data-height="460"
+               data-url="../json/data1.json">
+            <thead>
+            <tr>
+                <th data-field="id">ID</th>
+                <th data-field="name">Item Name</th>
+                <th data-field="price">Item Price</th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+<script>
+    var $table = $('#table'),
+        $button = $('#button');
+
+    $(function () {
+        $button.click(function () {
+            $table.bootstrapTable('append', randomData());
+            $table.bootstrapTable('scrollTo', 'bottom');
+        });
+    });
+
+    function randomData() {
+        var startId = ~~(Math.random() * 100),
+                rows = [];
+
+        for (var i = 0; i < 10; i++) {
+            rows.push({
+                id: startId + i,
+                name: 'test' + (startId + i),
+                price: '$' + (startId + i)
+            });
+        }
+        return rows;
+    }
+</script>
+</body>
+</html>

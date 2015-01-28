@@ -9,7 +9,7 @@ fs.readdir('.', function (err, list) {
     var content = fs.readFileSync('./index.html.conf').toString(),
         html = [];
 
-    list.forEach(function (file) {
+    list.sort().forEach(function (file) {
         if (/^\d+.html$/.test(file)) {
             var content = fs.readFileSync(file).toString(),
                 m = content.match(/<title>(.*)<\/title>/);

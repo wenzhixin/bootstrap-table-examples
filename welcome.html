@@ -3,6 +3,17 @@
 <head>
     <title>Bootstrap Table Examples</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/bootstrap-table/src/bootstrap-table.css">
+    <link rel="stylesheet" href="https://rawgit.com/vitalets/x-editable/master/dist/bootstrap3-editable/css/bootstrap-editable.css">
+    <link rel="stylesheet" href="assets/examples.css">
+    <script src="assets/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/bootstrap-table/src/bootstrap-table.js"></script>
+    <script src="assets/bootstrap-table/src/extensions/export/bootstrap-table-export.js"></script>
+    <script src="https://rawgit.com/kayalshri/tableExport.jquery.plugin/master/tableExport.js"></script>
+    <script src="https://rawgit.com/kayalshri/tableExport.jquery.plugin/master/jquery.base64.js"></script>
+    <script src="assets/bootstrap-table/src/extensions/editable/bootstrap-table-editable.js"></script>
+    <script src="https://rawgit.com/vitalets/x-editable/master/dist/bootstrap3-editable/js/bootstrap-editable.js"></script>
     <script src="ga.js"></script>
 </head>
 <body>
@@ -10,9 +21,33 @@
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
         <h1>Bootstrap Table Examples</h1>
-        <p>Welcome to Bootstrap Table Examples, you can Click the left-top button to show examples list.</p>
         <p><a href="https://github.com/wenzhixin/bootstrap-table-examples" class="btn btn-primary btn-lg" role="button">Learn more &raquo;</a></p>
     </div>
+</div>
+<div class="container">
+    <div class="ribbon">
+        <a href="https://github.com/wenzhixin/bootstrap-table-examples/blob/master/welcome.html" target="_blank">View Source on GitHub</a>
+    </div>
+    <table id="table"
+           data-toggle="table"
+           data-search="true"
+           data-show-refresh="true"
+           data-show-toggle="true"
+           data-show-columns="true"
+           data-show-export="true"
+           data-show-pagination-switch="true"
+           data-pagination="true"
+           data-side-pagination="server"
+           data-url="/examples/bootstrap_table/data">
+        <thead>
+        <tr>
+            <th data-field="state" data-checkbox="true"></th>
+            <th data-field="id" data-sortable="true">ID</th>
+            <th data-field="name" data-sortable="true" data-editable="true">Item Name</th>
+            <th data-field="price" data-sortable="true" data-editable="true">Item Price</th>
+        </tr>
+        </thead>
+    </table>
 </div>
 </body>
 </html>

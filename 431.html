@@ -40,7 +40,7 @@
         getData(options.pageNumber, options.pageSize);
     });
     function getData(number, size) {
-        $.get('//wenzhixin.net.cn/examples/bootstrap_table/data', {
+        $.get('/examples/bootstrap_table/data', {
             offset: (number - 1) * size,
             limit: size
         }, function (res) {

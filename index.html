@@ -13,11 +13,11 @@
                 $('.nav-list').toggleClass('active');
             });
             $('#navbar li a, .nav-list li a').click(function (e) {
-                e.preventDefault();
                 var href = $(this).attr('href');
-                if (href === '#') {
+                if (href === '#' || /^http.*/.test(href)) {
                     return;
                 }
+                e.preventDefault();
                 $('iframe').attr('src', href);
                 $('.nav-list').removeClass('active');
                 location.hash = href;
@@ -43,7 +43,7 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li><a href="https://github.com/wenzhixin/bootstrap-table">Bootstrap Table</a></li>
+                <li><a href="https://github.com/wenzhixin/bootstrap-table" target="_blank">Bootstrap Table</a></li>
                 <li>
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Methods <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">

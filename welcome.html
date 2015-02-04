@@ -17,19 +17,14 @@
     <script src="ga.js"></script>
 </head>
 <body>
-<div class="container theme-showcase" role="main" style="margin-top: 20px">
-    <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron">
-        <h1>Bootstrap Table Examples</h1>
-        <p><a href="https://github.com/wenzhixin/bootstrap-table-examples" class="btn btn-primary btn-lg" role="button" target="_blank">Learn more &raquo;</a></p>
-    </div>
-</div>
 <div class="container">
     <div class="ribbon">
         <a href="https://github.com/wenzhixin/bootstrap-table-examples/blob/master/welcome.html" target="_blank">View Source on GitHub</a>
     </div>
+    <h1>Bootstrap Table Examples <a href="https://github.com/wenzhixin/bootstrap-table-examples" class="btn btn-primary" role="button" target="_blank">Learn more &raquo;</a></h1>
     <table id="table"
            data-toggle="table"
+           data-toolbar="#toolbar"
            data-search="true"
            data-show-refresh="true"
            data-show-toggle="true"
@@ -38,7 +33,7 @@
            data-show-pagination-switch="true"
            data-pagination="true"
            data-side-pagination="server"
-           data-url="//wenzhixin.net.cn/examples/bootstrap_table/data">
+           data-url="/examples/bootstrap_table/data">
         <thead>
         <tr>
             <th data-field="state" data-checkbox="true"></th>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Boolean Options</title>
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/bootstrap-table/src/bootstrap-table.css">
+    <link rel="stylesheet" href="../assets/multiple-select/multiple-select.css">
+    <link rel="stylesheet" href="../assets/examples.css">
+    <style>
+        .boolean-options {margin: 20px 0;}
+        .boolean-options select {width: 400px;}
+        .ms-drop input[type="checkbox"] {vertical-align: top;}
+    </style>
+    <script src="../assets/jquery.min.js"></script>
+    <script src="../assets/sprintf.js"></script>
+    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../assets/bootstrap-table/src/bootstrap-table.js"></script>
+    <script src="../assets/multiple-select/jquery.multiple.select.js"></script>
+    <script src="../ga.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="ribbon">
+        <a href="https://github.com/wenzhixin/bootstrap-table-examples/blob/master/welcome.html" target="_blank">View Source on GitHub</a>
+    </div>
+    <h1>Boolean Options</h1>
+    <div class="boolean-options">
+        <b>Table Options:</b> <select id="tableSelect" multiple="multiple"></select>
+        <b>Column Options:</b> <select id="columnSelect" multiple="multiple"></select>
+    </div>
+    <table id="table"></table>
+</div>
+<script>
+    var $tableSelect = $('#tableSelect'),
+        $columnSelect = $('#columnSelect'),
+        $table = $('#table'),
+        defaultTableOptions = {},
+        defaultColumnOptions = {};
+
+    $(function () {
+        initOptions($.fn.bootstrapTable.defaults, defaultTableOptions, $tableSelect);
+        initOptions($.fn.bootstrapTable.columnDefaults, defaultColumnOptions, $columnSelect);
+        initTable();
+    });
+
+    function initOptions(defaults, defaultOptions, $select) {
+        var html = [];
+
+        $.each(defaults, function (key, value) {
+            if (typeof value === 'boolean') {
+                html.push(sprintf('<option value="%(key)s" %(value)s>%(key)s</option>', {
+                    key: key,
+                    value: value ? 'selected' : ''
+                }));
+
+                if ($.inArray(key, ['radio', 'checkbox'] === -1)) {
+                    defaultOptions[key] = false;
+                }
+            }
+        });
+
+        $select.html(html.join('')).multipleSelect({
+            onClick: initTable,
+            onCheckAll: initTable,
+            onUncheckAll: initTable
+        });
+    }
+
+    function initTable() {
+        var defaultColumns = [{
+                field: 'id',
+                title: 'Item ID'
+            }, {
+                field: 'name',
+                title: 'Item Name'
+            }, {
+                field: 'price',
+                title: 'Item Price'
+            }],
+            selectsColumns = [{
+                field: 'state'
+            }, {
+                field: 'id',
+                title: 'Item ID'
+            }, {
+                field: 'name',
+                title: 'Item Name'
+            }, {
+                field: 'price',
+                title: 'Item Price'
+            }],
+            columns = [],
+            tableOptions = {},
+            columnOptions = {};
+
+        $.each($tableSelect.multipleSelect('getSelects'), function (i, key) {
+            tableOptions[key] = true;
+        });
+        $.each($columnSelect.multipleSelect('getSelects'), function (i, key) {
+            columnOptions[key] = true;
+        });
+
+        if (columnOptions.checkbox) {
+            columns = selectsColumns.slice(0);
+            columns[0].checkbox = true;
+        } else if (columnOptions.radio) {
+            columns = selectsColumns.slice(0);
+            columns[0].radio = true;
+        } else {
+            columns = defaultColumns.slice(0);
+        }
+        delete columnOptions.checkbox;
+        delete columnOptions.radio;
+
+        $.each(columns, function (i, column) {
+            columns[i] = $.extend({}, defaultColumnOptions, columnOptions, column);
+        });
+
+        $table.bootstrapTable('destroy').bootstrapTable($.extend({
+            url: '../json/data1.json',
+            columns: columns
+        }, defaultTableOptions, tableOptions));
+    }
+</script>
+</body>
+</html>

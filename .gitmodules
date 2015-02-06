@@ -1,3 +1,6 @@
 [submodule "assets/bootstrap-table"]
 	path = assets/bootstrap-table
 	url = git@github.com:wenzhixin/bootstrap-table.git
+[submodule "assets/multiple-select"]
+	path = assets/multiple-select
+	url = git@github.com:wenzhixin/multiple-select.git

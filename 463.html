@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search invisible column</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/bootstrap-table/src/bootstrap-table.css">
+    <link rel="stylesheet" href="assets/examples.css">
+    <script src="assets/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/bootstrap-table/src/bootstrap-table.js"></script>
+    <script src="ga.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="ribbon">
+            <a href="https://github.com/wenzhixin/bootstrap-table-examples/blob/master/463.html" target="_blank">View Source on GitHub</a>
+        </div>
+        <h1>Search invisible column(<a href="https://github.com/wenzhixin/bootstrap-table/issues/463" target="_blank">#463</a>).</h1>
+        <div class="toolbar1">By default, cannot search invisible column. Try to enter: <code>Item 0</code></div>
+        <table data-toggle="table"
+               data-search="true"
+               data-show-columns="true"
+               data-toolbar=".toolbar1"
+               data-height="278"
+               data-url="json/data1.json">
+            <thead>
+            <tr>
+                <th data-field="id">ID</th>
+                <th data-field="name" data-visible="false" data-switchable="false">Item Name</th>
+                <th data-field="price">Item Price</th>
+            </tr>
+            </thead>
+        </table>
+        <div class="toolbar2">Use <code>class="hidden"</code> to support search invisible column. Try to enter: <code>Item 0</code></div>
+        <table data-toggle="table"
+               data-search="true"
+               data-show-columns="true"
+               data-toolbar=".toolbar2"
+               data-height="278"
+               data-url="json/data1.json">
+            <thead>
+            <tr>
+                <th data-field="id">ID</th>
+                <th data-field="name" data-switchable="false" class="hidden">Item Name</th>
+                <th data-field="price">Item Price</th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+</body>
+</html>

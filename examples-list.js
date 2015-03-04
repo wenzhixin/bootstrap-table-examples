@@ -15,7 +15,7 @@ fs.readdir('.', function (err, list) {
                 m = content.match(/<title>(.*)<\/title>/);
 
             if (m) {
-                html.push('<li>' + file.split('.')[0] + '. <a href="' + file + '">' + m[1] + '</a></li>');
+                html.push('<li><a href="' + file + '">' + file.split('.')[0] + '. ' + m[1] + '</a></li>');
             }
         }
     });

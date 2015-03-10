@@ -1,0 +1,92 @@
+<html>
+	<head>
+		<title>How to use the filter extension</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" href="assets/bootstrap-table/src/bootstrap-table.css">
+		<link rel="stylesheet" href="assets/examples.css">
+		<script src="assets/jquery.min.js"></script>
+		<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+		<script src="assets/bootstrap-table/src/bootstrap-table.js"></script>
+		<script src="assets/bootstrap-table-filter/extension/bootstrap-table-filter.js"></script>
+		<script src="assets/bootstrap-table-filter/bootstrap-table-filter.js"></script>
+		<script src="assets/bootstrap-table-filter/bs-table.js"></script>
+	</head>
+	<body>
+	<div class="container">
+    <div class="ribbon">
+        <a href="https://github.com/wenzhixin/bootstrap-table-examples/blob/master/561.html" target="_blank">View Source on GitHub</a>
+    </div>
+    <h1>How to use the filter extension (<a href="https://github.com/wenzhixin/bootstrap-table/issues/561" target="_blank">#561</a>).</h1>
+		<div id="filter-bar"> </div>
+		
+		<table id="table" data-height="299" data-toolbar="#filter-bar" 
+		data-show-toggle="true" data-show-columns="true" data-show-filter="true" data-search="true">
+			<thead>
+			<tr>
+				<th data-field="name">Name</th>
+				<th data-field="stargazers_count">Stars</th>
+				<th data-field="forks_count">Forks</th>
+				<th data-field="description">Description</th>
+			</tr>
+			</thead>
+		</table>
+		
+		<script>
+		
+		var data = [
+		{
+			"name": "bootstrap-table",
+			"stargazers_count": "526",
+			"forks_count": "122",
+			"description": "An extended Bootstrap table with radio, checkbox, sort, pagination, and other added features. (supports twitter bootstrap v2 and v3) ",
+			'id':5
+		},
+		{
+			"name": "multiple-select",
+			"stargazers_count": "288",
+			"forks_count": "150",
+			"description": "A jQuery plugin to select multiple elements with checkboxes :)",
+			'id':4
+		},
+		{
+			"name": "bootstrap-show-password",
+			"stargazers_count": "32",
+			"forks_count": "11",
+			"description": "Show/hide password plugin for twitter bootstrap.",
+			'id':3
+		},
+		{
+			"name": "blog",
+			"stargazers_count": "13",
+			"forks_count": "4",
+			"description": "my blog",
+			'id':2
+		},
+		{
+			"name": "scutech-redmine",
+			"stargazers_count": "6",
+			"forks_count": "3",
+			"description": "Redmine notification tools for chrome extension.",
+			'id':1
+		}
+	];
+		
+		$(function() {
+			$('#table').bootstrapTable({data: data});
+			$('#filter-bar').bootstrapTableFilter({
+				connectTo: '#table',
+				onAll: function(name, args) {
+					var d = new Date();
+					$('#log').prepend(d.toLocaleString() + ': ' + name + "\n");
+				},
+				onSubmit: function(data) {
+					var data = $('#filter-bar').bootstrapTableFilter('getData');
+					var d = new Date();
+					$('#log').prepend(d.toLocaleString() + ': ' + JSON.stringify(data) + "\n");
+				}
+			});
+		});
+		</script>
+	</body>
+</html>

@@ -36,6 +36,7 @@
     </div>
     <table id="table"
            data-toggle="table"
+           data-height="500"
            data-toolbar="#toolbar"
            data-search="true"
            data-show-refresh="true"
@@ -44,14 +45,18 @@
            data-show-export="true"
            data-show-pagination-switch="true"
            data-pagination="true"
+           data-show-footer="true"
            data-side-pagination="server"
            data-url="/examples/bootstrap_table/data">
         <thead>
         <tr>
             <th data-field="state" data-checkbox="true"></th>
-            <th data-field="id" data-sortable="true">ID</th>
-            <th data-field="name" data-sortable="true" data-editable="true">Item Name</th>
-            <th data-field="price" data-sortable="true" data-editable="true">Item Price</th>
+            <th data-field="id" data-sortable="true"
+                data-footer-formatter="totalTextFormatter">ID</th>
+            <th data-field="name" data-sortable="true" data-editable="true"
+                data-footer-formatter="totalNameFormatter">Item Name</th>
+            <th data-field="price" data-sortable="true" data-editable="true"
+                data-footer-formatter="totalPriceFormatter">Item Price</th>
             <th data-field="operate"
                 data-formatter="operateFormatter"
                 data-events="operateEvents">Item Operate</th>
@@ -102,6 +107,22 @@
             });
         }
     };
+
+    function totalTextFormatter(data) {
+        return 'Total';
+    }
+
+    function totalNameFormatter(data) {
+        return data.length;
+    }
+
+    function totalPriceFormatter(data) {
+        var total = 0;
+        $.each(data, function (i, row) {
+            total += +(row.price.substring(1));
+        });
+        return '$' + total;
+    }
 </script>
 </body>
 </html>

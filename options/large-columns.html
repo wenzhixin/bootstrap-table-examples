@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>large-columns</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/bootstrap-table/src/bootstrap-table.css">
+    <link rel="stylesheet" href="../assets/examples.css">
+    <script src="../assets/jquery.min.js"></script>
+    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../assets/bootstrap-table/src/bootstrap-table.js"></script>
+    <script src="../ga.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="ribbon">
+            <a href="https://github.com/wenzhixin/bootstrap-table-examples/blob/master/options/large-columns.html" target="_blank">View Source on GitHub</a>
+        </div>
+        <h1>Large Columns</h1>
+        <p>Bootstrap table support large columns, it will auto to show the horizontal scroll bar.</p>
+        <table id="table" data-height="400" data-show-columns="true"></table>
+    </div>
+<script>
+    var $table = $('#table');
+
+    $(function () {
+        buildTable($table, 50, 50);
+    });
+
+    function buildTable($el, cells, rows) {
+        var i, j, row,
+                columns = [],
+                data = [];
+
+        for (i = 0; i < cells; i++) {
+            columns.push({
+                field: 'field' + i,
+                title: 'Cell' + i
+            });
+        }
+        for (i = 0; i < rows; i++) {
+            row = {};
+            for (j = 0; j < cells; j++) {
+                row['field' + j] = 'Row-' + i + '-' + j;
+            }
+            data.push(row);
+        }
+        $el.bootstrapTable('destroy').bootstrapTable({
+            columns: columns,
+            data: data
+        });
+    }
+</script>
+</body>
+</html>

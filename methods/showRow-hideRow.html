@@ -47,11 +47,11 @@
 
     $(function () {
         $button.click(function () {
-            $table.bootstrapTable('showRow', 1);
+            $table.bootstrapTable('showRow', {index: 1});
         });
 
         $button2.click(function () {
-            $table.bootstrapTable('hideRow', 1);
+            $table.bootstrapTable('hideRow', {index: 1});
         });
     });
 </script>

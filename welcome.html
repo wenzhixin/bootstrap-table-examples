@@ -35,8 +35,6 @@
         </button>
     </div>
     <table id="table"
-           data-toggle="table"
-           data-height="500"
            data-toolbar="#toolbar"
            data-search="true"
            data-show-refresh="true"
@@ -70,7 +68,11 @@
         $remove = $('#remove');
 
     $(function () {
-        $table.on('check.bs.table uncheck.bs.table check-all.bs.table uncheck-all.bs.table', function () {
+        $table.bootstrapTable({
+            height: getHeight()
+        });
+        $table.on('check.bs.table uncheck.bs.table ' +
+                'check-all.bs.table uncheck-all.bs.table', function () {
             $remove.prop('disabled', !$table.bootstrapTable('getSelections').length);
         });
         $remove.click(function () {
@@ -82,6 +84,11 @@
                 values: ids
             });
             $remove.prop('disabled', true);
+        });
+        $(window).resize(function () {
+            $table.bootstrapTable('resetView', {
+                height: getHeight()
+            });
         });
     });
 
@@ -122,6 +129,10 @@
             total += +(row.price.substring(1));
         });
         return '$' + total;
+    }
+
+    function getHeight() {
+        return $(window).height() - $('h1').outerHeight(true);
     }
 </script>
 </body>

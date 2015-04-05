@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Filter Control</title>
+    <title>FilterControl</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/bootstrap-table/src/bootstrap-table.css">
@@ -9,18 +9,19 @@
     <script src="../assets/jquery.min.js"></script>
     <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="../assets/bootstrap-table/src/bootstrap-table.js"></script>
+    <script src="../assets/bootstrap-table/src/extensions/filtercontrol/bootstrap-table-filtercontrol.js"></script>
     <script src="../ga.js"></script>
 </head>
 <body>
 <div class="container">
     <div class="ribbon">
-        <a href="https://github.com/wenzhixin/bootstrap-table-examples/blob/master/options/filter-control.html" target="_blank">View Source on GitHub</a>
+        <a href="https://github.com/wenzhixin/bootstrap-table-examples/blob/master/extensions/filtercontrol.html" target="_blank">View Source on GitHub</a>
     </div>
-    <h1>Filter Control</h1>
-    <p>Use <code>filterControl</code> option to add an input or select control to the column to filter it.</p>
+    <h1></h1>
     <table id="table"
            data-toggle="table"
-           data-url="../json/data1.json">
+           data-url="../json/data1.json"
+           data-filter-control="true">
         <thead>
         <tr>
             <th data-field="id">ID</th>

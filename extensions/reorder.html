@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reorder</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/bootstrap-table/src/bootstrap-table.css">
+    <link rel="stylesheet" href="../assets/examples.css">
+    <link rel="stylesheet" href="https://rawgit.com/akottr/dragtable/master/dragtable.css">
+    <script src="../assets/jquery.min.js"></script>
+    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../assets/bootstrap-table/src/bootstrap-table.js"></script>
+    <script src="../assets/bootstrap-table/src/extensions/resizable/bootstrap-table-reorder.js"></script>
+	<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="https://rawgit.com/akottr/dragtable/master/jquery.dragtable.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="../ga.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="ribbon">
+            <a href="https://github.com/wenzhixin/bootstrap-table-examples/blob/master/extensions/reorder.html" target="_blank">View Source on GitHub</a>
+        </div>
+        <h1></h1>
+        <table id="table"
+               data-toggle="table"
+               data-show-columns="true" 
+			   data-search="true" 
+			   data-show-toggle="true"
+               data-pagination="true"
+               data-url="../json/data1.json"
+			   data-reorderable="true">
+            <thead>
+            <tr>
+                <th data-field="id" data-sortable="true">ID</th>
+                <th data-field="name" data-sortable="true">Item Name</th>
+                <th data-field="price" data-sortable="true">Item Price</th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+</body>
+</html>

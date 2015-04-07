@@ -75,6 +75,9 @@
                 'check-all.bs.table uncheck-all.bs.table', function () {
             $remove.prop('disabled', !$table.bootstrapTable('getSelections').length);
         });
+        $table.on('all.bs.table', function (e, name, args) {
+            console.log(name, args);
+        });
         $remove.click(function () {
             var ids = $.map($table.bootstrapTable('getSelections'), function (row) {
                 return row.id

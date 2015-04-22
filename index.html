@@ -23,6 +23,10 @@
                 location.hash = href;
             });
             $('iframe').attr('src', location.hash.substring(1) || 'welcome.html');
+
+            $(window).on('blur',function() {
+                $('.dropdown-toggle').parent().removeClass('open');
+            });
         });
     </script>
 </head>

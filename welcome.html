@@ -46,7 +46,8 @@
            data-page-list="[10, 25, 50, 100, ALL]"
            data-show-footer="true"
            data-side-pagination="server"
-           data-url="/examples/bootstrap_table/data">
+           data-url="/examples/bootstrap_table/data"
+           data-response-handler="responseHandler">
         <thead>
         <tr>
             <th data-field="state" data-checkbox="true"></th>
@@ -66,7 +67,8 @@
 
 <script>
     var $table = $('#table'),
-        $remove = $('#remove');
+        $remove = $('#remove'),
+        selections = [];
 
     $(function () {
         $table.bootstrapTable({
@@ -75,14 +77,16 @@
         $table.on('check.bs.table uncheck.bs.table ' +
                 'check-all.bs.table uncheck-all.bs.table', function () {
             $remove.prop('disabled', !$table.bootstrapTable('getSelections').length);
+
+            // save your data, here just save the current page
+            selections = getIdSelections();
+            // push or splice the selections if you want to save all data selections
         });
         $table.on('all.bs.table', function (e, name, args) {
             console.log(name, args);
         });
         $remove.click(function () {
-            var ids = $.map($table.bootstrapTable('getSelections'), function (row) {
-                return row.id
-            });
+            var ids = getIdSelections();
             $table.bootstrapTable('remove', {
                 field: 'id',
                 values: ids
@@ -95,6 +99,19 @@
             });
         });
     });
+
+    function getIdSelections() {
+        return $.map($table.bootstrapTable('getSelections'), function (row) {
+            return row.id
+        });
+    }
+
+    function responseHandler(res) {
+        $.each(res.rows, function (i, row) {
+            row.state = $.inArray(row.id, selections) !== -1;
+        });
+        return res;
+    }
 
     function operateFormatter(value, row, index) {
         return [

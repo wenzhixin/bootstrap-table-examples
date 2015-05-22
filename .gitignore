@@ -1,1 +1,8 @@
 bootstrap
+/assets/bootstrap-table/bootstrap-table.css
+/assets/bootstrap-table/bootstrap-table.js
+*.name
+.idea/encodings.xml
+*.iml
+.idea/misc.xml
+*.xml

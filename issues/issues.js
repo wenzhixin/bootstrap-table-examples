@@ -1,12 +1,12 @@
 var fs = require('fs'),
     baseUrl = 'http://issues.wenzhixin.net.cn/bootstrap-table/';
 
-fs.readdir('.', function (err, list) {
+fs.readdir('./', function (err, list) {
     if (err) {
         console.log(err);
         return;
     }
-    var content = fs.readFileSync('./index.html.conf').toString(),
+    var content = fs.readFileSync('../index.html.conf').toString(),
         html = [];
 
     list.sort().forEach(function (file) {
@@ -15,7 +15,9 @@ fs.readdir('.', function (err, list) {
                 m = content.match(/<title>(.*)<\/title>/);
 
             if (m) {
-                html.push('<li><a href="' + file + '">' + file.split('.')[0] + '. ' + m[1] + '</a></li>');
+                html.push('<li><a href="issues/' + file + '">',
+                    file.split('.')[0] + '. ' + m[1],
+                    '</a></li>');
             }
         }
     });

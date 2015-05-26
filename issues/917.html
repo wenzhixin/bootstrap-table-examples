@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Maintain selected on server side.</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/bootstrap-table/src/bootstrap-table.css">
+    <link rel="stylesheet" href="../assets/examples.css">
+    <script src="../assets/jquery.min.js"></script>
+    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../assets/bootstrap-table/src/bootstrap-table.js"></script>
+    <!-- https://lodash.com/ -->
+    <script src="//cdn.jsdelivr.net/lodash/3.8.0/lodash.min.js"></script>
+    <script src="../ga.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Maintain selected on server side.(<a href="https://github.com/wenzhixin/bootstrap-table/issues/917" target="_blank">#917</a>).</h1>
+        <table id="table"
+               data-toggle="table"
+               data-pagination="true"
+               data-side-pagination="server"
+               data-url="/examples/bootstrap_table/data"
+               data-response-handler="responseHandler">
+            <thead>
+            <tr>
+                <th data-field="state" data-checkbox="true"></th>
+                <th data-field="id">ID</th>
+                <th data-field="name">Item Name</th>
+                <th data-field="price">Item Price</th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+<script>
+    var $table = $('#table'),
+        selections = [];
+
+    $(function () {
+        $table.on('check.bs.table check-all.bs.table ' +
+                'uncheck.bs.table uncheck-all.bs.table', function (e, rows) {
+            var ids = $.map(!$.isArray(rows) ? [rows] : rows, function (row) {
+                    return row.id;
+                }),
+                func = $.inArray(e.type, ['check', 'check-all']) > -1 ? 'union' : 'difference';
+
+            selections = _[func](selections, ids);
+        });
+    });
+
+    function responseHandler(res) {
+        $.each(res.rows, function (i, row) {
+            row.state = $.inArray(row.id, selections) !== -1;
+        });
+        return res;
+    }
+</script>
+</body>
+</html>

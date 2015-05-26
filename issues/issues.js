@@ -21,5 +21,5 @@ fs.readdir('./', function (err, list) {
             }
         }
     });
-    fs.writeFileSync('./index.html', content.replace('@@list@@', html.join('\n')));
+    fs.writeFileSync('../index.html', content.replace('@@list@@', html.join('\n')));
 });

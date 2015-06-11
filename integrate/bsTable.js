@@ -8,8 +8,19 @@
                options: '='
            },
            link: function (scope, element, attr) {
-               $(element).bootstrapTable(scope.options);
-               setInterval(function () { $(element).bootstrapTable('resetView'); }, 500)
+               var tableCreated = false;
+               scope.$watch('options', function (newValue, oldValue) {
+                   if (tableCreated && newValue === oldValue) return;
+                   $(element).bootstrapTable('destroy');
+                   if (newValue) {
+                       $(element).bootstrapTable(scope.options);
+                   }
+                   tableCreated = typeof (newValue) !== 'undefined';
+               });
+               $(window).resize(function () {
+                   if (tableCreated)
+                       $(element).bootstrapTable('resetView');
+               })
            }
        };
    })

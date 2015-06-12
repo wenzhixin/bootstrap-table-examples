@@ -47,20 +47,6 @@
            data-side-pagination="server"
            data-url="/examples/bootstrap_table/data"
            data-response-handler="responseHandler">
-        <thead>
-        <tr>
-            <th data-field="state" data-checkbox="true"></th>
-            <th data-field="id" data-sortable="true"
-                data-footer-formatter="totalTextFormatter">ID</th>
-            <th data-field="name" data-sortable="true" data-editable="true"
-                data-footer-formatter="totalNameFormatter">Item Name</th>
-            <th data-field="price" data-sortable="true" data-editable="true"
-                data-footer-formatter="totalPriceFormatter">Item Price</th>
-            <th data-field="operate"
-                data-formatter="operateFormatter"
-                data-events="operateEvents">Item Operate</th>
-        </tr>
-        </thead>
     </table>
 </div>
 
@@ -71,7 +57,49 @@
 
     $(function () {
         $table.bootstrapTable({
-            height: getHeight()
+            height: getHeight(),
+            columns: [{
+                field: 'state',
+                checkbox: true
+            }, {
+                field: 'id',
+                title: 'ID',
+                sortable: true,
+                footerFormatter: totalTextFormatter
+            }, {
+                field: 'name',
+                title: 'Item Name',
+                sortable: true,
+                editable: true,
+                footerFormatter: totalNameFormatter
+            }, {
+                field: 'price',
+                title: 'Item Price',
+                sortable: true,
+                editable: {
+                    type: 'text',
+                    title: 'Item Price',
+                    validate: function (value) {
+                        value = $.trim(value);
+                        if (!value) {
+                            return 'This field is required';
+                        }
+                        if (!/^$/.test(value)) {
+                            return 'This field needs to start width $.'
+                        }
+                        var data = $table.bootstrapTable('getData'),
+                            index = $(this).parents('tr').data('index');
+                        console.log(data[index]);
+                        return '';
+                    }
+                },
+                footerFormatter: totalPriceFormatter
+            }, {
+                field: 'operate',
+                title: 'Item Operate',
+                events: operateEvents,
+                formatter: operateFormatter
+            }]
         });
         $table.on('check.bs.table uncheck.bs.table ' +
                 'check-all.bs.table uncheck-all.bs.table', function () {

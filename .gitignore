@@ -4,3 +4,4 @@ bootstrap
 *.iml
 .idea/misc.xml
 *.xml
+node_modules

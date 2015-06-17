@@ -1,0 +1,18 @@
+{
+  "name": "bootstrap-table-examples",
+  "version": "1.0.0",
+  "description": "bootstrap-table-examples ======================",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wenzhixin/bootstrap-table-examples.git"
+  },
+  "author": "wenzhixin <wenzhixin2010@gmail.com> (http://wenzhixin.net.cn/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wenzhixin/bootstrap-table-examples/issues"
+  },
+  "homepage": "https://github.com/wenzhixin/bootstrap-table-examples",
+  "dependencies": {
+    "express": "^4.12.4"
+  }
+}

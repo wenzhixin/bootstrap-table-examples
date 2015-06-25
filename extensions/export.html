@@ -11,18 +11,28 @@
     <script src="../assets/bootstrap-table/src/bootstrap-table.js"></script>
     <script src="../assets/bootstrap-table/src/extensions/export/bootstrap-table-export.js"></script>
     <script src="//rawgit.com/hhurz/tableExport.jquery.plugin/master/tableExport.js"></script>
-    <script src="//rawgit.com/hhurz/tableExport.jquery.plugin/master/jquery.base64.js"></script>
     <script src="../ga.js"></script>
 </head>
 <body>
     <div class="container">
         <h1>Export</h1>
+        <div id="toolbar">
+            <select class="form-control">
+                <option value="">Export Basic</option>
+                <option value="all">Export All</option>
+                <option value="selected">Export Selected</option>
+            </select>
+        </div>
         <table id="table"
                data-toggle="table"
                data-show-export="true"
+               data-pagination="true"
+               data-click-to-select="true"
+               data-toolbar="#toolbar"
                data-url="../json/data1.json">
             <thead>
             <tr>
+                <th data-field="state" data-checkbox="true"></th>
                 <th data-field="id">ID</th>
                 <th data-field="name">Item Name</th>
                 <th data-field="price">Item Price</th>
@@ -30,5 +40,15 @@
             </thead>
         </table>
     </div>
+<script>
+    var $table = $('#table');
+    $(function () {
+        $('#toolbar').find('select').change(function () {
+            $table.bootstrapTable('refreshOptions', {
+                exportDataType: $(this).val()
+            });
+        });
+    })
+</script>
 </body>
 </html>

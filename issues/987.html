@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Save row data using input.</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/bootstrap-table/src/bootstrap-table.css">
+    <link rel="stylesheet" href="../assets/examples.css">
+    <script src="../assets/jquery.min.js"></script>
+    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../assets/bootstrap-table/src/bootstrap-table.js"></script>
+    <script src="../ga.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Save row data using input.(<a href="https://github.com/wenzhixin/bootstrap-table/issues/987" target="_blank">#987</a>).</h1>
+        <table id="table"
+               data-toggle="table"
+               data-search="true"
+               data-url="../json/data1.json">
+            <thead>
+            <tr>
+                <th data-field="id" data-sortable="true">ID</th>
+                <th data-field="name" data-sortable="true">Item Name</th>
+                <th data-field="price" data-sortable="true">Item Price</th>
+                <th data-field="selling" 
+                    data-formatter="inputFormatter"
+                    data-events="inputEvents">Selling</th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+<script>
+    var $table = $('#table');
+
+    function inputFormatter(value) {
+        var checked = value ? 'checked' : '';
+        return '<input type="checkbox" ' + checked + ' />';
+    }
+
+    window.inputEvents = {
+        'change :checkbox': function (e, value, row, index) {
+            row.selling = $(e.target).prop('checked');
+            $table.bootstrapTable('updateRow', {
+                index: index,
+                row: row        
+            });
+        }
+    };
+</script>
+</body>
+</html>

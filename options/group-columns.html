@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Group Columns</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/bootstrap-table/src/bootstrap-table.css">
+    <link rel="stylesheet" href="../assets/examples.css">
+    <script src="../assets/jquery.min.js"></script>
+    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../assets/bootstrap-table/src/bootstrap-table.js"></script>
+    <script src="../ga.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Group Columns</h1>
+        <p>Use <code>rowspan, colspan</code> options to set the group columns header.</p>
+        <table id="table"
+               data-toggle="table"
+               data-url="../json/data1.json">
+            <thead>
+            <tr>
+                <th colspan="2">Item Detail</th>
+                <th data-field="id" rowspan="2" data-valign="middle">Item ID</th>
+            </tr>
+            <tr>
+                <th data-field="name">Item Name</th>
+                <th data-field="price">Item Price</th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+</body>
+</html>

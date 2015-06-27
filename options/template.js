@@ -1,7 +1,7 @@
 var fs = require('fs'),
     sprintf = require('sprintf');
 
-if (process.argv.length < 2) {
+if (process.argv.length <= 2) {
     console.log('You need to enter title');
     return;
 }

@@ -51,6 +51,9 @@
     var $table = $('#table');
 
     $(function () {
+        $('#modalTable').on('shown.bs.modal', function () {
+            $table.bootstrapTable('resetView');
+        });
     });
 </script>
 </body>

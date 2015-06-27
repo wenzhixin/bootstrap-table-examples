@@ -10,8 +10,7 @@
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/bootstrap-table/src/bootstrap-table.js"></script>
     <script src="assets/bootstrap-table/src/extensions/export/bootstrap-table-export.js"></script>
-    <script src="//rawgit.com/kayalshri/tableExport.jquery.plugin/master/tableExport.js"></script>
-    <script src="//rawgit.com/kayalshri/tableExport.jquery.plugin/master/jquery.base64.js"></script>
+    <script src="//rawgit.com/hhurz/tableExport.jquery.plugin/master/tableExport.js"></script>
     <script src="assets/bootstrap-table/src/extensions/editable/bootstrap-table-editable.js"></script>
     <script src="//rawgit.com/vitalets/x-editable/master/dist/bootstrap3-editable/js/bootstrap-editable.js"></script>
     <script src="ga.js"></script>
@@ -40,6 +39,7 @@
            data-show-export="true"
            data-detail-view="true"
            data-detail-formatter="detailFormatter"
+           data-minimum-count-columns="2"
            data-show-pagination-switch="true"
            data-pagination="true"
            data-page-list="[10, 25, 50, 100, ALL]"
@@ -58,49 +58,73 @@
     $(function () {
         $table.bootstrapTable({
             height: getHeight(),
-            columns: [{
-                field: 'state',
-                checkbox: true
-            }, {
-                field: 'id',
-                title: 'ID',
-                sortable: true,
-                footerFormatter: totalTextFormatter
-            }, {
-                field: 'name',
-                title: 'Item Name',
-                sortable: true,
-                editable: true,
-                footerFormatter: totalNameFormatter
-            }, {
-                field: 'price',
-                title: 'Item Price',
-                sortable: true,
-                editable: {
-                    type: 'text',
-                    title: 'Item Price',
-                    validate: function (value) {
-                        value = $.trim(value);
-                        if (!value) {
-                            return 'This field is required';
-                        }
-                        if (!/^$/.test(value)) {
-                            return 'This field needs to start width $.'
-                        }
-                        var data = $table.bootstrapTable('getData'),
-                            index = $(this).parents('tr').data('index');
-                        console.log(data[index]);
-                        return '';
+            columns: [
+                [
+                    {
+                        field: 'state',
+                        checkbox: true,
+                        rowspan: 2,
+                        align: 'center',
+                        valign: 'middle'
+                    }, {
+                        title: 'Item ID',
+                        field: 'id',
+                        rowspan: 2,
+                        align: 'center',
+                        valign: 'middle',
+                        sortable: true,
+                        footerFormatter: totalTextFormatter
+                    }, {
+                        title: 'Item Detail',
+                        colspan: 3,
+                        align: 'center'
                     }
-                },
-                footerFormatter: totalPriceFormatter
-            }, {
-                field: 'operate',
-                title: 'Item Operate',
-                events: operateEvents,
-                formatter: operateFormatter
-            }]
+                ],
+                [
+                    {
+                        field: 'name',
+                        title: 'Item Name',
+                        sortable: true,
+                        editable: true,
+                        footerFormatter: totalNameFormatter,
+                        align: 'center'
+                    }, {
+                        field: 'price',
+                        title: 'Item Price',
+                        sortable: true,
+                        align: 'center',
+                        editable: {
+                            type: 'text',
+                            title: 'Item Price',
+                            validate: function (value) {
+                                value = $.trim(value);
+                                if (!value) {
+                                    return 'This field is required';
+                                }
+                                if (!/^$/.test(value)) {
+                                    return 'This field needs to start width $.'
+                                }
+                                var data = $table.bootstrapTable('getData'),
+                                    index = $(this).parents('tr').data('index');
+                                console.log(data[index]);
+                                return '';
+                            }
+                        },
+                        footerFormatter: totalPriceFormatter
+                    }, {
+                        field: 'operate',
+                        title: 'Item Operate',
+                        align: 'center',
+                        events: operateEvents,
+                        formatter: operateFormatter
+                    }
+                ]
+            ]
         });
+        // sometimes footer render error.
+        setTimeout(function () {
+            $table.bootstrapTable('resetView');
+        }, 200);
         $table.on('check.bs.table uncheck.bs.table ' +
                 'check-all.bs.table uncheck-all.bs.table', function () {
             $remove.prop('disabled', !$table.bootstrapTable('getSelections').length);

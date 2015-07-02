@@ -6,19 +6,29 @@ angular.module('app', ['bsTable'])
     $scope.workspaces.push({ name: 'Workspace 2' });
     $scope.workspaces.push({ name: 'Workspace 3' });
 
-    //generate random rows
-    $scope.workspaces.forEach(function (wk,index) {
-        wk.rows = [];
-        for (var i = 0; i < 50000; i++) {
-            wk.rows[i] = { index: i, id: 'row ' + i, name: 'GOOG'+i, workspace: wk.name };
-            var img;
-            if (Math.random() < 0.4)
-                img = 'img/blueFlag16.png';
-            else if (Math.random() < 0.75)
-                img = 'img/yellowFlag16.png';
-            else img = 'img/greenFlag16.png';
-            wk.rows[i].flagImage = img;
+    function makeRandomRows (colData) {
+        var rows = [];
+        for (var i = 0; i < 500; i++) {
+            rows.push($.extend({
+                index: i,
+                id: 'row ' + i,
+                name: 'GOOG' + i,
+                flagImage: Math.random() < 0.4
+                    ? 'img/blueFlag16.png'
+                    : Math.random() < 0.75
+                        ? 'img/yellowFlag16.png'
+                        : 'img/greenFlag16.png'
+            }, colData));
         }
+        return rows;
+    }
+    $scope.workspaces.forEach(function (wk,index) {
+        var colData = {workspace: wk.name};
+        wk.rows = makeRandomRows(colData);
+        setInterval(function () {
+            wk.rows = wk.tableOptions.data = makeRandomRows(colData);
+            $scope.$applyAsync();
+        }, 5000);
 
         wk.tableOptions = {
             data: wk.rows,

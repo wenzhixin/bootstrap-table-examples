@@ -14,6 +14,7 @@
   "homepage": "https://github.com/wenzhixin/bootstrap-table-examples",
   "dependencies": {
     "bootstrap-table": "^1.8.1",
-    "express": "^4.12.4"
+    "express": "^4.12.4",
+    "sprintf": "^0.1.5"
   }
 }

@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.8.1/bootstrap-table.min.css">
-    
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
     <!-- Latest compiled and minified JavaScript -->
@@ -31,8 +31,7 @@
 
     <!-- Workspaces containers -->
     <div class="workspaceContainer" ng-repeat="wk in workspaces" ng-show="currentWorkspace==wk">
-
-        <table data-options="wk.tableOptions" bs-table-control> </table>
+        <table bs-table-control="wk.bsTableControl"></table>
     </div>
 
 

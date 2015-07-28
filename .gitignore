@@ -1,4 +1,4 @@
-bootstrap
+deploy.sh
 *.name
 .idea/encodings.xml
 *.iml

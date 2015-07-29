@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Footer resizing problem.</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/bootstrap-table/src/bootstrap-table.css">
+    <link rel="stylesheet" href="../assets/examples.css">
+    <style>
+        [data-field="name"] .th-inner {width: 200px}
+        .th-inner {width: 100px}
+    </style>
+    <script src="../assets/jquery.min.js"></script>
+    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../assets/bootstrap-table/src/bootstrap-table.js"></script>
+    <script src="../ga.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Footer resizing problem.(<a href="https://github.com/wenzhixin/bootstrap-table/issues/639" target="_blank">#639</a>).</h1>
+        <div style="width: 500px;">
+            <table id="table"
+                   data-striped="true"
+                   data-show-footer="true"
+                   data-height="300">
+            </table>
+        </div>
+    </div>
+<script>
+    var $table = $('#table');
+
+    $(function () {
+        $table.bootstrapTable({
+            columns: [{"field":"name","title":"Location", footerFormatter: totalTextFormatter},
+                {"field":"log_date_2015-06-20","title":"6/20","align":"right",
+                    footerFormatter: sumFormatter},
+                {"field":"log_date_2015-06-21","title":"6/21","align":"right",
+                    footerFormatter: sumFormatter},
+                {"field":"log_date_2015-06-22","title":"6/22","align":"right",
+                    footerFormatter: sumFormatter},
+                {"field":"log_date_2015-06-23","title":"6/23","align":"right",
+                    footerFormatter: sumFormatter},
+                {"field":"log_date_2015-06-24","title":"6/24","align":"right",
+                    footerFormatter: sumFormatter},
+                {"field":"log_date_2015-06-25","title":"6/25","align":"right",
+                    footerFormatter: sumFormatter},
+                {"field":"log_date_2015-06-26","title":"6/26","align":"right",
+                    footerFormatter: sumFormatter},
+                {"field":"log_date_2015-06-27","title":"6/27","align":"right",
+                    footerFormatter: sumFormatter},
+                {"field":"log_date_2015-06-28","title":"6/28","align":"right",
+                    footerFormatter: sumFormatter},
+                {"field":"log_date_2015-06-29","title":"6/29","align":"right",
+                    footerFormatter: sumFormatter},
+                {"field":"log_date_2015-06-30","title":"6/30","align":"right",
+                    footerFormatter: sumFormatter},
+                {"field":"log_date_2015-07-01","title":"7/1","align":"right",
+                    footerFormatter: sumFormatter},
+                {"field":"log_date_2015-07-02","title":"7/2","align":"right",
+                    footerFormatter: sumFormatter},
+                {"field":"log_date_2015-07-03","title":"7/3","align":"right",
+                    footerFormatter: sumFormatter},
+                {"field":"log_date_2015-07-04","title":"7/4","align":"right",
+                    footerFormatter: sumFormatter},
+                {"field":"log_date_2015-07-05","title":"7/5","align":"right",
+                    footerFormatter: sumFormatter},
+                {"field":"log_date_2015-07-06","title":"7/6","align":"right",
+                    footerFormatter: sumFormatter},
+                {"field":"log_date_2015-07-07","title":"7/7","align":"right",
+                    footerFormatter: sumFormatter},
+                {"field":"total","title":"Total","align":"right",
+                    footerFormatter: sumFormatter}
+            ],
+            data: [
+                {"name":"Example1","total":19.5,"log_date_2015-07-01":-0.25,"log_date_2015-06-09":5.5,"log_date_2015-06-06":-0.5,"log_date_2015-06-04":-0.25,"log_date_2015-07-07":-1.75,"log_date_2015-06-11":6,"log_date_2015-06-25":-0.75,"log_date_2015-06-03":-0.75,"log_date_2015-07-02":-1.25,"log_date_2015-06-27":0.75,"log_date_2015-06-14":3.25,"log_date_2015-06-18":-1.25,"log_date_2015-06-02":-1,"log_date_2015-06-01":5,"log_date_2015-06-26":-1,"log_date_2015-06-19":-0.5,"log_date_2015-06-30":1.25,"log_date_2015-06-12":3.25,"log_date_2015-07-04":-2.5,"log_date_2015-07-05":4,"log_date_2015-06-20":-2.75,"log_date_2015-06-15":-1.5,"log_date_2015-07-06":-1.75,"log_date_2015-06-28":-0.5,"log_date_2015-06-07":-1,"log_date_2015-06-05":-0.75,"log_date_2015-06-08":1.25,"log_date_2015-06-13":3.25,"log_date_2015-06-16":1.75,"log_date_2015-06-22":-1.5,"log_date_2015-06-21":0,"log_date_2015-07-03":6.25,"log_date_2015-06-23":-1.25,"log_date_2015-06-17":-0.75,"log_date_2015-06-24":-0.75,"log_date_2015-06-10":4.25,"log_date_2015-06-29":-2},
+                {"name":"Example2","total":32.25,"log_date_2015-06-27":-0.25,"log_date_2015-06-14":0.5,"log_date_2015-07-02":0.25,"log_date_2015-06-03":6.75,"log_date_2015-06-11":1.25,"log_date_2015-06-29":0,"log_date_2015-07-07":0.25,"log_date_2015-06-04":1.5,"log_date_2015-06-10":-1,"log_date_2015-06-17":5,"log_date_2015-06-06":3.5,"log_date_2015-06-24":0.25,"log_date_2015-06-23":0.25,"log_date_2015-06-09":0.25,"log_date_2015-07-03":1,"log_date_2015-07-01":0.25,"log_date_2015-06-21":0.5,"log_date_2015-06-16":-0.5,"log_date_2015-06-22":6,"log_date_2015-06-05":0,"log_date_2015-06-08":-0.25,"log_date_2015-06-13":-0.25,"log_date_2015-06-28":0.5,"log_date_2015-06-07":0.25,"log_date_2015-07-06":1,"log_date_2015-06-15":-1,"log_date_2015-06-20":0.25,"log_date_2015-07-05":0.5,"log_date_2015-07-04":0.25,"log_date_2015-06-12":0.25,"log_date_2015-06-19":2.5,"log_date_2015-06-30":0.25,"log_date_2015-06-26":1.25,"log_date_2015-06-02":-0.5,"log_date_2015-06-01":1.75,"log_date_2015-06-18":-0.5,"log_date_2015-06-25":0.25},
+                {"name":"Example3","total":46,"log_date_2015-06-15":0,"log_date_2015-06-13":1.75,"log_date_2015-06-28":-0.25,"log_date_2015-06-22":2.75,"log_date_2015-06-18":0.5,"log_date_2015-06-02":0,"log_date_2015-06-01":0.75,"log_date_2015-06-19":0,"log_date_2015-06-30":-0.75,"log_date_2015-06-26":3.75,"log_date_2015-07-04":0,"log_date_2015-06-12":0.25,"log_date_2015-06-11":-0.75,"log_date_2015-06-25":0.25,"log_date_2015-06-03":2.5,"log_date_2015-06-14":7.75,"log_date_2015-06-27":0.25,"log_date_2015-07-02":-0.5,"log_date_2015-06-09":6.75,"log_date_2015-07-03":0.75,"log_date_2015-07-01":6.5,"log_date_2015-06-21":0.5,"log_date_2015-06-17":4,"log_date_2015-06-24":0.5,"log_date_2015-06-06":0.5,"log_date_2015-06-23":1.75,"log_date_2015-06-10":0,"log_date_2015-06-29":-2.5,"log_date_2015-07-07":0.25,"log_date_2015-06-04":-3.25,"log_date_2015-06-20":3.5,"log_date_2015-07-05":0.25,"log_date_2015-07-06":0.5,"log_date_2015-06-05":2.5,"log_date_2015-06-08":3,"log_date_2015-06-07":-0.25,"log_date_2015-06-16":2.5},
+                {"name":"Example1","total":19.5,"log_date_2015-07-01":-0.25,"log_date_2015-06-09":5.5,"log_date_2015-06-06":-0.5,"log_date_2015-06-04":-0.25,"log_date_2015-07-07":-1.75,"log_date_2015-06-11":6,"log_date_2015-06-25":-0.75,"log_date_2015-06-03":-0.75,"log_date_2015-07-02":-1.25,"log_date_2015-06-27":0.75,"log_date_2015-06-14":3.25,"log_date_2015-06-18":-1.25,"log_date_2015-06-02":-1,"log_date_2015-06-01":5,"log_date_2015-06-26":-1,"log_date_2015-06-19":-0.5,"log_date_2015-06-30":1.25,"log_date_2015-06-12":3.25,"log_date_2015-07-04":-2.5,"log_date_2015-07-05":4,"log_date_2015-06-20":-2.75,"log_date_2015-06-15":-1.5,"log_date_2015-07-06":-1.75,"log_date_2015-06-28":-0.5,"log_date_2015-06-07":-1,"log_date_2015-06-05":-0.75,"log_date_2015-06-08":1.25,"log_date_2015-06-13":3.25,"log_date_2015-06-16":1.75,"log_date_2015-06-22":-1.5,"log_date_2015-06-21":0,"log_date_2015-07-03":6.25,"log_date_2015-06-23":-1.25,"log_date_2015-06-17":-0.75,"log_date_2015-06-24":-0.75,"log_date_2015-06-10":4.25,"log_date_2015-06-29":-2},
+                {"name":"Example2","total":32.25,"log_date_2015-06-27":-0.25,"log_date_2015-06-14":0.5,"log_date_2015-07-02":0.25,"log_date_2015-06-03":6.75,"log_date_2015-06-11":1.25,"log_date_2015-06-29":0,"log_date_2015-07-07":0.25,"log_date_2015-06-04":1.5,"log_date_2015-06-10":-1,"log_date_2015-06-17":5,"log_date_2015-06-06":3.5,"log_date_2015-06-24":0.25,"log_date_2015-06-23":0.25,"log_date_2015-06-09":0.25,"log_date_2015-07-03":1,"log_date_2015-07-01":0.25,"log_date_2015-06-21":0.5,"log_date_2015-06-16":-0.5,"log_date_2015-06-22":6,"log_date_2015-06-05":0,"log_date_2015-06-08":-0.25,"log_date_2015-06-13":-0.25,"log_date_2015-06-28":0.5,"log_date_2015-06-07":0.25,"log_date_2015-07-06":1,"log_date_2015-06-15":-1,"log_date_2015-06-20":0.25,"log_date_2015-07-05":0.5,"log_date_2015-07-04":0.25,"log_date_2015-06-12":0.25,"log_date_2015-06-19":2.5,"log_date_2015-06-30":0.25,"log_date_2015-06-26":1.25,"log_date_2015-06-02":-0.5,"log_date_2015-06-01":1.75,"log_date_2015-06-18":-0.5,"log_date_2015-06-25":0.25},{"name":"Example3","total":46,"log_date_2015-06-15":0,"log_date_2015-06-13":1.75,"log_date_2015-06-28":-0.25,"log_date_2015-06-22":2.75,"log_date_2015-06-18":0.5,"log_date_2015-06-02":0,"log_date_2015-06-01":0.75,"log_date_2015-06-19":0,"log_date_2015-06-30":-0.75,"log_date_2015-06-26":3.75,"log_date_2015-07-04":0,"log_date_2015-06-12":0.25,"log_date_2015-06-11":-0.75,"log_date_2015-06-25":0.25,"log_date_2015-06-03":2.5,"log_date_2015-06-14":7.75,"log_date_2015-06-27":0.25,"log_date_2015-07-02":-0.5,"log_date_2015-06-09":6.75,"log_date_2015-07-03":0.75,"log_date_2015-07-01":6.5,"log_date_2015-06-21":0.5,"log_date_2015-06-17":4,"log_date_2015-06-24":0.5,"log_date_2015-06-06":0.5,"log_date_2015-06-23":1.75,"log_date_2015-06-10":0,"log_date_2015-06-29":-2.5,"log_date_2015-07-07":0.25,"log_date_2015-06-04":-3.25,"log_date_2015-06-20":3.5,"log_date_2015-07-05":0.25,"log_date_2015-07-06":0.5,"log_date_2015-06-05":2.5,"log_date_2015-06-08":3,"log_date_2015-06-07":-0.25,"log_date_2015-06-16":2.5}   ,
+                {"name":"Example1","total":19.5,"log_date_2015-07-01":-0.25,"log_date_2015-06-09":5.5,"log_date_2015-06-06":-0.5,"log_date_2015-06-04":-0.25,"log_date_2015-07-07":-1.75,"log_date_2015-06-11":6,"log_date_2015-06-25":-0.75,"log_date_2015-06-03":-0.75,"log_date_2015-07-02":-1.25,"log_date_2015-06-27":0.75,"log_date_2015-06-14":3.25,"log_date_2015-06-18":-1.25,"log_date_2015-06-02":-1,"log_date_2015-06-01":5,"log_date_2015-06-26":-1,"log_date_2015-06-19":-0.5,"log_date_2015-06-30":1.25,"log_date_2015-06-12":3.25,"log_date_2015-07-04":-2.5,"log_date_2015-07-05":4,"log_date_2015-06-20":-2.75,"log_date_2015-06-15":-1.5,"log_date_2015-07-06":-1.75,"log_date_2015-06-28":-0.5,"log_date_2015-06-07":-1,"log_date_2015-06-05":-0.75,"log_date_2015-06-08":1.25,"log_date_2015-06-13":3.25,"log_date_2015-06-16":1.75,"log_date_2015-06-22":-1.5,"log_date_2015-06-21":0,"log_date_2015-07-03":6.25,"log_date_2015-06-23":-1.25,"log_date_2015-06-17":-0.75,"log_date_2015-06-24":-0.75,"log_date_2015-06-10":4.25,"log_date_2015-06-29":-2},{"name":"Example2","total":32.25,"log_date_2015-06-27":-0.25,"log_date_2015-06-14":0.5,"log_date_2015-07-02":0.25,"log_date_2015-06-03":6.75,"log_date_2015-06-11":1.25,"log_date_2015-06-29":0,"log_date_2015-07-07":0.25,"log_date_2015-06-04":1.5,"log_date_2015-06-10":-1,"log_date_2015-06-17":5,"log_date_2015-06-06":3.5,"log_date_2015-06-24":0.25,"log_date_2015-06-23":0.25,"log_date_2015-06-09":0.25,"log_date_2015-07-03":1,"log_date_2015-07-01":0.25,"log_date_2015-06-21":0.5,"log_date_2015-06-16":-0.5,"log_date_2015-06-22":6,"log_date_2015-06-05":0,"log_date_2015-06-08":-0.25,"log_date_2015-06-13":-0.25,"log_date_2015-06-28":0.5,"log_date_2015-06-07":0.25,"log_date_2015-07-06":1,"log_date_2015-06-15":-1,"log_date_2015-06-20":0.25,"log_date_2015-07-05":0.5,"log_date_2015-07-04":0.25,"log_date_2015-06-12":0.25,"log_date_2015-06-19":2.5,"log_date_2015-06-30":0.25,"log_date_2015-06-26":1.25,"log_date_2015-06-02":-0.5,"log_date_2015-06-01":1.75,"log_date_2015-06-18":-0.5,"log_date_2015-06-25":0.25},
+                {"name":"Example3","total":46,"log_date_2015-06-15":0,"log_date_2015-06-13":1.75,"log_date_2015-06-28":-0.25,"log_date_2015-06-22":2.75,"log_date_2015-06-18":0.5,"log_date_2015-06-02":0,"log_date_2015-06-01":0.75,"log_date_2015-06-19":0,"log_date_2015-06-30":-0.75,"log_date_2015-06-26":3.75,"log_date_2015-07-04":0,"log_date_2015-06-12":0.25,"log_date_2015-06-11":-0.75,"log_date_2015-06-25":0.25,"log_date_2015-06-03":2.5,"log_date_2015-06-14":7.75,"log_date_2015-06-27":0.25,"log_date_2015-07-02":-0.5,"log_date_2015-06-09":6.75,"log_date_2015-07-03":0.75,"log_date_2015-07-01":6.5,"log_date_2015-06-21":0.5,"log_date_2015-06-17":4,"log_date_2015-06-24":0.5,"log_date_2015-06-06":0.5,"log_date_2015-06-23":1.75,"log_date_2015-06-10":0,"log_date_2015-06-29":-2.5,"log_date_2015-07-07":0.25,"log_date_2015-06-04":-3.25,"log_date_2015-06-20":3.5,"log_date_2015-07-05":0.25,"log_date_2015-07-06":0.5,"log_date_2015-06-05":2.5,"log_date_2015-06-08":3,"log_date_2015-06-07":-0.25,"log_date_2015-06-16":2.5}
+            ]
+        });
+    });
+
+    function totalTextFormatter(data) {
+        return 'Total';
+    }
+
+    function sumFormatter(data) {
+        field = this.field;
+        var total_sum = data.reduce(function(sum, row) {
+            return (sum) + (row[field] || 0);
+        }, 0);
+        return total_sum;
+    }
+
+</script>
+</body>
+</html>

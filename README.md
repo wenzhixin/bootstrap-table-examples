@@ -5,7 +5,7 @@ bootstrap-table-examples
 
 ## Usage
 
-clone & init
+### clone & init
 
 ```sh
 git clone https://github.com/wenzhixin/bootstrap-table-examples.git
@@ -14,6 +14,12 @@ git submodule update --init
 
 npm install
 ```
+
+### download from zip
+
+* Download [bootstrap-table-examples](https://github.com/wenzhixin/bootstrap-table-examples/archive/master.zip)
+* Download [bootstrap-table](https://github.com/wenzhixin/bootstrap-table/archive/master.zip), unzip to `assets/bootstrap-table`
+
 
 ## run
 

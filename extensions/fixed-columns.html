@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fixed Columns</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/bootstrap-table/src/bootstrap-table.css">
+    <link rel="stylesheet" href="../assets/bootstrap-table/src/extensions/fixed-columns/bootstrap-table-fixed-columns.css">
+    <link rel="stylesheet" href="../assets/examples.css">
+    <script src="../assets/jquery.min.js"></script>
+    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../assets/bootstrap-table/src/bootstrap-table.js"></script>
+    <script src="rawgit.com/wenzhixin/bootstrap-table-fixed-columns/master/bootstrap-table-fixed-columns.js"></script>
+    <script src="../ga.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Fixed Columns</h1>
+        <div class="toolbar form-inline">
+            <span>Fixed Number: </span>
+            <input class="form-control" id="fixedNumber" type="number" value="1" min="1" max="5">
+        </div>
+        <table id="table" data-height="400" data-show-columns="true"></table>
+    </div>
+<script>
+    var $table = $('#table');
+
+    $(function () {
+        buildTable($table, 20, 20);
+
+        $('#fixedNumber').change(function () {
+            buildTable($table, 20, 20);
+        });
+    });
+
+    function buildTable($el, cells, rows) {
+        var i, j, row,
+                columns = [],
+                data = [];
+
+        for (i = 0; i < cells; i++) {
+            columns.push({
+                field: 'field' + i,
+                title: 'Cell' + i,
+                sortable: true
+            });
+        }
+        for (i = 0; i < rows; i++) {
+            row = {};
+            for (j = 0; j < cells; j++) {
+                row['field' + j] = 'Row-' + i + '-' + j;
+            }
+            data.push(row);
+        }
+        $el.bootstrapTable('destroy').bootstrapTable({
+            columns: columns,
+            data: data,
+            search: true,
+            toolbar: '.toolbar',
+            fixedColumns: true,
+            fixedNumber: +$('#fixedNumber').val()
+        });
+    }
+</script>
+</body>
+</html>

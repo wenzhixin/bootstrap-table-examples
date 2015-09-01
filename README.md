@@ -3,6 +3,8 @@ bootstrap-table-examples
 
 [Bootstrap Table Examples](http://issues.wenzhixin.net.cn/bootstrap-table)
 
+[jsFiddle Examples](https://github.com/wenzhixin/bootstrap-table-examples/blob/master/jsfiddle_examples.md)
+
 ## Usage
 
 ### clone & init

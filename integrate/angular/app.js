@@ -25,10 +25,6 @@ angular.module('app', ['bsTable'])
     $scope.workspaces.forEach(function (wk,index) {
         var colData = {workspace: wk.name};
         wk.rows = makeRandomRows(colData);
-        setInterval(function () {
-            wk.rows = wk.bsTableControl.options.data = makeRandomRows(colData);
-            $scope.$applyAsync();
-        }, 5000);
 
         wk.bsTableControl = {
             options: {
@@ -96,7 +92,7 @@ angular.module('app', ['bsTable'])
 
     $scope.changeCurrentWorkspace = function (wk) {
         $scope.currentWorkspace = wk;
-    }
+    };
 
 
     //Select the workspace in document ready event

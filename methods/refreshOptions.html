@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>refreshOptions</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/bootstrap-table/src/bootstrap-table.css">
+    <link rel="stylesheet" href="../assets/examples.css">
+    <script src="../assets/jquery.min.js"></script>
+    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../assets/bootstrap-table/src/bootstrap-table.js"></script>
+    <script src="../ga.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>refreshOptions</h1>
+        <p></p>
+        <div id="toolbar">
+            <button id="button" class="btn btn-default">refreshOptions</button>
+        </div>
+        <table id="table"
+               data-toggle="table"
+               data-toolbar="#toolbar"
+               data-height="460"
+               data-url="../json/data1.json">
+            <thead>
+            <tr>
+                <th data-field="id">ID</th>
+                <th data-field="name">Item Name</th>
+                <th data-field="price">Item Price</th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+<script>
+    var $table = $('#table'),
+        $button = $('#button');
+
+    $(function () {
+        $button.click(function () {
+            $table.bootstrapTable('refreshOptions', {
+                showColumns: true,
+                search: true,
+                showRefresh: true,
+                url: '../json/data1.json'
+            });
+        });
+    });
+</script>
+</body>
+</html>

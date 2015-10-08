@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Multiple Table</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/bootstrap-table/src/bootstrap-table.css">
+    <link rel="stylesheet" href="../assets/examples.css">
+    <script src="../assets/jquery.min.js"></script>
+    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../assets/bootstrap-table/src/bootstrap-table.js"></script>
+    <script src="../ga.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Multiple Table</h1>
+        <p></p>
+        <div class="row">
+            <div class="col-md-3">
+                <table data-toggle="table"
+                       data-url="../json/data3.json">
+                    <thead>
+                    <tr>
+                        <th data-field="github.name"
+                            data-formatter="operateFormatter"
+                            data-events="operateEvents">Bookmark 1</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="col-md-3">
+                <table data-toggle="table"
+                       data-url="../json/data3.json">
+                    <thead>
+                    <tr>
+                        <th data-field="github.name"
+                            data-formatter="operateFormatter"
+                            data-events="operateEvents">Bookmark 2</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="col-md-3">
+                <table data-toggle="table"
+                       data-url="../json/data3.json">
+                    <thead>
+                    <tr>
+                        <th data-field="github.name"
+                            data-formatter="operateFormatter"
+                            data-events="operateEvents">Bookmark 3</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="col-md-3">
+                <table data-toggle="table"
+                       data-url="../json/data3.json">
+                    <thead>
+                    <tr>
+                        <th data-field="github.name"
+                            data-formatter="operateFormatter"
+                            data-events="operateEvents">Bookmark 4</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+<script>
+    window.operateEvents = {
+        'click .like': function (e, value, row, index) {
+            alert('You click like action, row: ' + JSON.stringify(row));
+        },
+        'click .remove': function (e, value, row, index) {
+            $table.bootstrapTable('remove', {
+                field: 'id',
+                values: [row.id]
+            });
+        }
+    };
+
+    function operateFormatter(value, row, index) {
+        return [
+            '<div class="pull-left">',
+            value,
+            '</div>',
+            '<div class="pull-right">',
+            '<a class="like" href="javascript:void(0)" title="Like">',
+            '<i class="glyphicon glyphicon-heart"></i>',
+            '</a>  ',
+            '<a class="remove" href="javascript:void(0)" title="Remove">',
+            '<i class="glyphicon glyphicon-remove"></i>',
+            '</a>',
+            '</div>'
+        ].join('');
+    }
+</script>
+</body>
+</html>

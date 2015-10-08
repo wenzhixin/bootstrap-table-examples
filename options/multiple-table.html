@@ -68,21 +68,18 @@
     </div>
 <script>
     window.operateEvents = {
-        'click .like': function (e, value, row, index) {
+        'click .like': function (e, value, row) {
             alert('You click like action, row: ' + JSON.stringify(row));
         },
-        'click .remove': function (e, value, row, index) {
-            $table.bootstrapTable('remove', {
-                field: 'id',
-                values: [row.id]
-            });
+        'click .remove': function (e, value, row) {
+            alert('You click remove action, row: ' + JSON.stringify(row));
         }
     };
 
     function operateFormatter(value, row, index) {
         return [
             '<div class="pull-left">',
-            value,
+            '<a href="https://github.com/wenzhixin/' + value + '" target="_blank">' + value + '</a>',
             '</div>',
             '<div class="pull-right">',
             '<a class="like" href="javascript:void(0)" title="Like">',

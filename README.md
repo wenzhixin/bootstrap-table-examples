@@ -5,6 +5,8 @@ bootstrap-table-examples
 
 [jsFiddle Examples](https://github.com/wenzhixin/bootstrap-table-examples/blob/master/jsfiddle_examples.md)
 
+[CRUD Example](https://github.com/wenzhixin/bootstrap-table-examples/blob/master/crud/README.md)
+
 ## Usage
 
 ### clone & init

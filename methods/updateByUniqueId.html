@@ -44,7 +44,14 @@
 
     $(function () {
         $button.click(function () {
-            alert('getRowByUniqueId: ' + JSON.stringify($table.bootstrapTable('updateByUniqueId', 3)));
+            var randomId = 100 + ~~(Math.random() * 100);
+            $table.bootstrapTable('updateByUniqueId', {
+                id: 3,
+                row: {
+                    name: 'Item ' + randomId,
+                    price: '$' + randomId
+                }
+            });
         });
     });
 </script>

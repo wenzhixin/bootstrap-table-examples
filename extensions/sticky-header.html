@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sticky Header</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/bootstrap-table/src/bootstrap-table.css">
+    <link rel="stylesheet" href="../assets/bootstrap-table/src/extensions/sticky-header/bootstrap-table-sticky-header.css">
+    <link rel="stylesheet" href="http://bootstrap-table.wenzhixin.net.cn/assets/css/docs.min.css">
+    <link rel="stylesheet" href="../assets/examples.css">
+    <script src="../assets/jquery.min.js"></script>
+    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../assets/bootstrap-table/src/bootstrap-table.js"></script>
+    <script src="../assets/bootstrap-table/src/extensions/sticky-header/bootstrap-table-sticky-header.js"></script>
+    <script src="../ga.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Sticky Header</h1>
+        <p>An extension which provides a sticky header for table columns when scrolling on a long page and / or table. Works for tables with many columns and narrow width with horizontal scrollbars too.</p>
+        <hr>
+        <table id="table" data-show-columns="true"></table>
+    </div>
+<script>
+    var $table = $('#table');
+
+    $(function () {
+        buildTable($table, 20, 50);
+    });
+
+    function buildTable($el, cells, rows) {
+        var i, j, row,
+                columns = [],
+                data = [],
+                stickyHeaderOffsetY = 0;
+
+        for (i = 0; i < cells; i++) {
+            columns.push({
+                field: 'field' + i,
+                title: 'Cell' + i,
+                sortable: true
+            });
+        }
+        for (i = 0; i < rows; i++) {
+            row = {};
+            for (j = 0; j < cells; j++) {
+                row['field' + j] = 'Row-' + i + '-' + j;
+            }
+            data.push(row);
+        }
+
+        if ( $('.navbar-fixed-top').css('height') ) {
+            stickyHeaderOffsetY = +$('.navbar-fixed-top').css('height').replace('px','');
+        }
+        if ( $('.navbar-fixed-top').css('margin-bottom') ) {
+            stickyHeaderOffsetY += +$('.navbar-fixed-top').css('margin-bottom').replace('px','');
+        }
+
+        $el.bootstrapTable('destroy').bootstrapTable({
+            columns: columns,
+            data: data,
+            search: true,
+            stickyHeader: true,
+            stickyHeaderOffsetY: stickyHeaderOffsetY + 'px'
+        });
+    }
+</script>
+</body>
+</html>

@@ -16,7 +16,7 @@ var projects = {
                 max = offset + limit,
                 rows = [],
                 result = {
-                    total: 800,
+                    total: +req.query.total || 800,
                     rows: []
                 };
 

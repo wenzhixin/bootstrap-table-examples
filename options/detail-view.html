@@ -34,7 +34,7 @@
     function detailFormatter(index, row) {
         var html = [];
         $.each(row, function (key, value) {
-            html.push('<p><b>' + key + ':</b> ' + value + '</p>');
+            html.push('<p><b>' + key + ':</b> ' + value + '</p> <a href="#">Edit</a>');
         });
         return html.join('');
     }

@@ -23,7 +23,12 @@ npm install
 
 * Download [bootstrap-table-examples](https://github.com/wenzhixin/bootstrap-table-examples/archive/master.zip)
 * Download [bootstrap-table](https://github.com/wenzhixin/bootstrap-table/archive/master.zip), unzip to `assets/bootstrap-table`
+* Download [multiple-select](https://github.com/wenzhixin/mutiple-select/archive/master.zip), unzip to `assets/multiple-select`
 
+```
+cd bootstrap-table-examples
+npm install
+```
 
 ## run
 

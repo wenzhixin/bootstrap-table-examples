@@ -97,7 +97,7 @@
                                 if (!value) {
                                     return 'This field is required';
                                 }
-                                if (!/^$/.test(value)) {
+                                if (!/^\$/.test(value)) {
                                     return 'This field needs to start width $.'
                                 }
                                 var data = $table.bootstrapTable('getData'),

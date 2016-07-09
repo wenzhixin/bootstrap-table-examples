@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>filterBy</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/bootstrap-table/src/bootstrap-table.css">
+    <link rel="stylesheet" href="../assets/examples.css">
+    <script src="../assets/jquery.min.js"></script>
+    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../assets/bootstrap-table/src/bootstrap-table.js"></script>
+    <script src="../ga.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>filterBy</h1>
+        <p>
+            (Can use only in client-side) Filter data in table, <br />
+            e.g. You can filter <code>{age: 10}</code> to show the data only age is equal to 10. <br />
+            You can also filter with an array of values, as in: <code>{age: 10, hairColor: ["blue", "red", "green"]}</code> to find data where age is equal to 10 and hairColor is either blue, red, or green.<br />
+            In this example, we filter by:
+            <pre>
+$table.bootstrapTable('filterBy', {
+    id: [1, 2, 3]
+});</pre>
+        </p>
+        <div id="toolbar">
+            <button id="button" class="btn btn-default">filterBy</button>
+        </div>
+        <table id="table"
+               data-toggle="table"
+               data-toolbar="#toolbar"
+               data-height="400"
+               data-url="../json/data1.json">
+            <thead>
+            <tr>
+                <th data-field="id">ID</th>
+                <th data-field="name">Item Name</th>
+                <th data-field="price">Item Price</th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+<script>
+    var $table = $('#table'),
+        $button = $('#button');
+
+    $(function () {
+        $button.click(function () {
+            $table.bootstrapTable('filterBy', {
+                id: [1, 2, 3]
+            });
+        });
+    });
+</script>
+</body>
+</html>

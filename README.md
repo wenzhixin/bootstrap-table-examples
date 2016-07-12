@@ -35,3 +35,10 @@ npm install
 ```sh
 node app
 ```
+
+## reporting issues
+
+All issues need to be submitted to the main project, not this examples repo.
+
+Please read: https://github.com/wenzhixin/bootstrap-table/blob/develop/CONTRIBUTING.md#bug-reports
+and post issue to: https://github.com/wenzhixin/bootstrap-table/issues, thanks!

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Defer URL</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/bootstrap-table/src/bootstrap-table.css">
+    <link rel="stylesheet" href="../assets/examples.css">
+    <script src="../assets/jquery.min.js"></script>
+    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../assets/bootstrap-table/src/bootstrap-table.js"></script>
+    <script src="../assets/bootstrap-table/src/extensions/defer-url/bootstrap-table-defer-url.js"></script>
+    <script src="../ga.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Defer URL</h1>
+        <table id="table"
+               data-toggle="table"
+               data-show-columns="true"
+               data-pagination="true"
+               data-search="true"
+               data-side-pagination="server"
+               data-defer-url="/examples/bootstrap_table/data"
+               data-page-number="1"
+               data-total-rows="21">
+            <thead>
+            <tr>
+                <th data-field="id" data-sortable="true">ID</th>
+                <th data-field="name" data-sortable="true">Item Name</th>
+                <th data-field="price" data-sortable="true">Item Price</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>0</td>
+                <td>Item 0</td>
+                <td>$0</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Item 1</td>
+                <td>$1</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Item 2</td>
+                <td>$2</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Item 3</td>
+                <td>$3</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Item 4</td>
+                <td>$4</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Item 5</td>
+                <td>$5</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>Item 6</td>
+                <td>$6</td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>Item 7</td>
+                <td>$7</td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td>Item 8</td>
+                <td>$8</td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td>Item 9</td>
+                <td>$9</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

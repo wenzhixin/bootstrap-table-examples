@@ -1,65 +1,50 @@
 [
     {
-        "continent": "Europe",
-        "country": "Germany",
-        "id": 0,
-        "name": "Item 0",
-        "price": "$0"
+        "shape": "triangle",
+        "color": "red",
+        "area": 5,
+        "label": "T1"
     },
     {
-        "continent": "Europe",
-        "country": "Germany",
-        "id": 1,
-        "name": "Item 1",
-        "price": "$1"
+        "shape": "triangle",
+        "color": "green",
+        "area": 27,
+        "label": "T2"
     },
     {
-        "continent": "Europe",
-        "country": "Germany",
-        "id": 2,
-        "name": "Item 2",
-        "price": "$2"
+        "shape": "triangle",
+        "color": "yellow",
+        "area": 15,
+        "label": "T3"
     },
     {
-        "continent": "Europe",
-        "country": "Germany",
-        "id": 3,
-        "name": "Item 3",
-        "price": "$3"
+        "shape": "triangle",
+        "color": "red",
+        "area": 10,
+        "label": "T4"
     },
     {
-        "continent": "Europe",
-        "country": "France",
-        "id": 4,
-        "name": "Item 4",
-        "price": "$4"
+        "shape": "quadrangle",
+        "color": "red",
+        "area": 25,
+        "label": "Q1"
     },
     {
-        "continent": "Europe",
-        "country": "France",
-        "id": 5,
-        "name": "Item 5",
-        "price": "$5"
+        "shape": "quadrangle",
+        "color": "red",
+        "area": 44,
+        "label": "Q2"
     },
     {
-        "continent": "Europe",
-        "country": "France",
-        "id": 6,
-        "name": "Item 6",
-        "price": "$6"
+        "shape": "circle",
+        "color": "red",
+        "area": 44,
+        "label": "Q2"
     },
     {
-        "continent": "Europe",
-        "country": "Italy",
-        "id": 7,
-        "name": "Item 7",
-        "price": "$7"
-    },
-    {
-        "continent": "Asia",
-        "country": "Japan",
-        "id": 8,
-        "name": "Item 8",
-        "price": "$8"
+        "shape": "circle",
+        "color": "black",
+        "area": 44,
+        "label": "Q2"
     }
 ]

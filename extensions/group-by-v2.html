@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Editable</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/bootstrap-table/src/bootstrap-table.css">
+    <link rel="stylesheet" href="../assets/bootstrap-table/src/extensions/group-by-v2/bootstrap-table-group-by.css">
+    <link rel="stylesheet" href="../assets/examples.css">
+    <script src="../assets/jquery.min.js"></script>
+    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../assets/bootstrap-table/src/bootstrap-table.js"></script>
+    <script src="../assets/bootstrap-table/src/extensions/group-by-v2/bootstrap-table-group-by.js"></script>
+    <script src="../ga.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Group By v2</h1>
+        <table id="table"
+               data-toggle="table"
+               data-group-by="true"
+               data-group-by-field="shape"
+               data-url="../json/data6.json">
+            <thead>
+            <tr>
+                <th data-field="shape">Shape</th>
+                <th data-field="color">Color</th>
+                <th data-field="area">Area</th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+</body>
+</html>

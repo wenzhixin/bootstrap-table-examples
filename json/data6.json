@@ -1,0 +1,50 @@
+[
+    {
+        "shape": "triangle",
+        "color": "red",
+        "area": 5,
+        "label": "T1"
+    },
+    {
+        "shape": "triangle",
+        "color": "green",
+        "area": 27,
+        "label": "T2"
+    },
+    {
+        "shape": "triangle",
+        "color": "yellow",
+        "area": 15,
+        "label": "T3"
+    },
+    {
+        "shape": "triangle",
+        "color": "red",
+        "area": 10,
+        "label": "T4"
+    },
+    {
+        "shape": "quadrangle",
+        "color": "red",
+        "area": 25,
+        "label": "Q1"
+    },
+    {
+        "shape": "quadrangle",
+        "color": "red",
+        "area": 44,
+        "label": "Q2"
+    },
+    {
+        "shape": "circle",
+        "color": "red",
+        "area": 44,
+        "label": "Q2"
+    },
+    {
+        "shape": "circle",
+        "color": "black",
+        "area": 44,
+        "label": "Q2"
+    }
+]

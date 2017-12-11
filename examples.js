@@ -7,7 +7,7 @@ var projects = {
     bootstrap_table: {
         data: function(req, res) {
             var offset = +req.query.offset || 0,
-                limit = +req.query.limit || 20,
+                limit = +req.query.limit || 800,
                 search = req.query.search,
                 name = req.query.sort,
                 order = req.query.order || 'asc',

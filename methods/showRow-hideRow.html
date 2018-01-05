@@ -1,58 +1,65 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>showRow/hideRow</title>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/bootstrap-table/src/bootstrap-table.css">
-    <link rel="stylesheet" href="../assets/examples.css">
-    <script src="../assets/jquery.min.js"></script>
-    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../../bootstrap-table/src/bootstrap-table.js"></script>
-    <script src="../ga.js"></script>
+  <title>showRow/hideRow</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/bootstrap-table/src/bootstrap-table.css">
+  <link rel="stylesheet" href="../assets/examples.css">
+  <script src="../assets/jquery.min.js"></script>
+  <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="../assets/bootstrap-table/src/bootstrap-table.js"></script>
+  <script src="../ga.js"></script>
 </head>
+
 <body>
-<div class="container">
+  <div class="container">
     <h1>showRow/hideRow</h1>
-	<p>
-		Show/Hide the specified row.<br>
-		<code>$table.bootstrapTable('showRow', {index:1});</code><br>
-		<code>$table.bootstrapTable('hideRow', {index:1});</code>
-	</p>
+    <p>
+      Show/Hide the specified row.<br>
+      <code>$table.bootstrapTable('showRow', {index:1});</code><br>
+      <code>$table.bootstrapTable('hideRow', {index:1});</code>
+    </p>
     <div id="toolbar">
-		<button id="button" class="btn btn-default">Show Row</button>
-		<button id="button2" class="btn btn-default">Hide Row</button>
-	</div>
-	<table id="table"
-		   data-toggle="table"
-		   data-toolbar="#toolbar"
-		   data-height="460"
-           data-pagination="true"
-           data-side-pagination="server"
-		   data-url="../json/data2.json">
-		<thead>
-		<tr>
-			<th data-field="id" data-sortable="true">ID</th>
-			<th data-field="name" data-sortable="true">Item Name</th>
-			<th data-field="price" data-sortable="true">Item Price</th>
-		</tr>
-		</thead>
-	</table>
-</div>
-<script>
+      <button id="button" class="btn btn-default">Show Row</button>
+      <button id="button2" class="btn btn-default">Hide Row</button>
+    </div>
+    <table id="table"
+        data-toggle="table"
+        data-toolbar="#toolbar"
+        data-height="460"
+        data-pagination="true"
+        data-side-pagination="server"
+        data-url="../json/data2.json">
+      <thead>
+        <tr>
+          <th data-field="id" data-sortable="true">ID</th>
+          <th data-field="name" data-sortable="true">Item Name</th>
+          <th data-field="price" data-sortable="true">Item Price</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+  <script>
     var $table = $('#table'),
-        $button = $('#button'),
-        $button2 = $('#button2');
+      $button = $('#button'),
+      $button2 = $('#button2');
 
-    $(function () {
-        $button.click(function () {
-            $table.bootstrapTable('showRow', {index: 1});
+    $(function() {
+      $button.click(function() {
+        $table.bootstrapTable('showRow', {
+          index: 1
         });
+      });
 
-        $button2.click(function () {
-            $table.bootstrapTable('hideRow', {index: 1});
+      $button2.click(function() {
+        $table.bootstrapTable('hideRow', {
+          index: 1
         });
+      });
     });
-</script>
+  </script>
 </body>
+
 </html>

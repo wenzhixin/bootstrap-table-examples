@@ -14,3 +14,7 @@
   font-size: 16px;
   line-height: 32px;
 }
+
+.bs-docs-header a {
+  color: #fff;
+}

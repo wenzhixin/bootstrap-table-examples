@@ -1,80 +1,66 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>custom-toolbar</title>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/bootstrap-table/src/bootstrap-table.css">
-    <link rel="stylesheet" href="../assets/examples.css">
-    <style>
-        .w70 {width: 70px !important;}
-    </style>
-    <script src="../assets/jquery.min.js"></script>
-    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../assets/bootstrap-table/src/bootstrap-table.js"></script>
-    <script src="../ga.js"></script>
-</head>
-<body>
-    <div class="container">
-        <h1>Custom Toolbar</h1>
-        <p>Use <code>toolbar</code> option to define the custom toolbars.</p>
-        <div id="toolbar">
-            <div class="form-inline" role="form">
-                <div class="form-group">
-                    <span>Offset: </span>
-                    <input name="offset" class="form-control w70" type="number" value="0">
-                </div>
-                <div class="form-group">
-                    <span>Limit: </span>
-                    <input name="limit" class="form-control w70" type="number" value="5">
-                </div>
-                <div class="form-group">
-                    <input name="search" class="form-control" type="text" placeholder="Search">
-                </div>
-                <button id="ok" type="submit" class="btn btn-default">OK</button>
-            </div>
-        </div>
-        <table id="table"
-               data-toggle="table"
-               data-height="460"
-               data-toolbar="#toolbar"
-               data-show-refresh="true"
-               data-show-toggle="true"
-               data-show-columns="true"
-               data-query-params="queryParams"
-               data-response-handler="responseHandler"
-               data-url="/examples/bootstrap_table/data">
-            <thead>
-            <tr>
-                <th data-field="id">ID</th>
-                <th data-field="name">Item Name</th>
-                <th data-field="price">Item Price</th>
-            </tr>
-            </thead>
-        </table>
+<script>
+  init({
+    title: 'Custom Toolbar',
+    desc: 'Use <code>toolbar</code> option to define the custom toolbars.',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
+<div id="toolbar">
+  <div class="form-inline" role="form">
+    <div class="form-group">
+      <span>Offset: </span>
+      <input name="offset" class="form-control w70" type="number" value="0">
     </div>
+    <div class="form-group">
+      <span>Limit: </span>
+      <input name="limit" class="form-control w70" type="number" value="5">
+    </div>
+    <div class="form-group">
+      <input name="search" class="form-control" type="text" placeholder="Search">
+    </div>
+    <button id="ok" type="submit" class="btn btn-default">OK</button>
+  </div>
+</div>
+<table id="table"
+  data-toggle="table"
+  data-height="460"
+  data-toolbar="#toolbar"
+  data-show-refresh="true"
+  data-show-toggle="true"
+  data-show-columns="true"
+  data-query-params="queryParams"
+  data-response-handler="responseHandler"
+  data-url="http://issues.wenzhixin.net.cn/examples/bootstrap_table/data">
+  <thead>
+  <tr>
+    <th data-field="id">ID</th>
+    <th data-field="name">Item Name</th>
+    <th data-field="price">Item Price</th>
+  </tr>
+  </thead>
+</table>
 
 <script>
-    var $table = $('#table'),
-        $ok = $('#ok');
+  var $table = $('#table')
+  var $ok = $('#ok')
 
-    $(function () {
-        $ok.click(function () {
-            $table.bootstrapTable('refresh');
-        });
-    });
+  function mounted() {
+    $ok.click(function () {
+      $table.bootstrapTable('refresh')
+    })
+  }
 
-    function queryParams() {
-        var params = {};
-        $('#toolbar').find('input[name]').each(function () {
-            params[$(this).attr('name')] = $(this).val();
-        });
-        return params;
-    }
+  function queryParams() {
+    var params = {}
+    $('#toolbar').find('input[name]').each(function () {
+      params[$(this).attr('name')] = $(this).val()
+    })
+    return params
+  }
 
-    function responseHandler(res) {
-        return res.rows;
-    }
+  function responseHandler(res) {
+    return res.rows
+  }
 </script>
-</body>
-</html>

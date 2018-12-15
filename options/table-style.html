@@ -1,50 +1,40 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>table-style</title>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/bootstrap-table/src/bootstrap-table.css">
-    <link rel="stylesheet" href="../assets/examples.css">
-    <script src="../assets/jquery.min.js"></script>
-    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../assets/bootstrap-table/src/bootstrap-table.js"></script>
-    <script src="../ga.js"></script>
-</head>
-<body>
-    <div class="container">
-        <h1>Table Style</h1>
-        <p>Use <code>height</code>, <code>classes</code>, <code>striped</code>, <code>rowStyle</code> options and <code>class</code>, <code>width</code>, <code>cellStyle</code> column options to set the styles of bootstrap table.</p>
-        <table data-toggle="table"
-               data-url="../json/data1.json"
-               data-height="400"
-               data-row-style="rowStyle">
-            <thead>
-            <tr>
-                <th data-field="id" class="col-md-2">Item ID</th>
-                <th data-field="name" class="col-md-6">
-                    <i class="glyphicon glyphicon-star"></i>
-                    Item Name
-                </th>
-                <th data-field="price" class="col-md-4">
-                    <i class="glyphicon glyphicon-heart"></i>
-                    Item Price
-                </th>
-            </tr>
-            </thead>
-        </table>
-    </div>
 <script>
-    function rowStyle(row, index) {
-        var classes = ['active', 'success', 'info', 'warning', 'danger'];
-
-        if (index % 2 === 0 && index / 2 < classes.length) {
-            return {
-                classes: classes[index / 2]
-            };
-        }
-        return {};
-    }
+  init({
+    title: 'Table Style',
+    desc: 'Use <code>height</code>, <code>classes</code>, <code>striped</code>, <code>rowStyle</code> options and <code>class</code>, <code>width</code>, <code>cellStyle</code> column options to set the styles of bootstrap table.',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
 </script>
-</body>
-</html>
+
+<table data-toggle="table"
+    data-url="json/data1.json"
+    data-height="400"
+    data-row-style="rowStyle">
+  <thead>
+  <tr>
+    <th data-field="id" class="col-md-2">Item ID</th>
+    <th data-field="name" class="col-md-6">
+      <i class="glyphicon glyphicon-star"></i>
+      Item Name
+    </th>
+    <th data-field="price" class="col-md-4">
+      <i class="glyphicon glyphicon-heart"></i>
+      Item Price
+    </th>
+  </tr>
+  </thead>
+</table>
+
+<script>
+  function rowStyle(row, index) {
+    var classes = ['active', 'success', 'info', 'warning', 'danger']
+
+    if (index % 2 === 0 && index / 2 < classes.length) {
+      return {
+        classes: classes[index / 2]
+      }
+    }
+    return {}
+  }
+</script>

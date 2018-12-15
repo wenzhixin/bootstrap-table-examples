@@ -1,7 +1,7 @@
 {
   "name": "bootstrap-table-examples",
-  "version": "1.0.0",
-  "description": "bootstrap-table-examples ======================",
+  "version": "1.1.0",
+  "description": "bootstrap-table-examples",
   "repository": {
     "type": "git",
     "url": "https://github.com/wenzhixin/bootstrap-table-examples.git"
@@ -12,9 +12,11 @@
     "url": "https://github.com/wenzhixin/bootstrap-table-examples/issues"
   },
   "homepage": "https://github.com/wenzhixin/bootstrap-table-examples",
-  "dependencies": {
-    "bootstrap-table": "^1.8.1",
-    "express": "^4.12.4",
-    "sprintf": "^0.1.5"
+  "scripts": {
+    "lint": "eslint --ext .html,.js ."
+  },
+  "devDependencies": {
+    "eslint": "^5.10.0",
+    "eslint-plugin-html": "^5.0.0"
   }
 }

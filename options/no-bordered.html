@@ -1,38 +1,21 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>no-bordered</title>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/bootstrap-table/src/bootstrap-table.css">
-    <link rel="stylesheet" href="../assets/examples.css">
-    <script src="../assets/jquery.min.js"></script>
-    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../assets/bootstrap-table/src/bootstrap-table.js"></script>
-    <script src="../ga.js"></script>
-</head>
-<body>
-    <div class="container">
-        <h1>No Bordered</h1>
-        <p>Set classes option to <code>table table-no-bordered</code>.</p>
-        <table id="table"
-               data-toggle="table"
-               data-classes="table table-no-bordered"
-               data-url="../json/data1.json">
-            <thead>
-            <tr>
-                <th data-field="id">ID</th>
-                <th data-field="name">Item Name</th>
-                <th data-field="price">Item Price</th>
-            </tr>
-            </thead>
-        </table>
-    </div>
 <script>
-    var $table = $('#table');
-
-    $(function () {
-    });
+  init({
+    title: 'No Bordered',
+    desc: 'Set classes option to <code>table table-no-bordered</code>.',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
 </script>
-</body>
-</html>
+
+<table id="table"
+  data-toggle="table"
+  data-classes="table table-no-bordered"
+  data-url="json/data1.json">
+  <thead>
+  <tr>
+    <th data-field="id">ID</th>
+    <th data-field="name">Item Name</th>
+    <th data-field="price">Item Price</th>
+  </tr>
+  </thead>
+</table>

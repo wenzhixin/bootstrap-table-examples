@@ -5,19 +5,20 @@
 		<link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
 		<link rel="stylesheet" href="../assets/bootstrap-table/src/bootstrap-table.css">
 		<link rel="stylesheet" href="../assets/examples.css">
-		<script src="../assets/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 		<script src="../assets/bootstrap/js/bootstrap.min.js"></script>
 		<script src="../assets/bootstrap-table/src/bootstrap-table.js"></script>
 		<script src="../assets/bootstrap-table-filter/extension/bootstrap-table-filter.js"></script>
 		<script src="../assets/bootstrap-table-filter/bootstrap-table-filter.js"></script>
 		<script src="../assets/bootstrap-table-filter/bs-table.js"></script>
+		<script src="../ga.js"></script>
 	</head>
 	<body>
 	<div class="container">
     <h1>How to use the filter extension (<a href="https://github.com/wenzhixin/bootstrap-table/issues/561" target="_blank">#561</a>).</h1>
 		<div id="filter-bar"> </div>
-		
-		<table id="table" data-height="299" data-toolbar="#filter-bar" 
+
+		<table id="table" data-height="299" data-toolbar="#filter-bar"
 		data-show-toggle="true" data-show-columns="true" data-show-filter="true" data-search="true">
 			<thead>
 			<tr>
@@ -28,9 +29,9 @@
 			</tr>
 			</thead>
 		</table>
-		
+
 		<script>
-		
+
 		var data = [
 		{
 			"name": "bootstrap-table",
@@ -68,7 +69,7 @@
 			'id':1
 		}
 	];
-		
+
 		$(function() {
 			$('#table').bootstrapTable({data: data});
 			$('#filter-bar').bootstrapTableFilter({

@@ -1,9 +1,13 @@
 function loadUrl(url) {
   var template = 'template.html'
+  var viewSource = ''
   if (/v4.html/.test(url)) {
     template = 'template4.html'
   }
-  $('iframe').attr('src', template + '?' + url)
+  if (location.search.slice(1) === 'view-source') {
+    viewSource = '#view-source'
+  }
+  $('iframe').attr('src', template + '?' + url + viewSource)
 }
 
 function initNavigation(href) {
@@ -20,10 +24,12 @@ function initNavigation(href) {
   if ($prev.text()) {
     $('.navigation.previous').show()
       .attr('href', '#' + $prev.find('a').attr('href'))
+      .attr('title', 'Previous: ' + $prev.text())
   }
   if ($next.text()) {
     $('.navigation.next').show()
-      .attr('href', '#' + $next.find('a').attr('href'))
+      .attr('href', 'index.html#' + $next.find('a').attr('href'))
+      .attr('title', 'Next: ' + $next.text())
   }
 }
 
@@ -32,12 +38,20 @@ $(function () {
     $('.nav-list').toggleClass('active')
   })
 
+  $('[data-toggle="tooltip"]').tooltip()
+
   $(document).on('click', '#navbar li a, .nav-list li a, .navigation a', function (e) {
     var href = $(this).attr('href')
     if (href === '#' || /^http.*/.test(href)) {
       return
     }
     e.preventDefault()
+    if (location.search.slice(1) === 'view-source') {
+      location.href = 'index.html#' + href
+      return
+    }
+
+    $(this).blur()
     $('.nav-list').removeClass('active')
     location.hash = href
     loadUrl(href)

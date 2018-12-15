@@ -98,7 +98,7 @@ a.toggle .glyphicon-chevron-right,
   position: fixed;
   width: 100%;
   top: 50px;
-  bottom: 0;
+  bottom: 30px;
 }
 
 iframe {

@@ -18,3 +18,9 @@
 .bs-docs-header a {
   color: #fff;
 }
+
+#viewSource,
+#viewExample,
+.source-pre {
+  display: none;
+}

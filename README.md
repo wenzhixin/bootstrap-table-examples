@@ -1,7 +1,6 @@
-bootstrap-table-examples
-======================
+# bootstrap-table-examples
 
-[Bootstrap Table Examples](http://issues.wenzhixin.net.cn/bootstrap-table)
+[Bootstrap Table Examples](http://bootstrap-table-examples.wenzhixin.net.cn/)
 
 [jsFiddle Examples](https://github.com/wenzhixin/bootstrap-table-examples/blob/master/jsfiddle_examples.md)
 
@@ -11,5 +10,4 @@ bootstrap-table-examples
 
 All issues need to be submitted to the main project, not this examples repo.
 
-Please read: https://github.com/wenzhixin/bootstrap-table/blob/develop/CONTRIBUTING.md#bug-reports
-and post issue to: https://github.com/wenzhixin/bootstrap-table/issues, thanks!
+Please read: [CONTRIBUTING.md#bug-reports](https://github.com/wenzhixin/bootstrap-table/blob/develop/CONTRIBUTING.md#bug-reports) and post issue to [issue](https://github.com/wenzhixin/bootstrap-table/issues), thanks!

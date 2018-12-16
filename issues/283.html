@@ -1,92 +1,100 @@
-<!DOCTYPE html>
+<script>
+  init({
+    title: '',
+    desc: '',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
 <html>
 <head>
-    <title>Use resetView to reset the header width</title>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/bootstrap-table/src/bootstrap-table.css">
-    <link rel="stylesheet" href="../assets/examples.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../assets/bootstrap-table/src/bootstrap-table.js"></script>
-    <script src="../ga.js"></script>
-    <style>
-        .div-table {
-            /*display: table;*/
-            border: 1px solid #ccc;
-        }
-        .cell-left {
-            /*display: table-cell;*/
-            float: left;
-            width:80%;
-        }
-        .cell-right {
-            /*display: table-cell;*/
-            float: right;
-            width:20%;
-        }
-    </style>
+  <title>Use resetView to reset the header width</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/bootstrap-table/src/bootstrap-table.css">
+  <link rel="stylesheet" href="../assets/examples.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="../assets/bootstrap-table/src/bootstrap-table.js"></script>
+  <script src="../ga.js"></script>
+  <style>
+    .div-table {
+      /*display: table;*/
+      border: 1px solid #ccc;
+    }
+    .cell-left {
+      /*display: table-cell;*/
+      float: left;
+      width:80%;
+    }
+    .cell-right {
+      /*display: table-cell;*/
+      float: right;
+      width:20%;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Use resetView to reset the header width(<a href="https://github.com/wenzhixin/bootstrap-table/issues/283" target="_blank">#283</a>).</h1>
-        <p>
-            <button id="b" type="button" class="btn btn-default">Larger</button>
-            <button id="s" type="button" class="btn btn-default">Smaller</button>
-        </p>
-        <div id="d" class="div-table">
-            <div class="cell-left">
-                <table id="table" data-height="500"></table>
-            </div>
-            <div class="cell-right">
-                RRR
-            </div>
-            <div class="clearfix"></div>
-        </div>
+  <div class="container">
+    <h1>Use resetView to reset the header width(<a href="https://github.com/wenzhixin/bootstrap-table/issues/283" target="_blank">#283</a>).</h1>
+    <p>
+      <button id="b" type="button" class="btn btn-default">Larger</button>
+      <button id="s" type="button" class="btn btn-default">Smaller</button>
+    </p>
+    <div id="d" class="div-table">
+      <div class="cell-left">
+        <table id="table" data-height="500"></table>
+      </div>
+      <div class="cell-right">
+        RRR
+      </div>
+      <div class="clearfix"></div>
     </div>
+  </div>
 <script>
-    var $table = $('#table');
-    $(function () {
-        buildTable($('#table'), 10, 50);
+  var $table = $('#table');
+  $(function () {
+    buildTable($('#table'), 10, 50);
 
-        var $d = $('#d');
-        var width = $d.width();
+    var $d = $('#d');
+    var width = $d.width();
 
-        $('#b').click(function(){
-            width = width + 100;
-            $d.css('width', width + 'px');
-            $('#table').bootstrapTable('resetView');
-        });
-        $('#s').click(function(){
-            width = width - 100;
-            $d.css('width', width + 'px');
-            $('#table').bootstrapTable('resetView');
-        });
+    $('#b').click(function(){
+      width = width + 100;
+      $d.css('width', width + 'px');
+      $('#table').bootstrapTable('resetView');
     });
+    $('#s').click(function(){
+      width = width - 100;
+      $d.css('width', width + 'px');
+      $('#table').bootstrapTable('resetView');
+    });
+  });
 
-    function buildTable($el, cells, rows) {
-        var i, j, row,
-                columns = [],
-                data = [];
+  function buildTable($el, cells, rows) {
+    var i, j, row,
+        columns = [],
+        data = [];
 
-        for (i = 0; i < cells; i++) {
-            columns.push({
-                field: 'field' + i,
-                title: 'Cell' + i
-            });
-        }
-        for (i = 0; i < rows; i++) {
-            row = {};
-            for (j = 0; j < cells; j++) {
-                row['field' + j] = 'Row-' + i + '-' + j;
-            }
-            data.push(row);
-        }
-        $el.bootstrapTable('destroy').bootstrapTable({
-            columns: columns,
-            data: data
-        });
+    for (i = 0; i < cells; i++) {
+      columns.push({
+        field: 'field' + i,
+        title: 'Cell' + i
+      });
     }
+    for (i = 0; i < rows; i++) {
+      row = {};
+      for (j = 0; j < cells; j++) {
+        row['field' + j] = 'Row-' + i + '-' + j;
+      }
+      data.push(row);
+    }
+    $el.bootstrapTable('destroy').bootstrapTable({
+      columns: columns,
+      data: data
+    });
+  }
 </script>
 </body>
 </html>

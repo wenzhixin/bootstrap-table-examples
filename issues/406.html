@@ -1,39 +1,47 @@
-<!DOCTYPE html>
+<script>
+  init({
+    title: '',
+    desc: '',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
 <html>
 <head>
-    <title>Align the toolbar and search input</title>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/bootstrap-table/src/bootstrap-table.css">
-    <link rel="stylesheet" href="../assets/examples.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../assets/bootstrap-table/src/bootstrap-table.js"></script>
-    <script src="../ga.js"></script>
+  <title>Align the toolbar and search input</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/bootstrap-table/src/bootstrap-table.css">
+  <link rel="stylesheet" href="../assets/examples.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="../assets/bootstrap-table/src/bootstrap-table.js"></script>
+  <script src="../ga.js"></script>
 </head>
 <body>
-    <div class="container">
-        <h1>Align the toolbar and search input(<a href="https://github.com/wenzhixin/bootstrap-table/issues/406" target="_blank">#406</a>).</h1>
-        <button id="toolbar" class="btn btn-default">Submit</button>
-        <table id="table"
-               data-toggle="table"
-               data-search="true"
-               data-show-refresh="true"
-               data-show-toggle="true"
-               data-show-columns="true"
-               data-toolbar="#toolbar"
-               data-search-align="left"
-               data-buttons-align="left"
-               data-toolbar-align="right"
-               data-url="../json/data1.json">
-            <thead>
-            <tr>
-                <th data-field="id">ID</th>
-                <th data-field="name">Item Name</th>
-                <th data-field="price">Item Price</th>
-            </tr>
-            </thead>
-        </table>
-    </div>
+  <div class="container">
+    <h1>Align the toolbar and search input(<a href="https://github.com/wenzhixin/bootstrap-table/issues/406" target="_blank">#406</a>).</h1>
+    <button id="toolbar" class="btn btn-default">Submit</button>
+    <table id="table"
+         data-toggle="table"
+         data-search="true"
+         data-show-refresh="true"
+         data-show-toggle="true"
+         data-show-columns="true"
+         data-toolbar="#toolbar"
+         data-search-align="left"
+         data-buttons-align="left"
+         data-toolbar-align="right"
+         data-url="../json/data1.json">
+      <thead>
+      <tr>
+        <th data-field="id">ID</th>
+        <th data-field="name">Item Name</th>
+        <th data-field="price">Item Price</th>
+      </tr>
+      </thead>
+    </table>
+  </div>
 </body>
 </html>

@@ -3,7 +3,7 @@ $(function () {
   var isSource = location.hash.slice(1) === 'view-source'
   $.ajax({
     type: 'GET',
-    url: url,
+    url: url, // todo: add version to solve cache problem
     dataType: 'html',
     global: false,
     cache: true, // (warning: setting it to false will cause a timestamp and will call the request twice)

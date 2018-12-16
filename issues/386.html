@@ -1,44 +1,52 @@
-<!DOCTYPE html>
+<script>
+  init({
+    title: '',
+    desc: '',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
 <html>
 <head>
-    <title>Override default queryParam variables</title>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/bootstrap-table/src/bootstrap-table.css">
-    <link rel="stylesheet" href="../assets/examples.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../assets/bootstrap-table/src/bootstrap-table.js"></script>
-    <script src="../ga.js"></script>
+  <title>Override default queryParam variables</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/bootstrap-table/src/bootstrap-table.css">
+  <link rel="stylesheet" href="../assets/examples.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="../assets/bootstrap-table/src/bootstrap-table.js"></script>
+  <script src="../ga.js"></script>
 </head>
 <body>
-    <div class="container">
-        <h1>Override default queryParam variables(<a href="https://github.com/wenzhixin/bootstrap-table/issues/386" target="_blank">#386).</a></h1>
-        <table data-toggle="table"
-               data-url="../json/data1.json"
-               data-height="300"
-               data-pagination="true"
-               data-query-params-type=""
-               data-query-params="queryParams">
-            <thead>
-            <tr>
-                <th data-field="id">ID</th>
-                <th data-field="name">Item Name</th>
-                <th data-field="price">Item Price</th>
-            </tr>
-            </thead>
-        </table>
-    </div>
+  <div class="container">
+    <h1>Override default queryParam variables(<a href="https://github.com/wenzhixin/bootstrap-table/issues/386" target="_blank">#386).</a></h1>
+    <table data-toggle="table"
+         data-url="../json/data1.json"
+         data-height="300"
+         data-pagination="true"
+         data-query-params-type=""
+         data-query-params="queryParams">
+      <thead>
+      <tr>
+        <th data-field="id">ID</th>
+        <th data-field="name">Item Name</th>
+        <th data-field="price">Item Price</th>
+      </tr>
+      </thead>
+    </table>
+  </div>
 <script>
-    function queryParams(params) {
-        return {
-            page: params.pageNumber,
-            pageLimit: params.pageSize,
-            searchRecord: params.searchText,
-            sortName: params.sortName,
-            sortOrder: params.sortOrder
-        };
-    }
+  function queryParams(params) {
+    return {
+      page: params.pageNumber,
+      pageLimit: params.pageSize,
+      searchRecord: params.searchText,
+      sortName: params.sortName,
+      sortOrder: params.sortOrder
+    };
+  }
 </script>
 </body>
 </html>

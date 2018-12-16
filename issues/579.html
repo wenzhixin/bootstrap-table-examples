@@ -1,57 +1,65 @@
-<!DOCTYPE html>
+<script>
+  init({
+    title: '',
+    desc: '',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
 <html>
 <head>
-    <title>Show images formatter</title>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/bootstrap-table/src/bootstrap-table.css">
-    <link rel="stylesheet" href="../assets/examples.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../assets/bootstrap-table/src/bootstrap-table.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/holder/2.6.0/holder.js"></script>
-    <script src="../ga.js"></script>
+  <title>Show images formatter</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/bootstrap-table/src/bootstrap-table.css">
+  <link rel="stylesheet" href="../assets/examples.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="../assets/bootstrap-table/src/bootstrap-table.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/holder/2.6.0/holder.js"></script>
+  <script src="../ga.js"></script>
 </head>
 <body>
-    <div class="container">
-        <h1>Show images formatter (<a href="https://github.com/wenzhixin/bootstrap-table/issues/579" target="_blank">#579</a>).</h1>
-        <table id="table"
-               data-show-header="false"
-               data-classes="table table-hover table-no-bordered">
-            <thead>
-            <tr>
-                <th data-field="image" data-formatter="imageFormatter">Image</th>
-                <th data-field="name">Name</th>
-                <th data-field="action" data-formatter="actionFormatter">Action</th>
-            </tr>
-            </thead>
-        </table>
-    </div>
+  <div class="container">
+    <h1>Show images formatter (<a href="https://github.com/wenzhixin/bootstrap-table/issues/579" target="_blank">#579</a>).</h1>
+    <table id="table"
+         data-show-header="false"
+         data-classes="table table-hover table-no-bordered">
+      <thead>
+      <tr>
+        <th data-field="image" data-formatter="imageFormatter">Image</th>
+        <th data-field="name">Name</th>
+        <th data-field="action" data-formatter="actionFormatter">Action</th>
+      </tr>
+      </thead>
+    </table>
+  </div>
 <script>
-    var $table = $('#table');
-    $(function () {
-        $table.bootstrapTable({
-            data: [{
-                name: 'Name 1'
-            }, {
-                name: 'Name 2'
-            }, {
-                name: 'Name 3'
-            }, {
-                name: 'Name 4'
-            }, {
-                name: 'Name 5'
-            }]
-        });
+  var $table = $('#table');
+  $(function () {
+    $table.bootstrapTable({
+      data: [{
+        name: 'Name 1'
+      }, {
+        name: 'Name 2'
+      }, {
+        name: 'Name 3'
+      }, {
+        name: 'Name 4'
+      }, {
+        name: 'Name 5'
+      }]
     });
+  });
 
-    function imageFormatter() {
-        return '<img src="holder.js/100x150">';
-    }
+  function imageFormatter() {
+    return '<img src="holder.js/100x150">';
+  }
 
-    function actionFormatter() {
-        return '<i class="glyphicon glyphicon-heart"></i> <i class="glyphicon glyphicon-remove"></i>';
-    }
+  function actionFormatter() {
+    return '<i class="glyphicon glyphicon-heart"></i> <i class="glyphicon glyphicon-remove"></i>';
+  }
 </script>
 </body>
 </html>

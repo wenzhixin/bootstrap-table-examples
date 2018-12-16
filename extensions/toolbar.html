@@ -1,35 +1,35 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Advanced Toolbar</title>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/bootstrap-table/src/bootstrap-table.css">
-    <link rel="stylesheet" href="../assets/examples.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../assets/bootstrap-table/src/bootstrap-table.js"></script>
-    <script src="../assets/bootstrap-table/src/extensions/toolbar/bootstrap-table-toolbar.js"></script>
-    <script src="../ga.js"></script>
-</head>
-<body>
-<div class="container">
-    <h1>Advanced toolbar</h1>
-    <table id="table"
-           data-toggle="table"
-           data-pagination="true"
-           data-search="true"
-           data-advanced-search="true"
-           data-id-table="advancedTable"
-           data-url="../json/data1.json">
-        <thead>
-        <tr>
-            <th data-field="id" data-sortable="true">ID</th>
-            <th data-field="name" data-sortable="true">Item Name</th>
-            <th data-field="price" data-sortable="true">Item Price</th>
-        </tr>
-        </thead>
-    </table>
-</div>
-</body>
-</html>
+<script>
+  init({
+    title: 'Advanced Toolbar',
+    desc: 'Use Plugin: bootstrap-table-toolbar to allow the advanced search.',
+    links: [
+      'bootstrap-table.min.css'
+    ],
+    scripts: [
+      'bootstrap-table.min.js',
+      'extensions/toolbar/bootstrap-table-toolbar.min.js'
+    ]
+  })
+</script>
+
+<table
+  id="table"
+  data-pagination="true"
+  data-search="true"
+  data-advanced-search="true"
+  data-id-table="advancedTable"
+  data-url="json/data1.json">
+  <thead>
+    <tr>
+      <th data-field="id" data-sortable="true">ID</th>
+      <th data-field="name" data-sortable="true">Item Name</th>
+      <th data-field="price" data-sortable="true">Item Price</th>
+    </tr>
+  </thead>
+</table>
+
+<script>
+  function mounted() {
+    $('#table').bootstrapTable()
+  }
+</script>

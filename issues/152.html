@@ -1,71 +1,79 @@
-<!DOCTYPE html>
+<script>
+  init({
+    title: '',
+    desc: '',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
 <html>
 <head>
-    <title>How to pass parameter to server</title>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/bootstrap-table/src/bootstrap-table.css">
-    <link rel="stylesheet" href="../assets/examples.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../assets/bootstrap-table/src/bootstrap-table.js"></script>
-    <script src="../ga.js"></script>
+  <title>How to pass parameter to server</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/bootstrap-table/src/bootstrap-table.css">
+  <link rel="stylesheet" href="../assets/examples.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="../assets/bootstrap-table/src/bootstrap-table.js"></script>
+  <script src="../ga.js"></script>
 </head>
 <body>
-    <div class="container">
-        <h1>How to pass parameter to server(<a href="https://github.com/wenzhixin/bootstrap-table/issues/152" target="_blank">#152</a> <a href="https://github.com/wenzhixin/bootstrap-table/issues/152#issuecomment-61213273">@61213273</a> ).</h1>
-        <b id="get">Method: Get</b>
-        <table data-toggle="table"
-               data-toolbar="#get"
-               data-url="http://mikepenz.com/jsfiddle/"
-               data-pagination="true"
-               data-side-pagination="server"
-               data-page-list="[5, 10, 20, 50, 100, 200]"
-               data-search="true"
-               data-height="400"
-               data-query-params="queryParams">
-            <thead>
-            <tr>
-                <th data-field="id">ID</th>
-                <th data-field="name">Item Name</th>
-                <th data-field="price">Item Price</th>
-            </tr>
-            </thead>
-        </table>
-        <b id="post">Method: Post</b>
-        <table data-toggle="table"
-               data-toolbar="#post"
-               data-url="http://mikepenz.com/jsfiddle/"
-               data-pagination="true"
-               data-side-pagination="server"
-               data-page-list="[5, 10, 20, 50, 100, 200]"
-               data-search="true"
-               data-height="400"
-               data-method="post"
-               data-query-params="postQueryParams">
-            <thead>
-            <tr>
-                <th data-field="id">ID</th>
-                <th data-field="name">Item Name</th>
-                <th data-field="price">Item Price</th>
-            </tr>
-            </thead>
-        </table>
-    </div>
+  <div class="container">
+    <h1>How to pass parameter to server(<a href="https://github.com/wenzhixin/bootstrap-table/issues/152" target="_blank">#152</a> <a href="https://github.com/wenzhixin/bootstrap-table/issues/152#issuecomment-61213273">@61213273</a> ).</h1>
+    <b id="get">Method: Get</b>
+    <table data-toggle="table"
+         data-toolbar="#get"
+         data-url="http://mikepenz.com/jsfiddle/"
+         data-pagination="true"
+         data-side-pagination="server"
+         data-page-list="[5, 10, 20, 50, 100, 200]"
+         data-search="true"
+         data-height="400"
+         data-query-params="queryParams">
+      <thead>
+      <tr>
+        <th data-field="id">ID</th>
+        <th data-field="name">Item Name</th>
+        <th data-field="price">Item Price</th>
+      </tr>
+      </thead>
+    </table>
+    <b id="post">Method: Post</b>
+    <table data-toggle="table"
+         data-toolbar="#post"
+         data-url="http://mikepenz.com/jsfiddle/"
+         data-pagination="true"
+         data-side-pagination="server"
+         data-page-list="[5, 10, 20, 50, 100, 200]"
+         data-search="true"
+         data-height="400"
+         data-method="post"
+         data-query-params="postQueryParams">
+      <thead>
+      <tr>
+        <th data-field="id">ID</th>
+        <th data-field="name">Item Name</th>
+        <th data-field="price">Item Price</th>
+      </tr>
+      </thead>
+    </table>
+  </div>
 <script>
-    function queryParams(params) {
-        params.your_param1 = 1; // add param1
-        params.your_param2 = 2; // add param2
-        // console.log(JSON.stringify(params));
-        // {"limit":10,"offset":0,"order":"asc","your_param1":1,"your_param2":2}
-        return params;
-    }
+  function queryParams(params) {
+    params.your_param1 = 1; // add param1
+    params.your_param2 = 2; // add param2
+    // console.log(JSON.stringify(params));
+    // {"limit":10,"offset":0,"order":"asc","your_param1":1,"your_param2":2}
+    return params;
+  }
 
-    function postQueryParams(params) {
-        params.your_param1 = 1; // add param1
-        params.your_param2 = 2; // add param2
-        return params; // body data
-    }
+  function postQueryParams(params) {
+    params.your_param1 = 1; // add param1
+    params.your_param2 = 2; // add param2
+    return params; // body data
+  }
 </script>
 </body>
 </html>

@@ -1,64 +1,73 @@
-<!DOCTYPE html>
+<script>
+  init({
+    title: '',
+    desc: '',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
+
 <html>
 <head>
-    <title>selectPage/prevPage/nextPage</title>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/bootstrap-table/src/bootstrap-table.css">
-    <link rel="stylesheet" href="../assets/examples.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../assets/bootstrap-table/src/bootstrap-table.js"></script>
-    <script src="../ga.js"></script>
+  <title>selectPage/prevPage/nextPage</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/bootstrap-table/src/bootstrap-table.css">
+  <link rel="stylesheet" href="../assets/examples.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="../assets/bootstrap-table/src/bootstrap-table.js"></script>
+  <script src="../ga.js"></script>
 </head>
 <body>
-    <div class="container">
-        <h1>selectPage/prevPage/nextPage</h1>
-        <p>
-            Go to the a specified/previous/next page.<br>
-            <code>$table.bootstrapTable('selectPage', 1);</code><br>
-            <code>$table.bootstrapTable('prevPage');</code><br>
-            <code>$table.bootstrapTable('nextPage');</code><br>
-        </p>
-        <div id="toolbar" class="form-inline">
-            <input id="page" class="form-control" style="width: 60px" type="number" value="1" min="1" max="3">
-            <button id="button" class="btn btn-default">selectPage</button>
-            <button id="button2" class="btn btn-default">prevPage</button>
-            <button id="button3" class="btn btn-default">nextPage</button>
-        </div>
-        <table id="table"
-               data-toggle="table"
-               data-toolbar="#toolbar"
-               data-height="420"
-               data-pagination="true"
-               data-url="../json/data1.json">
-            <thead>
-            <tr>
-                <th data-field="id">ID</th>
-                <th data-field="name">Item Name</th>
-                <th data-field="price">Item Price</th>
-            </tr>
-            </thead>
-        </table>
+  <div class="container">
+    <h1>selectPage/prevPage/nextPage</h1>
+    <p>
+      Go to the a specified/previous/next page.<br>
+      <code>$table.bootstrapTable('selectPage', 1);</code><br>
+      <code>$table.bootstrapTable('prevPage');</code><br>
+      <code>$table.bootstrapTable('nextPage');</code><br>
+    </p>
+    <div id="toolbar" class="form-inline">
+      <input id="page" class="form-control" style="width: 60px" type="number" value="1" min="1" max="3">
+      <button id="button" class="btn btn-default">selectPage</button>
+      <button id="button2" class="btn btn-default">prevPage</button>
+      <button id="button3" class="btn btn-default">nextPage</button>
     </div>
+    <table id="table"
+         data-toggle="table"
+         data-toolbar="#toolbar"
+         data-height="420"
+         data-pagination="true"
+         data-url="../json/data1.json">
+      <thead>
+      <tr>
+        <th data-field="id">ID</th>
+        <th data-field="name">Item Name</th>
+        <th data-field="price">Item Price</th>
+      </tr>
+      </thead>
+    </table>
+  </div>
 <script>
-    var $table = $('#table'),
-        $page = $('#page'),
-        $button = $('#button'),
-        $button2 = $('#button2'),
-        $button3 = $('#button3');
+  var $table = $('#table'),
+    $page = $('#page'),
+    $button = $('#button'),
+    $button2 = $('#button2'),
+    $button3 = $('#button3');
 
-    $(function () {
-        $button.click(function () {
-            $table.bootstrapTable('selectPage', +$page.val());
-        });
-        $button2.click(function () {
-            $table.bootstrapTable('prevPage');
-        });
-        $button3.click(function () {
-            $table.bootstrapTable('nextPage');
-        });
+  $(function () {
+    $button.click(function () {
+      $table.bootstrapTable('selectPage', +$page.val());
     });
+    $button2.click(function () {
+      $table.bootstrapTable('prevPage');
+    });
+    $button3.click(function () {
+      $table.bootstrapTable('nextPage');
+    });
+  });
 </script>
 </body>
 </html>

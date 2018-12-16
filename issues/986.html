@@ -1,58 +1,66 @@
-<!DOCTYPE html>
+<script>
+  init({
+    title: '',
+    desc: '',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
 <html>
 <head>
-    <title>Editable select box</title>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/bootstrap-table/src/bootstrap-table.css">
-    <link rel="stylesheet" href="//rawgit.com/vitalets/x-editable/master/dist/bootstrap3-editable/css/bootstrap-editable.css">
-    <link rel="stylesheet" href="../assets/examples.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../assets/bootstrap-table/src/bootstrap-table.js"></script>
-    <script src="../assets/bootstrap-table/src/extensions/editable/bootstrap-table-editable.js"></script>
-    <script src="//rawgit.com/vitalets/x-editable/master/dist/bootstrap3-editable/js/bootstrap-editable.js"></script>
-    <script src="../ga.js"></script>
+  <title>Editable select box</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/bootstrap-table/src/bootstrap-table.css">
+  <link rel="stylesheet" href="//rawgit.com/vitalets/x-editable/master/dist/bootstrap3-editable/css/bootstrap-editable.css">
+  <link rel="stylesheet" href="../assets/examples.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="../assets/bootstrap-table/src/bootstrap-table.js"></script>
+  <script src="../assets/bootstrap-table/src/extensions/editable/bootstrap-table-editable.js"></script>
+  <script src="//rawgit.com/vitalets/x-editable/master/dist/bootstrap3-editable/js/bootstrap-editable.js"></script>
+  <script src="../ga.js"></script>
 </head>
 <body>
-    <div class="container">
-        <h1>Editable select box(<a href="https://github.com/wenzhixin/bootstrap-table/issues/986" target="_blank">#986</a>).</h1>
-        <table id="table"></table>
-    </div>
+  <div class="container">
+    <h1>Editable select box(<a href="https://github.com/wenzhixin/bootstrap-table/issues/986" target="_blank">#986</a>).</h1>
+    <table id="table"></table>
+  </div>
 <script>
-    var data = [{
-        "name": "active"
-    }, {
-        "name": "blocked"
-    }, {
-        "name": "deleted"
-    }];
+  var data = [{
+    "name": "active"
+  }, {
+    "name": "blocked"
+  }, {
+    "name": "deleted"
+  }];
 
-    var $table = $('#table');
+  var $table = $('#table');
 
-    $(function () {
-        $table.bootstrapTable({
-            idField: 'name',
-            columns: [{
-                field: 'state',
-                title: '',
-                checkbox: true
-            }, {
-                field: 'name',
-                title: 'names',
-                sortable: true,
-                editable: {
-                    type: 'select',
-                    source: [
-                        {value: 'active', text: 'Active'},
-                        {value: 'blocked', text: 'Blocked'},
-                        {value: 'deleted', text: 'Deleted'}
-                    ]
-                }
-            }],
-            data: data
-        });
+  $(function () {
+    $table.bootstrapTable({
+      idField: 'name',
+      columns: [{
+        field: 'state',
+        title: '',
+        checkbox: true
+      }, {
+        field: 'name',
+        title: 'names',
+        sortable: true,
+        editable: {
+          type: 'select',
+          source: [
+            {value: 'active', text: 'Active'},
+            {value: 'blocked', text: 'Blocked'},
+            {value: 'deleted', text: 'Deleted'}
+          ]
+        }
+      }],
+      data: data
     });
+  });
 </script>
 </body>
 </html>

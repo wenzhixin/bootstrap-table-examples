@@ -1,123 +1,112 @@
-<!DOCTYPE html>
-<html>
+<script>
+  init({
+    title: 'Select2 Filter',
+    desc: 'Use Plugin: <a href="https://github.com/select2/select2" target="_blank">select2</a> and bootstrap-table-select2-filter.',
+    links: [
+      'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/css/select2.min.css',
+      'bootstrap-table.min.css'
+    ],
+    scripts: [
+      'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js',
+      'bootstrap-table.min.js',
+      'extensions/select2-filter/bootstrap-table-select2-filter.min.js'
+    ]
+  })
+</script>
 
-<head>
-  <title>Select2 Filter</title>
-  <meta charset="utf-8">
-  <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../assets/bootstrap-table/src/bootstrap-table.css">
-  <link rel="stylesheet" href="../assets/examples.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/css/select2.min.css" />
+<table id="table"></table>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-  <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
-  <script src="../assets/bootstrap-table/src/bootstrap-table.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js"></script>
-  <script src="../assets/bootstrap-table/src/extensions/select2-filter/bootstrap-table-select2-filter.js"></script>
-  <script src="../ga.js"></script>
-  <script>
-    $(function() {
-      function getNumberFilterTemplate(fieldId) {
-        var numberFilterClass = 'numberFilter-' + fieldId,
-          template = function(bootstrapTable, col, isVisible) {
-            var search = function(event, value) {
-              bootstrapTable.searchText = undefined;
-              clearTimeout(bootstrapTable.timeoutId);
-              bootstrapTable.timeoutId = setTimeout(function() {
-                bootstrapTable.onColumnSearch(event, fieldId, value);
-              }, bootstrapTable.options.searchTimeOut);
-            };
-
-            var $el = $('<div class="input-group input-group-sm ' + numberFilterClass + '" style="width: 100%; visibility:' + isVisible + '">' +
-                '<span class="input-group-addon">&gt;</span>' +
-                '<input type="number" class="form-control">' +
-                '</div>'),
-              $input = $el.find('input');
-
-            $input.off('keyup').on('keyup', function(event) {
-              search(event, $(this).val());
-            });
-
-            $input.off('mouseup').on('mouseup', function(event) {
-              var $input = $(this),
-                oldValue = $input.val();
-
-              if (oldValue === "") {
-                return;
-              }
-
-              setTimeout(function() {
-                var newValue = $input.val();
-                if (newValue === "") {
-                  search(event, newValue);
-                }
-              }, 1);
-            });
-
-            return $el;
-          };
-
-        return template;
+<script>
+  function getNumberFilterTemplate(fieldId) {
+    var numberFilterClass = 'numberFilter-' + fieldId
+    var template = function(bootstrapTable, col, isVisible) {
+      var search = function(event, value) {
+        bootstrapTable.searchText = undefined
+        clearTimeout(bootstrapTable.timeoutId)
+        bootstrapTable.timeoutId = setTimeout(function() {
+          bootstrapTable.onColumnSearch(event, fieldId, value)
+        }, bootstrapTable.options.searchTimeOut)
       }
 
-      var options = {
-        url: "../json/data1.json",
-        columns: [{
-            field: "id",
-            title: "ID",
-            filter: {
-              type: "input"
-            }
-          },
-          {
-            field: "name",
-            title: "Item Name",
-            filter: {
-              type: "select",
-              data: []
-            }
-          },
-          {
-            field: "price",
-            title: "Item Price",
-            filter: {
-              type: "select",
-              data: ["", "$1", "$2", "$3"]
-            }
-          },
-          {
-            field: "amount",
-            title: "Amount",
-            width: 200,
-            filter: {
-              template: getNumberFilterTemplate("amount"),
-              setFilterValue: function($filter, field, value) {
-                if (value) {
-                  $filter.find('input').val(value.value);
-                }
-              }
-            }
+      var $el = $('<div class="input-group input-group-sm ' + numberFilterClass + '" style="width: 100%; visibility:' + isVisible + '">' +
+            '<span class="input-group-addon">&gt;</span>' +
+            '<input type="number" class="form-control">' +
+            '</div>')
+      var $input = $el.find('input')
+
+      $input.off('keyup').on('keyup', function(event) {
+        search(event, $(this).val())
+      })
+
+      $input.off('mouseup').on('mouseup', function(event) {
+        var $input = $(this)
+        var oldValue = $input.val()
+
+        if (oldValue === '') {
+          return
+        }
+
+        setTimeout(function() {
+          var newValue = $input.val()
+          if (newValue === '') {
+            search(event, newValue)
           }
-        ],
-        filter: true,
-        filterTemplate: {
-          input: function(bootstrapTable, column, isVisible) {
-            return '<input type="text" class="form-control input-sm" data-filter-field="' + column.field + '" style="width: 100%; visibility:' + isVisible + '">';
+        }, 1)
+      })
+      return $el
+    }
+    return template
+  }
+
+  function mounted() {
+    var options = {
+      url: 'json/data1.json',
+      columns: [{
+        field: 'id',
+        title: 'ID',
+        filter: {
+          type: 'input'
+        }
+      },
+      {
+        field: 'name',
+        title: 'Item Name',
+        filter: {
+          type: 'select',
+          data: []
+        }
+      },
+      {
+        field: 'price',
+        title: 'Item Price',
+        filter: {
+          type: 'select',
+          data: ['', '$1', '$2', '$3']
+        }
+      },
+      {
+        field: 'amount',
+        title: 'Amount',
+        width: 200,
+        filter: {
+          template: getNumberFilterTemplate('amount'),
+          setFilterValue: function($filter, field, value) {
+            if (value) {
+              $filter.find('input').val(value.value)
+            }
           }
         }
-      };
+      }
+      ],
+      filter: true,
+      filterTemplate: {
+        input: function(bootstrapTable, column, isVisible) {
+          return '<input type="text" class="form-control input-sm" data-filter-field="' + column.field + '" style="width: 100%; visibility:' + isVisible + '">'
+        }
+      }
+    }
+    var $table = $('#table').bootstrapTable(options)
 
-      var $table = $("#table").bootstrapTable(options);
-      $table.bootstrapTable("setSelect2Data", "name", ["", "item 1", "item 2", "item 3"]);
-    });
-  </script>
-</head>
-
-<body>
-  <div class="container">
-    <h1>Select2 Filter</h1>
-    <table id="table"></table>
-  </div>
-</body>
-
-</html>
+    $table.bootstrapTable('setSelect2Data', 'name', ['', 'item 1', 'item 2', 'item 3'])
+  }
+</script>

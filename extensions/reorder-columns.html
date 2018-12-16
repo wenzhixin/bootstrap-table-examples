@@ -1,41 +1,39 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Reorder Columns</title>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/bootstrap-table/src/bootstrap-table.css">
-    <link rel="stylesheet" href="../assets/examples.css">
-    <link rel="stylesheet" href="https://rawgit.com/akottr/dragtable/master/dragtable.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../assets/bootstrap-table/src/bootstrap-table.js"></script>
-    <script src="../assets/bootstrap-table/src/extensions/reorder-columns/bootstrap-table-reorder-columns.js"></script>
-	<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-    <script src="https://rawgit.com/akottr/dragtable/master/jquery.dragtable.js"></script>
-    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-    <script src="../ga.js"></script>
-</head>
-<body>
-    <div class="container">
-        <h1>Reorder Columns</h1>
-        <table id="table"
-               data-toggle="table"
-               data-show-columns="true"
-			   data-search="true"
-			   data-show-toggle="true"
-               data-pagination="true"
-               data-url="../json/data1.json"
-			   data-reorderable-columns="true">
-            <thead>
-            <tr>
-                <th data-field="id" data-sortable="true">ID</th>
-                <th data-field="name" data-sortable="true">Item Name</th>
-                <th data-field="price" data-sortable="true">Item Price</th>
-            </tr>
-            </thead>
-        </table>
-    </div>
-</body>
-</html>
+<script>
+  init({
+    title: 'Reorder Columns',
+    desc: 'Use Plugin: <a href="https://github.com/akottr/dragtable/" target="_blank">dragtable</a> and bootstrap-table-reorder-columns.',
+    links: [
+      'https://rawgit.com/akottr/dragtable/master/dragtable.css',
+      'bootstrap-table.min.css'
+    ],
+    scripts: [
+      'https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js',
+      'https://rawgit.com/akottr/dragtable/master/jquery.dragtable.js',
+      'bootstrap-table.min.js',
+      'extensions/reorder-columns/bootstrap-table-reorder-columns.min.js'
+    ]
+  })
+</script>
+
+<table
+  id="table"
+  data-show-columns="true"
+  data-search="true"
+  data-show-toggle="true"
+  data-pagination="true"
+  data-url="json/data1.json"
+  data-reorderable-columns="true">
+  <thead>
+  <tr>
+    <th data-field="id" data-sortable="true">ID</th>
+    <th data-field="name" data-sortable="true">Item Name</th>
+    <th data-field="price" data-sortable="true">Item Price</th>
+  </tr>
+  </thead>
+</table>
+
+<script>
+  function mounted() {
+    $('#table').bootstrapTable()
+  }
+</script>

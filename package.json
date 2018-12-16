@@ -13,7 +13,7 @@
   },
   "homepage": "https://github.com/wenzhixin/bootstrap-table-examples",
   "scripts": {
-    "lint": "eslint --ext .html,.js ."
+    "lint": "eslint --ext .html,.js extensions"
   },
   "devDependencies": {
     "eslint": "^5.10.0",

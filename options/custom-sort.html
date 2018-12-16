@@ -1,43 +1,34 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>custom-sort</title>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/bootstrap-table/src/bootstrap-table.css">
-    <link rel="stylesheet" href="../assets/examples.css">
-    <script src="../assets/jquery.min.js"></script>
-    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../assets/bootstrap-table/src/bootstrap-table.js"></script>
-    <script src="../ga.js"></script>
-</head>
-<body>
-    <div class="container">
-        <h1>Custom Sort</h1>
-        <p>Use <code>sorter</code> column option to define the custom sort of bootstrap table.</p>
-        <table id="table"
-               data-toggle="table"
-               data-height="460"
-               data-url="../json/data1.json"
-               data-sort-name="price"
-               data-sort-order="desc">
-            <thead>
-            <tr>
-                <th data-field="id" data-sortable="true">Item ID</th>
-                <th data-field="name" data-sortable="true">Item Name</th>
-                <th data-field="price" data-sortable="true" data-sorter="priceSorter">Item Price</th>
-            </tr>
-            </thead>
-        </table>
-    </div>
 <script>
-    function priceSorter(a, b) {
-        a = +a.substring(1); // remove $
-        b = +b.substring(1);
-        if (a > b) return 1;
-        if (a < b) return -1;
-        return 0;
-    }
+  init({
+    title: 'Custom Sort',
+    desc: 'Use <code>sorter</code> column option to define the custom sort of bootstrap table.',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
 </script>
-</body>
-</html>
+
+<table
+  id="table"
+  data-toggle="table"
+  data-height="460"
+  data-url="json/data1.json"
+  data-sort-name="price"
+  data-sort-order="desc">
+  <thead>
+    <tr>
+      <th data-field="id" data-sortable="true">Item ID</th>
+      <th data-field="name" data-sortable="true">Item Name</th>
+      <th data-field="price" data-sortable="true" data-sorter="priceSorter">Item Price</th>
+    </tr>
+  </thead>
+</table>
+
+<script>
+  function priceSorter(a, b) {
+    var aa = +a.substring(1) // remove $
+    var bb = +b.substring(1)
+    if (aa > bb) return 1
+    if (aa < bb) return -1
+    return 0
+  }
+</script>

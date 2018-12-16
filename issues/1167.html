@@ -1,51 +1,43 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Check/Uncheck All in all page</title>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/bootstrap-table/src/bootstrap-table.css">
-    <link rel="stylesheet" href="../assets/examples.css">
-    <script src="../assets/jquery.min.js"></script>
-    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../assets/bootstrap-table/src/bootstrap-table.js"></script>
-    <script src="../ga.js"></script>
-</head>
-<body>
-    <div class="container">
-        <h1>Check/Uncheck All in all page(<a href="https://github.com/wenzhixin/bootstrap-table/issues/1167" target="_blank">#1167</a>).</h1>
-        <div class="toolbar">
-            <button id="checkAll" class="btn btn-default">Check All</button>
-            <button id="uncheckAll" class="btn btn-default">Uncheck All</button>
-        </div>
-        <table id="table"
-               data-toggle="table"
-               data-toolbar=".toolbar"
-               data-pagination="true"
-               data-maintain-selected="true"
-               data-url="../json/data1.json">
-            <thead>
-            <tr>
-                <th data-field="state" data-checkbox="true"></th>
-                <th data-field="id">ID</th>
-                <th data-field="name">Item Name</th>
-                <th data-field="price">Item Price</th>
-            </tr>
-            </thead>
-        </table>
-    </div>
 <script>
-    var $table = $('#table');
-
-    $(function () {
-        $('#checkAll').click(function () {
-            $table.bootstrapTable('togglePagination').bootstrapTable('checkAll').bootstrapTable('togglePagination');
-        });
-
-        $('#uncheckAll').click(function () {
-            $table.bootstrapTable('togglePagination').bootstrapTable('uncheckAll').bootstrapTable('togglePagination');
-        });
-    });
+  init({
+    title: 'Issue #1167',
+    desc: 'Check/Uncheck All in all page with client side(<a href="https://github.com/wenzhixin/bootstrap-table/issues/1167" target="_blank">#1167</a>).',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
 </script>
-</body>
-</html>
+
+<div class="toolbar">
+  <button id="checkAll" class="btn btn-default">Check All</button>
+  <button id="uncheckAll" class="btn btn-default">Uncheck All</button>
+</div>
+<table
+  id="table"
+  data-toggle="table"
+  data-toolbar=".toolbar"
+  data-pagination="true"
+  data-maintain-selected="true"
+  data-url="json/data1.json">
+  <thead>
+    <tr>
+      <th data-field="state" data-checkbox="true"></th>
+      <th data-field="id">ID</th>
+      <th data-field="name">Item Name</th>
+      <th data-field="price">Item Price</th>
+    </tr>
+  </thead>
+</table>
+
+<script>
+  var $table = $('#table')
+
+  function mounted() {
+    $('#checkAll').click(function () {
+      $table.bootstrapTable('togglePagination').bootstrapTable('checkAll').bootstrapTable('togglePagination')
+    })
+
+    $('#uncheckAll').click(function () {
+      $table.bootstrapTable('togglePagination').bootstrapTable('uncheckAll').bootstrapTable('togglePagination')
+    })
+  }
+</script>

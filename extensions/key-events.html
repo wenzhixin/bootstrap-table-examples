@@ -1,38 +1,43 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Key Events</title>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/bootstrap-table/src/bootstrap-table.css">
-    <link rel="stylesheet" href="../assets/examples.css">
-    <script src="../assets/jquery.min.js"></script>
-    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../assets/bootstrap-table/src/bootstrap-table.js"></script>
-    <script src="../assets/bootstrap-table/src/extensions/key-events/bootstrap-table-key-events.js"></script>
-    <script src="../ga.js"></script>
-</head>
-<body>
-    <div class="container">
-        <h1>Key Events</h1>
-        <table id="table"
-               data-toggle="table"
-               data-show-columns="true"
-               data-show-toggle="true"
-               data-show-pagination-switch="true"
-               data-show-refresh="true"
-               data-search="true"
-               data-pagination="true"
-               data-key-events="true"
-               data-url="../json/data1.json">
-            <thead>
-            <tr>
-                <th data-field="id" data-sortable="true">ID</th>
-                <th data-field="name" data-sortable="true">Item Name</th>
-                <th data-field="price" data-sortable="true">Item Price</th>
-            </tr>
-            </thead>
-        </table>
-    </div>
-</body>
-</html>
+<script>
+  init({
+    title: 'Key Events',
+    desc: 'Use Plugin: bootstrap-table-key-events.<br>' +
+      's: It will be focused the search textbox if it is enabled.<br>' +
+      'r: It will refresh the table if the showRefresh option is enabled.<br>' +
+      't: It will toggle the table view if the showToggle option is enabled.<br>' +
+      'p: It will fires the pagination switch if the showPaginationSwitch is enabled.<br>' +
+      'left: It will go to prev page if the pagination is true.<br>' +
+      'right: It will go to next page if the pagination is true.',
+    links: [
+      'bootstrap-table.min.css'
+    ],
+    scripts: [
+      'bootstrap-table.min.js',
+      'extensions/key-events/bootstrap-table-key-events.min.js'
+    ]
+  })
+</script>
+
+<table id="table"
+  data-show-columns="true"
+  data-show-toggle="true"
+  data-show-pagination-switch="true"
+  data-show-refresh="true"
+  data-search="true"
+  data-pagination="true"
+  data-key-events="true"
+  data-url="json/data1.json">
+  <thead>
+    <tr>
+      <th data-field="id" data-sortable="true">ID</th>
+      <th data-field="name" data-sortable="true">Item Name</th>
+      <th data-field="price" data-sortable="true">Item Price</th>
+    </tr>
+  </thead>
+</table>
+
+<script>
+  function mounted() {
+    $('#table').bootstrapTable()
+  }
+</script>

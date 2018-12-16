@@ -5,3 +5,4 @@ deploy.sh
 .idea/misc.xml
 *.xml
 node_modules
+yarn.lock

@@ -1,42 +1,32 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Change the background color on selected rows</title>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/bootstrap-table/src/bootstrap-table.css">
-    <link rel="stylesheet" href="../assets/examples.css">
-    <script src="../assets/jquery.min.js"></script>
-    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../assets/bootstrap-table/src/bootstrap-table.js"></script>
-    <script src="../ga.js"></script>
-</head>
-<body>
-<div class="container">
-    <h1>Change the background color on selected rows (<a href="https://github.com/wenzhixin/bootstrap-table/issues/563" target="_blank">#563</a>).</h1>
-    <table id="table"
-           data-toggle="table"
-           data-url="../json/data1.json"
-           data-pagination="true"
-           data-page-size="10"
-           data-page-list="[5, 10, 20]">
-        <thead>
-        <tr>
-            <th data-field="id" data-checkbox="true" data-visible="false"></th>
-            <th data-field="name">Item Name</th>
-            <th data-field="price">Item Price</th>
-        </tr>
-        </thead>
-    </table>
-</div>
 <script>
-    var $table = $('#table');
-    $(function () {
-        $table.on('click-row.bs.table', function (e, row, $element) {
-            $('.success').removeClass('success');
-            $($element).addClass('success');
-        });
-    });
+  init({
+    title: 'Issue #563',
+    desc: 'Change the background color on selected rows (<a href="https://github.com/wenzhixin/bootstrap-table/issues/563" target="_blank">#563</a>).',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
 </script>
-</body>
-</html>
+
+<table
+  id="table"
+  data-toggle="table"
+  data-url="json/data1.json"
+  data-pagination="true">
+  <thead>
+  <tr>
+    <th data-field="name">Item Name</th>
+    <th data-field="price">Item Price</th>
+  </tr>
+  </thead>
+</table>
+
+<script>
+  var $table = $('#table')
+
+  function mounted() {
+    $table.on('click-row.bs.table', function (e, row, $element) {
+      $('.success').removeClass('success')
+      $($element).addClass('success')
+    })
+  }
+</script>

@@ -1,48 +1,40 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>format</title>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/bootstrap-table/src/bootstrap-table.css">
-    <link rel="stylesheet" href="../assets/examples.css">
-    <script src="../assets/jquery.min.js"></script>
-    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../assets/bootstrap-table/src/bootstrap-table.js"></script>
-    <script src="../ga.js"></script>
-</head>
-<body>
-    <div class="container">
-        <h1>Format</h1>
-        <p>Use <code>formatter</code> column option to format the display of bootstrap table column.</p>
-        <table id="table"
-               data-toggle="table"
-               data-height="460"
-               data-url="../json/data1.json">
-            <thead>
-            <tr>
-                <th data-field="id" data-formatter="ID: %s">ID</th>
-                <th data-field="name" data-formatter="nameFormatter">Item Name</th>
-                <th data-field="price" data-formatter="priceFormatter">Item Price</th>
-            </tr>
-            </thead>
-        </table>
-    </div>
 <script>
-    function nameFormatter(value, row) {
-        var icon = row.id % 2 === 0 ? 'glyphicon-star' : 'glyphicon-star-empty'
+  init({
+    title: 'Format',
+    desc: 'Use <code>formatter</code> column option to format the display of bootstrap table column.',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
 
-        return '<i class="glyphicon ' + icon + '"></i> ' + value;
-    }
+<table
+  id="table"
+  data-toggle="table"
+  data-height="460"
+  data-url="json/data1.json">
+  <thead>
+    <tr>
+      <th data-field="id" data-formatter="ID: %s">ID</th>
+      <th data-field="name" data-formatter="nameFormatter">Item Name</th>
+      <th data-field="price" data-formatter="priceFormatter">Item Price</th>
+    </tr>
+  </thead>
+</table>
 
-    function priceFormatter(value) {
-        // 16777215 == ffffff in decimal
-        var color = '#'+Math.floor(Math.random() * 6777215).toString(16);
-        return '<div  style="color: ' + color + '">' +
-                '<i class="glyphicon glyphicon-usd"></i>' +
-                value.substring(1) +
-                '</div>';
-    }
+<script>
+  function nameFormatter(value, row) {
+    var icon = row.id % 2 === 0 ? 'glyphicon-star' : 'glyphicon-star-empty'
+    return '<i class="glyphicon ' + icon + '"></i> ' + value
+  }
+
+  function priceFormatter(value) {
+    // 16777215 == ffffff in decimal
+    var color = '#' + Math.floor(Math.random() * 6777215).toString(16)
+    return '<div style="color: ' + color + '">' +
+      '<i class="glyphicon glyphicon-usd"></i>' +
+      value.substring(1) +
+      '</div>'
+  }
 </script>
 </body>
 </html>

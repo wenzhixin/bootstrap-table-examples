@@ -1,44 +1,37 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Refresh from url after use data option</title>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/bootstrap-table/src/bootstrap-table.css">
-    <link rel="stylesheet" href="../assets/examples.css">
-    <script src="../assets/jquery.min.js"></script>
-    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../assets/bootstrap-table/src/bootstrap-table.js"></script>
-    <script src="../ga.js"></script>
-</head>
-<body>
-<div class="container">
-    <h1>Refresh from url after use data option(<a href="https://github.com/wenzhixin/bootstrap-table/issues/137" target="_blank">#137</a>).</h1>
-    <p><button id="button" class="btn btn-default">Refresh from url</button></p>
-    <table id="table">
-        <thead>
-        <tr>
-            <th data-field="id">ID</th>
-            <th data-field="name">Item Name</th>
-            <th data-field="price">Item Price</th>
-        </tr>
-        </thead>
-    </table>
-</div>
 <script>
-    var $table = $('#table');
-    $(function () {
-        $table.bootstrapTable({
-            data: [{
-                "id": 0,
-                "name": "Item 0",
-                "price": "$0"
-            }]
-        });
-        $('#button').click(function () {
-            $table.bootstrapTable('refresh', {url: '../json/data1.json'});
-        });
-    });
+  init({
+    title: 'Issue #137',
+    desc: 'Refresh from url after use data option(<a href="https://github.com/wenzhixin/bootstrap-table/issues/137" target="_blank">#137</a>).',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
 </script>
-</body>
-</html>
+
+<div class="toolbar">
+  <button id="button" class="btn btn-default">Refresh from url</button>
+</div>
+<table id="table">
+  <thead>
+  <tr>
+    <th data-field="id">ID</th>
+    <th data-field="name">Item Name</th>
+    <th data-field="price">Item Price</th>
+  </tr>
+  </thead>
+</table>
+
+<script>
+  var $table = $('#table')
+  function mounted() {
+    $table.bootstrapTable({
+      data: [{
+        'id': 0,
+        'name': 'Item 0',
+        'price': '$0'
+      }]
+    })
+    $('#button').click(function () {
+      $table.bootstrapTable('refresh', {url: 'json/data1.json'})
+    })
+  }
+</script>

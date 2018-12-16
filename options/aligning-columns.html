@@ -1,32 +1,22 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>aligning-columns</title>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/bootstrap-table/src/bootstrap-table.css">
-    <link rel="stylesheet" href="../assets/examples.css">
-    <script src="../assets/jquery.min.js"></script>
-    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../assets/bootstrap-table/src/bootstrap-table.js"></script>
-    <script src="../ga.js"></script>
-</head>
-<body>
-    <div class="container">
-        <h1>Aligning Columns</h1>
-        <p>Use <code>align</code>, <code>halign</code> and <code>valign</code> options to set the alignment of the columns and their header.</p>
-        <table id="table"
-               data-toggle="table"
-               data-height="460"
-               data-url="../json/data1.json">
-            <thead>
-            <tr>
-                <th data-field="id" data-halign="right" data-align="center">Item ID</th>
-                <th data-field="name" data-halign="center" data-align="left">Item Name</th>
-                <th data-field="price" data-halign="left" data-align="right">Item
-            </tr>
-            </thead>
-        </table>
-    </div>
-</body>
-</html>
+<script>
+  init({
+    title: 'Aligning Columns',
+    desc: 'Use <code>align</code>, <code>halign</code> and <code>valign</code> options to set the alignment of the columns and their header.',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
+<table
+  id="table"
+  data-toggle="table"
+  data-height="460"
+  data-url="json/data1.json">
+  <thead>
+    <tr>
+      <th data-field="id" data-halign="right" data-align="center">Item ID</th>
+      <th data-field="name" data-halign="center" data-align="left">Item Name</th>
+      <th data-field="price" data-halign="left" data-align="right">Item
+    </tr>
+  </thead>
+</table>

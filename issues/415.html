@@ -1,47 +1,40 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Get checked row index</title>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/bootstrap-table/src/bootstrap-table.css">
-    <link rel="stylesheet" href="../assets/examples.css">
-    <script src="../assets/jquery.min.js"></script>
-    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../assets/bootstrap-table/src/bootstrap-table.js"></script>
-    <script src="../ga.js"></script>
-</head>
-<body>
-    <div class="container">
-        <h1>Get checked row index(<a href="https://github.com/wenzhixin/bootstrap-table/issues/415" target="_blank">#415</a>).</h1>
-        <button id="show" class="btn btn-default">Show checked</button>
-        <table id="table"
-               data-toggle="table"
-               data-select-item-name="selectItemName"
-               data-url="../json/data1.json"
-               data-pagination="true"
-               data-toolbar="#show">
-            <thead>
-            <tr>
-                <th data-field="state" data-checkbox="true"></th>
-                <th data-field="id">ID</th>
-                <th data-field="name">Item Name</th>
-                <th data-field="price">Item Price</th>
-            </tr>
-            </thead>
-        </table>
-    </div>
 <script>
-    var $table = $('#table');
-    $(function () {
-        $('#show').click(function () {
-            var index = [];
-            $('input[name="selectItemName"]:checked').each(function () {
-                index.push($(this).data('index'));
-            });
-            alert('Checked row index: ' + index.join(', '));
-        });
-    });
+  init({
+    title: 'Issue #415',
+    desc: 'Get checked row index(<a href="https://github.com/wenzhixin/bootstrap-table/issues/415" target="_blank">#415</a>).',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
 </script>
-</body>
-</html>
+
+<button id="show" class="btn btn-default">Show checked</button>
+<table
+  id="table"
+  data-toggle="table"
+  data-select-item-name="selectItemName"
+  data-url="json/data1.json"
+  data-pagination="true"
+  data-toolbar="#show">
+  <thead>
+    <tr>
+      <th data-field="state" data-checkbox="true"></th>
+      <th data-field="id">ID</th>
+      <th data-field="name">Item Name</th>
+      <th data-field="price">Item Price</th>
+    </tr>
+  </thead>
+</table>
+
+<script>
+  var $table = $('#table')
+
+  function mounted() {
+    $('#show').click(function () {
+      var index = []
+      $('input[name="selectItemName"]:checked').each(function () {
+        index.push($(this).data('index'))
+      })
+      alert('Checked row index: ' + index.join(', '))
+    })
+  }
+</script>

@@ -1,41 +1,37 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Hide state column</title>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/bootstrap-table/src/bootstrap-table.css">
-    <link rel="stylesheet" href="../assets/examples.css">
-    <script src="../assets/jquery.min.js"></script>
-    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../assets/bootstrap-table/src/bootstrap-table.js"></script>
-    <script src="../ga.js"></script>
-</head>
-<body>
-    <div class="container">
-        <h1>Hide state column(<a href="https://github.com/wenzhixin/bootstrap-table/issues/220" target="_blank">#220</a>).</h1>
-        <p><button id="button" class="btn btn-default">Hide state column</button></p>
-        <table id="table"
-               data-toggle="table"
-               data-show-columns="true"
-               data-url="../json/data1.json">
-            <thead>
-            <tr>
-                <th data-field="state" data-checkbox="true"></th>
-                <th data-field="id">ID</th>
-                <th data-field="name">Item Name</th>
-                <th data-field="price">Item Price</th>
-            </tr>
-            </thead>
-        </table>
-    </div>
 <script>
-    var $table = $('#table');
-    $(function () {
-        $('#button').click(function () {
-            $table.bootstrapTable('hideColumn', 'state');
-        });
-    });
+  init({
+    title: 'Issue #220',
+    desc: 'Hide state column(<a href="https://github.com/wenzhixin/bootstrap-table/issues/220" target="_blank">#220</a>).',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
 </script>
-</body>
-</html>
+
+<div class="toolbar">
+  <button id="button" class="btn btn-default">Hide state column</button>
+</div>
+<table
+  id="table"
+  data-toggle="table"
+  data-toolbar=".toolbar"
+  data-show-columns="true"
+  data-url="json/data1.json">
+  <thead>
+    <tr>
+      <th data-field="state" data-checkbox="true"></th>
+      <th data-field="id">ID</th>
+      <th data-field="name">Item Name</th>
+      <th data-field="price">Item Price</th>
+    </tr>
+  </thead>
+</table>
+
+<script>
+  var $table = $('#table')
+
+  function mounted() {
+    $('#button').click(function () {
+      $table.bootstrapTable('hideColumn', 'state')
+    })
+  }
+</script>

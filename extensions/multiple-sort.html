@@ -1,39 +1,35 @@
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Multiple Sort</title>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/bootstrap-table/src/bootstrap-table.css">
-    <link rel="stylesheet" href="../assets/examples.css">
-    <script src="../assets/jquery.min.js"></script>
-    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../assets/bootstrap-table/src/bootstrap-table.js"></script>
-    <script src="../assets/bootstrap-table/src/extensions/flat-json/bootstrap-table-flat-json.js"></script>
-    <script src="../assets/bootstrap-table/src/extensions/multiple-sort/bootstrap-table-multiple-sort.js"></script>
-    <script src="../ga.js"></script>
-</head>
-<body>
-    <div class="container">
-        <h1>Multiple Sort</h1>
-        <table id="table"
-                data-toggle="table"
-                data-flat="true"
-                data-search="true"
-                data-show-columns="true"
-                data-show-multi-sort="true" 
-                data-sort-priority='[{"sortName": "github.count.forks","sortOrder":"desc"},{"sortName":"github.count.stargazers","sortOrder":"desc"}]'
-                data-url="../json/data3.json">
-            <thead>
-            <tr>
-                <th data-field="github.name" data-sortable="true">Name</th>
-                <th data-field="github.count.stargazers" data-sortable="true">Stargazers</th>
-                <th data-field="github.count.forks" data-sortable="true">Forks</th>
-                <th data-field="github.description" data-sortable="true">Description</th>
-            </tr>
-            </thead>
-        </table>
-    </div>
-</body>
-</html>
+<script>
+  init({
+    title: 'Multiple Sort',
+    desc: 'Use Plugin: bootstrap-table-multiple-sort.',
+    links: ['bootstrap-table.min.css'],
+    scripts: [
+      'bootstrap-table.min.js',
+      'extensions/multiple-sort/bootstrap-table-multiple-sort.js'
+    ]
+  })
+</script>
+
+<table
+  id="table"
+  data-search="true"
+  data-show-columns="true"
+  data-show-multi-sort="true"
+  data-sort-priority='[{"sortName": "github.count.forks","sortOrder":"desc"},{"sortName":"github.count.stargazers","sortOrder":"desc"}]'
+  data-url="json/data3.json">
+  <thead>
+    <tr>
+      <th data-field="github.name" data-sortable="true">Name</th>
+      <th data-field="github.count.stargazers" data-sortable="true">Stargazers</th>
+      <th data-field="github.count.forks" data-sortable="true">Forks</th>
+      <th data-field="github.description" data-sortable="true">Description</th>
+    </tr>
+  </thead>
+</table>
+
+<script>
+  function mounted() {
+    $('#table').bootstrapTable()
+  }
+</script>

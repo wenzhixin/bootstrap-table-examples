@@ -1,38 +1,39 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Resizable</title>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/bootstrap-table/src/bootstrap-table.css">
-    <link rel="stylesheet" href="../assets/examples.css">
-    <script src="../assets/jquery.min.js"></script>
-    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../assets/bootstrap-table/src/bootstrap-table.js"></script>
-    <script src="../assets/bootstrap-table/src/extensions/resizable/bootstrap-table-resizable.js"></script>
-    <script src="https://rawgit.com/wenzhixin/colResizable/master/source/colResizable-1.5.source.js"></script>
-    <script src="../ga.js"></script>
-</head>
-<body>
-    <div class="container">
-        <h1>Resizable</h1>
-        <table id="table"
-               data-toggle="table"
-               data-height="480"
-               data-show-columns="true" 
-               data-search="true" 
-               data-show-toggle="true"
-               data-pagination="true"
-               data-url="../json/data1.json"
-               data-resizable="true">
-            <thead>
-            <tr>
-                <th data-field="id" data-sortable="true">ID</th>
-                <th data-field="name" data-sortable="true">Item Name</th>
-                <th data-field="price" data-sortable="true">Item Price</th>
-            </tr>
-            </thead>
-        </table>
-    </div>
-</body>
-</html>
+<script>
+  init({
+    title: 'Resizable',
+    // desc: 'Use Plugin: <a href="https://github.com/dobtco/jquery-resizable-columns" target="_blank">jquery-resizable-columns</a> and bootstrap-table-resizable.',
+    desc: 'Use Plugin: <a href="https://github.com/wenzhixin/colResizable" target="_blank">colResizable</a> and bootstrap-table-resizable.',
+    links: [
+      'bootstrap-table.min.css'
+    ],
+    scripts: [
+      // 'https://unpkg.com/jquery-resizable-columns@0.2.3/dist/jquery.resizableColumns.js',
+      'https://rawgit.com/wenzhixin/colResizable/master/source/colResizable-1.5.source.js',
+      'bootstrap-table.min.js',
+      'extensions/resizable/bootstrap-table-resizable.min.js'
+    ]
+  })
+</script>
+
+<table id="table"
+  data-height="480"
+  data-show-columns="true"
+  data-search="true"
+  data-show-toggle="true"
+  data-pagination="true"
+  data-url="json/data1.json"
+  data-resizable="true">
+  <thead>
+    <tr>
+      <th data-field="id" data-sortable="true">ID</th>
+      <th data-field="name" data-sortable="true">Item Name</th>
+      <th data-field="price" data-sortable="true">Item Price</th>
+    </tr>
+  </thead>
+</table>
+
+<script>
+function mounted() {
+  $('#table').bootstrapTable()
+}
+</script>

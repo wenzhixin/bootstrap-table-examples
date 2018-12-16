@@ -2,38 +2,21 @@
 
 <html lang="en" ng-app="app">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Angular Demo</title>
-
-
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="../../assets/bootstrap/css/bootstrap.min.css">
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="../../assets/bootstrap-table/src/bootstrap-table.css">
-
-    <script src="../../assets/jquery.min.js"></script>
-    <script src="../../assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="../../assets/bootstrap-table/src/bootstrap-table.js"></script>
-    <script src="../../assets/bootstrap-table/dist/extensions/angular/bootstrap-table-angular.js"></script>
-
-
-    <script src="app.js"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Angular Demo</title>
+  <script src="app.js"></script>
 </head>
 <body class="container-fluid" ng-controller="MainController">
-    <br />
-    <!-- Workspaces nav -->
-    <ul class="nav nav-tabs">
-        <li role="presentation" ng-repeat="wk in workspaces" ng-class="{active: currentWorkspace==wk}" ng-click="changeCurrentWorkspace(wk)"><a href="#">{{wk.name}}</a></li>
-    </ul>
+  <br />
+  <!-- Workspaces nav -->
+  <ul class="nav nav-tabs">
+    <li role="presentation" ng-repeat="wk in workspaces" ng-class="{active: currentWorkspace==wk}" ng-click="changeCurrentWorkspace(wk)"><a href="#">{{wk.name}}</a></li>
+  </ul>
 
-    <!-- Workspaces containers -->
-    <div class="workspaceContainer" ng-repeat="wk in workspaces" ng-show="currentWorkspace==wk">
-        <table bs-table-control="wk.bsTableControl"></table>
-    </div>
-
-
+  <!-- Workspaces containers -->
+  <div class="workspaceContainer" ng-repeat="wk in workspaces" ng-show="currentWorkspace==wk">
+    <table bs-table-control="wk.bsTableControl"></table>
+  </div>
 </body>
 </html>

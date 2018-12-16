@@ -1,68 +1,58 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>from-data</title>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/bootstrap-table/src/bootstrap-table.css">
-    <link rel="stylesheet" href="../assets/examples.css">
-    <script src="../assets/jquery.min.js"></script>
-    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../assets/bootstrap-table/src/bootstrap-table.js"></script>
-    <script src="../ga.js"></script>
-</head>
-<body>
-    <div class="container">
-        <h1>From data</h1>
-        <p></p>
-        <table id="table">
-            <thead>
-            <tr>
-                <th data-field="id">ID</th>
-                <th data-field="name">Item Name</th>
-                <th data-field="price">Item Price</th>
-            </tr>
-            </thead>
-        </table>
-    </div>
 <script>
-    var $table = $('#table');
-
-    $(function () {
-        var data = [
-            {
-                "id": 0,
-                "name": "Item 0",
-                "price": "$0"
-            },
-            {
-                "id": 1,
-                "name": "Item 1",
-                "price": "$1"
-            },
-            {
-                "id": 2,
-                "name": "Item 2",
-                "price": "$2"
-            },
-            {
-                "id": 3,
-                "name": "Item 3",
-                "price": "$3"
-            },
-            {
-                "id": 4,
-                "name": "Item 4",
-                "price": "$4"
-            },
-            {
-                "id": 5,
-                "name": "Item 5",
-                "price": "$5"
-            }
-        ];
-        $table.bootstrapTable({data: data});
-    });
+  init({
+    title: 'From data',
+    desc: 'Use <code>data</code> option to load data json.',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
 </script>
-</body>
-</html>
+
+<table id="table">
+  <thead>
+    <tr>
+      <th data-field="id">ID</th>
+      <th data-field="name">Item Name</th>
+      <th data-field="price">Item Price</th>
+    </tr>
+  </thead>
+</table>
+
+<script>
+  var $table = $('#table')
+
+  function mounted() {
+    var data = [
+      {
+        'id': 0,
+        'name': 'Item 0',
+        'price': '$0'
+      },
+      {
+        'id': 1,
+        'name': 'Item 1',
+        'price': '$1'
+      },
+      {
+        'id': 2,
+        'name': 'Item 2',
+        'price': '$2'
+      },
+      {
+        'id': 3,
+        'name': 'Item 3',
+        'price': '$3'
+      },
+      {
+        'id': 4,
+        'name': 'Item 4',
+        'price': '$4'
+      },
+      {
+        'id': 5,
+        'name': 'Item 5',
+        'price': '$5'
+      }
+    ]
+    $table.bootstrapTable({data: data})
+  }
+</script>

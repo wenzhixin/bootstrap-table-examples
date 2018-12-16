@@ -1,73 +1,52 @@
 <script>
   init({
-    title: '',
-    desc: '',
+    title: 'prepend',
+    desc: 'Prepend the data to table: <br>' +
+      '<code>$table.bootstrapTable(\'prepend\', data)</code>',
     links: ['bootstrap-table.min.css'],
     scripts: ['bootstrap-table.min.js']
   })
 </script>
 
+<div id="toolbar">
+  <button id="button" class="btn btn-default">prepend</button>
+</div>
+<table
+  id="table"
+  data-toggle="table"
+  data-toolbar="#toolbar"
+  data-height="460"
+  data-url="json/data1.json">
+  <thead>
+    <tr>
+      <th data-field="id">ID</th>
+      <th data-field="name">Item Name</th>
+      <th data-field="price">Item Price</th>
+    </tr>
+  </thead>
+</table>
 
-<html>
-<head>
-  <title>prepend</title>
-  <meta charset="utf-8">
-  <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../assets/bootstrap-table/src/bootstrap-table.css">
-  <link rel="stylesheet" href="../assets/examples.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-  <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
-  <script src="../assets/bootstrap-table/src/bootstrap-table.js"></script>
-  <script src="../ga.js"></script>
-</head>
-<body>
-  <div class="container">
-    <h1>prepend</h1>
-    <p>Prepend the data to table: <code>$table.bootstrapTable('prepend', data);</code></p>
-    <div id="toolbar">
-      <button id="button" class="btn btn-default">prepend</button>
-    </div>
-    <table id="table"
-         data-toggle="table"
-         data-toolbar="#toolbar"
-         data-height="460"
-         data-url="../json/data1.json">
-      <thead>
-      <tr>
-        <th data-field="id">ID</th>
-        <th data-field="name">Item Name</th>
-        <th data-field="price">Item Price</th>
-      </tr>
-      </thead>
-    </table>
-  </div>
 <script>
   var $table = $('#table')
+  var $button = $('#button')
 
-
-var $button = $('#button')
-
-$(function () {
-    $button.click(function () {
-      $table.bootstrapTable('prepend', randomData())
-  })
-})
-
-function randomData() {
+  function randomData() {
     var startId = ~~(Math.random() * 100)
+    var rows = []
 
-  
-  var rows = []
-
-  for (var i = 0; i < 10; i++) {
+    for (var i = 0; i < 10; i++) {
       rows.push({
         id: startId + i,
         name: 'test' + (startId + i),
         price: '$' + (startId + i)
       })
-  }
+    }
     return rows
-}
+  }
+
+  function mounted() {
+    $button.click(function () {
+      $table.bootstrapTable('prepend', randomData())
+    })
+  }
 </script>
-</body>
-</html>

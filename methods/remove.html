@@ -48,20 +48,22 @@
     </table>
   </div>
 <script>
-  var $table = $('#table'),
-    $button = $('#button');
+  var $table = $('#table')
 
-  $(function () {
+
+var $button = $('#button')
+
+$(function () {
     $button.click(function () {
       var ids = $.map($table.bootstrapTable('getSelections'), function (row) {
-        return row.id;
-      });
+        return row.id
+      })
       $table.bootstrapTable('remove', {
         field: 'id',
         values: ids
-      });
-    });
-  });
+      })
+  })
+})
 </script>
 </body>
 </html>

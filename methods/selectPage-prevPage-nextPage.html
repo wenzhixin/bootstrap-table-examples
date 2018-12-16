@@ -51,23 +51,31 @@
     </table>
   </div>
 <script>
-  var $table = $('#table'),
-    $page = $('#page'),
-    $button = $('#button'),
-    $button2 = $('#button2'),
-    $button3 = $('#button3');
+  var $table = $('#table')
 
-  $(function () {
+
+var $page = $('#page')
+
+
+var $button = $('#button')
+
+
+var $button2 = $('#button2')
+
+
+var $button3 = $('#button3')
+
+$(function () {
     $button.click(function () {
-      $table.bootstrapTable('selectPage', +$page.val());
-    });
-    $button2.click(function () {
-      $table.bootstrapTable('prevPage');
-    });
-    $button3.click(function () {
-      $table.bootstrapTable('nextPage');
-    });
-  });
+      $table.bootstrapTable('selectPage', +$page.val())
+  })
+  $button2.click(function () {
+      $table.bootstrapTable('prevPage')
+  })
+  $button3.click(function () {
+      $table.bootstrapTable('nextPage')
+  })
+})
 </script>
 </body>
 </html>

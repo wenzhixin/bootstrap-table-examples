@@ -48,18 +48,22 @@
     </table>
   </div>
 <script>
-  var $table = $('#table'),
-    $button = $('#button'),
-    $button2 = $('#button2');
+  var $table = $('#table')
 
-  $(function () {
+
+var $button = $('#button')
+
+
+var $button2 = $('#button2')
+
+$(function () {
     $button.click(function () {
-      $table.bootstrapTable('checkBy', {field:'id', values:[1, 2, 3]});
-    });
-    $button2.click(function () {
-      $table.bootstrapTable('uncheckBy', {field:'id', values:[1, 2, 3]});
-    });
-  });
+      $table.bootstrapTable('checkBy', {field: 'id', values: [1, 2, 3]})
+  })
+  $button2.click(function () {
+      $table.bootstrapTable('uncheckBy', {field: 'id', values: [1, 2, 3]})
+  })
+})
 </script>
 </body>
 </html>

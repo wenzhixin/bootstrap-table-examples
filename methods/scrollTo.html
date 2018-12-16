@@ -47,18 +47,22 @@
     </table>
   </div>
 <script>
-  var $table = $('#table'),
-    $button = $('#button'),
-    $button2 = $('#button2');
+  var $table = $('#table')
 
-  $(function () {
+
+var $button = $('#button')
+
+
+var $button2 = $('#button2')
+
+$(function () {
     $button.click(function () {
-      $table.bootstrapTable('scrollTo', 0);
-    });
-    $button2.click(function () {
-      $table.bootstrapTable('scrollTo', 'bottom');
-    });
-  });
+      $table.bootstrapTable('scrollTo', 0)
+  })
+  $button2.click(function () {
+      $table.bootstrapTable('scrollTo', 'bottom')
+  })
+})
 </script>
 </body>
 </html>

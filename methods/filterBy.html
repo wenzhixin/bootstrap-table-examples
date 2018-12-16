@@ -51,16 +51,18 @@ $table.bootstrapTable('filterBy', {
     </table>
   </div>
 <script>
-  var $table = $('#table'),
-    $button = $('#button');
+  var $table = $('#table')
 
-  $(function () {
+
+var $button = $('#button')
+
+$(function () {
     $button.click(function () {
       $table.bootstrapTable('filterBy', {
         id: [1, 2, 3]
-      });
-    });
-  });
+      })
+  })
+})
 </script>
 </body>
 </html>

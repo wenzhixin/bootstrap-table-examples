@@ -49,19 +49,21 @@
     </table>
   </div>
 <script>
-  var $table = $('#table'),
-    $button = $('#button');
+  var $table = $('#table')
 
-  $(function () {
+
+var $button = $('#button')
+
+$(function () {
     $button.click(function () {
       $table.bootstrapTable('mergeCells', {
         index: 1,
         field: 'name',
         colspan: 2,
         rowspan: 3
-      });
-    });
-  });
+      })
+  })
+})
 </script>
 </body>
 </html>

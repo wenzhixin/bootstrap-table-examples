@@ -44,14 +44,16 @@
     </table>
   </div>
 <script>
-  var $table = $('#table'),
-    $button = $('#button');
+  var $table = $('#table')
 
-  $(function () {
+
+var $button = $('#button')
+
+$(function () {
     $button.click(function () {
-      alert(JSON.stringify($table.bootstrapTable('getData')));
-    });
-  });
+      alert(JSON.stringify($table.bootstrapTable('getData')))
+  })
+})
 </script>
 </body>
 </html>

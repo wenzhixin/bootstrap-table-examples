@@ -42,19 +42,21 @@
     </table>
   </div>
 <script>
-  var $table = $('#table'),
-    $button = $('#button');
+  var $table = $('#table')
 
-  $(function () {
+
+var $button = $('#button')
+
+$(function () {
     $button.click(function () {
       $table.bootstrapTable('refreshOptions', {
         showColumns: true,
         search: true,
         showRefresh: true,
         url: '../json/data1.json'
-      });
-    });
-  });
+      })
+  })
+})
 </script>
 </body>
 </html>

@@ -46,14 +46,16 @@
     </table>
   </div>
 <script>
-  var $table = $('#table'),
-    $button = $('#button');
+  var $table = $('#table')
 
-  $(function () {
+
+var $button = $('#button')
+
+$(function () {
     $button.click(function () {
-      alert('getRowByUniqueId: ' + JSON.stringify($table.bootstrapTable('getRowByUniqueId', 1)));
-    });
-  });
+      alert('getRowByUniqueId: ' + JSON.stringify($table.bootstrapTable('getRowByUniqueId', 1)))
+  })
+})
 </script>
 </body>
 </html>

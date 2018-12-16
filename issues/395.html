@@ -1,62 +1,46 @@
 <script>
   init({
-    title: '',
-    desc: '',
+    title: 'Issue #395',
+    desc: 'Enable/disable delete button on click checkbox(<a href="https://github.com/wenzhixin/bootstrap-table/issues/395" target="_blank">#395</a>).',
     links: ['bootstrap-table.min.css'],
     scripts: ['bootstrap-table.min.js']
   })
 </script>
 
-<html>
-<head>
-  <title>Enable/disable delete button on click checkbox</title>
-  <meta charset="utf-8">
-  <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../assets/bootstrap-table/src/bootstrap-table.css">
-  <link rel="stylesheet" href="../assets/examples.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-  <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
-  <script src="../assets/bootstrap-table/src/bootstrap-table.js"></script>
-  <script src="../ga.js"></script>
-</head>
-<body>
-  <div class="container">
-    <h1>Enable/disable delete button on click checkbox(<a href="https://github.com/wenzhixin/bootstrap-table/issues/395" target="_blank">#395</a>).</h1>
-    <button id="remove" class="btn btn-danger" disabled>Delete</button>
-    <table id="table"
-         data-toggle="table"
-         data-url="../json/data1.json"
-         data-toolbar="#remove">
-      <thead>
-      <tr>
-        <th data-field="state" data-checkbox="true">ID</th>
-        <th data-field="id">ID</th>
-        <th data-field="name">Item Name</th>
-        <th data-field="price">Item Price</th>
-      </tr>
-      </thead>
-    </table>
-  </div>
-<script>
-  var $table = $('#table'),
-    $remove = $('#remove');
+<button id="remove" class="btn btn-danger" disabled>Delete</button>
+<table
+  id="table"
+  data-toggle="table"
+  data-url="json/data1.json"
+  data-toolbar="#remove">
+  <thead>
+  <tr>
+    <th data-field="state" data-checkbox="true">ID</th>
+    <th data-field="id">ID</th>
+    <th data-field="name">Item Name</th>
+    <th data-field="price">Item Price</th>
+  </tr>
+  </thead>
+</table>
 
-  $(function () {
+<script>
+  var $table = $('#table')
+  var $remove = $('#remove')
+
+  function mounted() {
     $table.on('check.bs.table uncheck.bs.table check-all.bs.table uncheck-all.bs.table', function () {
-      $remove.prop('disabled', !$table.bootstrapTable('getSelections').length);
-    });
+      $remove.prop('disabled', !$table.bootstrapTable('getSelections').length)
+    })
     $remove.click(function () {
       var ids = $.map($table.bootstrapTable('getSelections'), function (row) {
         return row.id
-      });
+      })
 
       $table.bootstrapTable('remove', {
         field: 'id',
         values: ids
-      });
-      $remove.prop('disabled', true);
-    });
-  });
+      })
+      $remove.prop('disabled', true)
+    })
+  }
 </script>
-</body>
-</html>

@@ -42,28 +42,32 @@
     </table>
   </div>
 <script>
-  var $table = $('#table'),
-    $button = $('#button');
+  var $table = $('#table')
 
-  $(function () {
+
+var $button = $('#button')
+
+$(function () {
     $button.click(function () {
-      $table.bootstrapTable('prepend', randomData());
-    });
-  });
+      $table.bootstrapTable('prepend', randomData())
+  })
+})
 
-  function randomData() {
-    var startId = ~~(Math.random() * 100),
-        rows = [];
+function randomData() {
+    var startId = ~~(Math.random() * 100)
 
-    for (var i = 0; i < 10; i++) {
+  
+  var rows = []
+
+  for (var i = 0; i < 10; i++) {
       rows.push({
         id: startId + i,
         name: 'test' + (startId + i),
         price: '$' + (startId + i)
-      });
-    }
-    return rows;
+      })
   }
+    return rows
+}
 </script>
 </body>
 </html>

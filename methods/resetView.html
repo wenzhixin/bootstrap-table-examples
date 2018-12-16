@@ -50,21 +50,27 @@
     </div>
   </div>
 <script>
-  var $div = $('.div-table'),
-    $table = $('#table'),
-    $button = $('#button'),
-    $button2 = $('#button2');
+  var $div = $('.div-table')
 
-  $(function () {
+
+var $table = $('#table')
+
+
+var $button = $('#button')
+
+
+var $button2 = $('#button2')
+
+$(function () {
     $button.click(function () {
-      $div.width($div.width() + 50);
-      $table.bootstrapTable('resetView');
-    });
-    $button2.click(function () {
-      $div.width($div.width() - 50);
-      $table.bootstrapTable('resetView');
-    });
-  });
+      $div.width($div.width() + 50)
+      $table.bootstrapTable('resetView')
+  })
+  $button2.click(function () {
+      $div.width($div.width() - 50)
+      $table.bootstrapTable('resetView')
+  })
+})
 </script>
 </body>
 </html>

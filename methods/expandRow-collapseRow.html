@@ -45,26 +45,30 @@
     </table>
   </div>
 <script>
-  var $table = $('#table'),
-    $button = $('#button'),
-    $button2 = $('#button2');
+  var $table = $('#table')
 
-  $(function () {
+
+var $button = $('#button')
+
+
+var $button2 = $('#button2')
+
+$(function () {
     $button.click(function () {
-      $table.bootstrapTable('expandRow', 1);
-    });
-    $button2.click(function () {
-      $table.bootstrapTable('collapseRow', 1);
-    });
-  });
+      $table.bootstrapTable('expandRow', 1)
+  })
+  $button2.click(function () {
+      $table.bootstrapTable('collapseRow', 1)
+  })
+})
 
-  function detailFormatter(index, row) {
-    var html = [];
-    $.each(row, function (key, value) {
-      html.push('<p><b>' + key + ':</b> ' + value + '</p>');
-    });
-    return html.join('');
-  }
+function detailFormatter(index, row) {
+    var html = []
+  $.each(row, function (key, value) {
+      html.push('<p><b>' + key + ':</b> ' + value + '</p>')
+  })
+  return html.join('')
+}
 </script>
 </body>
 </html>

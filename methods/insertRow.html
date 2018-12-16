@@ -47,12 +47,14 @@
     </table>
   </div>
 <script>
-  var $table = $('#table'),
-    $button = $('#button');
+  var $table = $('#table')
 
-  $(function () {
+
+var $button = $('#button')
+
+$(function () {
     $button.click(function () {
-      var randomId = 100 + ~~(Math.random() * 100);
+      var randomId = 100 + ~~(Math.random() * 100)
       $table.bootstrapTable('insertRow', {
         index: 1,
         row: {
@@ -60,9 +62,9 @@
           name: 'Item ' + randomId,
           price: '$' + randomId
         }
-      });
-    });
-  });
+      })
+  })
+})
 </script>
 </body>
 </html>

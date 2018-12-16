@@ -1,33 +1,18 @@
 <script>
   init({
-    title: '',
-    desc: '',
+    title: 'Issue #353',
+    desc: 'Use responseHandler option to handle your response data(<a href="https://github.com/wenzhixin/bootstrap-table/issues/353" target="_blank">#353</a>).',
     links: ['bootstrap-table.min.css'],
     scripts: ['bootstrap-table.min.js']
   })
 </script>
 
-<html>
-<head>
-  <title>Use responseHandler option to handle your response data</title>
-  <meta charset="utf-8">
-  <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../assets/bootstrap-table/src/bootstrap-table.css">
-  <link rel="stylesheet" href="../assets/examples.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-  <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
-  <script src="../assets/bootstrap-table/src/bootstrap-table.js"></script>
-  <script src="../ga.js"></script>
-</head>
-<body>
-  <div class="container">
-    <h1>Use responseHandler option to handle your response data(<a href="https://github.com/wenzhixin/bootstrap-table/issues/353" target="_blank">#353</a>).</h1>
-    <table id="table"></table>
-  </div>
+<table id="table"></table>
+
 <script>
-  $(function () {
+  function mounted() {
     $('#table').bootstrapTable({
-      url: '../json/353.json',
+      url: 'json/353.json',
       columns: [{
         field: 'date',
         title: 'Date Stamp',
@@ -50,10 +35,8 @@
         sortable: true
       }],
       responseHandler: function (res) {
-        return res.messages;
+        return res.messages
       }
-    });
-  });
+    })
+  }
 </script>
-</body>
-</html>

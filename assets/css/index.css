@@ -99,7 +99,6 @@ a.toggle .glyphicon-chevron-right,
   width: 100%;
   top: 50px;
   bottom: 30px;
-  overflow: auto;
 }
 
 iframe {

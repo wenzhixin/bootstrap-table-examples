@@ -48,7 +48,7 @@ fi
 
 # replace version
 VERSION=`git log --format=%h | wc -l | xargs echo -n`
-find $OUT -type f -exec sed -i "s/v=VERSION/v=$VERSION/g" {} \;
+find . -type f -exec sed -i "s/v=VERSION/v=$VERSION/g" {} \;
 
 # Commit the "changes", i.e. the new version.
 # The delta will show diffs between new and old versions.

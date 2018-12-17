@@ -1,5 +1,5 @@
 $(function () {
-  var url = location.search.replace(/\?v=\d+&/, '')
+  var url = location.search.replace(/\?v=\d+&/, '').replace(/\?v=VERSION&/, '')
   var isSource = location.hash.slice(1) === 'view-source'
   $.ajax({
     type: 'GET',

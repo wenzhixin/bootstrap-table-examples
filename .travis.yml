@@ -1,0 +1,15 @@
+language: minimal
+
+script: bash ./deploy.sh
+
+branches:
+  only:
+  - master
+  - develop
+
+env:
+  global:
+  - ENCRYPTION_LABEL: "405644585b51"
+  - COMMIT_AUTHOR_EMAIL: "wenzhixin2010@gmail.com"
+
+sudo: false

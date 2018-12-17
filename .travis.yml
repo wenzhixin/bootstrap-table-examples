@@ -6,6 +6,9 @@ branches:
   only:
   - master
 
+git:
+  depth: 9999999
+
 env:
   global:
   - ENCRYPTION_LABEL: "405644585b51"

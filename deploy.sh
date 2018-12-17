@@ -3,13 +3,11 @@ set -e # Exit with nonzero exit code if anything fails
 
 SOURCE_BRANCH="master"
 TARGET_BRANCH="gh-pages"
-VERSION=`git log --format=%h | wc -l | xargs echo -n`
 OUT=dist
 
 function doCompile {
     mkdir -p $OUT
     cp -r *.html CNAME assets extensions issues json methods options $OUT/
-    find $OUT -type f -exec sed -i "s/v=VERSION/v=$VERSION/g" {} \;
 }
 
 # Pull requests and commits to other branches shouldn't try to deploy, just build to verify
@@ -47,6 +45,10 @@ if git diff --quiet; then
     echo "No changes to the output on this push; exiting."
     exit 0
 fi
+
+# replace version
+VERSION=`git log --format=%h | wc -l | xargs echo -n`
+find $OUT -type f -exec sed -i "s/v=VERSION/v=$VERSION/g" {} \;
 
 # Commit the "changes", i.e. the new version.
 # The delta will show diffs between new and old versions.

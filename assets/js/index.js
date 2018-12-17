@@ -7,7 +7,7 @@ function loadUrl(url) {
   if (location.search.slice(1) === 'view-source') {
     viewSource = '#view-source'
   }
-  $('iframe').attr('src', template + '?v=284&' + url + viewSource)
+  $('iframe').attr('src', template + '?v=4&' + url + viewSource)
 }
 
 function initNavigation(href) {

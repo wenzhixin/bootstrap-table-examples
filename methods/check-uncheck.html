@@ -1,0 +1,45 @@
+<script>
+  init({
+    title: 'check/uncheck',
+    desc: 'Check/Uncheck a row, the row index start with 0.<br>' +
+      '<code>$table.bootstrapTable(\'check\', 1)</code><br>' +
+      '<code>$table.bootstrapTable(\'uncheck\', 1)</code>',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
+<div id="toolbar">
+  <button id="button" class="btn btn-default">check</button>
+  <button id="button2" class="btn btn-default">uncheck</button>
+</div>
+<table
+  id="table"
+  data-toggle="table"
+  data-toolbar="#toolbar"
+  data-height="460"
+  data-url="json/data1.json">
+  <thead>
+    <tr>
+      <th data-field="state" data-checkbox="true"></th>
+      <th data-field="id">ID</th>
+      <th data-field="name">Item Name</th>
+      <th data-field="price">Item Price</th>
+    </tr>
+  </thead>
+</table>
+
+<script>
+  var $table = $('#table')
+  var $button = $('#button')
+  var $button2 = $('#button2')
+
+  function mounted() {
+    $button.click(function () {
+      $table.bootstrapTable('check', 1)
+    })
+    $button2.click(function () {
+      $table.bootstrapTable('uncheck', 1)
+    })
+  }
+</script>

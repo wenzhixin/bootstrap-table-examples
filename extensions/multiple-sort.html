@@ -1,0 +1,35 @@
+
+<script>
+  init({
+    title: 'Multiple Sort',
+    desc: 'Use Plugin: bootstrap-table-multiple-sort.',
+    links: ['bootstrap-table.min.css'],
+    scripts: [
+      'bootstrap-table.min.js',
+      'extensions/multiple-sort/bootstrap-table-multiple-sort.js'
+    ]
+  })
+</script>
+
+<table
+  id="table"
+  data-search="true"
+  data-show-columns="true"
+  data-show-multi-sort="true"
+  data-sort-priority='[{"sortName": "github.count.forks","sortOrder":"desc"},{"sortName":"github.count.stargazers","sortOrder":"desc"}]'
+  data-url="json/data3.json">
+  <thead>
+    <tr>
+      <th data-field="github.name" data-sortable="true">Name</th>
+      <th data-field="github.count.stargazers" data-sortable="true">Stargazers</th>
+      <th data-field="github.count.forks" data-sortable="true">Forks</th>
+      <th data-field="github.description" data-sortable="true">Description</th>
+    </tr>
+  </thead>
+</table>
+
+<script>
+  function mounted() {
+    $('#table').bootstrapTable()
+  }
+</script>

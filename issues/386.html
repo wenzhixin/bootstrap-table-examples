@@ -1,0 +1,37 @@
+<script>
+  init({
+    title: 'Issue #386',
+    desc: 'Override default queryParam variables(<a href="https://github.com/wenzhixin/bootstrap-table/issues/386" target="_blank">#386).</a>',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
+<table
+  data-toggle="table"
+  data-url="json/data2.json"
+  data-search="true"
+  data-pagination="true"
+  data-side-pagination="server"
+  data-query-params-type=""
+  data-query-params="queryParams">
+  <thead>
+    <tr>
+      <th data-field="id">ID</th>
+      <th data-field="name">Item Name</th>
+      <th data-field="price">Item Price</th>
+    </tr>
+  </thead>
+</table>
+
+<script>
+  function queryParams(params) {
+    return {
+      page: params.pageNumber,
+      pageLimit: params.pageSize,
+      searchRecord: params.searchText,
+      sortName: params.sortName,
+      sortOrder: params.sortOrder
+    }
+  }
+</script>

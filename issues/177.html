@@ -1,0 +1,41 @@
+<script>
+  init({
+    title: 'Issue #177',
+    desc: 'The Multiple Fields in Column(<a href="https://github.com/wenzhixin/bootstrap-table/issues/177" target="_blank">#177</a>.)',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
+<table id="table"></table>
+
+<script>
+  var data = [
+    {
+      'firstName': 'zhixin',
+      'lastName': 'wen',
+      'field1': 'field1',
+      'field2': 'field2',
+      'field3': 'field3'
+    }
+  ]
+
+  function mounted() {
+    $('#table').bootstrapTable({
+      data: data,
+      columns: [{
+        field: 'fullName',
+        title: 'Full Name',
+        formatter: function (value, row) {
+          return [row.firstName, row.lastName].join(' ')
+        }
+      }, {
+        field: 'field',
+        title: 'Field',
+        formatter: function (value, row) {
+          return [row.field1, row.field2, row.field3].join('+')
+        }
+      }]
+    })
+  }
+</script>

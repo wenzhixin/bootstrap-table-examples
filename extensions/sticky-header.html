@@ -1,0 +1,65 @@
+<script>
+  init({
+    title: 'Sticky Header',
+    desc: 'User Plugin: bootstrap-table-sticky-header. An extension which provides a sticky header for table columns when scrolling on a long page and / or table. Works for tables with many columns and narrow width with horizontal scrollbars too.',
+    links: [
+      'bootstrap-table.min.css',
+      'extensions/sticky-header/bootstrap-table-sticky-header.css'
+    ],
+    scripts: [
+      'bootstrap-table.min.js',
+      'extensions/sticky-header/bootstrap-table-sticky-header.min.js'
+    ]
+  })
+</script>
+
+<table id="table" data-show-columns="true"></table>
+
+<script>
+  var $table = $('#table')
+
+  function buildTable($el, cells, rows) {
+    var i
+    var j
+    var row
+    var columns = []
+    var data = []
+    var stickyHeaderOffsetY = 0
+
+    for (i = 0; i < cells; i++) {
+      columns.push({
+        field: 'field' + i,
+        title: 'Cell' + i,
+        sortable: true
+      })
+    }
+    for (i = 0; i < rows; i++) {
+      row = {}
+      for (j = 0; j < cells; j++) {
+        row['field' + j] = 'Row-' + i + '-' + j
+      }
+      data.push(row)
+    }
+
+    if ( $('.navbar-fixed-top').css('height') ) {
+      stickyHeaderOffsetY = +$('.navbar-fixed-top').css('height').replace('px','')
+    }
+    if ( $('.navbar-fixed-top').css('margin-bottom') ) {
+      stickyHeaderOffsetY += +$('.navbar-fixed-top').css('margin-bottom').replace('px','')
+    }
+
+    $el.bootstrapTable('destroy').bootstrapTable({
+      columns: columns,
+      data: data,
+      search: true,
+      stickyHeader: true,
+      stickyHeaderOffsetY: stickyHeaderOffsetY + 'px'
+    })
+  }
+
+  function mounted() {
+    buildTable($table, 20, 50)
+  }
+</script>
+</body>
+</html>

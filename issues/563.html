@@ -1,0 +1,32 @@
+<script>
+  init({
+    title: 'Issue #563',
+    desc: 'Change the background color on selected rows (<a href="https://github.com/wenzhixin/bootstrap-table/issues/563" target="_blank">#563</a>).',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
+<table
+  id="table"
+  data-toggle="table"
+  data-url="json/data1.json"
+  data-pagination="true">
+  <thead>
+  <tr>
+    <th data-field="name">Item Name</th>
+    <th data-field="price">Item Price</th>
+  </tr>
+  </thead>
+</table>
+
+<script>
+  var $table = $('#table')
+
+  function mounted() {
+    $table.on('click-row.bs.table', function (e, row, $element) {
+      $('.success').removeClass('success')
+      $($element).addClass('success')
+    })
+  }
+</script>

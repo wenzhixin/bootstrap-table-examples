@@ -1,0 +1,52 @@
+<script>
+  init({
+    title: 'Issue #579',
+    desc: 'Show images formatter (<a href="https://github.com/wenzhixin/bootstrap-table/issues/579" target="_blank">#579</a>).',
+    links: ['bootstrap-table.min.css'],
+    scripts: [
+      'https://cdnjs.cloudflare.com/ajax/libs/holder/2.6.0/holder.js',
+      'bootstrap-table.min.js'
+    ]
+  })
+</script>
+
+<table
+  id="table"
+  data-show-header="false"
+  data-classes="table table-hover table-no-bordered">
+  <thead>
+    <tr>
+      <th data-field="image" data-formatter="imageFormatter">Image</th>
+      <th data-field="name">Name</th>
+      <th data-field="action" data-formatter="actionFormatter">Action</th>
+    </tr>
+  </thead>
+</table>
+
+<script>
+  var $table = $('#table')
+
+  function mounted() {
+    $table.bootstrapTable({
+      data: [{
+        name: 'Name 1'
+      }, {
+        name: 'Name 2'
+      }, {
+        name: 'Name 3'
+      }, {
+        name: 'Name 4'
+      }, {
+        name: 'Name 5'
+      }]
+    })
+  }
+
+  function imageFormatter() {
+    return '<img src="holder.js/100x150">'
+  }
+
+  function actionFormatter() {
+    return '<i class="glyphicon glyphicon-heart"></i> <i class="glyphicon glyphicon-remove"></i>'
+  }
+</script>

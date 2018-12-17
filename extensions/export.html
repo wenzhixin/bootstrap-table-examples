@@ -1,0 +1,52 @@
+<script>
+  init({
+    title: 'Export',
+    desc: 'Use Plugin: <a href="https://github.com/hhurz/tableExport.jquery.plugin" target="_blank">tableExport.jquery.plugin</a> and bootstrap-table-export.',
+    links: [
+      'bootstrap-table.min.css'
+    ],
+    scripts: [
+      'https://unpkg.com/tableexport.jquery.plugin@1.10.1/tableExport.min.js',
+      'bootstrap-table.min.js',
+      'extensions/export/bootstrap-table-export.min.js'
+    ]
+  })
+</script>
+
+<div id="toolbar">
+  <select class="form-control">
+    <option value="">Export Basic</option>
+    <option value="all">Export All</option>
+    <option value="selected">Export Selected</option>
+  </select>
+</div>
+
+<table id="table"
+  data-show-export="true"
+  data-pagination="true"
+  data-click-to-select="true"
+  data-toolbar="#toolbar"
+  data-url="json/data1.json">
+  <thead>
+    <tr>
+      <th data-field="state" data-checkbox="true"></th>
+      <th data-field="id">ID</th>
+      <th data-field="name">Item Name</th>
+      <th data-field="price">Item Price</th>
+    </tr>
+  </thead>
+</table>
+
+<script>
+  var $table = $('#table')
+
+  function mounted() {
+    $table.bootstrapTable()
+
+    $('#toolbar').find('select').change(function () {
+      $table.bootstrapTable('destroy').bootstrapTable({
+        exportDataType: $(this).val()
+      })
+    })
+  }
+</script>

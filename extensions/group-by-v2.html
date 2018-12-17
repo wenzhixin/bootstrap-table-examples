@@ -1,0 +1,33 @@
+<script>
+  init({
+    title: 'Group By v2',
+    desc: 'Use Plugin: bootstrap-table-group-by-v2.',
+    links: [
+      'extensions/group-by-v2/bootstrap-table-group-by.css',
+      'bootstrap-table.min.css'
+    ],
+    scripts: [
+      'bootstrap-table.min.js',
+      'extensions/group-by-v2/bootstrap-table-group-by.min.js'
+    ]
+  })
+</script>
+
+<table id="table"
+  data-group-by="true"
+  data-group-by-field="shape"
+  data-url="json/data6.json">
+  <thead>
+    <tr>
+      <th data-field="shape">Shape</th>
+      <th data-field="color">Color</th>
+      <th data-field="area">Area</th>
+    </tr>
+  </thead>
+</table>
+
+<script>
+  function mounted() {
+    $('#table').bootstrapTable()
+  }
+</script>

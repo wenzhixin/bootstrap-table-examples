@@ -1,0 +1,43 @@
+<script>
+  init({
+    title: 'Large Columns',
+    desc: 'Bootstrap table support large columns, it will auto to show the horizontal scroll bar.',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
+<table id="table" data-height="400" data-show-columns="true"></table>
+
+<script>
+  var $table = $('#table')
+
+  function buildTable($el, cells, rows) {
+    var i; var j; var row
+    var columns = []
+    var data = []
+
+    for (i = 0; i < cells; i++) {
+      columns.push({
+        field: 'field' + i,
+        title: 'Cell' + i,
+        sortable: true
+      })
+    }
+    for (i = 0; i < rows; i++) {
+      row = {}
+      for (j = 0; j < cells; j++) {
+        row['field' + j] = 'Row-' + i + '-' + j
+      }
+      data.push(row)
+    }
+    $el.bootstrapTable('destroy').bootstrapTable({
+      columns: columns,
+      data: data
+    })
+  }
+
+  function mounted() {
+    buildTable($table, 50, 50)
+  }
+</script>

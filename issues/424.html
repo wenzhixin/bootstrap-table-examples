@@ -1,0 +1,25 @@
+<script>
+  init({
+    title: 'Issue #424',
+    desc: 'Toggle pagination (<a href="https://github.com/wenzhixin/bootstrap-table/issues/424" target="_blank">#424</a>).',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
+<table
+  id="table"
+  data-toggle="table"
+  data-url="json/data1.json"
+  data-show-pagination-switch="true"
+  data-pagination="true"
+  data-page-size="10"
+  data-page-list="[5, 10, 20]">
+  <thead>
+    <tr>
+      <th data-field="id">ID</th>
+      <th data-field="name">Item Name</th>
+      <th data-field="price">Item Price</th>
+    </tr>
+  </thead>
+</table>

@@ -1,0 +1,33 @@
+<script>
+  init({
+    title: 'Issue #188',
+    desc: 'Show Export button only(<a href="https://github.com/wenzhixin/bootstrap-table/issues/188" target="_blank">#188</a>).',
+    links: [
+      'bootstrap-table.min.css'
+    ],
+    scripts: [
+      'https://unpkg.com/tableexport.jquery.plugin@1.10.1/tableExport.min.js',
+      'bootstrap-table.min.js',
+      'extensions/export/bootstrap-table-export.min.js'
+    ]
+  })
+</script>
+
+<table
+  id="table"
+  data-show-export="true"
+  data-url="json/data1.json">
+  <thead>
+    <tr>
+      <th data-field="id">ID</th>
+      <th data-field="name">Item Name</th>
+      <th data-field="price">Item Price</th>
+    </tr>
+  </thead>
+</table>
+
+<script>
+  function mounted() {
+    $('#table').bootstrapTable()
+  }
+</script>

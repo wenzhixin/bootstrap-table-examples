@@ -1,0 +1,43 @@
+<script>
+  init({
+    title: 'Issue #431',
+    desc: 'Load pagination data(<a href="https://github.com/wenzhixin/bootstrap-table/issues/431" target="_blank">#431</a>).',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
+<table
+  id="table"
+  data-toggle="table"
+  data-pagination="true"
+  data-side-pagination="server">
+  <thead>
+    <tr>
+      <th data-field="id">ID</th>
+      <th data-field="name">Item Name</th>
+      <th data-field="price">Item Price</th>
+    </tr>
+  </thead>
+</table>
+
+<script>
+  var $table = $('#table')
+
+  function getData(number, size) {
+    $.get('http://wenzhixin.net.cn/examples/bootstrap_table/data', {
+      offset: (number - 1) * size,
+      limit: size
+    }, function (res) {
+      $table.bootstrapTable('load', res)
+    })
+  }
+
+  function mounted() {
+    $table.on('page-change.bs.table', function (e, number, size) {
+      getData(number, size)
+    })
+    var options = $table.bootstrapTable('getOptions')
+    getData(options.pageNumber, options.pageSize)
+  }
+</script>

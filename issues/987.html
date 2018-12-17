@@ -1,0 +1,44 @@
+<script>
+  init({
+    title: 'Issue #987',
+    desc: 'Save row data using input.(<a href="https://github.com/wenzhixin/bootstrap-table/issues/987" target="_blank">#987</a>).',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
+<table
+  id="table"
+  data-toggle="table"
+  data-search="true"
+  data-url="json/data1.json">
+  <thead>
+    <tr>
+      <th data-field="id" data-sortable="true">ID</th>
+      <th data-field="name" data-sortable="true">Item Name</th>
+      <th data-field="price" data-sortable="true">Item Price</th>
+      <th data-field="selling"
+        data-formatter="inputFormatter"
+        data-events="inputEvents">Selling</th>
+    </tr>
+  </thead>
+</table>
+
+<script>
+  var $table = $('#table')
+
+  function inputFormatter(value) {
+    var checked = value ? 'checked' : ''
+    return '<input type="checkbox" ' + checked + ' />'
+  }
+
+  window.inputEvents = {
+    'change :checkbox': function (e, value, row, index) {
+      row.selling = $(e.target).prop('checked')
+      $table.bootstrapTable('updateRow', {
+        index: index,
+        row: row
+      })
+    }
+  }
+</script>

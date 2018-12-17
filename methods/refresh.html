@@ -1,0 +1,38 @@
+<script>
+  init({
+    title: 'refresh',
+    desc: 'Refresh the remote server data, you can set <code>{silent: true}</code> to refresh the data silently, and set <code>{url: newUrl}</code> to change the url. To supply query params specific to this request, set <code>{query: {foo: \'bar\'}}</code>.<br>' +
+      '<code>$table.bootstrapTable(\'refresh\')</code>',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
+<div id="toolbar">
+  <button id="button" class="btn btn-default">refresh</button>
+</div>
+<table
+  id="table"
+  data-toggle="table"
+  data-toolbar="#toolbar"
+  data-height="428"
+  data-url="json/data1.json">
+  <thead>
+    <tr>
+      <th data-field="id">ID</th>
+      <th data-field="name">Item Name</th>
+      <th data-field="price">Item Price</th>
+    </tr>
+  </thead>
+</table>
+
+<script>
+  var $table = $('#table')
+  var $button = $('#button')
+
+  function mounted() {
+    $button.click(function () {
+      $table.bootstrapTable('refresh')
+    })
+  }
+</script>

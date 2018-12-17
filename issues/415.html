@@ -1,0 +1,40 @@
+<script>
+  init({
+    title: 'Issue #415',
+    desc: 'Get checked row index(<a href="https://github.com/wenzhixin/bootstrap-table/issues/415" target="_blank">#415</a>).',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
+<button id="show" class="btn btn-default">Show checked</button>
+<table
+  id="table"
+  data-toggle="table"
+  data-select-item-name="selectItemName"
+  data-url="json/data1.json"
+  data-pagination="true"
+  data-toolbar="#show">
+  <thead>
+    <tr>
+      <th data-field="state" data-checkbox="true"></th>
+      <th data-field="id">ID</th>
+      <th data-field="name">Item Name</th>
+      <th data-field="price">Item Price</th>
+    </tr>
+  </thead>
+</table>
+
+<script>
+  var $table = $('#table')
+
+  function mounted() {
+    $('#show').click(function () {
+      var index = []
+      $('input[name="selectItemName"]:checked').each(function () {
+        index.push($(this).data('index'))
+      })
+      alert('Checked row index: ' + index.join(', '))
+    })
+  }
+</script>

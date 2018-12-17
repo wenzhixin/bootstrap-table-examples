@@ -1,0 +1,35 @@
+<script>
+  init({
+    title: 'Issue #337',
+    desc: 'Custom fontawsome icons(<a href="https://github.com/wenzhixin/bootstrap-table/issues/337" target="_blank">#337</a>).',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
+<table
+  id="table"
+  data-toggle="table"
+  data-show-refresh="true"
+  data-show-toggle="true"
+  data-show-columns="true"
+  data-icons-prefix="fa"
+  data-icons="icons"
+  data-url="json/data1.json">
+  <thead>
+    <tr>
+      <th data-field="id">ID</th>
+      <th data-field="name">Item Name</th>
+      <th data-field="price">Item Price</th>
+    </tr>
+  </thead>
+</table>
+
+<script>
+  window.icons = {
+    refresh: 'fa-refresh',
+    toggleOn: 'fa-toggle-on',
+    toggleOff: 'fa-toggle-on',
+    columns: 'fa-th-list'
+  }
+</script>

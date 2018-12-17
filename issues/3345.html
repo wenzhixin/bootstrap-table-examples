@@ -1,0 +1,54 @@
+<script>
+  init({
+    title: 'Issue #3345',
+    desc: 'Check/Uncheck All in all page with server side(<a href="https://github.com/wenzhixin/bootstrap-table/issues/1167" target="_blank">#3345</a>).',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
+<div class="toolbar">
+  <button id="checkAll" class="btn btn-default">Check All</button>
+  <button id="uncheckAll" class="btn btn-default">Uncheck All</button>
+</div>
+<table
+  id="table"
+  data-toggle="table"
+  data-url="http://wenzhixin.net.cn/examples/bootstrap_table/data"
+  data-pagination="true"
+  data-side-pagination="server"
+  data-page-list="[5, 10, 20, 50, 100, 200]"
+  data-search="true"
+  data-toolbar=".toolbar"
+  data-response-handler="responseHandler">
+  <thead>
+    <tr>
+      <th data-field="state" data-checkbox="true"></th>
+      <th data-field="id">ID</th>
+      <th data-field="name">Item Name</th>
+      <th data-field="price">Item Price</th>
+    </tr>
+  </thead>
+</table>
+
+<script>
+  var checkAll = false
+
+  function mounted() {
+    $('#checkAll').click(function () {
+      checkAll = true
+      $('#table').bootstrapTable('checkAll')
+    })
+    $('#uncheckAll').click(function () {
+      checkAll = false
+      $('#table').bootstrapTable('uncheckAll')
+    })
+  }
+
+  function responseHandler(res) {
+    res.rows.forEach(function (item) {
+      item.state = checkAll
+    })
+    return res
+  }
+</script>

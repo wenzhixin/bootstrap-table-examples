@@ -1,0 +1,44 @@
+<script>
+  init({
+    title: 'scrollTo',
+    desc: 'Scroll to the number value position, set \'bottom\' means scroll to the bottom.<br>' +
+      '<code>$table.bootstrapTable(\'scrollTo\', 0)</code><br>' +
+      '<code>$table.bootstrapTable(\'scrollTo\', \'bottom\')</code>',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
+<div id="toolbar">
+  <button id="button" class="btn btn-default">scrollTo Top</button>
+  <button id="button2" class="btn btn-default">scrollTo Bottom</button>
+</div>
+<table
+  id="table"
+  data-toggle="table"
+  data-toolbar="#toolbar"
+  data-height="460"
+  data-url="json/data1.json">
+  <thead>
+    <tr>
+      <th data-field="id">ID</th>
+      <th data-field="name">Item Name</th>
+      <th data-field="price">Item Price</th>
+    </tr>
+  </thead>
+</table>
+
+<script>
+  var $table = $('#table')
+  var $button = $('#button')
+  var $button2 = $('#button2')
+
+  function mounted() {
+    $button.click(function () {
+      $table.bootstrapTable('scrollTo', 0)
+    })
+    $button2.click(function () {
+      $table.bootstrapTable('scrollTo', 'bottom')
+    })
+  }
+</script>

@@ -1,0 +1,35 @@
+<script>
+  init({
+    title: 'Issue #221',
+    desc: 'Use cellStyle(<a href="https://github.com/wenzhixin/bootstrap-table/issues/221" target="_blank">#221</a>).',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
+<table
+  id="table"
+  data-toggle="table"
+  data-url="json/data1.json">
+  <thead>
+    <tr>
+      <th data-field="id">ID</th>
+      <th data-field="name" data-cell-style="cellStyle">Item Name</th>
+      <th data-field="price">Item Price</th>
+    </tr>
+  </thead>
+</table>
+
+<script>
+  function cellStyle(value, row, index) {
+    var classes = ['active', 'success', 'info', 'warning', 'danger']
+    if (index % 2 === 0 && index / 2 < classes.length) {
+      return {
+        css: {
+          'background-color': 'red'
+        }
+      }
+    }
+    return {}
+  }
+</script>

@@ -1,0 +1,46 @@
+<script>
+  init({
+    title: 'Issue #395',
+    desc: 'Enable/disable delete button on click checkbox(<a href="https://github.com/wenzhixin/bootstrap-table/issues/395" target="_blank">#395</a>).',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
+<button id="remove" class="btn btn-danger" disabled>Delete</button>
+<table
+  id="table"
+  data-toggle="table"
+  data-url="json/data1.json"
+  data-toolbar="#remove">
+  <thead>
+  <tr>
+    <th data-field="state" data-checkbox="true">ID</th>
+    <th data-field="id">ID</th>
+    <th data-field="name">Item Name</th>
+    <th data-field="price">Item Price</th>
+  </tr>
+  </thead>
+</table>
+
+<script>
+  var $table = $('#table')
+  var $remove = $('#remove')
+
+  function mounted() {
+    $table.on('check.bs.table uncheck.bs.table check-all.bs.table uncheck-all.bs.table', function () {
+      $remove.prop('disabled', !$table.bootstrapTable('getSelections').length)
+    })
+    $remove.click(function () {
+      var ids = $.map($table.bootstrapTable('getSelections'), function (row) {
+        return row.id
+      })
+
+      $table.bootstrapTable('remove', {
+        field: 'id',
+        values: ids
+      })
+      $remove.prop('disabled', true)
+    })
+  }
+</script>

@@ -1,0 +1,38 @@
+<script>
+  init({
+    title: 'Issue #457',
+    desc: 'Set the global defaults for the table(<a href="https://github.com/wenzhixin/bootstrap-table/issues/457" target="_blank">#457</a>).',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
+<table id="table"
+  data-url="json/data2.json">
+  <thead>
+    <tr>
+      <th data-field="id">ID</th>
+      <th data-field="name">Item Name</th>
+      <th data-field="price">Item Price</th>
+    </tr>
+  </thead>
+</table>
+
+<script>
+  function mounted() {
+    $.extend($.fn.bootstrapTable.defaults, {
+      // method: 'post',
+      // contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+      pagination: true,
+      sidePagination: 'server',
+      showRefresh: true,
+      search: true
+    })
+    $.extend($.fn.bootstrapTable.columnDefaults, {
+      align: 'center',
+      valign: 'middle'
+    })
+
+    $('#table').bootstrapTable()
+  }
+</script>

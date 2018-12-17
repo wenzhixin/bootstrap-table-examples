@@ -1,0 +1,53 @@
+<script>
+  init({
+    title: 'Issue #986',
+    desc: 'Editable select box(<a href="https://github.com/wenzhixin/bootstrap-table/issues/986" target="_blank">#986</a>).',
+    links: [
+      'https://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.1/bootstrap3-editable/css/bootstrap-editable.css',
+      'bootstrap-table.min.css'
+    ],
+    scripts: [
+      'https://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.1/bootstrap3-editable/js/bootstrap-editable.min.js',
+      'bootstrap-table.min.js',
+      'extensions/editable/bootstrap-table-editable.min.js'
+    ]
+  })
+</script>
+
+<table id="table"></table>
+
+<script>
+  var data = [{
+    'name': 'active'
+  }, {
+    'name': 'blocked'
+  }, {
+    'name': 'deleted'
+  }]
+
+  var $table = $('#table')
+
+  function mounted() {
+    $table.bootstrapTable({
+      idField: 'name',
+      columns: [{
+        field: 'state',
+        title: '',
+        checkbox: true
+      }, {
+        field: 'name',
+        title: 'names',
+        sortable: true,
+        editable: {
+          type: 'select',
+          source: [
+            {value: 'active', text: 'Active'},
+            {value: 'blocked', text: 'Blocked'},
+            {value: 'deleted', text: 'Deleted'}
+          ]
+        }
+      }],
+      data: data
+    })
+  }
+</script>

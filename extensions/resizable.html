@@ -1,14 +1,13 @@
 <script>
   init({
     title: 'Resizable',
-    // desc: 'Use Plugin: <a href="https://github.com/dobtco/jquery-resizable-columns" target="_blank">jquery-resizable-columns</a> and bootstrap-table-resizable.',
-    desc: 'Use Plugin: <a href="https://github.com/wenzhixin/colResizable" target="_blank">colResizable</a> and bootstrap-table-resizable.',
+    desc: 'Use Plugin: <a href="https://github.com/dobtco/jquery-resizable-columns" target="_blank">jquery-resizable-columns</a> and bootstrap-table-resizable.',
     links: [
+      'https://unpkg.com/jquery-resizable-columns@0.2.3/dist/jquery.resizableColumns.css',
       'bootstrap-table.min.css'
     ],
     scripts: [
-      // 'https://unpkg.com/jquery-resizable-columns@0.2.3/dist/jquery.resizableColumns.js',
-      'https://rawgit.com/wenzhixin/colResizable/master/source/colResizable-1.5.source.js',
+      'https://unpkg.com/jquery-resizable-columns@0.2.3/dist/jquery.resizableColumns.min.js',
       'bootstrap-table.min.js',
       'extensions/resizable/bootstrap-table-resizable.min.js'
     ]
@@ -16,7 +15,6 @@
 </script>
 
 <table id="table"
-  data-height="480"
   data-show-columns="true"
   data-search="true"
   data-show-toggle="true"

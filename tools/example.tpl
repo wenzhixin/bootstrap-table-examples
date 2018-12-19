@@ -1,7 +1,7 @@
 <script>
   init({
-    title: '',
-    desc: '',
+    title: '@title@',
+    desc: '@desc@',
     links: ['bootstrap-table.min.css'],
     scripts: ['bootstrap-table.min.js']
   })
@@ -11,7 +11,7 @@
   id="table"
   data-toggle="table"
   data-height="460"
-  data-url="json/data1.json">
+  data-url="@url@"@attrs@>
   <thead>
     <tr>
       <th data-field="id">ID</th>

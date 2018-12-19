@@ -17,6 +17,7 @@
   },
   "devDependencies": {
     "eslint": "^5.10.0",
-    "eslint-plugin-html": "^5.0.0"
+    "eslint-plugin-html": "^5.0.0",
+    "getopts": "^2.2.3"
   }
 }

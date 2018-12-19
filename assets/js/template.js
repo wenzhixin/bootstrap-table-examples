@@ -33,10 +33,20 @@ $(function () {
   }
 })
 
+window._config = {
+  isDebug: location.hash.slice(1) === 'is-debug',
+  cdnUrl: 'https://unpkg.com/bootstrap-table/dist/',
+  localUrl: '../bootstrap-table/src/'
+}
+
 function _link(file) {
   var url = file
   if (!/^http/.test(file)) {
-    url = 'https://unpkg.com/bootstrap-table/dist/' + file
+    url = window._config.cdnUrl + file
+
+    if (window._config.isDebug) {
+      url = window._config.localUrl + file.replace(/\.min/, '')
+    }
   }
   $('head').append('<link href="' + url + '" rel="stylesheet"></link>')
 }
@@ -46,7 +56,11 @@ function _script(file, callback) {
   var script = document.createElement('script')
   var url = file
   if (!/^http/.test(file)) {
-    url = 'https://unpkg.com/bootstrap-table/dist/' + file
+    url = window._config.cdnUrl + file
+
+    if (window._config.isDebug) {
+      url = window._config.localUrl + file.replace(/\.min/, '')
+    }
   }
   script.src = url
 

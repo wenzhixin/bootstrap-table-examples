@@ -34,7 +34,7 @@ $(function () {
 })
 
 window._config = {
-  isDebug: location.hash.slice(1) === 'is-debug',
+  isDebug: location.hash.slice(1) === 'is-debug' || location.host === 'dev.wenzhixin.net.cn',
   cdnUrl: 'https://unpkg.com/bootstrap-table/dist/',
   localUrl: '../bootstrap-table/src/'
 }

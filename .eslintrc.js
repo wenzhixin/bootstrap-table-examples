@@ -45,7 +45,7 @@ module.exports = {
     'no-trailing-spaces': 'error',
     'operator-assignment': ['error', 'always'],
     'dot-location': ['error', 'property'],
-    'no-console': ['error', { allow: ['log', 'warn', 'error'] }],
+    'no-console': ['error', { allow: ['log', 'info', 'warn', 'error'] }],
     'no-else-return': ['error', {allowElseIf: false}],
     'no-case-declarations': 'off',
     'no-unused-vars': 'off',

@@ -1,0 +1,47 @@
+<script>
+  init({
+    title: 'Issue #3830',
+    desc: 'Export all records with server side pagination(<a href="https://github.com/wenzhixin/bootstrap-table/issues/3830" target="_blank">#3830</a>).',
+    links: ['bootstrap-table.min.css'],
+    scripts: [
+      'https://unpkg.com/tableexport.jquery.plugin@1.10.1/tableExport.min.js',
+      'bootstrap-table.min.js',
+      'extensions/export/bootstrap-table-export.min.js'
+    ]
+  })
+</script>
+
+<table
+  id="table"
+  data-height="460"
+  data-url="http://wenzhixin.net.cn/examples/bootstrap_table/data"
+  data-search="true"
+  data-pagination="true"
+  data-side-pagination="server"
+  data-show-export="true"
+  data-export-data-type="all"
+  data-query-params="queryParams">
+  <thead>
+    <tr>
+      <th data-field="id">ID</th>
+      <th data-field="name">Item Name</th>
+      <th data-field="price">Item Price</th>
+    </tr>
+  </thead>
+</table>
+
+<script>
+  var $table = $('#table')
+
+  function mounted() {
+    $table.bootstrapTable()
+  }
+
+  function queryParams(params) {
+    var options = $table.bootstrapTable('getOptions')
+    if (!options.pagination) {
+      params.limit = options.totalRows
+    }
+    return params
+  }
+</script>

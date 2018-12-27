@@ -3,10 +3,15 @@
     title: 'Boostrap v4',
     desc: 'Support Boostrap v4, use font-awesome as default icons.',
     links: [
+      'https://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.1/bootstrap3-editable/css/bootstrap-editable.css',
       'bootstrap-table.min.css'
     ],
     scripts: [
-      'bootstrap-table.min.js'
+      'https://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.1/bootstrap3-editable/js/bootstrap-editable.min.js',
+      'https://unpkg.com/tableexport.jquery.plugin@1.10.1/tableExport.min.js',
+      'bootstrap-table.min.js',
+      'extensions/editable/bootstrap-table-editable.min.js',
+      'extensions/export/bootstrap-table-export.min.js'
     ]
   })
 </script>
@@ -32,6 +37,7 @@
   data-page-list="[10, 25, 50, 100, ALL]"
   data-show-footer="false"
   data-side-pagination="server"
+  data-show-export="true"
   data-url="http://wenzhixin.net.cn/examples/bootstrap_table/data"
   data-response-handler="responseHandler">
 </table>

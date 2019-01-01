@@ -1,0 +1,41 @@
+<script>
+  init({
+    title: 'Table Style',
+    desc: 'Use <code>height</code>, <code>classes</code>, <code>striped</code>, <code>rowStyle</code> options and <code>class</code>, <code>width</code>, <code>cellStyle</code> column options to set the styles of bootstrap table.',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
+<table
+  data-toggle="table"
+  data-url="json/data1.json"
+  data-height="400"
+  data-row-style="rowStyle">
+  <thead class="thead-dark">
+    <tr>
+      <th data-field="id" class="col-md-2">Item ID</th>
+      <th data-field="name" class="col-md-6">
+        <i class="glyphicon glyphicon-star"></i>
+        Item Name
+      </th>
+      <th data-field="price" class="col-md-4">
+        <i class="glyphicon glyphicon-heart"></i>
+        Item Price
+      </th>
+    </tr>
+  </thead>
+</table>
+
+<script>
+  function rowStyle(row, index) {
+    var classes = ['table-active', 'table-success', 'table-info', 'table-warning', 'table-danger']
+
+    if (index % 2 === 0 && index / 2 < classes.length) {
+      return {
+        classes: classes[index / 2]
+      }
+    }
+    return {}
+  }
+</script>

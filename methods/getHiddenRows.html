@@ -1,0 +1,50 @@
+<script>
+  init({
+    title: 'getHiddenRows',
+    desc: 'Get all rows hidden and if you pass the show parameter true the rows will be shown again, otherwise, the method only will return the rows hidden.<br>' +
+      '<code>$table.bootstrapTable(\'getHiddenRows\')</code><br>' +
+      '<code>$table.bootstrapTable(\'getHiddenRows\', true)</code>',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
+<div id="toolbar">
+  <button id="button" class="btn btn-default">Hide and Get Hidden Rows</button>
+  <button id="button2" class="btn btn-default">Show Hidden Rows</button>
+</div>
+<table
+  id="table"
+  data-toggle="table"
+  data-toolbar="#toolbar"
+  data-height="460"
+  data-pagination="true"
+  data-side-pagination="server"
+  data-url="json/data2.json">
+  <thead>
+    <tr>
+      <th data-field="id" data-sortable="true">ID</th>
+      <th data-field="name" data-sortable="true">Item Name</th>
+      <th data-field="price" data-sortable="true">Item Price</th>
+    </tr>
+  </thead>
+</table>
+
+<script>
+  var $table = $('#table')
+  var $button = $('#button')
+  var $button2 = $('#button2')
+
+  function mounted() {
+    $button.click(function() {
+      $table.bootstrapTable('hideRow', {
+        index: 1
+      })
+      alert(JSON.stringify($table.bootstrapTable('getHiddenRows')))
+    })
+
+    $button2.click(function() {
+      $table.bootstrapTable('getHiddenRows', true)
+    })
+  }
+</script>

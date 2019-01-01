@@ -20,6 +20,11 @@
   color: #fff;
 }
 
+.bs-docs-header code {
+  background: transparent;
+  color: #fff;
+}
+
 #viewSource,
 #viewExample,
 .source-pre {

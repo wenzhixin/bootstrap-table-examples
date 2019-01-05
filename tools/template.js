@@ -3,7 +3,7 @@ const getopts = require('getopts')
 
 const ISSUE_URL = 'https://github.com/wenzhixin/bootstrap-table/issues/'
 const CLIENT_URL = 'json/data1.json'
-const SERVER_URL = 'http://wenzhixin.net.cn/examples/bootstrap_table/data'
+const SERVER_URL = 'https://examples.wenzhixin.net.cn/examples/bootstrap_table/data'
 
 const options = getopts(process.argv.slice(2), {
   alias: {

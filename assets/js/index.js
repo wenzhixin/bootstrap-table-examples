@@ -1,9 +1,6 @@
 function loadUrl(url) {
   var template = 'template.html'
   var hash = ''
-  if (/v4.html/.test(url)) {
-    template = 'template4.html'
-  }
   if (location.search.slice(1) === 'view-source') {
     hash = '#view-source'
   } else if (location.search.slice(1) === 'is-debug') {

@@ -107,21 +107,21 @@ function _beautifySource(data) {
   }))
   lines = result.concat(lines.slice(scriptEnd + 1))
 
-  var mountedStart = lines.indexOf('function mounted() {')
-  var mountedEnd = lines.indexOf('}', mountedStart)
-  lines[mountedStart] = '$(function() {'
-  lines[mountedEnd] = '})'
+  var mountedStart = lines.indexOf('  function mounted() {')
+  var mountedEnd = lines.indexOf('  }', mountedStart)
+  lines[mountedStart] = '  $(function() {'
+  lines[mountedEnd] = '  })'
 
   return lines.join('\n')
 }
 
 $(function () {
-  var url = location.search.replace(/\?v=\d+&/, '').replace(/\?v=15&/, '')
+  var url = location.search.replace(/\?v=\d+&/, '').replace(/\?v=16&/, '')
   var isSource = location.hash.slice(1) === 'view-source'
 
   $.ajax({
     type: 'GET',
-    url: url + '?v=15', // todo: add version to solve cache problem
+    url: url + '?v=16', // todo: add version to solve cache problem
     dataType: 'html',
     global: false,
     cache: true, // (warning: setting it to false will cause a timestamp and will call the request twice)

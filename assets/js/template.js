@@ -107,10 +107,10 @@ function _beautifySource(data) {
   }))
   lines = result.concat(lines.slice(scriptEnd + 1))
 
-  var mountedStart = lines.indexOf('function mounted() {')
-  var mountedEnd = lines.indexOf('}', mountedStart)
-  lines[mountedStart] = '$(function() {'
-  lines[mountedEnd] = '})'
+  var mountedStart = lines.indexOf('  function mounted() {')
+  var mountedEnd = lines.indexOf('  }', mountedStart)
+  lines[mountedStart] = '  $(function() {'
+  lines[mountedEnd] = '  })'
 
   return lines.join('\n')
 }

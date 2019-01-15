@@ -1,0 +1,51 @@
+<script>
+  init({
+    title: 'Issue #2619',
+    desc: 'Click sort with html Checkbox(<a href="https://github.com/wenzhixin/bootstrap-table/issues/2619" target="_blank">#2619</a>).',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
+<table
+  data-sort-name="name"
+  data-toggle="table"
+  data-click-to-select="false"
+  data-trim-on-search="false">
+  <thead>
+    <tr>
+      <th data-field="state" data-checkbox="true" data-formatter="stateFormatter"></th>
+      <th data-sortable="true" data-field="name"><b>Name</b></th>
+      <th data-sortable="true"><b>Label</b></th>
+      <th>Link</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td>test0</td>
+      <td>label0</td>
+      <td><a href="#">Link</a></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>test1</td>
+      <td>label1</td>
+      <td><a href="#">Link</a></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>test2</td>
+      <td>label2</td>
+      <td><a href="#">Link</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<script>
+  function stateFormatter(value, row, index) {
+    if (index === 2) {
+      return { disabled: true }
+    }
+  }
+</script>

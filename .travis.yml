@@ -5,6 +5,7 @@ script: bash ./deploy.sh
 branches:
   only:
   - master
+  - develop
 
 git:
   depth: 9999999

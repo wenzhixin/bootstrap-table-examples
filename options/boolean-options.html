@@ -19,7 +19,7 @@
   }
 
   .boolean-options select {
-    width: 400px;
+    width: 250px;
   }
 
   .ms-drop input[type="checkbox"] {
@@ -93,6 +93,7 @@
 
     $table.bootstrapTable('destroy').bootstrapTable($.extend({
       url: 'json/data1.json',
+      toolbar: '.boolean-options',
       columns: columns
     }, defaultTableOptions, tableOptions))
   }

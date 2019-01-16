@@ -3,14 +3,11 @@
     title: 'Welcome Examples',
     desc: 'Examples with checkbox, sort, pagination, export, editable and other added features.',
     links: [
-      'https://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.1/bootstrap3-editable/css/bootstrap-editable.css',
       'bootstrap-table.min.css'
     ],
     scripts: [
-      'https://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.1/bootstrap3-editable/js/bootstrap-editable.min.js',
       'https://unpkg.com/tableexport.jquery.plugin@1.10.1/tableExport.min.js',
       'bootstrap-table.min.js',
-      'extensions/editable/bootstrap-table-editable.min.js',
       'extensions/export/bootstrap-table-export.min.js'
     ]
   })
@@ -134,7 +131,6 @@
           field: 'name',
           title: 'Item Name',
           sortable: true,
-          editable: true,
           footerFormatter: totalNameFormatter,
           align: 'center'
         }, {
@@ -142,25 +138,6 @@
           title: 'Item Price',
           sortable: true,
           align: 'center',
-          editable: {
-            type: 'text',
-            title: 'Item Price',
-            validate: function (value_) {
-              var value = $.trim(value_)
-              if (!value) {
-                return 'This field is required'
-              }
-              if (!/^\$/.test(value)) {
-                return 'This field needs to start width $.'
-              }
-              var data = $table.bootstrapTable('getData')
-
-
-              var index = $(this).parents('tr').data('index')
-              console.log(data[index])
-              return ''
-            }
-          },
           footerFormatter: totalPriceFormatter
         }, {
           field: 'operate',

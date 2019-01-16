@@ -1,32 +1,17 @@
-.bs-docs-header {
-  padding: 10px 0 0;
-}
-
-.bs-docs-header .col-md-8 {
-  padding: 0 0 20px;
-}
-
-.bs-docs-header h1 {
-  margin-top: 20px;
-  margin-right: 0;
-}
-
-.bs-docs-header div {
-  font-size: 16px;
-  line-height: 24px;
-}
-
-.bs-docs-header a {
-  color: #fff;
-}
-
-.bs-docs-header code {
-  background: transparent;
-  color: #fff;
+body {
+  padding: 0 3rem!important;
 }
 
 #viewSource,
 #viewExample,
 .source-pre {
   display: none;
+}
+
+#carbonads {
+  margin-top: 0;
+}
+
+.bd-lead {
+  max-width: 100%;
 }

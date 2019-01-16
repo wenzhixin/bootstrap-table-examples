@@ -14,12 +14,12 @@
   data-row-style="rowStyle">
   <thead>
     <tr>
-      <th data-field="id" class="col-md-2">Item ID</th>
-      <th data-field="name" class="col-md-6">
+      <th data-field="id">Item ID</th>
+      <th data-field="name">
         <i class="glyphicon glyphicon-star"></i>
         Item Name
       </th>
-      <th data-field="price" class="col-md-4">
+      <th data-field="price">
         <i class="glyphicon glyphicon-heart"></i>
         Item Price
       </th>
@@ -29,7 +29,7 @@
 
 <script>
   function rowStyle(row, index) {
-    var classes = ['active', 'success', 'info', 'warning', 'danger']
+    var classes = ['table-active', 'table-success', 'table-info', 'table-warning', 'table-danger']
 
     if (index % 2 === 0 && index / 2 < classes.length) {
       return {

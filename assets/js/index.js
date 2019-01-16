@@ -1,38 +1,24 @@
 function loadUrl(url) {
   var template = 'template.html'
   var hash = ''
-  if (/v4.html/.test(url)) {
-    template = 'template4.html'
-  }
   if (location.search.slice(1) === 'view-source') {
     hash = '#view-source'
   } else if (location.search.slice(1) === 'is-debug') {
     hash = '#is-debug'
   }
-  $('iframe').attr('src', template + '?v=18&' + url + hash)
+  $('iframe').attr('src', template + '?v=19&' + url + hash)
 }
 
 function initNavigation(href) {
-  var $el = $('a[href="' + href + '"]')
-
-  $('.navigation').hide()
+  var $el = $('a[href="#' + href + '"]')
 
   if (!$el.length) {
     return
   }
-  var $prev = $el.parent().prev('li')
-  var $next = $el.parent().next('li')
 
-  if ($prev.text()) {
-    $('.navigation.previous').show()
-      .attr('href', '#' + $prev.find('a').attr('href'))
-      .attr('title', 'Previous: ' + $prev.text())
-  }
-  if ($next.text()) {
-    $('.navigation.next').show()
-      .attr('href', 'index.html#' + $next.find('a').attr('href'))
-      .attr('title', 'Next: ' + $next.text())
-  }
+  $('#bd-docs-nav .active').removeClass('active')
+  $el.parent().addClass('active')
+  $el.parents('.bd-toc-item').addClass('active')
 }
 
 $(function () {

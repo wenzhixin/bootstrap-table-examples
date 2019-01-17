@@ -5,3 +5,19 @@ body {
 iframe {
   border: 0;
 }
+
+.container-fluid {
+  position: absolute;
+  top: 64px;
+  bottom: 0;
+}
+
+.flex-xl-nowrap {
+  height: 100%;
+}
+
+@media (max-width: 991.98px) {
+  .container-fluid {
+    top: 106px;
+  }
+}

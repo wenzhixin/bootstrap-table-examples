@@ -15,3 +15,9 @@ body {
 .bd-lead {
   max-width: 100%;
 }
+
+@media (max-width: 991.98px) {
+  body {
+    padding: 0 !important;
+  }
+}

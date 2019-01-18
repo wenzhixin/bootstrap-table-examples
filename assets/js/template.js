@@ -11,7 +11,7 @@ function _getLink(file) {
     url = window._config.cdnUrl + file
 
     if (window._config.isDebug) {
-      url = window._config.localUrl + file.replace(/\.min/, '')
+      url = window._config.localUrl + file.replace(/\.min/, '') + '?v=VERSION'
     }
   }
   return '<link href="' + url + '" rel="stylesheet">'
@@ -23,7 +23,7 @@ function _getScript(file, isScriptTag) {
     url = window._config.cdnUrl + file
 
     if (window._config.isDebug) {
-      url = window._config.localUrl + file.replace(/\.min/, '')
+      url = window._config.localUrl + file.replace(/\.min/, '') + '?v=VERSION'
     }
   }
   if (isScriptTag) {

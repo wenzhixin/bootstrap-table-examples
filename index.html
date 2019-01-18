@@ -20,6 +20,15 @@
     if (window !== top) // 判断当前的window对象是否是top对象
       top.location.href = window.location.href // 如果不是，将top对象的网址自动导向被嵌入网页的网址
   </script>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-132747866-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || []
+    function gtag() {window.dataLayer.push(arguments)}
+    gtag('js', new Date())
+    gtag('config', 'UA-132747866-1')
+  </script>
 </head>
 
 <body>
@@ -369,7 +378,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-hashchange/1.3/jquery.ba-hashchange.min.js"></script>
   <script src="assets/js/docs.min.js"></script>
   <script src="assets/js/index.js?v=VERSION"></script>
-  <script src="assets/js/ga.js?v=VERSION"></script>
 </body>
 
 </html>

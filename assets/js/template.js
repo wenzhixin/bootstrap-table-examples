@@ -1,7 +1,7 @@
 window._config = {
   isDebug: location.hash.slice(1) === 'is-debug' ||
   ['localhost', 'dev.wenzhixin.net.cn'].indexOf(location.hostname) > -1,
-  cdnUrl: 'https://unpkg.com/bootstrap-table/dist/',
+  cdnUrl: 'https://unpkg.com/bootstrap-table@1.13.2/dist/',
   localUrl: '../bootstrap-table/src/'
 }
 
@@ -116,12 +116,12 @@ function _beautifySource(data) {
 }
 
 $(function () {
-  var url = location.search.replace(/\?v=\d+&/, '').replace(/\?v=25&/, '')
+  var url = location.search.replace(/\?v=\d+&/, '').replace(/\?v=26&/, '')
   var isSource = location.hash.slice(1) === 'view-source'
 
   $.ajax({
     type: 'GET',
-    url: url + '?v=25', // todo: add version to solve cache problem
+    url: url + '?v=26', // todo: add version to solve cache problem
     dataType: 'html',
     global: false,
     cache: true, // (warning: setting it to false will cause a timestamp and will call the request twice)

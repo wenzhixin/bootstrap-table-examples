@@ -142,24 +142,15 @@ $(function () {
     $el = $('#viewExample').attr('href', 'index.html#' + url)
     $el.show().tooltip({
       title: 'View Example',
-      placement: 'right',
-      trigger: 'manual hover focus'
+      placement: 'right'
     })
   } else {
     $el = $('#viewSource').attr('href', 'index.html?view-source#' + url)
     $el.show().tooltip({
       title: 'View Source',
-      placement: 'right',
-      trigger: 'manual hover focus'
+      placement: 'right'
     })
   }
-
-  setTimeout(function () {
-    $el.tooltip('show')
-    setTimeout(function () {
-      $el.tooltip('hide')
-    }, 5000)
-  }, 1000)
 })
 
 window.init = function (options_) {
@@ -176,8 +167,8 @@ window.init = function (options_) {
     }
   }, options_)
 
-  $('#header h1 span').html(options.title)
-  $('#header div').html(options.desc)
+  $('.bd-title span').html(options.title)
+  $('.bd-lead').html(options.desc)
   $.each(options.links, function (i, file) {
     _link(file)
   })

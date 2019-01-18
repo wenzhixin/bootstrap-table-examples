@@ -1,8 +1,8 @@
 # bootstrap-table-examples
 
-[Bootstrap Table Docs](https://bootstrap-table.wenzhixin.net.cn/)
+[Bootstrap Table Docs](https://bootstrap-table.com/)
 
-[Bootstrap Table Examples](https://bootstrap-table-examples.wenzhixin.net.cn/)
+[Bootstrap Table Examples](https://examples.bootstrap-table.com)
 
 [jsFiddle Examples](https://github.com/wenzhixin/bootstrap-table-examples/blob/master/jsfiddle_examples.md)
 

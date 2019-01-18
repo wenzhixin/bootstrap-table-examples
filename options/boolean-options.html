@@ -1,13 +1,13 @@
 <script>
   init({
     title: 'Boolean Options',
-    desc: 'Documentation: <a href="http://bootstrap-table.wenzhixin.net.cn/documentation/" target="_blank">http://bootstrap-table.wenzhixin.net.cn/documentation/</a>.',
+    desc: 'Use multiple-select to toggle all boolean table options and column options.',
     links: [
-      'https://cdnjs.cloudflare.com/ajax/libs/multiple-select/1.2.0/multiple-select.min.css',
+      'https://cdnjs.cloudflare.com/ajax/libs/multiple-select/1.2.2/multiple-select.min.css',
       'bootstrap-table.min.css'
     ],
     scripts: [
-      'https://cdnjs.cloudflare.com/ajax/libs/multiple-select/1.2.0/multiple-select.min.js',
+      'https://cdnjs.cloudflare.com/ajax/libs/multiple-select/1.2.2/multiple-select.min.js',
       'bootstrap-table.min.js'
     ]
   })
@@ -19,7 +19,7 @@
   }
 
   .boolean-options select {
-    width: 400px;
+    width: 250px;
   }
 
   .ms-drop input[type="checkbox"] {
@@ -93,6 +93,7 @@
 
     $table.bootstrapTable('destroy').bootstrapTable($.extend({
       url: 'json/data1.json',
+      toolbar: '.boolean-options',
       columns: columns
     }, defaultTableOptions, tableOptions))
   }

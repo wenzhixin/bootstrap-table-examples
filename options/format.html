@@ -23,15 +23,15 @@
 
 <script>
   function nameFormatter(value, row) {
-    var icon = row.id % 2 === 0 ? 'glyphicon-star' : 'glyphicon-star-empty'
-    return '<i class="glyphicon ' + icon + '"></i> ' + value
+    var icon = row.id % 2 === 0 ? 'fa-star' : 'fa-star-and-crescent'
+    return '<i class="fa ' + icon + '"></i> ' + value
   }
 
   function priceFormatter(value) {
     // 16777215 == ffffff in decimal
     var color = '#' + Math.floor(Math.random() * 6777215).toString(16)
     return '<div style="color: ' + color + '">' +
-      '<i class="glyphicon glyphicon-usd"></i>' +
+      '<i class="fa fa-dollar-sign"></i>' +
       value.substring(1) +
       '</div>'
   }

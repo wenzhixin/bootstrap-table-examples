@@ -1,7 +1,7 @@
 window._config = {
   isDebug: location.hash.slice(1) === 'is-debug' ||
   ['localhost', 'dev.wenzhixin.net.cn'].indexOf(location.hostname) > -1,
-  cdnUrl: 'https://unpkg.com/bootstrap-table/dist/',
+  cdnUrl: 'https://unpkg.com/bootstrap-table@1.13.2/dist/',
   localUrl: '../bootstrap-table/src/'
 }
 

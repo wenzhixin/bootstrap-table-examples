@@ -116,12 +116,12 @@ function _beautifySource(data) {
 }
 
 $(function () {
-  var url = location.search.replace(/\?v=\d+&/, '').replace(/\?v=26&/, '')
+  var url = location.search.replace(/\?v=\d+&/, '').replace(/\?v=27&/, '')
   var isSource = location.hash.slice(1) === 'view-source'
 
   $.ajax({
     type: 'GET',
-    url: url + '?v=26', // todo: add version to solve cache problem
+    url: url + '?v=27', // todo: add version to solve cache problem
     dataType: 'html',
     global: false,
     cache: true, // (warning: setting it to false will cause a timestamp and will call the request twice)

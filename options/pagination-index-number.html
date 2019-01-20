@@ -1,0 +1,60 @@
+<script>
+  init({
+    title: 'Pagination Index Number',
+    desc: 'Use options to control the index number of the pagination.',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
+<div class="toolbar">
+  <div>
+    <label>
+      <code>paginationSuccessivelySize</code>
+      <input type="number" value="5" min="1" class="form-control" id="paginationSuccessivelySize">
+    </label>
+  </div>
+  <div>
+    <label>
+      <code>paginationPagesBySide</code>
+      <input type="number" value="1" min="0" class="form-control" id="paginationPagesBySide">
+    </label>
+  </div>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" id="paginationUseIntermediate">
+      <code>paginationUseIntermediate</code>
+    </label>
+  </div>
+</div>
+
+<table
+  id="table"
+  data-toggle="table"
+  data-pagination="true"
+  data-side-pagination="server"
+  data-url="https://examples.wenzhixin.net.cn/examples/bootstrap_table/data">
+  <thead>
+    <tr>
+      <th data-field="id">ID</th>
+      <th data-field="name">Item Name</th>
+      <th data-field="price">Item Price</th>
+    </tr>
+  </thead>
+</table>
+
+<script>
+  var $table = $('#table')
+
+  function refreshTable() {
+    $table.bootstrapTable('refreshOptions', {
+      paginationSuccessivelySize: +$('#paginationSuccessivelySize').val(),
+      paginationPagesBySide: +$('#paginationPagesBySide').val(),
+      paginationUseIntermediate: $('#paginationUseIntermediate').prop('checked')
+    })
+  }
+
+  function mounted() {
+    $('.toolbar input').change(refreshTable)
+  }
+</script>

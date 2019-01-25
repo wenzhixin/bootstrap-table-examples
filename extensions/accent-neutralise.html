@@ -1,0 +1,68 @@
+<script>
+  init({
+    title: 'Accent Neutralise',
+    desc: 'Use Plugin: bootstrap-table-accent-neutralise to use accent neutralise feature. In this case, you can try to search <code>Jose</code>.',
+    links: [
+      'bootstrap-table.min.css'
+    ],
+    scripts: [
+      'bootstrap-table.min.js',
+      'extensions/accent-neutralise/bootstrap-table-accent-neutralise.min.js'
+    ]
+  })
+</script>
+
+<table
+  id="table"
+  data-search="true"
+  data-search-accent-neutralise="true">
+  <thead>
+    <tr>
+      <th data-field="name">Name</th>
+      <th data-field="stargazers_count">Stars</th>
+      <th data-field="forks_count">Forks</th>
+      <th data-field="description">Description</th>
+    </tr>
+  </thead>
+</table>
+
+<script>
+  var data = [
+    {
+      name: 'bootstrap-table',
+      stargazers_count: '8827',
+      forks_count: '3603',
+      description: 'An extended Bootstrap table with radio, checkbox, sort, pagination, and other added features. (supports twitter bootstrap v2 and v3) '
+    },
+    {
+      name: 'multiple-select',
+      stargazers_count: '1615',
+      forks_count: '623',
+      description: 'José'
+    },
+    {
+      name: 'bootstrap-show-password',
+      stargazers_count: '220',
+      forks_count: '85',
+      description: 'Show/hide password plugin for twitter bootstrap.'
+    },
+    {
+      name: 'José',
+      stargazers_count: '50',
+      forks_count: '10',
+      description: 'my blog'
+    },
+    {
+      name: 'bootstrap-table-examples',
+      stargazers_count: '1734',
+      forks_count: '1532',
+      description: 'Bootstrap Table Examples.'
+    }
+  ]
+
+  function mounted() {
+    $('#table').bootstrapTable({
+      data: data
+    })
+  }
+</script>

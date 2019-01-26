@@ -1,0 +1,35 @@
+<script>
+  init({
+    title: 'Addrbar',
+    desc: 'Use Plugin: bootstrap-table-addrbar to enable query params of the address bar. Use browser history forward to try this case.',
+    links: [
+      'bootstrap-table.min.css'
+    ],
+    scripts: [
+      'bootstrap-table.min.js',
+      'extensions/addrbar/bootstrap-table-addrbar.min.js'
+    ]
+  })
+</script>
+
+<table
+  id="table"
+  data-addrbar="true"
+  data-pagination="true"
+  data-search="true"
+  data-url="https://examples.wenzhixin.net.cn/examples/bootstrap_table/data"
+  data-side-pagination="server">
+  <thead>
+    <tr>
+      <th data-field="id" data-sortable="true">ID</th>
+      <th data-field="name" data-sortable="true">Item Name</th>
+      <th data-field="price" data-sortable="true">Item Price</th>
+    </tr>
+  </thead>
+</table>
+
+<script>
+  function mounted() {
+    $('#table').bootstrapTable()
+  }
+</script>

@@ -1,0 +1,61 @@
+<script>
+  init({
+    title: 'Thead Classes',
+    desc: 'Use <code>theadClasses</code> option to set the styles.',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
+<div class="toolbar">
+  <div class="radio">
+    <label>
+      <input type="radio" checked name="theadClasses">
+      <code>undefined</code>
+    </label>
+  </div>
+  <div class="radio">
+    <label>
+      <input type="radio" name="theadClasses">
+      <code>thead-light</code>
+    </label>
+  </div>
+  <div class="radio">
+    <label>
+      <input type="radio" name="theadClasses">
+      <code>thead-dark</code>
+    </label>
+  </div>
+</div>
+
+<table
+  id="table"
+  data-url="json/data1.json">
+</table>
+
+<script>
+  var $table = $('#table')
+
+  function mounted() {
+    $table.bootstrapTable({
+      columns: [{
+        title: 'ID',
+        field: 'id'
+      }, {
+        title: 'Item Name',
+        field: 'name'
+      }, {
+        title: 'Item Price',
+        field: 'price'
+      }]
+    })
+
+    $('.toolbar input').change(function () {
+      var classes = $('.toolbar input:checked').next().text()
+
+      $table.bootstrapTable('refreshOptions', {
+        theadClasses: classes
+      })
+    })
+  }
+</script>

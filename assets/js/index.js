@@ -1,4 +1,9 @@
-function loadUrl(url) {
+window._config = {
+  isDebug: location.hash.slice(1) === 'is-debug' ||
+    ['localhost', 'dev.bootstrap-table.com'].indexOf(location.hostname) > -1
+}
+
+function loadUrl(url_) {
   var template = 'template.html'
   var hash = ''
   if (location.search.slice(1) === 'view-source') {
@@ -6,7 +11,11 @@ function loadUrl(url) {
   } else if (location.search.slice(1) === 'is-debug') {
     hash = '#is-debug'
   }
-  $('iframe').attr('src', template + '?v=VERSION&' + url + hash)
+  var url = template + '?v=VERSION&url=' + url_ + hash
+  if (window._config.isDebug) {
+    url = template + '?t=' + (+new Date()) + '&url=' + url_ + hash
+  }
+  $('iframe').attr('src', url)
 }
 
 function initNavigation(href) {

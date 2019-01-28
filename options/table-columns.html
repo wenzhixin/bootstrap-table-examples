@@ -1,0 +1,32 @@
+<script>
+  init({
+    title: 'Table Columns',
+    desc: 'Use <code>columns</code> option to the table columns.',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
+<table
+  id="table"
+  data-url="json/data1.json">
+</table>
+
+<script>
+  var $table = $('#table')
+
+  function mounted() {
+    $table.bootstrapTable({
+      columns: [{
+        title: 'ID',
+        field: 'id'
+      }, {
+        title: 'Item Name',
+        field: 'name'
+      }, {
+        title: 'Item Price',
+        field: 'price'
+      }]
+    })
+  }
+</script>

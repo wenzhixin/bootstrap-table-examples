@@ -1,7 +1,7 @@
 window._config = {
   isDebug: location.hash.slice(1) === 'is-debug' ||
-  ['localhost', 'dev.wenzhixin.net.cn'].indexOf(location.hostname) > -1,
-  cdnUrl: 'https://unpkg.com/bootstrap-table@1.13.2/dist/',
+    ['localhost', 'dev.bootstrap-table.com'].indexOf(location.hostname) > -1,
+  cdnUrl: 'https://unpkg.com/bootstrap-table@1.13.3/dist/',
   localUrl: '../bootstrap-table/src/'
 }
 
@@ -11,7 +11,7 @@ function _getLink(file) {
     url = window._config.cdnUrl + file
 
     if (window._config.isDebug) {
-      url = window._config.localUrl + file.replace(/\.min/, '')
+      url = window._config.localUrl + file.replace(/\.min/, '') + '?t=' + (+new Date())
     }
   }
   return '<link href="' + url + '" rel="stylesheet">'
@@ -23,7 +23,7 @@ function _getScript(file, isScriptTag) {
     url = window._config.cdnUrl + file
 
     if (window._config.isDebug) {
-      url = window._config.localUrl + file.replace(/\.min/, '')
+      url = window._config.localUrl + file.replace(/\.min/, '') + '?t=' + (+new Date())
     }
   }
   if (isScriptTag) {
@@ -97,7 +97,9 @@ function _beautifySource(data) {
   strings = $.map(strings, function (s) {
     return $.trim(s)
   })
-  var obj = eval('(' + strings.join('').replace(/^init\((.*)\)$/, '$1') + ')')
+  /* eslint-disable no-control-regex */
+  var obj = eval('(' + strings.join('').replace(/[^\u0000-\u007E]/g, '')
+    .replace(/^init\((.*)\)$/, '$1') + ')')
 
   var result = []
   result = result.concat($.map(obj.links, _getLink))
@@ -116,41 +118,52 @@ function _beautifySource(data) {
 }
 
 $(function () {
-  var url = location.search.replace(/\?v=\d+&/, '').replace(/\?v=VERSION&/, '')
-  var isSource = location.hash.slice(1) === 'view-source'
+  var run = function () {
+    var query = {}
+    location.search.substring(1).split('&').forEach(function (item) {
+      query[item.split('=')[0]] = item.split('=')[1]
+    })
+    var url = query.url
+    var isSource = location.hash.slice(1) === 'view-source'
 
-  $.ajax({
-    type: 'GET',
-    url: url + '?v=VERSION', // todo: add version to solve cache problem
-    dataType: 'html',
-    global: false,
-    cache: true, // (warning: setting it to false will cause a timestamp and will call the request twice)
-    success: function (data) {
-      if (isSource) {
-        $('#example').hide().html(data)
-        $('.source-pre').show()
-        $('#source').text(_beautifySource(data))
-        window.hljs.initHighlightingOnLoad()
-      } else {
-        $('#example').html(data)
+    delete query.url
+
+    $.ajax({
+      type: 'GET',
+      url: url + '?' + $.param(query),
+      dataType: 'html',
+      global: false,
+      cache: true, // (warning: setting it to false will cause a timestamp and will call the request twice)
+      success: function (data) {
+        if (isSource) {
+          $('#example').hide().html(data)
+          $('.source-pre').show()
+          $('#source').text(_beautifySource(data))
+          window.hljs.initHighlightingOnLoad()
+        } else {
+          $('#example').html(data)
+        }
       }
-    }
-  })
+    })
 
-  var $el
-  if (isSource) {
-    $el = $('#viewExample').attr('href', 'index.html#' + url)
-    $el.show().tooltip({
-      title: 'View Example',
-      placement: 'right'
-    })
-  } else {
-    $el = $('#viewSource').attr('href', 'index.html?view-source#' + url)
-    $el.show().tooltip({
-      title: 'View Source',
-      placement: 'right'
-    })
+    var $el
+    if (isSource) {
+      $el = $('#viewExample').attr('href', 'index.html#' + url)
+      $el.show().tooltip({
+        title: 'View Example',
+        placement: 'right'
+      })
+    } else {
+      $el = $('#viewSource').attr('href', 'index.html?view-source#' + url)
+      $el.show().tooltip({
+        title: 'View Source',
+        placement: 'right'
+      })
+    }
   }
+
+  window.addEventListener('popstate', run)
+  run()
 })
 
 window.init = function (options_) {

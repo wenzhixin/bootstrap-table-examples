@@ -1,7 +1,7 @@
 <script>
   init({
     title: 'Custom Sort',
-    desc: 'Use <code>sorter</code> column option to define the custom sort of bootstrap table.',
+    desc: 'Use <code>customSort</code> option to custom sort by the number instead of string.',
     links: ['bootstrap-table.min.css'],
     scripts: ['bootstrap-table.min.js']
   })
@@ -11,24 +11,30 @@
   id="table"
   data-toggle="table"
   data-height="460"
-  data-url="json/data1.json"
-  data-sort-name="price"
-  data-sort-order="desc">
+  data-custom-sort="customSort"
+  data-url="json/data1.json">
   <thead>
     <tr>
-      <th data-field="id" data-sortable="true">Item ID</th>
+      <th data-field="id" data-sortable="true">ID</th>
       <th data-field="name" data-sortable="true">Item Name</th>
-      <th data-field="price" data-sortable="true" data-sorter="priceSorter">Item Price</th>
+      <th data-field="price" data-sortable="true">Item Price</th>
     </tr>
   </thead>
 </table>
 
 <script>
-  function priceSorter(a, b) {
-    var aa = +a.substring(1) // remove $
-    var bb = +b.substring(1)
-    if (aa > bb) return 1
-    if (aa < bb) return -1
-    return 0
+  function customSort(sortName, sortOrder, data) {
+    var order = sortOrder === 'desc' ? -1 : 1
+    data.sort(function (a, b) {
+      var aa = +((a[sortName] + '').replace(/[^\d]/g, ''))
+      var bb = +((b[sortName] + '').replace(/[^\d]/g, ''))
+      if (aa < bb) {
+        return order * -1
+      }
+      if (aa > bb) {
+        return order
+      }
+      return 0
+    })
   }
 </script>

@@ -8,6 +8,10 @@ body {
   display: none;
 }
 
+.title-desc {
+  min-height: 162px;
+}
+
 #carbonads {
   margin-top: 0;
 }

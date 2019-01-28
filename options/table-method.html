@@ -1,0 +1,27 @@
+<script>
+  init({
+    title: 'Table Method',
+    desc: 'Use <code>method</code> option to the method type to request remote data.',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
+<table
+  id="table"
+  data-toggle="table"
+  data-height="460"
+  data-search="true"
+  data-show-refresh="true"
+  data-method="post"
+  data-pagination="true"
+  data-side-pagination="server"
+  data-url="https://examples.wenzhixin.net.cn/examples/bootstrap_table/data">
+  <thead>
+    <tr>
+      <th data-field="id" data-sortable="true">ID</th>
+      <th data-field="name" data-sortable="true">Item Name</th>
+      <th data-field="price" data-sortable="true">Item Price</th>
+    </tr>
+  </thead>
+</table>

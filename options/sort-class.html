@@ -1,0 +1,24 @@
+<script>
+  init({
+    title: 'Sort Class',
+    desc: 'Use <code>sortClass</code> option to set the class name of the <code>td</code> elements which are sorted.',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
+<table
+  id="table"
+  data-toggle="table"
+  data-sort-class="table-active"
+  data-sortable="true"
+  data-height="460"
+  data-url="json/data1.json">
+  <thead>
+    <tr>
+      <th data-field="id" data-sortable="true">ID</th>
+      <th data-field="name" data-sortable="true">Item Name</th>
+      <th data-field="price" data-sortable="true">Item Price</th>
+    </tr>
+  </thead>
+</table>

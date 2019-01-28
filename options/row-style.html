@@ -1,7 +1,7 @@
 <script>
   init({
-    title: 'Table Style',
-    desc: 'Use <code>height</code>, <code>classes</code>, <code>striped</code>, <code>rowStyle</code> options and <code>class</code>, <code>width</code>, <code>cellStyle</code> column options to set the styles of bootstrap table.',
+    title: 'Row Style',
+    desc: 'Use <code>rowStyle</code> option to set the row style.',
     links: ['bootstrap-table.min.css'],
     scripts: ['bootstrap-table.min.js']
   })
@@ -16,11 +16,11 @@
     <tr>
       <th data-field="id">Item ID</th>
       <th data-field="name">
-        <i class="glyphicon glyphicon-star"></i>
+        <i class="fa fa-star"></i>
         Item Name
       </th>
       <th data-field="price">
-        <i class="glyphicon glyphicon-heart"></i>
+        <i class="fa fa-heart"></i>
         Item Price
       </th>
     </tr>
@@ -29,13 +29,23 @@
 
 <script>
   function rowStyle(row, index) {
-    var classes = ['table-active', 'table-success', 'table-info', 'table-warning', 'table-danger']
+    var classes = [
+      'table-active',
+      'table-success',
+      'table-info',
+      'table-warning',
+      'table-danger'
+    ]
 
     if (index % 2 === 0 && index / 2 < classes.length) {
       return {
         classes: classes[index / 2]
       }
     }
-    return {}
+    return {
+      css: {
+        color: 'blue'
+      }
+    }
   }
 </script>

@@ -1,7 +1,7 @@
 <script>
   init({
-    title: 'Custom Ajax',
-    desc: 'Use <code>ajax</code> option: A method to replace ajax call. Should implement the same API as jQuery ajax method.',
+    title: 'Custom AJAX',
+    desc: 'Use <code>ajax</code> option to replace ajax call. Should implement the same API as jQuery ajax method.',
     links: ['bootstrap-table.min.css'],
     scripts: ['bootstrap-table.min.js']
   })
@@ -25,13 +25,11 @@
 </table>
 
 <script>
-  var $table = $('#table')
-
   // your custom ajax request here
   function ajaxRequest(params) {
-    // data you need
+    // params data you need
     console.log(params.data)
-    // just use setTimeout
+    // here we just use setTimeout
     setTimeout(function () {
       params.success({
         total: 100,

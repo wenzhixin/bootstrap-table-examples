@@ -1,0 +1,84 @@
+<script>
+  init({
+    title: 'Table Classes',
+    desc: 'Use <code>classes</code> option to set the styles.',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
+<div class="toolbar">
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" checked disabled>
+      <code>table</code>
+    </label>
+  </div>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" checked>
+      <code>table-bordered</code>
+    </label>
+  </div>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" checked>
+      <code>table-hover</code>
+    </label>
+  </div>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox">
+      <code>table-striped</code>
+    </label>
+  </div>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox">
+      <code>table-dark</code>
+    </label>
+  </div>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox">
+      <code>table-sm</code>
+    </label>
+  </div>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox">
+      <code>table-borderless</code>
+    </label>
+  </div>
+</div>
+
+<table
+  id="table"
+  data-url="json/data1.json">
+  <thead>
+    <tr>
+      <th data-field="id">Item ID</th>
+      <th data-field="name">Item Name</th>
+      <th data-field="price">Item Price</th>
+    </tr>
+  </thead>
+</table>
+
+<script>
+  var $table = $('#table')
+
+  function mounted() {
+    $table.bootstrapTable()
+
+    $('.toolbar input').change(function () {
+      var classes = []
+      $('.toolbar input:checked').map(function () {
+        classes.push($(this).next().text())
+      })
+
+      $table.bootstrapTable('refreshOptions', {
+        classes: classes.join(' ')
+      })
+    })
+  }
+</script>

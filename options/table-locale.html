@@ -1,0 +1,104 @@
+<script>
+  init({
+    title: 'Table Locale',
+    desc: 'Use <code>locale</code> option to set the i18n.',
+    links: ['bootstrap-table.min.css'],
+    scripts: [
+      'bootstrap-table.min.js',
+      'https://unpkg.com/bootstrap-table@1.13.2/dist/bootstrap-table-locale-all.min.js'
+    ]
+  })
+</script>
+
+<style>
+select.form-control {
+  width: 200px;
+}
+</style>
+
+<div class="toolbar">
+  <select class="form-control" id="locale">
+    <option value="af-ZA">af-ZA</option>
+    <option value="ar-SA">ar-SA</option>
+    <option value="ca-ES">ca-ES</option>
+    <option value="cs-CZ">cs-CZ</option>
+    <option value="da-DK">da-DK</option>
+    <option value="de-DE">de-DE</option>
+    <option value="el-GR">el-GR</option>
+    <option value="en-US">en-US</option>
+    <option value="es-AR">es-AR</option>
+    <option value="es-CL">es-CL</option>
+    <option value="es-CR">es-CR</option>
+    <option value="es-ES">es-ES</option>
+    <option value="es-MX">es-MX</option>
+    <option value="es-NI">es-NI</option>
+    <option value="es-SP">es-SP</option>
+    <option value="et-EE">et-EE</option>
+    <option value="eu-EU">eu-EU</option>
+    <option value="fa-IR">fa-IR</option>
+    <option value="fi-FI">fi-FI</option>
+    <option value="fr-BE">fr-BE</option>
+    <option value="fr-FR">fr-FR</option>
+    <option value="he-IL">he-IL</option>
+    <option value="hr-HR">hr-HR</option>
+    <option value="hu-HU">hu-HU</option>
+    <option value="id-ID">id-ID</option>
+    <option value="it-IT">it-IT</option>
+    <option value="ja-JP">ja-JP</option>
+    <option value="ka-GE">ka-GE</option>
+    <option value="ko-KR">ko-KR</option>
+    <option value="ms-MY">ms-MY</option>
+    <option value="nb-NO">nb-NO</option>
+    <option value="nl-NL">nl-NL</option>
+    <option value="pl-PL">pl-PL</option>
+    <option value="pt-BR">pt-BR</option>
+    <option value="pt-PT">pt-PT</option>
+    <option value="ro-RO">ro-RO</option>
+    <option value="ru-RU">ru-RU</option>
+    <option value="sk-SK">sk-SK</option>
+    <option value="sv-SE">sv-SE</option>
+    <option value="th-TH">th-TH</option>
+    <option value="tr-TR">tr-TR</option>
+    <option value="uk-UA">uk-UA</option>
+    <option value="ur-PK">ur-PK</option>
+    <option value="uz-Latn-UZ">uz-Latn-UZ</option>
+    <option value="vi-VN">vi-VN</option>
+    <option value="zh-CN" selected>zh-CN</option>
+    <option value="zh-TW">zh-TW</option>
+  </select>
+</div>
+
+<table
+  id="table"
+  data-locale="zh-CN"
+  data-height="460"
+  data-toolbar=".toolbar"
+  data-search="true"
+  data-show-refresh="true"
+  data-show-toggle="true"
+  data-show-columns="true"
+  data-show-export="true"
+  data-pagination="true"
+  data-url="json/data1.json">
+  <thead>
+    <tr>
+      <th data-field="id">ID</th>
+      <th data-field="name">Item Name</th>
+      <th data-field="price">Item Price</th>
+    </tr>
+  </thead>
+</table>
+
+<script>
+  var $table = $('#table')
+
+  function mounted() {
+    $table.bootstrapTable()
+
+    $('#locale').change(function () {
+      $table.bootstrapTable('refreshOptions', {
+        locale: $(this).val()
+      })
+    })
+  }
+</script>

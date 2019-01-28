@@ -1,0 +1,31 @@
+<script>
+  init({
+    title: 'AJAX Options',
+    desc: 'Use <code>ajaxOptions</code> option to set the Additional options for submit ajax reques, for example we can use <code>beforeSend</code> option to send the custom request header.',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
+<table
+  id="table"
+  data-toggle="table"
+  data-height="460"
+  data-ajax-options="ajaxOptions"
+  data-url="json/data1.json">
+  <thead>
+    <tr>
+      <th data-field="id">ID</th>
+      <th data-field="name">Item Name</th>
+      <th data-field="price">Item Price</th>
+    </tr>
+  </thead>
+</table>
+
+<script>
+  window.ajaxOptions = {
+    beforeSend: function (xhr) {
+      xhr.setRequestHeader('Custom-Auth-Token', 'custom-auth-token')
+    }
+  }
+</script>

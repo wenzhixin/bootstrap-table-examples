@@ -1,0 +1,45 @@
+<script>
+  init({
+    title: 'Row Attributes',
+    desc: 'Use <code>rowAttributes</code> option to set the row attributes.',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
+<table
+  id="table"
+  data-toggle="table"
+  data-height="460"
+  data-url="json/data1.json"
+  data-row-attributes="rowAttributes">
+  <thead>
+    <tr>
+      <th data-field="id">ID</th>
+      <th data-field="name">Item Name</th>
+      <th data-field="price">Item Price</th>
+    </tr>
+  </thead>
+</table>
+
+<script>
+  function rowAttributes(row, index) {
+    return {
+      'data-toggle': 'popover',
+      'data-placement': 'bottom',
+      'data-trigger': 'hover',
+      'data-content': [
+        'Index: ' + index,
+        'ID: ' + row.id,
+        'Name: ' + row.name,
+        'Price: ' + row.price
+      ].join(', ')
+    }
+  }
+
+  function mounted() {
+    $('#table').on('post-body.bs.table', function (e) {
+      $('[data-toggle="popover"]').popover()
+    })
+  }
+</script>

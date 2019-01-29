@@ -41,11 +41,11 @@
       data.push(row)
     }
 
-    if ( $('.navbar-fixed-top').css('height') ) {
-      stickyHeaderOffsetY = +$('.navbar-fixed-top').css('height').replace('px','')
+    if ($('.navbar-fixed-top').css('height')) {
+      stickyHeaderOffsetY = +$('.navbar-fixed-top').css('height').replace('px', '')
     }
-    if ( $('.navbar-fixed-top').css('margin-bottom') ) {
-      stickyHeaderOffsetY += +$('.navbar-fixed-top').css('margin-bottom').replace('px','')
+    if ($('.navbar-fixed-top').css('margin-bottom')) {
+      stickyHeaderOffsetY += +$('.navbar-fixed-top').css('margin-bottom').replace('px', '')
     }
 
     $el.bootstrapTable('destroy').bootstrapTable({

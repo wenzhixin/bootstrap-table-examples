@@ -11,7 +11,7 @@ function loadUrl(url_) {
   } else if (location.search.slice(1) === 'is-debug') {
     hash = '#is-debug'
   }
-  var url = template + '?v=30&url=' + url_ + hash
+  var url = template + '?v=31&url=' + url_ + hash
   if (window._config.isDebug) {
     url = template + '?t=' + (+new Date()) + '&url=' + url_ + hash
   }

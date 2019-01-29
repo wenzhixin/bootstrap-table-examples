@@ -13,6 +13,12 @@
   })
 </script>
 
+<style>
+.like {
+  margin-right: 10px;
+}
+</style>
+
 <div id="toolbar">
   <button id="remove" class="btn btn-danger" disabled>
     <i class="glyphicon glyphicon-remove"></i> Delete
@@ -68,10 +74,10 @@
   function operateFormatter(value, row, index) {
     return [
       '<a class="like" href="javascript:void(0)" title="Like">',
-      '<i class="glyphicon glyphicon-heart"></i>',
+      '<i class="fa fa-heart"></i>',
       '</a>  ',
       '<a class="remove" href="javascript:void(0)" title="Remove">',
-      '<i class="glyphicon glyphicon-remove"></i>',
+      '<i class="fa fa-trash"></i>',
       '</a>'
     ].join('')
   }

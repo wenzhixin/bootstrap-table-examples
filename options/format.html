@@ -17,11 +17,14 @@
       <th data-field="id" data-formatter="ID: %s">ID</th>
       <th data-field="name" data-formatter="nameFormatter">Item Name</th>
       <th data-field="price" data-formatter="priceFormatter">Item Price</th>
+      <th data-field="operate" data-formatter="operateFormatter" data-events="operateEvents">Item Price</th>
     </tr>
   </thead>
 </table>
 
 <script>
+  var $table = $('#table')
+
   function nameFormatter(value, row) {
     var icon = row.id % 2 === 0 ? 'fa-star' : 'fa-star-and-crescent'
     return '<i class="fa ' + icon + '"></i> ' + value
@@ -34,6 +37,29 @@
       '<i class="fa fa-dollar-sign"></i>' +
       value.substring(1) +
       '</div>'
+  }
+
+  function operateFormatter(value, row, index) {
+    return [
+      '<a class="like" href="javascript:void(0)" title="Like">',
+      '<i class="fa fa-heart"></i>',
+      '</a>  ',
+      '<a class="remove" href="javascript:void(0)" title="Remove">',
+      '<i class="fa fa-trash"></i>',
+      '</a>'
+    ].join('')
+  }
+
+  window.operateEvents = {
+    'click .like': function (e, value, row, index) {
+      alert('You click like action, row: ' + JSON.stringify(row))
+    },
+    'click .remove': function (e, value, row, index) {
+      $table.bootstrapTable('remove', {
+        field: 'id',
+        values: [row.id]
+      })
+    }
   }
 </script>
 </body>

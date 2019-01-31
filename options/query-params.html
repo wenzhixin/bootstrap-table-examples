@@ -1,7 +1,7 @@
 <script>
   init({
     title: 'Query Params',
-    desc: 'Use <code>queryParams</code> option to .',
+    desc: 'Use <code>queryParams</code> option to send additional parameters, in this case we send <code>search=8</code> to the server.',
     links: ['bootstrap-table.min.css'],
     scripts: ['bootstrap-table.min.js']
   })
@@ -11,7 +11,10 @@
   id="table"
   data-toggle="table"
   data-height="460"
-  data-url="json/data1.json">
+  data-pagination="true"
+  data-side-pagination="server"
+  data-query-params="queryParams"
+  data-url="https://examples.wenzhixin.net.cn/examples/bootstrap_table/data">
   <thead>
     <tr>
       <th data-field="id">ID</th>
@@ -22,9 +25,8 @@
 </table>
 
 <script>
-  var $table = $('#table')
-
-  function mounted() {
-
+  function queryParams(params) {
+    params.search = 8
+    return params
   }
 </script>

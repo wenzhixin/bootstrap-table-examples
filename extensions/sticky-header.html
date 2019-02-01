@@ -1,7 +1,7 @@
 <script>
   init({
     title: 'Sticky Header',
-    desc: 'User Plugin: bootstrap-table-sticky-header. An extension which provides a sticky header for table columns when scrolling on a long page and / or table. Works for tables with many columns and narrow width with horizontal scrollbars too.',
+    desc: 'User Plugin: bootstrap-table-sticky-header. An extension which provides a sticky header for the table when scrolling.',
     links: [
       'bootstrap-table.min.css',
       'extensions/sticky-header/bootstrap-table-sticky-header.css'
@@ -12,6 +12,34 @@
     ]
   })
 </script>
+
+<style>
+.sticky-header-container {
+  left: 3em;
+  right: 3em;
+}
+</style>
+
+<div class="toolbar">
+  <div class="radio">
+    <label>
+      <input type="radio" checked name="theadClasses">
+      <code>undefined</code>
+    </label>
+  </div>
+  <div class="radio">
+    <label>
+      <input type="radio" name="theadClasses">
+      <code>thead-light</code>
+    </label>
+  </div>
+  <div class="radio">
+    <label>
+      <input type="radio" name="theadClasses">
+      <code>thead-dark</code>
+    </label>
+  </div>
+</div>
 
 <table id="table" data-show-columns="true"></table>
 
@@ -24,7 +52,6 @@
     var row
     var columns = []
     var data = []
-    var stickyHeaderOffsetY = 0
 
     for (i = 0; i < cells; i++) {
       columns.push({
@@ -41,23 +68,21 @@
       data.push(row)
     }
 
-    if ($('.navbar-fixed-top').css('height')) {
-      stickyHeaderOffsetY = +$('.navbar-fixed-top').css('height').replace('px', '')
-    }
-    if ($('.navbar-fixed-top').css('margin-bottom')) {
-      stickyHeaderOffsetY += +$('.navbar-fixed-top').css('margin-bottom').replace('px', '')
-    }
+    var classes = $('.toolbar input:checked').next().text()
 
     $el.bootstrapTable('destroy').bootstrapTable({
       columns: columns,
       data: data,
       search: true,
       stickyHeader: true,
-      stickyHeaderOffsetY: stickyHeaderOffsetY + 'px'
+      theadClasses: classes
     })
   }
 
   function mounted() {
+    $('.toolbar input').change(function () {
+      buildTable($table, 20, 50)
+    })
     buildTable($table, 20, 50)
   }
 </script>

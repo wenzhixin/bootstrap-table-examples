@@ -1,0 +1,71 @@
+<script>
+  init({
+    title: 'Issue #3949',
+    desc: 'Multiple group header and large columns(<a href="https://github.com/wenzhixin/bootstrap-table/issues/3949" target="_blank">#3949</a>).',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
+<table id="table">
+  <thead>
+    <tr>
+      <th data-field="id">ID</th>
+      <th data-field="name">Item Name</th>
+      <th data-field="price">Item Price</th>
+    </tr>
+  </thead>
+</table>
+
+<script>
+  var data = [{'CheckDetailGuid': '932D21BD-1FCB-40E5-898A-E09519924685','CheckGuid': '9f830385-d63e-4e87-bbc7-41e323d4bc27','StockGuid': 'BD43193C-9423-469D-BB97-11396311C45A','s_PackageNo': 'PK20180529000042','s_OriginalPackageNo': '71','s_ProductName': 'ICND2038S','s_PackageNumber': 30000,'s_DateCode': '1814','s_LotNo': 'B09772GA','s_BIN': 'BIN1','s_AreaName': 'TP-SZ1-A03','PackageNo': 'PK20180529000042','OriginalPackageNo': '71','ProductName': 'ICND2038S','PackageNumber': 30000,'DateCode': '1814','LotNo': 'B09772GA','BIN': 'BIN1','AreaName': 'TP-SZ1-A03','IsUpdateArea': 0,'Remark': '','CreateUserGuid': '01CCA69A-CBF1-4DB6-A928-75FB7D7DAF65','CreateDate': '2018-07-02 16:39:14','ModifyUserGuid': '','ModifyDate': '0001-01-01 00:00:00'},{'CheckDetailGuid': 'FB990615-053A-4DBB-AA28-F163094510DF','CheckGuid': '9f830385-d63e-4e87-bbc7-41e323d4bc27','StockGuid': 'AB33FC8D-D722-4247-9EAC-039EA05A2225','s_PackageNo': 'PK20180529000039','s_OriginalPackageNo': '6','s_ProductName': 'ICND2038S','s_PackageNumber': 30000,'s_DateCode': '1814','s_LotNo': 'B09769GA','s_BIN': 'BIN1','s_AreaName': 'TP-SZ1-A03','PackageNo': 'PK20180529000039','OriginalPackageNo': '6','ProductName': 'ICND2038S','PackageNumber': 30000,'DateCode': '1814','LotNo': 'B09769GA','BIN': 'BIN1','AreaName': 'TP-SZ1-A03','IsUpdateArea': 0,'Remark': '','CreateUserGuid': '01CCA69A-CBF1-4DB6-A928-75FB7D7DAF65','CreateDate': '2018-07-02 16:39:13','ModifyUserGuid': '','ModifyDate': '0001-01-01 00:00:00'},{'CheckDetailGuid': 'D514CBB0-9450-4773-B30E-470B46B4D13C','CheckGuid': '9f830385-d63e-4e87-bbc7-41e323d4bc27','StockGuid': 'F91C2D78-DD47-4736-968C-19E4C6E64FBB','s_PackageNo': 'PK20180529000038','s_OriginalPackageNo': '118','s_ProductName': 'ICND2038S','s_PackageNumber': 30000,'s_DateCode': '1814','s_LotNo': 'B09768GA','s_BIN': 'BIN1','s_AreaName': 'TP-SZ1-A03','PackageNo': 'PK20180529000038','OriginalPackageNo': '118','ProductName': 'ICND2038S','PackageNumber': 30000,'DateCode': '1814','LotNo': 'B09768GA','BIN': 'BIN1','AreaName': 'TP-SZ1-A03','IsUpdateArea': 0,'Remark': '','CreateUserGuid': '01CCA69A-CBF1-4DB6-A928-75FB7D7DAF65','CreateDate': '2018-07-02 16:39:11','ModifyUserGuid': '','ModifyDate': '0001-01-01 00:00:00'},{'CheckDetailGuid': '923B32FB-C836-4213-A893-9164EFCBCBF5','CheckGuid': '9f830385-d63e-4e87-bbc7-41e323d4bc27','StockGuid': 'A3C29634-E354-4CB1-8EAE-9DEEB98BC90F','s_PackageNo': 'PK20180529000037','s_OriginalPackageNo': '35','s_ProductName': 'ICND2038S','s_PackageNumber': 30000,'s_DateCode': '1814','s_LotNo': 'B09431GA','s_BIN': 'BIN1','s_AreaName': 'TP-SZ1-A03','PackageNo': 'PK20180529000037','OriginalPackageNo': '35','ProductName': 'ICND2038S','PackageNumber': 30000,'DateCode': '1814','LotNo': 'B09431GA','BIN': 'BIN1','AreaName': 'TP-SZ1-A03','IsUpdateArea': 0,'Remark': '','CreateUserGuid': '01CCA69A-CBF1-4DB6-A928-75FB7D7DAF65','CreateDate': '2018-07-02 16:39:10','ModifyUserGuid': '','ModifyDate': '0001-01-01 00:00:00'},{'CheckDetailGuid': '66D255E7-E693-4AE1-B98D-9ABA679A1AC3','CheckGuid': '9f830385-d63e-4e87-bbc7-41e323d4bc27','StockGuid': '1E619740-64BF-40D0-870C-CC4145847E91','s_PackageNo': 'PK20180529000043','s_OriginalPackageNo': '10','s_ProductName': 'ICND2038S','s_PackageNumber': 30000,'s_DateCode': '1814','s_LotNo': 'B09769GA','s_BIN': 'BIN1','s_AreaName': 'TP-SZ1-A03','PackageNo': 'PK20180529000043','OriginalPackageNo': '10','ProductName': 'ICND2038S','PackageNumber': 30000,'DateCode': '1814','LotNo': 'B09769GA','BIN': 'BIN1','AreaName': 'TP-SZ1-A03','IsUpdateArea': 0,'Remark': '','CreateUserGuid': '01CCA69A-CBF1-4DB6-A928-75FB7D7DAF65','CreateDate': '2018-07-02 16:39:05','ModifyUserGuid': '','ModifyDate': '0001-01-01 00:00:00'},{'CheckDetailGuid': 'EB890C34-15B1-454B-9BD6-A7F503D042BF','CheckGuid': '9f830385-d63e-4e87-bbc7-41e323d4bc27','StockGuid': 'B44CC5DE-40B8-43F2-B2C2-A021ED9FF2A8','s_PackageNo': 'PK20180529000055','s_OriginalPackageNo': '5','s_ProductName': 'ICND2038S','s_PackageNumber': 30000,'s_DateCode': '1814','s_LotNo': 'B09768GA','s_BIN': 'BIN1','s_AreaName': 'TP-SZ1-A03','PackageNo': 'PK20180529000055','OriginalPackageNo': '5','ProductName': 'ICND2038S','PackageNumber': 30000,'DateCode': '1814','LotNo': 'B09768GA','BIN': 'BIN1','AreaName': 'TP-SZ1-A03','IsUpdateArea': 0,'Remark': '','CreateUserGuid': '01CCA69A-CBF1-4DB6-A928-75FB7D7DAF65','CreateDate': '2018-07-02 16:39:04','ModifyUserGuid': '','ModifyDate': '0001-01-01 00:00:00'},{'CheckDetailGuid': '11E67F3E-5A26-41D2-BA21-A639397023E9','CheckGuid': '9f830385-d63e-4e87-bbc7-41e323d4bc27','StockGuid': '6F4C200E-2529-4120-8829-790E8F96E41D','s_PackageNo': 'PK20180529000053','s_OriginalPackageNo': '11','s_ProductName': 'ICND2038S','s_PackageNumber': 30000,'s_DateCode': '1815','s_LotNo': 'A10968GA','s_BIN': 'BIN1','s_AreaName': 'TP-SZ1-A03','PackageNo': 'PK20180529000053','OriginalPackageNo': '11','ProductName': 'ICND2038S','PackageNumber': 30000,'DateCode': '1815','LotNo': 'A10968GA','BIN': 'BIN1','AreaName': 'TP-SZ1-A03','IsUpdateArea': 0,'Remark': '','CreateUserGuid': '01CCA69A-CBF1-4DB6-A928-75FB7D7DAF65','CreateDate': '2018-07-02 16:39:03','ModifyUserGuid': '','ModifyDate': '0001-01-01 00:00:00'},{'CheckDetailGuid': '298EB011-6C7A-4A93-9EC9-2CDDDD777615','CheckGuid': '9f830385-d63e-4e87-bbc7-41e323d4bc27','StockGuid': '01176BB0-5612-4CDA-9439-11459EBFD83D','s_PackageNo': 'PK20180529000034','s_OriginalPackageNo': '9','s_ProductName': 'ICND2038S','s_PackageNumber': 30000,'s_DateCode': '1809','s_LotNo': 'B09359GA','s_BIN': 'BIN1','s_AreaName': 'TP-SZ1-A03','PackageNo': 'PK20180529000034','OriginalPackageNo': '9','ProductName': 'ICND2038S','PackageNumber': 30000,'DateCode': '1809','LotNo': 'B09359GA','BIN': 'BIN1','AreaName': 'TP-SZ1-A03','IsUpdateArea': 0,'Remark': '','CreateUserGuid': '01CCA69A-CBF1-4DB6-A928-75FB7D7DAF65','CreateDate': '2018-07-02 16:39:03','ModifyUserGuid': '','ModifyDate': '0001-01-01 00:00:00'},{'CheckDetailGuid': 'EF7BFE2F-E7D4-4894-A375-F89F7E57B5FA','CheckGuid': '9f830385-d63e-4e87-bbc7-41e323d4bc27','StockGuid': '46830709-DB0A-40F8-9504-15A50F86B6EC','s_PackageNo': 'PK20180629000064','s_OriginalPackageNo': 'HY20180628-130','s_ProductName': 'ICN2028BP','s_PackageNumber': 30000,'s_DateCode': '1817','s_LotNo': 'B10632HA','s_BIN': 'bin1','s_AreaName': 'TP-SZ1-A03','PackageNo': 'PK20180629000064','OriginalPackageNo': 'HY20180628-130','ProductName': 'ICN2028BP','PackageNumber': 30000,'DateCode': '1817','LotNo': 'B10632HA','BIN': 'BIN1','AreaName': 'TP-SZ1-A03','IsUpdateArea': 0,'Remark': '','CreateUserGuid': '01CCA69A-CBF1-4DB6-A928-75FB7D7DAF65','CreateDate': '2018-07-02 16:38:54','ModifyUserGuid': '','ModifyDate': '0001-01-01 00:00:00'},{'CheckDetailGuid': '10757004-F90B-4388-802F-78CD9FE51838','CheckGuid': '9f830385-d63e-4e87-bbc7-41e323d4bc27','StockGuid': '4B99A17F-5E6E-4B8F-A4A0-162AF3749302','s_PackageNo': 'PK20180629000065','s_OriginalPackageNo': 'HY20180628-145','s_ProductName': 'ICN2028BP','s_PackageNumber': 30000,'s_DateCode': '1820','s_LotNo': 'B10631HA','s_BIN': 'BIN1','s_AreaName': 'TP-SZ1-A03','PackageNo': 'PK20180629000065','OriginalPackageNo': 'HY20180628-145','ProductName': 'ICN2028BP','PackageNumber': 30000,'DateCode': '1820','LotNo': 'B10631HA','BIN': 'BIN1','AreaName': 'TP-SZ1-A03','IsUpdateArea': 0,'Remark': '','CreateUserGuid': '01CCA69A-CBF1-4DB6-A928-75FB7D7DAF65','CreateDate': '2018-07-02 16:38:53','ModifyUserGuid': '','ModifyDate': '0001-01-01 00:00:00'},{'CheckDetailGuid': '56135BD8-8ECB-4DD3-8806-D2AE81443881','CheckGuid': '9f830385-d63e-4e87-bbc7-41e323d4bc27','StockGuid': '25785E58-7ADE-44DC-A5BD-CB6DEA71B66F','s_PackageNo': 'PK20180629000070','s_OriginalPackageNo': 'HY20180628-118','s_ProductName': 'ICN2028BP','s_PackageNumber': 30000,'s_DateCode': '1817','s_LotNo': 'B10632HA','s_BIN': 'BIN1','s_AreaName': 'TP-SZ1-A03','PackageNo': 'PK20180629000070','OriginalPackageNo': 'HY20180628-118','ProductName': 'ICN2028BP','PackageNumber': 30000,'DateCode': '1817','LotNo': 'B10632HA','BIN': 'BIN1','AreaName': 'TP-SZ1-A03','IsUpdateArea': 0,'Remark': '','CreateUserGuid': '01CCA69A-CBF1-4DB6-A928-75FB7D7DAF65','CreateDate': '2018-07-02 16:38:53','ModifyUserGuid': '','ModifyDate': '0001-01-01 00:00:00'},{'CheckDetailGuid': 'DB5EE652-ACBE-4801-808A-7BDE7F3046A3','CheckGuid': '9f830385-d63e-4e87-bbc7-41e323d4bc27','StockGuid': '1170ADDD-0FC5-4DB1-B858-78FF8C52D727','s_PackageNo': 'PK20180629000066','s_OriginalPackageNo': 'HY20180628-111','s_ProductName': 'ICN2028BP','s_PackageNumber': 30000,'s_DateCode': '1817','s_LotNo': 'B10632HA','s_BIN': 'BIN1','s_AreaName': 'TP-SZ1-A03','PackageNo': 'PK20180629000066','OriginalPackageNo': 'HY20180628-111','ProductName': 'ICN2028BP','PackageNumber': 30000,'DateCode': '1817','LotNo': 'B10632HA','BIN': 'BIN1','AreaName': 'TP-SZ1-A03','IsUpdateArea': 0,'Remark': '','CreateUserGuid': '01CCA69A-CBF1-4DB6-A928-75FB7D7DAF65','CreateDate': '2018-07-02 16:38:52','ModifyUserGuid': '','ModifyDate': '0001-01-01 00:00:00'},{'CheckDetailGuid': '89DCEEDB-8A4B-467F-9695-38E9DC37DE74','CheckGuid': '9f830385-d63e-4e87-bbc7-41e323d4bc27','StockGuid': 'D7D5A1AB-FF5F-4720-AC6D-0950D48C3D4C','s_PackageNo': 'PK20180629000072','s_OriginalPackageNo': 'HY20180628-134','s_ProductName': 'ICN2028BP','s_PackageNumber': 30000,'s_DateCode': '1820','s_LotNo': 'B10631HA','s_BIN': 'BIN1','s_AreaName': 'TP-SZ1-A03','PackageNo': 'PK20180629000072','OriginalPackageNo': 'HY20180628-134','ProductName': 'ICN2028BP','PackageNumber': 30000,'DateCode': '1820','LotNo': 'B10631HA','BIN': 'BIN1','AreaName': 'TP-SZ1-A03','IsUpdateArea': 0,'Remark': '','CreateUserGuid': '01CCA69A-CBF1-4DB6-A928-75FB7D7DAF65','CreateDate': '2018-07-02 16:38:49','ModifyUserGuid': '','ModifyDate': '0001-01-01 00:00:00'}]
+  var $table = $('#table')
+
+  function mounted() {
+    $table.bootstrapTable({
+      height: 400,
+      data: data,
+      columns: [
+        [
+          {
+            field: 'id',
+            title: '#', rowspan: 2, // 标题  可不加
+            formatter: function (value, row, index) {
+              return index + 1
+            }
+          },
+          { title: '扫码', valign: 'middle', align: 'center', colspan: 7 },
+          { title: '库存', valign: 'middle', align: 'center', colspan: 7 },
+          { field: 'AreaName', title: '仓位', sortable: true, rowspan: 2 },
+          {
+            field: 'IsUpdateArea', title: '是否更新仓位', sortable: true, rowspan: 2,
+            formatter: function (value, row, index) {
+              if (value === 0) {
+                return '否'
+              }
+              return '是'
+            }
+          },
+          { field: 'Remark', title: '备注', rowspan: 2, width: '180' }
+        ],
+        [
+          { field: 's_PackageNo', title: '箱号', sortable: true, width: '140' },
+          { field: 's_OriginalPackageNo', title: '原始箱号', sortable: true, width: '130' },
+          { field: 's_ProductName', title: '产品名称', sortable: true },
+          { field: 's_PackageNumber', title: '数量', sortable: true },
+          { field: 's_DateCode', title: '周号', sortable: true },
+          { field: 's_LotNo', title: '批号', sortable: true },
+          { field: 's_IPN', title: '档位', sortable: true },
+
+          { field: 'PackageNo', title: '箱号', sortable: true, width: '140' },
+          { field: 'OriginalPackageNo', title: '原始箱号', sortable: true, width: '130' },
+          { field: 'ProductName', title: '产品名称', sortable: true },
+          { field: 'PackageNumber', title: '数量', sortable: true },
+          { field: 'DateCode', title: '周号', sortable: true },
+          { field: 'LotNo', title: '批号', sortable: true },
+          { field: 'IPN', title: '档位', sortable: true }
+        ]
+      ]
+    })
+  }
+</script>

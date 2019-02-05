@@ -143,6 +143,9 @@ $(function () {
         } else {
           $('#example').html(data)
         }
+      },
+      error: function () {
+        parent.location.href = 'index.html'
       }
     })
 

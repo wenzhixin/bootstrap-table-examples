@@ -1,0 +1,46 @@
+<script>
+  init({
+    title: 'Issue #2211',
+    desc: 'Rotated table column headers(<a href="https://github.com/wenzhixin/bootstrap-table/issues/2211" target="_blank">#2211</a>).',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
+<style>
+.bootstrap-table .fixed-table-container .table thead th .th-inner {
+  overflow: inherit;
+}
+.table-header-rotated td.id {
+  font-weight: bold;
+}
+.table-header-rotated th {
+  height: 120px;
+  white-space: nowrap;
+}
+.table-header-rotated th:not(.id) > div {
+  transform: translate(-9px, 0px) rotate(-45deg);
+  width: 30px;
+}
+.table-header-rotated th > div > span {
+  padding: 5px 10px;
+}
+</style>
+
+<table
+  id="table"
+  data-toggle="table"
+  data-classes="table table-hover table-header-rotated"
+  data-url="json/data5.json">
+  <thead>
+    <tr>
+      <th data-field="id" class="id" data-width="100" data-formatter="Row %s"></th>
+      <th data-field="name">Item Name</th>
+      <th data-field="price">Item Price</th>
+      <th data-field="column1">Item Column1</th>
+      <th data-field="column2">Item Column2</th>
+      <th data-field="column3">Item Column3</th>
+      <th data-field="column4">Item Column4</th>
+    </tr>
+  </thead>
+</table>

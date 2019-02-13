@@ -1,7 +1,7 @@
 <script>
   init({
     title: 'Page Size',
-    desc: 'Use <code>pageSize</code> option to .',
+    desc: 'Use <code>pageSize</code> option to initialize the page size.',
     links: ['bootstrap-table.min.css'],
     scripts: ['bootstrap-table.min.js']
   })
@@ -11,6 +11,8 @@
   id="table"
   data-toggle="table"
   data-height="460"
+  data-pagination="true"
+  data-page-size="25"
   data-url="json/data1.json">
   <thead>
     <tr>

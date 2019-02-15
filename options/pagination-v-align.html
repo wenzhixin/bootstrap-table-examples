@@ -1,7 +1,7 @@
 <script>
   init({
     title: 'Pagination V Align',
-    desc: 'Use <code>paginationVAlign</code> option to .',
+    desc: 'Use <code>paginationVAlign</code> option to vertical align the pagination.',
     links: ['bootstrap-table.min.css'],
     scripts: ['bootstrap-table.min.js']
   })
@@ -11,6 +11,8 @@
   id="table"
   data-toggle="table"
   data-height="460"
+  data-pagination="true"
+  data-pagination-v-align="both"
   data-url="json/data1.json">
   <thead>
     <tr>
@@ -20,11 +22,3 @@
     </tr>
   </thead>
 </table>
-
-<script>
-  var $table = $('#table')
-
-  function mounted() {
-
-  }
-</script>

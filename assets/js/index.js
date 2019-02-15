@@ -93,6 +93,10 @@ $(function () {
     $('.nav-list').toggleClass('active')
   })
 
+  $('.bd-sidenav li').each(function () {
+    $(this).attr('title', $.trim($(this).text()))
+  })
+
   $('[data-toggle="tooltip"]').tooltip()
 
   $(document).on('click', '#navbar li a, .nav-list li a, .navigation a', function (e) {

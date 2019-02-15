@@ -1,7 +1,7 @@
 <script>
   init({
     title: 'Pagination H Align',
-    desc: 'Use <code>paginationHAlign</code> option to .',
+    desc: 'Use <code>paginationHAlign</code> and <code>paginationDetailHAlign</code> options to align the pagination.',
     links: ['bootstrap-table.min.css'],
     scripts: ['bootstrap-table.min.js']
   })
@@ -11,6 +11,9 @@
   id="table"
   data-toggle="table"
   data-height="460"
+  data-pagination="true"
+  data-pagination-h-align="left"
+  data-pagination-detail-h-align="right"
   data-url="json/data1.json">
   <thead>
     <tr>
@@ -20,11 +23,3 @@
     </tr>
   </thead>
 </table>
-
-<script>
-  var $table = $('#table')
-
-  function mounted() {
-
-  }
-</script>

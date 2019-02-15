@@ -11,7 +11,7 @@ function loadUrl(url_) {
   } else if (location.search.slice(1) === 'is-debug') {
     hash = '#is-debug'
   }
-  var url = template + '?v=43&url=' + url_ + hash
+  var url = template + '?v=44&url=' + url_ + hash
   if (window._config.isDebug) {
     url = template + '?t=' + (+new Date()) + '&url=' + url_ + hash
   }
@@ -91,6 +91,10 @@ function doSearch() {
 $(function () {
   $('.toggle').click(function () {
     $('.nav-list').toggleClass('active')
+  })
+
+  $('.bd-sidenav li').each(function () {
+    $(this).attr('title', $.trim($(this).text()))
   })
 
   $('[data-toggle="tooltip"]').tooltip()

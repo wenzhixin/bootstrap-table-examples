@@ -1,19 +1,18 @@
 window._config = {
-  isDebug: location.hash.slice(1) === 'is-debug' ||
-    ['localhost', 'dev.bootstrap-table.com'].indexOf(location.hostname) > -1
+  isDebug: ['localhost', 'dev.bootstrap-table.com'].indexOf(location.hostname) > -1
 }
 
 function loadUrl(url_) {
-  var template = 'template.html'
   var hash = ''
-  if (location.search.slice(1) === 'view-source') {
-    hash = '#view-source'
-  } else if (location.search.slice(1) === 'is-debug') {
+  if (location.search.slice(1) === 'is-debug') {
     hash = '#is-debug'
   }
-  var url = template + '?v=VERSION&url=' + url_ + hash
+  var url = 'template.html?v=VERSION&url=' + url_ + hash
   if (window._config.isDebug) {
-    url = template + '?t=' + (+new Date()) + '&url=' + url_ + hash
+    url = 'template.html?t=' + (+new Date()) + '&url=' + url_ + hash
+  }
+  if (url_.indexOf('view-source') > -1) {
+    url = 'template.html?v=VERSION&view-source&url=' + url_ + hash
   }
   $('iframe').attr('src', url)
 }
@@ -31,7 +30,7 @@ function initNavigation(href) {
 }
 
 function doSearch() {
-  var searchClient = window.algoliasearch('FXDJ517Z8G', '9b89c4a7048370f4809b0bc77b2564ac');
+  var searchClient = window.algoliasearch('FXDJ517Z8G', '9b89c4a7048370f4809b0bc77b2564ac')
 
   var search = window.instantsearch({
     indexName: 'bootstrap-table-example',

@@ -7,7 +7,7 @@ function loadUrl(url_) {
   if (location.search.slice(1) === 'is-debug') {
     hash = '#is-debug'
   }
-  var url = 'template.html?v=46&url=' + url_ + hash
+  var url = 'template.html?v=47&url=' + url_ + hash
   if (window._config.isDebug) {
     url = 'template.html?t=' + (+new Date()) + '&url=' + url_ + hash
   }

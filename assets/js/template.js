@@ -149,12 +149,12 @@ $(function () {
       }
     })
 
-    var $el
     if (isSource) {
       $('#viewExample').show().tooltip({
         title: 'View Example',
         placement: 'right'
       }).click(function () {
+        $('#viewExample').hide()
         window.parent.location.hash = window.parent.location.hash.replace('#view-source', '')
       })
     } else {
@@ -162,7 +162,10 @@ $(function () {
         title: 'View Source',
         placement: 'right'
       }).click(function () {
-        window.parent.location.hash += '#view-source'
+        $('#viewSource').hide()
+        if (window.parent.location.hash.indexOf('view-source') === -1) {
+          window.parent.location.hash += '#view-source'
+        }
       })
     }
   }

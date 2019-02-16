@@ -124,7 +124,7 @@ $(function () {
       query[item.split('=')[0]] = item.split('=')[1]
     })
     var url = query.url
-    var isSource = location.hash.slice(1) === 'view-source'
+    var isSource = location.hash.substring(1) === 'view-source'
 
     delete query.url
 
@@ -151,16 +151,18 @@ $(function () {
 
     var $el
     if (isSource) {
-      $el = $('#viewExample').attr('href', 'index.html#' + url)
-      $el.show().tooltip({
+      $('#viewExample').show().tooltip({
         title: 'View Example',
         placement: 'right'
+      }).click(function () {
+        window.parent.location.hash = window.parent.location.hash.replace('#view-source', '')
       })
     } else {
-      $el = $('#viewSource').attr('href', 'index.html?view-source#' + url)
-      $el.show().tooltip({
+      $('#viewSource').show().tooltip({
         title: 'View Source',
         placement: 'right'
+      }).click(function () {
+        window.parent.location.hash += '#view-source'
       })
     }
   }

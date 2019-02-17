@@ -1,37 +1,45 @@
 window._config = {
-  isDebug: location.hash.slice(1) === 'is-debug' ||
-    ['localhost', 'dev.bootstrap-table.com'].indexOf(location.hostname) > -1
+  isDebug: ['localhost', 'dev.bootstrap-table.com'].indexOf(location.hostname) > -1
 }
 
 function loadUrl(url_) {
-  var template = 'template.html'
   var hash = ''
-  if (location.search.slice(1) === 'view-source') {
-    hash = '#view-source'
-  } else if (location.search.slice(1) === 'is-debug') {
+  if (location.search.slice(1) === 'is-debug') {
     hash = '#is-debug'
   }
-  var url = template + '?v=VERSION&url=' + url_ + hash
+  var url = 'template.html?v=VERSION&url=' + url_ + hash
   if (window._config.isDebug) {
-    url = template + '?t=' + (+new Date()) + '&url=' + url_ + hash
+    url = 'template.html?t=' + (+new Date()) + '&url=' + url_ + hash
+  }
+  if (url_.indexOf('view-source') > -1) {
+    url = 'template.html?v=VERSION&view-source&url=' + url_ + hash
   }
   $('iframe').attr('src', url)
 }
 
 function initNavigation(href) {
   var $el = $('a[href="#' + href + '"]')
+  var $parent = $el.parent()
 
   if (!$el.length) {
     return
   }
 
   $('#bd-docs-nav .active').removeClass('active')
-  $el.parent().addClass('active')
+  $parent.addClass('active')
   $el.parents('.bd-toc-item').addClass('active')
 }
 
+function autoScrollNavigation () {
+  var $el = $('.bd-sidenav >li.active')
+  $('#bd-docs-nav').scrollTop(0)
+  if ($el.length && $el.offset().top > $(window).height() / 2) {
+    $('#bd-docs-nav').scrollTop($el.offset().top - $(window).height() / 2)
+  }
+}
+
 function doSearch() {
-  var searchClient = window.algoliasearch('FXDJ517Z8G', '9b89c4a7048370f4809b0bc77b2564ac');
+  var searchClient = window.algoliasearch('FXDJ517Z8G', '9b89c4a7048370f4809b0bc77b2564ac')
 
   var search = window.instantsearch({
     indexName: 'bootstrap-table-example',
@@ -83,35 +91,18 @@ function doSearch() {
     location.href = href
     $('.ais-SearchBox-reset').click()
     $('.ais-SearchBox-input').blur()
+    setTimeout(autoScrollNavigation, 200)
   })
 
   search.start()
 }
 
 $(function () {
-  $('.toggle').click(function () {
-    $('.nav-list').toggleClass('active')
+  $('.bd-sidenav li').each(function () {
+    $(this).attr('title', $.trim($(this).text()))
   })
 
   $('[data-toggle="tooltip"]').tooltip()
-
-  $(document).on('click', '#navbar li a, .nav-list li a, .navigation a', function (e) {
-    var href = $(this).attr('href')
-    if (href === '#' || /^http.*/.test(href)) {
-      return
-    }
-    e.preventDefault()
-    if (location.search.slice(1) === 'view-source') {
-      location.href = 'index.html#' + href
-      return
-    }
-
-    $(this).blur()
-    $('.nav-list').removeClass('active')
-    location.hash = href
-    loadUrl(href)
-    initNavigation(href)
-  })
 
   $(window).hashchange(function () {
     var href = location.hash.substring(1)
@@ -119,12 +110,9 @@ $(function () {
     initNavigation(href)
   })
 
-  $(window).on('blur',function() {
-    $('.dropdown-toggle').parent().removeClass('open')
-  })
-
   var href = location.hash.substring(1) || 'welcome.html'
   loadUrl(href)
   initNavigation(href)
+  autoScrollNavigation()
   doSearch()
 })

@@ -1,7 +1,7 @@
 <script>
   init({
-    title: 'Pagination Next Text',
-    desc: 'Use <code>paginationNextText</code> option to .',
+    title: 'Pagination Pre Text',
+    desc: 'Use <code>paginationPreText</code> and <code>paginationNextText</code> option to indicate the previous and next buttons.',
     links: ['bootstrap-table.min.css'],
     scripts: ['bootstrap-table.min.js']
   })
@@ -11,6 +11,9 @@
   id="table"
   data-toggle="table"
   data-height="460"
+  data-pagination="true"
+  data-pagination-pre-text="Previous"
+  data-pagination-next-text="Next"
   data-url="json/data1.json">
   <thead>
     <tr>
@@ -20,11 +23,3 @@
     </tr>
   </thead>
 </table>
-
-<script>
-  var $table = $('#table')
-
-  function mounted() {
-
-  }
-</script>

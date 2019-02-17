@@ -1,7 +1,7 @@
 <script>
   init({
     title: 'Custom Search',
-    desc: 'Use <code>customSearch</code> option to .',
+    desc: 'Use <code>customSearch</code> option to custom search function is executed instead of built-in search function.',
     links: ['bootstrap-table.min.css'],
     scripts: ['bootstrap-table.min.js']
   })
@@ -9,8 +9,8 @@
 
 <table
   id="table"
-  data-toggle="table"
-  data-height="460"
+  data-search="true"
+  data-custom-search="customSearch"
   data-url="json/data1.json">
   <thead>
     <tr>
@@ -22,9 +22,17 @@
 </table>
 
 <script>
-  var $table = $('#table')
-
   function mounted() {
+    $('#table').bootstrapTable({
+      formatSearch: function () {
+        return 'Search Item Price'
+      }
+    })
+  }
 
+  function customSearch(data, text) {
+    return data.filter(function (row) {
+      return row.price.indexOf(text) > -1
+    })
   }
 </script>

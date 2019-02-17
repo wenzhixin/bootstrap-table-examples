@@ -33,7 +33,7 @@ function initNavigation(href) {
 function autoScrollNavigation () {
   var $el = $('.bd-sidenav >li.active')
   $('#bd-docs-nav').scrollTop(0)
-  if ($el.offset().top > $(window).height() / 2) {
+  if ($el.length && $el.offset().top > $(window).height() / 2) {
     $('#bd-docs-nav').scrollTop($el.offset().top - $(window).height() / 2)
   }
 }

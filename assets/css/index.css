@@ -20,6 +20,12 @@ iframe {
   position: static;
 }
 
+.bd-sidebar .nav>li>a {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 #hits {
   display: none;
   position: absolute;

@@ -1,7 +1,7 @@
 <script>
   init({
     title: 'Pagination Loop',
-    desc: 'Use <code>paginationLoop</code> option to .',
+    desc: 'Use <code>paginationLoop: false</code> option to disable pagination continuous loop mode.',
     links: ['bootstrap-table.min.css'],
     scripts: ['bootstrap-table.min.js']
   })
@@ -11,6 +11,8 @@
   id="table"
   data-toggle="table"
   data-height="460"
+  data-pagination="true"
+  data-pagination-loop="false"
   data-url="json/data1.json">
   <thead>
     <tr>
@@ -20,11 +22,3 @@
     </tr>
   </thead>
 </table>
-
-<script>
-  var $table = $('#table')
-
-  function mounted() {
-
-  }
-</script>

@@ -1,7 +1,7 @@
 <script>
   init({
     title: 'Page List',
-    desc: 'Use <code>pageList</code> option to .',
+    desc: 'Use <code>pageList</code> option to initialize the page size selecting list.',
     links: ['bootstrap-table.min.css'],
     scripts: ['bootstrap-table.min.js']
   })
@@ -11,7 +11,10 @@
   id="table"
   data-toggle="table"
   data-height="460"
-  data-url="json/data1.json">
+  data-pagination="true"
+  data-side-pagination="server"
+  data-page-list="[10, 25, 50, 100, 200, All]"
+  data-url="https://examples.wenzhixin.net.cn/examples/bootstrap_table/data">
   <thead>
     <tr>
       <th data-field="id">ID</th>

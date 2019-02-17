@@ -7,12 +7,12 @@ function loadUrl(url_) {
   if (location.search.slice(1) === 'is-debug') {
     hash = '#is-debug'
   }
-  var url = 'template.html?v=49&url=' + url_ + hash
+  var url = 'template.html?v=50&url=' + url_ + hash
   if (window._config.isDebug) {
     url = 'template.html?t=' + (+new Date()) + '&url=' + url_ + hash
   }
   if (url_.indexOf('view-source') > -1) {
-    url = 'template.html?v=49&view-source&url=' + url_ + hash
+    url = 'template.html?v=50&view-source&url=' + url_ + hash
   }
   $('iframe').attr('src', url)
 }
@@ -33,7 +33,7 @@ function initNavigation(href) {
 function autoScrollNavigation () {
   var $el = $('.bd-sidenav >li.active')
   $('#bd-docs-nav').scrollTop(0)
-  if ($el.offset().top > $(window).height() / 2) {
+  if ($el.length && $el.offset().top > $(window).height() / 2) {
     $('#bd-docs-nav').scrollTop($el.offset().top - $(window).height() / 2)
   }
 }

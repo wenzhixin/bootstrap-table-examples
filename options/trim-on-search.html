@@ -1,7 +1,7 @@
 <script>
   init({
     title: 'Trim On Search',
-    desc: 'Use <code>trimOnSearch</code> option to .',
+    desc: 'Use <code>trimOnSearch: false</code> option to disable trim spaces in search field.',
     links: ['bootstrap-table.min.css'],
     scripts: ['bootstrap-table.min.js']
   })
@@ -10,7 +10,8 @@
 <table
   id="table"
   data-toggle="table"
-  data-height="460"
+  data-search="true"
+  data-trim-on-search="false"
   data-url="json/data1.json">
   <thead>
     <tr>
@@ -20,11 +21,3 @@
     </tr>
   </thead>
 </table>
-
-<script>
-  var $table = $('#table')
-
-  function mounted() {
-
-  }
-</script>

@@ -28,26 +28,33 @@
   data-toolbar="#toolbar"
   data-show-toggle="ture"
   data-url="json/data1.json">
-  <thead>
-    <tr>
-      <th data-field="state" data-checkbox="true"></th>
-      <th data-field="id">ID</th>
-      <th data-field="name">Item Name</th>
-      <th data-field="price">Item Price</th>
-    </tr>
-  </thead>
 </table>
 
 <script>
   var $table = $('#table')
 
   function mounted() {
-    $table.bootstrapTable()
-
     $('#toolbar').find('select').change(function () {
       $table.bootstrapTable('destroy').bootstrapTable({
-        exportDataType: $(this).val()
+        exportDataType: $(this).val(),
+        columns: [
+          {
+            field: 'state',
+            checkbox: true,
+            visible: $(this).val() === 'selected'
+          },
+          {
+            field: 'id',
+            title: 'ID'
+          }, {
+            field: 'name',
+            title: 'Item Name'
+          }, {
+            field: 'price',
+            title: 'Item Price'
+          }
+        ]
       })
-    })
+    }).trigger('change')
   }
 </script>

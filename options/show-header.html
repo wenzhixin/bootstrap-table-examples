@@ -1,7 +1,7 @@
 <script>
   init({
     title: 'Show Header',
-    desc: 'Use <code>showHeader</code> option to .',
+    desc: 'Use <code>showHeader: false</code> option to hide the table header.',
     links: ['bootstrap-table.min.css'],
     scripts: ['bootstrap-table.min.js']
   })
@@ -10,7 +10,7 @@
 <table
   id="table"
   data-toggle="table"
-  data-height="460"
+  data-show-header="false"
   data-url="json/data1.json">
   <thead>
     <tr>
@@ -20,11 +20,3 @@
     </tr>
   </thead>
 </table>
-
-<script>
-  var $table = $('#table')
-
-  function mounted() {
-
-  }
-</script>

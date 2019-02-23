@@ -1,0 +1,35 @@
+<script>
+  init({
+    title: 'Auto Refresh',
+    desc: 'Use Plugin: bootstrap-table-auto-refresh to refresh the table.',
+    links: [
+      'bootstrap-table.min.css'
+    ],
+    scripts: [
+      'bootstrap-table.min.js',
+      'extensions/auto-refresh/bootstrap-table-auto-refresh.min.js'
+    ]
+  })
+</script>
+
+<table
+  id="table"
+  data-show-refresh="true"
+  data-auto-refresh="true"
+  data-pagination="true"
+  data-url="https://examples.wenzhixin.net.cn/examples/bootstrap_table/data"
+  data-side-pagination="server">
+  <thead>
+    <tr>
+      <th data-field="id" data-sortable="true">ID</th>
+      <th data-field="name" data-sortable="true">Item Name</th>
+      <th data-field="price" data-sortable="true">Item Price</th>
+    </tr>
+  </thead>
+</table>
+
+<script>
+  function mounted() {
+    $('#table').bootstrapTable()
+  }
+</script>

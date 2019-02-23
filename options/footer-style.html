@@ -1,30 +1,63 @@
 <script>
   init({
     title: 'Footer Style',
-    desc: 'Use <code>footerStyle</code> option to .',
+    desc: 'Use <code>footerStyle</code> option to set the footer style formatter function.',
     links: ['bootstrap-table.min.css'],
     scripts: ['bootstrap-table.min.js']
   })
 </script>
 
+<style>
+.uppercase {
+  text-transform: uppercase;
+}
+</style>
+
 <table
   id="table"
   data-toggle="table"
   data-height="460"
+  data-show-footer="true"
+  data-footer-style="footerStyle"
   data-url="json/data1.json">
   <thead>
     <tr>
-      <th data-field="id">ID</th>
-      <th data-field="name">Item Name</th>
-      <th data-field="price">Item Price</th>
+      <th data-field="id" data-footer-formatter="idFormatter">ID</th>
+      <th data-field="name" data-footer-formatter="nameFormatter">Item Name</th>
+      <th data-field="price" data-footer-formatter="priceFormatter">Item Price</th>
     </tr>
   </thead>
 </table>
 
 <script>
-  var $table = $('#table')
+  function idFormatter() {
+    return 'Total'
+  }
 
-  function mounted() {
+  function nameFormatter(data) {
+    return data.length
+  }
 
+  function priceFormatter(data) {
+    var field = this.field
+    return '$' + data.map(function (row) {
+      return +row[field].substring(1)
+    }).reduce(function (sum, i) {
+      return sum + i
+    }, 0)
+  }
+
+  function footerStyle(column) {
+    return {
+      id: {
+        classes: 'uppercase'
+      },
+      name: {
+        css: {'font-weight': 'normal'}
+      },
+      price: {
+        css: {color: 'red'}
+      }
+    }[column.field]
   }
 </script>

@@ -1,7 +1,7 @@
 <script>
   init({
     title: 'Show Refresh',
-    desc: 'Use <code>showRefresh</code> option to .',
+    desc: 'Use <code>showRefresh</code> option to show the refresh button.',
     links: ['bootstrap-table.min.css'],
     scripts: ['bootstrap-table.min.js']
   })
@@ -10,8 +10,10 @@
 <table
   id="table"
   data-toggle="table"
-  data-height="460"
-  data-url="json/data1.json">
+  data-show-refresh="true"
+  data-pagination="true"
+  data-side-pagination="server"
+  data-url="https://examples.wenzhixin.net.cn/examples/bootstrap_table/data">
   <thead>
     <tr>
       <th data-field="id">ID</th>
@@ -20,11 +22,3 @@
     </tr>
   </thead>
 </table>
-
-<script>
-  var $table = $('#table')
-
-  function mounted() {
-
-  }
-</script>

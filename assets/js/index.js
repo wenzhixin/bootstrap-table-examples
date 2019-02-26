@@ -7,12 +7,12 @@ function loadUrl(url_) {
   if (location.search.slice(1) === 'is-debug') {
     hash = '#is-debug'
   }
-  var url = 'template.html?v=54&url=' + url_ + hash
+  var url = 'template.html?v=55&url=' + url_ + hash
   if (window._config.isDebug) {
     url = 'template.html?t=' + (+new Date()) + '&url=' + url_ + hash
   }
   if (url_.indexOf('view-source') > -1) {
-    url = 'template.html?v=54&view-source&url=' + url_ + hash
+    url = 'template.html?v=55&view-source&url=' + url_ + hash
   }
   $('iframe').attr('src', url)
 }

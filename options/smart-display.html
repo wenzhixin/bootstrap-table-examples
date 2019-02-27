@@ -1,16 +1,26 @@
 <script>
   init({
     title: 'Smart Display',
-    desc: 'Use <code>smartDisplay</code> option to .',
+    desc: 'Use <code>smartDisplay</code> option to display pagination or card view smartly. In this case you can see the changed of the page list.',
     links: ['bootstrap-table.min.css'],
     scripts: ['bootstrap-table.min.js']
   })
 </script>
 
+<div class="toolbar">
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" checked>
+      <code>smartDisplay</code>
+    </label>
+  </div>
+</div>
+
 <table
   id="table"
-  data-toggle="table"
   data-height="460"
+  data-pagination="true"
+  data-toolbar=".toolbar"
   data-url="json/data1.json">
   <thead>
     <tr>
@@ -25,6 +35,12 @@
   var $table = $('#table')
 
   function mounted() {
+    $table.bootstrapTable()
 
+    $('.toolbar input').change(function () {
+      $table.bootstrapTable('destroy').bootstrapTable({
+        smartDisplay: $(this).prop('checked')
+      })
+    })
   }
 </script>

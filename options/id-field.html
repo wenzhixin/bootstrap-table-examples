@@ -1,30 +1,41 @@
 <script>
   init({
     title: 'Id Field',
-    desc: 'Use <code>idField</code> option to .',
+    desc: 'Use <code>idField: \'id\'</code> option to indicate which field is an identity field, and use <code>btSelectItem: \'id\'</code> to set the name of radio or checkbox input.',
     links: ['bootstrap-table.min.css'],
     scripts: ['bootstrap-table.min.js']
   })
 </script>
 
-<table
-  id="table"
-  data-toggle="table"
-  data-height="460"
-  data-url="json/data1.json">
-  <thead>
-    <tr>
-      <th data-field="id">ID</th>
-      <th data-field="name">Item Name</th>
-      <th data-field="price">Item Price</th>
-    </tr>
-  </thead>
-</table>
+<form>
+  <button class="btn btn-primary">Submit</button>
+
+  <table
+    id="table"
+    data-toggle="table"
+    data-toolbar=".btn-primary"
+    data-id-field="id"
+    data-select-item-name="id"
+    data-height="460"
+    data-url="json/data1.json">
+    <thead>
+      <tr>
+        <th data-radio="true"></th>
+        <th data-field="id">ID</th>
+        <th data-field="name">Item Name</th>
+        <th data-field="price">Item Price</th>
+      </tr>
+    </thead>
+  </table>
+</form>
 
 <script>
   var $table = $('#table')
 
   function mounted() {
-
+    $('form').submit(function () {
+      alert($(this).serialize())
+      return false
+    })
   }
 </script>

@@ -1,7 +1,7 @@
 <script>
   init({
     title: 'Table Escape',
-    desc: 'Use <code>escape</code> option to .',
+    desc: 'Use <code>escape</code> option to Escapes a string for insertion into HTML, replacing &, <, >, ", `, and \' characters.',
     links: ['bootstrap-table.min.css'],
     scripts: ['bootstrap-table.min.js']
   })
@@ -9,9 +9,7 @@
 
 <table
   id="table"
-  data-toggle="table"
-  data-height="460"
-  data-url="json/data1.json">
+  data-height="460">
   <thead>
     <tr>
       <th data-field="id">ID</th>
@@ -25,6 +23,17 @@
   var $table = $('#table')
 
   function mounted() {
-
+    $table.bootstrapTable({
+      escape: true,
+      data: [{
+        id: 1,
+        name: '<a href="#">item 1</a>',
+        price: '$1'
+      }, {
+        id: 2,
+        name: '<a href="#">item 2</a>',
+        price: '$2 '
+      }]
+    })
   }
 </script>

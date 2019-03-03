@@ -1,7 +1,7 @@
 <script>
   init({
     title: 'Ignore Click To Select On',
-    desc: 'Use <code>ignoreClickToSelectOn</code> option to .',
+    desc: 'Use <code>ignoreClickToSelectOn</code> option to set the ignore elements <code>clickToSelect</code>` on.',
     links: ['bootstrap-table.min.css'],
     scripts: ['bootstrap-table.min.js']
   })
@@ -9,22 +9,35 @@
 
 <table
   id="table"
-  data-toggle="table"
   data-height="460"
+  data-click-to-select="true"
   data-url="json/data1.json">
   <thead>
     <tr>
+      <th data-field="state" data-checkbox="true"></th>
       <th data-field="id">ID</th>
-      <th data-field="name">Item Name</th>
-      <th data-field="price">Item Price</th>
+      <th data-field="name" data-formatter="nameFormatter">Item Name</th>
+      <th data-field="price" data-formatter="priceFormatter">Item Price</th>
     </tr>
   </thead>
 </table>
 
 <script>
-  var $table = $('#table')
+  function nameFormatter(value) {
+    return '<label><input type="checkbox"> ' + value + '</label>'
+  }
+
+  function priceFormatter(value) {
+    return '<button class="btn btn-secondary">' + value + '</button>'
+  }
+
+  function ignoreClickToSelectOn(e) {
+    return ['A', 'BUTTON', 'LABEL', 'INPUT'].indexOf(e.tagName) > -1
+  }
 
   function mounted() {
-
+    $('#table').bootstrapTable({
+      ignoreClickToSelectOn: ignoreClickToSelectOn
+    })
   }
 </script>

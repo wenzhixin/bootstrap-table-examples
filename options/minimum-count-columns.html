@@ -1,7 +1,7 @@
 <script>
   init({
     title: 'Minimum Count Columns',
-    desc: 'Use <code>minimumCountColumns</code> option to .',
+    desc: 'Use <code>minimumCountColumns</code> option to the minimum number of columns to hide from the columns drop down list.',
     links: ['bootstrap-table.min.css'],
     scripts: ['bootstrap-table.min.js']
   })
@@ -11,20 +11,17 @@
   id="table"
   data-toggle="table"
   data-height="460"
-  data-url="json/data1.json">
+  data-url="json/data5.json"
+  data-show-columns="true"
+  data-minimum-count-columns="3">
   <thead>
     <tr>
-      <th data-field="id">ID</th>
-      <th data-field="name">Item Name</th>
-      <th data-field="price">Item Price</th>
+      <th data-field="name">Name</th>
+      <th data-field="price">Price</th>
+      <th data-field="column1">Columns1</th>
+      <th data-field="column2"this>Columns2</th>
+      <th data-field="column3">Columns3</th>
+      <th data-field="column4"this>Columns4</th>
     </tr>
   </thead>
 </table>
-
-<script>
-  var $table = $('#table')
-
-  function mounted() {
-
-  }
-</script>

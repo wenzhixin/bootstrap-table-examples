@@ -1,7 +1,7 @@
 <script>
   init({
     title: 'Show Toggle',
-    desc: 'Use <code>showToggle</code> option to .',
+    desc: 'Use <code>showToggle</code> option to show the toggle button to toggle table / card view.',
     links: ['bootstrap-table.min.css'],
     scripts: ['bootstrap-table.min.js']
   })
@@ -11,6 +11,7 @@
   id="table"
   data-toggle="table"
   data-height="460"
+  data-show-toggle="true"
   data-url="json/data1.json">
   <thead>
     <tr>
@@ -20,11 +21,3 @@
     </tr>
   </thead>
 </table>
-
-<script>
-  var $table = $('#table')
-
-  function mounted() {
-
-  }
-</script>

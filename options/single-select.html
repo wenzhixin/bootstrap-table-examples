@@ -1,7 +1,7 @@
 <script>
   init({
     title: 'Single Select',
-    desc: 'Use <code>singleSelect</code> option to .',
+    desc: 'Use <code>singleSelect</code> option to allow checkbox selecting only one row.',
     links: ['bootstrap-table.min.css'],
     scripts: ['bootstrap-table.min.js']
   })
@@ -11,20 +11,15 @@
   id="table"
   data-toggle="table"
   data-height="460"
+  data-single-select="true"
+  data-click-to-select="true"
   data-url="json/data1.json">
   <thead>
     <tr>
+      <th data-field="state" data-checkbox="true"></th>
       <th data-field="id">ID</th>
       <th data-field="name">Item Name</th>
       <th data-field="price">Item Price</th>
     </tr>
   </thead>
 </table>
-
-<script>
-  var $table = $('#table')
-
-  function mounted() {
-
-  }
-</script>

@@ -1,7 +1,7 @@
 <script>
   init({
     title: 'Show Pagination Switch',
-    desc: 'Use <code>showPaginationSwitch</code> option to .',
+    desc: 'Use <code>showPaginationSwitch</code> option to show the pagination switch button.',
     links: ['bootstrap-table.min.css'],
     scripts: ['bootstrap-table.min.js']
   })
@@ -10,7 +10,8 @@
 <table
   id="table"
   data-toggle="table"
-  data-height="460"
+  data-show-pagination-switch="true"
+  data-pagination="true"
   data-url="json/data1.json">
   <thead>
     <tr>
@@ -20,11 +21,3 @@
     </tr>
   </thead>
 </table>
-
-<script>
-  var $table = $('#table')
-
-  function mounted() {
-
-  }
-</script>

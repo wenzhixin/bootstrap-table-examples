@@ -1,7 +1,7 @@
 <script>
   init({
     title: 'Basic Columns',
-    desc: 'Use <code>showColumns</code>, <code>minimumCountColumns</code> options, and <code>visible</code>, <code>switchable</code> column options to show the columns menu list use to switch.',
+    desc: 'Use <code>showColumns</code> to show the columns drop down list.',
     links: ['bootstrap-table.min.css'],
     scripts: ['bootstrap-table.min.js']
   })
@@ -12,17 +12,15 @@
   data-toggle="table"
   data-height="460"
   data-url="json/data5.json"
-  data-show-columns="true"
-  data-id-field="id">
+  data-show-columns="true">
   <thead>
     <tr>
-      <th data-field="state" data-radio="true"></th>
-      <th data-field="name" data-switchable="false">Name</th>
+      <th data-field="name">Name</th>
       <th data-field="price">Price</th>
       <th data-field="column1">Columns1</th>
-      <th data-field="column2" data-visible="false">Columns2</th>
-      <th data-field="column3" data-switchable="false">Columns3</th>
-      <th data-field="column4" data-visible="false">Columns4</th>
+      <th data-field="column2">Columns2</th>
+      <th data-field="column3">Columns3</th>
+      <th data-field="column4">Columns4</th>
     </tr>
   </thead>
 </table>

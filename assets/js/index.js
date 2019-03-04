@@ -1,18 +1,26 @@
 window._config = {
-  isDebug: ['localhost', 'dev.bootstrap-table.com'].indexOf(location.hostname) > -1
+  isDebug: ['localhost', 'dev.bootstrap-table.com'].indexOf(location.hostname) > -1,
+  isViewSource: false
+}
+
+function initUrl() {
+  var href = location.hash.substring(1)
+  window._config.isViewSource = false
+  if (href.indexOf('view-source') > -1) {
+    href = href.replace('#view-source', '').replace('view-source', '')
+    window._config.isViewSource = true
+  }
+  return href || 'welcome.html'
 }
 
 function loadUrl(url_) {
   var hash = ''
-  if (location.search.slice(1) === 'is-debug') {
-    hash = '#is-debug'
-  }
-  var url = 'template.html?v=VERSION&url=' + url_ + hash
+  var url = 'template.html?v=VERSION&url=' + url_
   if (window._config.isDebug) {
-    url = 'template.html?t=' + (+new Date()) + '&url=' + url_ + hash
+    url = 'template.html?t=' + (+new Date()) + '&url=' + url_
   }
-  if (url_.indexOf('view-source') > -1) {
-    url = 'template.html?v=VERSION&view-source&url=' + url_ + hash
+  if (window._config.isViewSource) {
+    url = 'template.html?v=VERSION&view-source&url=' + url_ + '#view-source'
   }
   $('iframe').attr('src', url)
 }
@@ -105,15 +113,12 @@ $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 
   $(window).hashchange(function () {
-    var href = location.hash.substring(1)
+    var href = initUrl()
     loadUrl(href)
     initNavigation(href)
   })
 
-  var href = location.hash.substring(1) || 'welcome.html'
-  if (href === 'view-source') {
-    href = 'welcome.html#view-source'
-  }
+  var href = initUrl()
   loadUrl(href)
   initNavigation(href)
   autoScrollNavigation()

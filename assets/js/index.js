@@ -111,6 +111,9 @@ $(function () {
   })
 
   var href = location.hash.substring(1) || 'welcome.html'
+  if (href === 'view-source') {
+    href = 'welcome.html#view-source'
+  }
   loadUrl(href)
   initNavigation(href)
   autoScrollNavigation()

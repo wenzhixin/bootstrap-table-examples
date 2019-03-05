@@ -1,6 +1,8 @@
 window._config = {
   isDebug: ['localhost', 'dev.bootstrap-table.com'].indexOf(location.hostname) > -1,
-  isViewSource: false
+  isViewSource: false,
+  theme: location.search.slice(1),
+  themes: []
 }
 
 function initUrl() {
@@ -13,14 +15,34 @@ function initUrl() {
   return href || 'welcome.html'
 }
 
+function initThemes() {
+  $('[data-theme]').each(function () {
+    if ($(this).data('theme')) {
+      window._config.themes.push($(this).data('theme'))
+    }
+  })
+  if (window._config.themes.indexOf(window._config.theme) === -1) {
+    window._config.theme = ''
+  }
+  var $theme = $('[data-theme="' + window._config.theme + '"]').addClass('active')
+  $('#theme-title').text($theme.text())
+
+  $('[data-show]').each(function () {
+    $(this).toggle($(this).data('show').split(',').indexOf(window._config.theme) > -1)
+  })
+}
+
 function loadUrl(url_) {
-  var hash = ''
-  var url = 'template.html?v=VERSION&url=' + url_
+  var template = 'template'
+  if (window._config.themes.indexOf(window._config.theme) > -1) {
+    template += '-' + window._config.theme
+  }
+  var url = template + '.html?v=VERSION&url=' + url_
   if (window._config.isDebug) {
-    url = 'template.html?t=' + (+new Date()) + '&url=' + url_
+    url = template + '.html?t=' + (+new Date()) + '&url=' + url_
   }
   if (window._config.isViewSource) {
-    url = 'template.html?v=VERSION&view-source&url=' + url_ + '#view-source'
+    url = template + '.html?v=VERSION&view-source&url=' + url_ + '#view-source'
   }
   $('iframe').attr('src', url)
 }
@@ -54,6 +76,8 @@ function doSearch() {
     searchClient: searchClient,
     searchFunction: function (helper) {
       if (helper.state.query) {
+        helper.clearTags()
+        helper.addTag(window._config.theme)
         helper.search()
         $('#hits').show()
       } else {
@@ -73,8 +97,12 @@ function doSearch() {
       container: '.hits-body',
       templates: {
         item: function (hit) {
+          var search = ''
+          if (window._config.theme) {
+            search = '?' + window._config.theme
+          }
           return [
-            '<div class="link" data-href="' + hit.url + hit.anchor + '">',
+            '<div class="link" data-href="' + hit.url + search + hit.anchor + '">',
             '<div class="category">',
             hit.anchor.split('/')[0].slice(1),
             '</div>',
@@ -118,6 +146,7 @@ $(function () {
     initNavigation(href)
   })
 
+  initThemes()
   var href = initUrl()
   loadUrl(href)
   initNavigation(href)

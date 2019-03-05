@@ -1,7 +1,7 @@
 window._config = {
   isDebug: location.hash.slice(1) === 'is-debug' ||
     ['localhost', 'dev.bootstrap-table.com'].indexOf(location.hostname) > -1,
-  cdnUrl: 'https://unpkg.com/bootstrap-table@1.13.5/dist/',
+  cdnUrl: 'https://unpkg.com/bootstrap-table@1.14.1/dist/',
   localUrl: '../bootstrap-table/src/'
 }
 
@@ -89,6 +89,39 @@ function _scripts(scripts, callback) {
   })
 }
 
+function _themeUpdate(data) {
+  if (/bootstrap3.html$/.test(location.pathname)) {
+    return data.replace(/btn-secondary/g, 'btn-default')
+  }
+  if (/semantic.html$/.test(location.pathname)) {
+    return data.replace(/btn btn-secondary/g, 'ui button')
+      .replace(/btn btn-danger/g, 'ui red button')
+      .replace(/select class="form-control"/g, 'select class="ui dropdown"')
+      .replace(/'bootstrap-table.min.js'/, '\'bootstrap-table.min.js\',\n      \'themes/semantic/bootstrap-table-semantic.min.js\'')
+      .replace(/'bootstrap-table.min.css'/, '\'themes/semantic/bootstrap-table-semantic.min.css\'')
+  }
+  if (/bulma.html$/.test(location.pathname)) {
+    return data.replace(/btn btn-secondary/g, 'button')
+      .replace(/btn btn-danger/g, 'button is-danger')
+      .replace(/'bootstrap-table.min.js'/, '\'bootstrap-table.min.js\',\n      \'themes/bulma/bootstrap-table-bulma.min.js\'')
+      .replace(/'bootstrap-table.min.css'/, '\'themes/bulma/bootstrap-table-bulma.min.css\'')
+  }
+  if (/materialize.html$/.test(location.pathname)) {
+    return data.replace(/class="select"/g, 'class="input-field"')
+      .replace(/btn btn-secondary/g, 'waves-effect waves-light btn')
+      .replace(/btn btn-danger/g, 'waves-effect waves-light btn')
+      .replace(/'bootstrap-table.min.js'/, '\'bootstrap-table.min.js\',\n      \'themes/materialize/bootstrap-table-materialize.min.js\'')
+      .replace(/'bootstrap-table.min.css'/, '\'themes/materialize/bootstrap-table-materialize.min.css\'')
+  }
+  if (/foundation.html$/.test(location.pathname)) {
+    return data.replace(/btn btn-secondary/g, 'button')
+      .replace(/btn btn-danger/g, 'alert button')
+      .replace(/'bootstrap-table.min.js'/, '\'bootstrap-table.min.js\',\n      \'themes/foundation/bootstrap-table-foundation.min.js\'')
+      .replace(/'bootstrap-table.min.css'/, '\'themes/foundation/bootstrap-table-foundation.min.css\'')
+  }
+  return data
+}
+
 function _beautifySource(data) {
   var lines = data.split('\n')
   var scriptStart = lines.indexOf('<script>')
@@ -134,14 +167,16 @@ $(function () {
       dataType: 'html',
       global: false,
       cache: true, // (warning: setting it to false will cause a timestamp and will call the request twice)
-      success: function (data) {
+      success: function (_data) {
+        var data = _themeUpdate(_data)
+
         if (isSource) {
           $('#example').hide().html(data)
           $('.source-pre').show()
           $('#source').text(_beautifySource(data))
           window.hljs.initHighlightingOnLoad()
         } else {
-          $('#example').html(data)
+          $('#example').html(data.replace(/data-toggle="table"/g, 'data-toggle="bootstrap-table"'))
         }
       },
       error: function () {
@@ -150,23 +185,21 @@ $(function () {
     })
 
     if (isSource) {
-      $('#viewExample').show().tooltip({
-        title: 'View Example',
-        placement: 'right'
-      }).click(function () {
+      $('#viewExample').show().click(function () {
         $('#viewExample').hide()
         window.parent.location.hash = window.parent.location.hash.replace('#view-source', '')
-      })
+      }).attr({
+        'aria-label': 'View Example'
+      }).addClass('hint--bottom')
     } else {
-      $('#viewSource').show().tooltip({
-        title: 'View Source',
-        placement: 'right'
-      }).click(function () {
+      $('#viewSource').show().click(function () {
         $('#viewSource').hide()
         if (window.parent.location.hash.indexOf('view-source') === -1) {
           window.parent.location.hash += '#view-source'
         }
-      })
+      }).attr({
+        'aria-label': 'View Source'
+      }).addClass('hint--bottom')
     }
   }
 
@@ -180,8 +213,11 @@ window.init = function (options_) {
     desc: '',
     links: [],
     scripts: [],
-    bootstrapVersion: 3,
     callback: function () {
+      $('[data-toggle="bootstrap-table"]').bootstrapTable()
+      if (/materialize.html$/.test(location.pathname)) {
+        $('select').formSelect()
+      }
       if (typeof window.mounted === 'function') {
         window.mounted()
       }

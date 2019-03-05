@@ -1,5 +1,10 @@
+html.bootstrap3 {
+  font-size: 16px;
+}
+
 body {
   padding: 0 3rem!important;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
 }
 
 #viewSource,

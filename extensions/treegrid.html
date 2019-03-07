@@ -25,6 +25,7 @@
       striped: true,
       sidePagination: 'server',
       idField: 'id',
+      showColumns: true,
       columns: [
         {
           field: 'ck',
@@ -48,13 +49,17 @@
       ],
       treeShowField: 'name',
       parentIdField: 'pid',
-      onLoadSuccess: function(data) {
-        $table.treegrid({
-          treeColumn: 1,
-          onChange: function() {
-            $table.bootstrapTable('resetWidth')
-          }
-        })
+      onPostBody: function() {
+        var columns = $table.bootstrapTable('getOptions').columns
+
+        if (columns && columns[0][1].visible) {
+          $table.treegrid({
+            treeColumn: 1,
+            onChange: function() {
+              $table.bootstrapTable('resetWidth')
+            }
+          })
+        }
       }
     })
   }

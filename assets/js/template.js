@@ -214,7 +214,9 @@ window.init = function (options_) {
     links: [],
     scripts: [],
     callback: function () {
-      $('[data-toggle="bootstrap-table"]').bootstrapTable()
+      if ($('[data-toggle="bootstrap-table"]').length) {
+        $('[data-toggle="bootstrap-table"]').bootstrapTable()
+      }
       if (/materialize.html$/.test(location.pathname)) {
         $('select').formSelect()
       }

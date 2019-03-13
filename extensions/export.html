@@ -6,7 +6,9 @@
       'bootstrap-table.min.css'
     ],
     scripts: [
-      'https://unpkg.com/tableexport.jquery.plugin@1.10.1/tableExport.min.js',
+      'https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js',
+      'https://unpkg.com/tableexport.jquery.plugin/libs/jsPDF/jspdf.min.js',
+      'https://unpkg.com/tableexport.jquery.plugin/libs/jsPDF-AutoTable/jspdf.plugin.autotable.js',
       'bootstrap-table.min.js',
       'extensions/export/bootstrap-table-export.min.js'
     ]
@@ -37,6 +39,7 @@
     $('#toolbar').find('select').change(function () {
       $table.bootstrapTable('destroy').bootstrapTable({
         exportDataType: $(this).val(),
+        exportTypes: ['json', 'xml', 'csv', 'txt', 'sql', 'excel', 'pdf'],
         columns: [
           {
             field: 'state',

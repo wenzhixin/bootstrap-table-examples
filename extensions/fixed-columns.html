@@ -1,14 +1,14 @@
 <script>
   init({
     title: 'Fixed Columns',
-    desc: 'Use Plugin: <a href="https://github.com/wenzhixin/bootstrap-table-fixed-columns" target="_blank">bootstrap-table-fixed-columns</a>.',
+    desc: 'Use Plugin: bootstrap-table-fixed-columns to enable the fixed columns feature.',
     links: [
       'bootstrap-table.min.css',
-      'https://rawgit.com/wenzhixin/bootstrap-table-fixed-columns/master/bootstrap-table-fixed-columns.css'
+      'extensions/fixed-columns/bootstrap-table-fixed-columns.css'
     ],
     scripts: [
       'bootstrap-table.min.js',
-      'https://rawgit.com/wenzhixin/bootstrap-table-fixed-columns/master/bootstrap-table-fixed-columns.js'
+      'extensions/fixed-columns/bootstrap-table-fixed-columns.js'
     ]
   })
 </script>
@@ -33,18 +33,39 @@
       columns.push({
         field: 'field' + i,
         title: 'Cell' + i,
-        sortable: true
+        sortable: true,
+        rowspan: 2,
+        valign: 'middle'
       })
     }
     for (i = 0; i < rows; i++) {
       row = {}
-      for (j = 0; j < cells; j++) {
+      for (j = 0; j < cells + 3; j++) {
         row['field' + j] = 'Row-' + i + '-' + j
       }
       data.push(row)
     }
+    columns.push({
+      title: 'More Cells',
+      colspan: 3,
+      align: 'center'
+    })
     $el.bootstrapTable('destroy').bootstrapTable({
-      columns: columns,
+      columns: [columns, [{
+        field: 'field' + cells,
+        title: 'Cells' + cells,
+        sortable: true,
+        align: 'center'
+      }, {
+        field: 'field' + (cells + 1),
+        title: 'Cells' + (cells + 1),
+        sortable: true,
+        align: 'center'
+      }, {
+        field: 'field' + (cells + 2),
+        title: 'Cells' + (cells + 2),
+        align: 'center'
+      }]],
       data: data,
       search: true,
       toolbar: '.toolbar',

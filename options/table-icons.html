@@ -1,16 +1,57 @@
 <script>
   init({
     title: 'Table Icons',
-    desc: 'Use <code>icons</code> option to .',
+    desc: 'Use <code>icons</code> option to Defines icons used in the toolbar, pagination, and details view.',
     links: ['bootstrap-table.min.css'],
     scripts: ['bootstrap-table.min.js']
   })
 </script>
 
+<style>
+label input {
+  display: inline-block !important;
+  width: auto !important;
+}
+</style>
+
+<div>
+  <label><span>paginationSwitchDown</span> <input class="form-control" type="text" value="fa-caret-square-down"></label>
+</div>
+<div>
+  <label><span>paginationSwitchUp</span> <input class="form-control" type="text" value="fa-caret-square-up"></label>
+</div>
+<div>
+  <label><span>refresh</span> <input class="form-control" type="text" value="fa-sync"></label>
+</div>
+<div>
+  <label><span>toggleOff</span> <input class="form-control" type="text" value="fa-toggle-off"></label>
+</div>
+<div>
+  <label><span>toggleOn</span> <input class="form-control" type="text" value="fa-toggle-on"></label>
+</div>
+<div>
+  <label><span>columns</span> <input class="form-control" type="text" value="fa-th-list"></label>
+</div>
+<div>
+  <label><span>fullscreen</span> <input class="form-control" type="text" value="fa-arrows-alt"></label>
+</div>
+<div>
+  <label><span>detailOpen</span> <input class="form-control" type="text" value="fa-plus"></label>
+</div>
+<div>
+  <label><span>detailClose</span> <input class="form-control" type="text" value="fa-minus"></label>
+</div>
+
 <table
   id="table"
   data-toggle="table"
   data-height="460"
+  data-show-pagination-switch="true"
+  data-show-refresh="true"
+  data-show-toggle="true"
+  data-show-columns="true"
+  data-show-fullscreen="true"
+  data-detail-view="true"
   data-url="json/data1.json">
   <thead>
     <tr>
@@ -25,6 +66,14 @@
   var $table = $('#table')
 
   function mounted() {
-
+    $('label input').blur(function () {
+      var icons = {}
+      $('label').each(function () {
+        icons[$(this).find('span').text()] = $(this).find('input').val()
+      })
+      $table.bootstrapTable('destroy').bootstrapTable({
+        icons: icons
+      })
+    })
   }
 </script>

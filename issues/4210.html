@@ -1,0 +1,44 @@
+<script>
+  init({
+    title: 'Issue #4210',
+    desc: 'Get table full url(<a href="https://github.com/wenzhixin/bootstrap-table/issues/4210" target="_blank">#4210</a>).',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
+<button class="btn btn-secondary">Get Full URL</button>
+
+<table
+  id="table"
+  data-toggle="table"
+  data-height="460"
+  data-search="true"
+  data-pagination="true"
+  data-side-pagination="server"
+  data-url="https://examples.wenzhixin.net.cn/examples/bootstrap_table/data"
+  data-query-params="queryParams">
+  <thead>
+    <tr>
+      <th data-field="id" data-sortable="true">ID</th>
+      <th data-field="name" data-sortable="true">Item Name</th>
+      <th data-field="price" data-sortable="true">Item Price</th>
+    </tr>
+  </thead>
+</table>
+
+<script>
+  var $table = $('#table')
+  var params = {}
+
+  function queryParams(_params) {
+    params = _params
+    return _params
+  }
+
+  function mounted() {
+    $('button').click(function () {
+      alert($table.bootstrapTable('getOptions').url + '?' + $.param(params))
+    })
+  }
+</script>

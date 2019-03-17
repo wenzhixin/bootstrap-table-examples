@@ -1,0 +1,106 @@
+<script>
+  init({
+    title: 'Multiple Table',
+    desc: 'Multiple tables in one page.',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
+<style>
+.left {
+  float: left;
+}
+.right {
+  float: right;
+}
+.like {
+  margin-right: 10px;
+}
+.item {
+  margin-bottom: 20px;
+}
+</style>
+
+<div class="item">
+  <table
+    data-toggle="table"
+    data-url="json/data3.json">
+    <thead>
+      <tr>
+        <th data-field="github.name"
+          data-formatter="operateFormatter"
+          data-events="operateEvents">Bookmark 1</th>
+      </tr>
+    </thead>
+  </table>
+</div>
+
+<div class="item">
+  <table
+    data-toggle="table"
+    data-url="json/data3.json">
+    <thead>
+      <tr>
+        <th data-field="github.name"
+          data-formatter="operateFormatter"
+          data-events="operateEvents">Bookmark 1</th>
+      </tr>
+    </thead>
+  </table>
+</div>
+
+<div class="item">
+  <table
+    data-toggle="table"
+    data-url="json/data3.json">
+    <thead>
+      <tr>
+        <th data-field="github.name"
+          data-formatter="operateFormatter"
+          data-events="operateEvents">Bookmark 1</th>
+      </tr>
+    </thead>
+  </table>
+</div>
+
+<div class="item">
+  <table
+    data-toggle="table"
+    data-url="json/data3.json">
+    <thead>
+      <tr>
+        <th data-field="github.name"
+          data-formatter="operateFormatter"
+          data-events="operateEvents">Bookmark 1</th>
+      </tr>
+    </thead>
+  </table>
+</div>
+
+<script>
+  window.operateEvents = {
+    'click .like': function (e, value, row) {
+      alert('You click like action, row: ' + JSON.stringify(row))
+    },
+    'click .remove': function (e, value, row) {
+      alert('You click remove action, row: ' + JSON.stringify(row))
+    }
+  }
+
+  function operateFormatter(value, row, index) {
+    return [
+      '<div class="left">',
+      '<a href="https://github.com/wenzhixin/' + value + '" target="_blank">' + value + '</a>',
+      '</div>',
+      '<div class="right">',
+      '<a class="like" href="javascript:void(0)" title="Like">',
+      '<i class="fa fa-heart"></i>',
+      '</a>  ',
+      '<a class="remove" href="javascript:void(0)" title="Remove">',
+      '<i class="fa fa-trash"></i>',
+      '</a>',
+      '</div>'
+    ].join('')
+  }
+</script>

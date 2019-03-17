@@ -110,6 +110,8 @@ function _themeUpdate(data) {
     return data.replace(/class="select"/g, 'class="input-field"')
       .replace(/btn btn-secondary/g, 'waves-effect waves-light btn')
       .replace(/btn btn-danger/g, 'waves-effect waves-light btn')
+      .replace('<i class="fa fa-heart"></i>', '<i class="material-icons">star</i>')
+      .replace('<i class="fa fa-trash"></i>', '<i class="material-icons">clear</i>')
       .replace(/'bootstrap-table.min.js'/, '\'bootstrap-table.min.js\',\n      \'themes/materialize/bootstrap-table-materialize.min.js\'')
       .replace(/'bootstrap-table.min.css'/, '\'themes/materialize/bootstrap-table-materialize.min.css\'')
   }

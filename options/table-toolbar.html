@@ -1,16 +1,22 @@
 <script>
   init({
     title: 'Table Toolbar',
-    desc: 'Use <code>toolbar</code> option to .',
+    desc: 'Use <code>toolbar</code> option to indicates the toolbar with selector, for example: <code>#toolbar</code>, <code>.toolbar</code>, or a DOM node.',
     links: ['bootstrap-table.min.css'],
     scripts: ['bootstrap-table.min.js']
   })
 </script>
 
+<div class="toolbar">
+  <button class="btn btn-secondary">Toolbar button example</button>
+</div>
+
 <table
   id="table"
   data-toggle="table"
   data-height="460"
+  data-search="true"
+  data-toolbar=".toolbar"
   data-url="json/data1.json">
   <thead>
     <tr>
@@ -20,11 +26,3 @@
     </tr>
   </thead>
 </table>
-
-<script>
-  var $table = $('#table')
-
-  function mounted() {
-
-  }
-</script>

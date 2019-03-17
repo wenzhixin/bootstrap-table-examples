@@ -1,16 +1,40 @@
 <script>
   init({
     title: 'Icon Size',
-    desc: 'Use <code>iconSize</code> option to .',
+    desc: 'Use <code>iconSize</code> option to defines icon size.',
     links: ['bootstrap-table.min.css'],
     scripts: ['bootstrap-table.min.js']
   })
 </script>
 
+<div class="toolbar">
+  <div class="checkbox">
+    <label>
+      <input type="radio" name="iconSize" checked value="undefined">
+      <code>undefined</code>
+    </label>
+  </div>
+  <div class="checkbox">
+    <label>
+      <input type="radio" name="iconSize" value="lg">
+      <code>lg</code>
+    </label>
+  </div>
+  <div class="checkbox">
+    <label>
+      <input type="radio" name="iconSize" value="sm">
+      <code>sm</code>
+    </label>
+  </div>
+</div>
+
 <table
   id="table"
   data-toggle="table"
   data-height="460"
+  data-show-refresh="true"
+  data-show-columns="true"
+  data-show-fullscreen="true"
   data-url="json/data1.json">
   <thead>
     <tr>
@@ -25,6 +49,10 @@
   var $table = $('#table')
 
   function mounted() {
-
+    $('.toolbar input').change(function () {
+      $table.bootstrapTable('refreshOptions', {
+        iconSize: $(this).val()
+      })
+    })
   }
 </script>

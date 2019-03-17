@@ -1,7 +1,7 @@
 <script>
   init({
     title: 'Detail Filter',
-    desc: 'Use <code>detailFilter</code> option to .',
+    desc: 'Use <code>detailFilter</code> option to enable expansion per row.',
     links: ['bootstrap-table.min.css'],
     scripts: ['bootstrap-table.min.js']
   })
@@ -11,6 +11,8 @@
   id="table"
   data-toggle="table"
   data-height="460"
+  data-detail-view="true"
+  data-detail-filter="detailFilter"
   data-url="json/data1.json">
   <thead>
     <tr>
@@ -22,9 +24,7 @@
 </table>
 
 <script>
-  var $table = $('#table')
-
-  function mounted() {
-
+  function detailFilter(index, row) {
+    return index % 2 === 0
   }
 </script>

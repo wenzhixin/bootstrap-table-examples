@@ -1,7 +1,7 @@
 <script>
   init({
     title: 'Buttons Align',
-    desc: 'Use <code>buttonsAlign</code> option to .',
+    desc: 'Use <code>buttonsAlign</code> option to indicate how to align the toolbar buttons.',
     links: ['bootstrap-table.min.css'],
     scripts: ['bootstrap-table.min.js']
   })
@@ -11,6 +11,9 @@
   id="table"
   data-toggle="table"
   data-height="460"
+  data-search="true"
+  data-show-columns="true"
+  data-buttons-align="left"
   data-url="json/data1.json">
   <thead>
     <tr>
@@ -20,11 +23,3 @@
     </tr>
   </thead>
 </table>
-
-<script>
-  var $table = $('#table')
-
-  function mounted() {
-
-  }
-</script>

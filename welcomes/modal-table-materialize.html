@@ -1,0 +1,45 @@
+<script>
+  init({
+    title: 'Modal Table',
+    desc: 'Use Bootstrap Table in modal.',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
+<a class="waves-effect waves-light btn modal-trigger btn-large" href="#modal1">Launch modal table</a>
+
+<div id="modal1" class="modal">
+  <div class="modal-content">
+    <h4>Modal table</h4>
+    <p>
+      <table id="table"
+        data-toggle="table"
+        data-height="299"
+        data-url="json/data1.json">
+        <thead>
+          <tr>
+            <th data-field="id">ID</th>
+            <th data-field="name">Item Name</th>
+            <th data-field="price">Item Price</th>
+          </tr>
+        </thead>
+      </table>
+    </p>
+    <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  var $table = $('#table')
+
+  function mounted() {
+    $('.modal').modal({
+      onOpenEnd: function () {
+        $table.bootstrapTable('resetView')
+      }
+    })
+  }
+</script>

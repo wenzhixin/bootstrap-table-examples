@@ -1,7 +1,7 @@
 <script>
   init({
     title: 'Card View',
-    desc: 'Use <code>cardView</code> option to .',
+    desc: 'Use <code>cardView</code> option to show card view table, for example mobile view.',
     links: ['bootstrap-table.min.css'],
     scripts: ['bootstrap-table.min.js']
   })
@@ -11,6 +11,7 @@
   id="table"
   data-toggle="table"
   data-height="460"
+  data-card-view="true"
   data-url="json/data1.json">
   <thead>
     <tr>
@@ -20,11 +21,3 @@
     </tr>
   </thead>
 </table>
-
-<script>
-  var $table = $('#table')
-
-  function mounted() {
-
-  }
-</script>

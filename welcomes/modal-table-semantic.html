@@ -1,0 +1,47 @@
+<script>
+  init({
+    title: 'Modal Table',
+    desc: 'Use Bootstrap Table in modal.',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
+<button type="button" class="ui primary button big lunch">
+  Launch modal table
+</button>
+<div class="ui modal">
+  <div class="header">
+    Modal table
+  </div>
+  <div class="content">
+    <table id="table"
+      data-toggle="table"
+      data-height="299"
+      data-url="json/data1.json">
+      <thead>
+        <tr>
+          <th data-field="id">ID</th>
+          <th data-field="name">Item Name</th>
+          <th data-field="price">Item Price</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+  <div class="actions">
+    <div class="ui black deny button">
+        Close
+    </div>
+  </div>
+</div>
+
+<script>
+  var $table = $('#table')
+
+  function mounted() {
+    $('.lunch').click(function () {
+      $('.ui.modal').modal('show')
+      $table.bootstrapTable('resetView')
+    })
+  }
+</script>

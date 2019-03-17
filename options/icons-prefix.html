@@ -1,8 +1,11 @@
 <script>
   init({
     title: 'Icons Prefix',
-    desc: 'Use <code>iconsPrefix</code> option to .',
-    links: ['bootstrap-table.min.css'],
+    desc: 'Use <code>iconsPrefix</code> option to defines icon set name. In the case we use ionicons as an example.',
+    links: [
+      'https://unpkg.com/ionicons@4.5.5/dist/css/ionicons.min.css',
+      'bootstrap-table.min.css'
+    ],
     scripts: ['bootstrap-table.min.js']
   })
 </script>
@@ -11,6 +14,11 @@
   id="table"
   data-toggle="table"
   data-height="460"
+  data-show-refresh="true"
+  data-show-columns="true"
+  data-show-fullscreen="true"
+  data-icons-prefix="icon"
+  data-icons="icons"
   data-url="json/data1.json">
   <thead>
     <tr>
@@ -22,9 +30,9 @@
 </table>
 
 <script>
-  var $table = $('#table')
-
-  function mounted() {
-
+  window.icons = {
+    refresh: 'ion-md-refresh',
+    columns: 'ion-md-menu',
+    fullscreen: 'ion-md-expand'
   }
 </script>

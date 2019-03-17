@@ -1,16 +1,35 @@
 <script>
   init({
     title: 'Buttons Toolbar',
-    desc: 'Use <code>buttonsToolbar</code> option to .',
+    desc: 'Use <code>buttonsToolbar</code> option to indicates the custom buttons toolbar with a selector.',
     links: ['bootstrap-table.min.css'],
     scripts: ['bootstrap-table.min.js']
   })
 </script>
 
+<style>
+.titles {
+  float: right;
+  clear: both;
+}
+</style>
+
+<div class="buttons-toolbar">
+</div>
+
+<div class="titles">
+  <h1>First line</h1>
+  <h2>Second line</h2>
+</div>
+
 <table
   id="table"
   data-toggle="table"
   data-height="460"
+  data-search="true"
+  data-show-refresh="true"
+  data-show-columns="true"
+  data-buttons-toolbar=".buttons-toolbar"
   data-url="json/data1.json">
   <thead>
     <tr>
@@ -20,11 +39,3 @@
     </tr>
   </thead>
 </table>
-
-<script>
-  var $table = $('#table')
-
-  function mounted() {
-
-  }
-</script>

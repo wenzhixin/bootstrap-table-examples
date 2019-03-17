@@ -2,7 +2,10 @@
   init({
     title: 'Row Style',
     desc: 'Use <code>rowStyle</code> option to set the row style.',
-    links: ['bootstrap-table.min.css'],
+    links: [
+      'https://s3-us-west-2.amazonaws.com/colors-css/2.2.0/colors.min.css',
+      'bootstrap-table.min.css'
+    ],
     scripts: ['bootstrap-table.min.js']
   })
 </script>
@@ -30,11 +33,11 @@
 <script>
   function rowStyle(row, index) {
     var classes = [
-      'table-active',
-      'table-success',
-      'table-info',
-      'table-warning',
-      'table-danger'
+      'bg-blue',
+      'bg-green',
+      'bg-orange',
+      'bg-yellow',
+      'bg-red'
     ]
 
     if (index % 2 === 0 && index / 2 < classes.length) {

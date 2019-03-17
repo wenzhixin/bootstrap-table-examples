@@ -7,7 +7,7 @@ OUT=dist
 
 function doCompile {
     mkdir -p $OUT
-    cp -r *.html favicon.png CNAME assets extensions issues json methods options $OUT/
+    cp -r *.html favicon.png CNAME assets column-options extensions issues json methods options welcomes $OUT/
 }
 
 # Pull requests and commits to other branches shouldn't try to deploy, just build to verify

@@ -1,22 +1,28 @@
 <script>
   init({
     title: 'Fixed Columns',
-    desc: 'Use Plugin: <a href="https://github.com/wenzhixin/bootstrap-table-fixed-columns" target="_blank">bootstrap-table-fixed-columns</a>.',
+    desc: 'Use Plugin: bootstrap-table-fixed-columns to enable the fixed columns feature.',
     links: [
       'bootstrap-table.min.css',
-      'https://rawgit.com/wenzhixin/bootstrap-table-fixed-columns/master/bootstrap-table-fixed-columns.css'
+      'extensions/fixed-columns/bootstrap-table-fixed-columns.css'
     ],
     scripts: [
       'bootstrap-table.min.js',
-      'https://rawgit.com/wenzhixin/bootstrap-table-fixed-columns/master/bootstrap-table-fixed-columns.js'
+      'extensions/fixed-columns/bootstrap-table-fixed-columns.js'
     ]
   })
 </script>
 
+<div>
+  <button id="button" class="btn btn-secondary">Show Row</button>
+  <button id="button2" class="btn btn-secondary">Hide Row</button>
+</div>
+
 <div class="toolbar form-inline">
   <span>Fixed Number: </span>
-  <input class="form-control" id="fixedNumber" type="number" value="1" min="1" max="5">
+  <input class="form-control" id="fixedNumber" type="number" value="2" min="1" max="5">
 </div>
+
 <table id="table" data-height="400" data-show-columns="true"></table>
 
 <script>
@@ -26,25 +32,51 @@
     var i
     var j
     var row
-    var columns = []
+    var columns = [{
+      field: 'state',
+      checkbox: true,
+      rowspan: 2,
+      valign: 'middle'
+    }]
     var data = []
 
     for (i = 0; i < cells; i++) {
       columns.push({
         field: 'field' + i,
         title: 'Cell' + i,
-        sortable: true
+        sortable: true,
+        rowspan: 2,
+        valign: 'middle'
       })
     }
     for (i = 0; i < rows; i++) {
       row = {}
-      for (j = 0; j < cells; j++) {
+      for (j = 0; j < cells + 3; j++) {
         row['field' + j] = 'Row-' + i + '-' + j
       }
       data.push(row)
     }
+    columns.push({
+      title: 'More Cells',
+      colspan: 3,
+      align: 'center'
+    })
     $el.bootstrapTable('destroy').bootstrapTable({
-      columns: columns,
+      columns: [columns, [{
+        field: 'field' + cells,
+        title: 'Cells' + cells,
+        sortable: true,
+        align: 'center'
+      }, {
+        field: 'field' + (cells + 1),
+        title: 'Cells' + (cells + 1),
+        sortable: true,
+        align: 'center'
+      }, {
+        field: 'field' + (cells + 2),
+        title: 'Cells' + (cells + 2),
+        align: 'center'
+      }]],
       data: data,
       search: true,
       toolbar: '.toolbar',
@@ -58,6 +90,18 @@
 
     $('#fixedNumber').change(function () {
       buildTable($table, 20, 20)
+    })
+
+    $('#button').click(function() {
+      $table.bootstrapTable('showRow', {
+        index: 1
+      })
+    })
+
+    $('#button2').click(function() {
+      $table.bootstrapTable('hideRow', {
+        index: 1
+      })
     })
   }
 </script>

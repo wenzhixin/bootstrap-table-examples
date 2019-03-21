@@ -1,0 +1,37 @@
+<script>
+  init({
+    title: 'Issue #4214',
+    desc: 'Added index field.(<a href="https://github.com/wenzhixin/bootstrap-table/issues/4214" target="_blank">#4214</a>).',
+    links: ['bootstrap-table.min.css'],
+    scripts: [
+      'https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js',
+      'bootstrap-table.min.js',
+      'extensions/export/bootstrap-table-export.min.js'
+    ]
+  })
+</script>
+
+<table
+  id="table"
+  data-toggle="table"
+  data-height="460"
+  data-url="json/data3.json"
+  data-search="true"
+  data-show-export="true"
+  data-response-handler="responseHandler">
+  <thead>
+    <tr>
+      <th data-field="index" data-sortable="true">Index</th>
+      <th data-field="github.name" data-sortable="true">Item Name</th>
+    </tr>
+  </thead>
+</table>
+
+<script>
+  function responseHandler(res) {
+    res.forEach(function (row, i) {
+      row.index = i
+    })
+    return res
+  }
+</script>

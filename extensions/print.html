@@ -1,0 +1,33 @@
+<script>
+  init({
+    title: 'Print',
+    desc: 'Use Plugin: bootstrap-table-print.',
+    links: [
+      'bootstrap-table.min.css'
+    ],
+    scripts: [
+      'bootstrap-table.min.js',
+      'extensions/print/bootstrap-table-print.min.js'
+    ]
+  })
+</script>
+
+<table id="table"
+  data-show-print="true"
+  data-url="json/data1.json">
+  <thead>
+    <tr>
+      <th data-field="id">ID</th>
+      <th data-field="name">Item Name</th>
+      <th data-field="price">Item Price</th>
+    </tr>
+  </thead>
+</table>
+
+<script>
+  var $table = $('#table')
+
+  function mounted() {
+    $table.bootstrapTable()
+  }
+</script>

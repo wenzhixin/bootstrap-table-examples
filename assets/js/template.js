@@ -40,6 +40,10 @@ function _script(file, callback) {
   var head = document.getElementsByTagName('head')[0]
   var script = document.createElement('script')
 
+  if (window._config.isDebug) {
+    script.type = 'module'
+  }
+
   script.src = _getScript(file)
 
   var done = false

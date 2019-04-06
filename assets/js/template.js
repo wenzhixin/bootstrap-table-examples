@@ -64,6 +64,10 @@ function _script(file, callback) {
 }
 
 function _scripts(scripts, callback) {
+  if (!scripts.length) {
+    return callback()
+  }
+
   var eachSeries = function (arr, iterator, callback_) {
     var callback = callback_ || function () {}
     if (!arr.length) {

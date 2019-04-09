@@ -7,11 +7,20 @@
   })
 </script>
 
+<style>
+.active {
+  color: red;
+  font-weight: bold;
+}
+</style>
+
 <table
   id="table"
   data-toggle="table"
   data-url="json/data1.json"
-  data-pagination="true">
+  data-show-refresh="true"
+  data-pagination="true"
+  data-row-style="rowStyle">
   <thead>
   <tr>
     <th data-field="name">Item Name</th>
@@ -22,11 +31,22 @@
 
 <script>
   var $table = $('#table')
+  var selectedRow = {}
 
   function mounted() {
     $table.on('click-row.bs.table', function (e, row, $element) {
-      $('.success').removeClass('success')
-      $($element).addClass('success')
+      selectedRow = row
+      $('.active').removeClass('active')
+      $($element).addClass('active')
     })
+  }
+
+  function rowStyle(row) {
+    if (row.id === selectedRow.id) {
+      return {
+        classes: 'active'
+      }
+    }
+    return {}
   }
 </script>

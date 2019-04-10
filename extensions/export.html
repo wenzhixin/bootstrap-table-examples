@@ -15,7 +15,13 @@
   })
 </script>
 
-<div id="toolbar">
+<style>
+#toolbar {
+  margin: 0;
+}
+</style>
+
+<div id="toolbar" class="select">
   <select class="form-control">
     <option value="">Export Basic</option>
     <option value="all">Export All</option>
@@ -28,7 +34,8 @@
   data-pagination="true"
   data-click-to-select="true"
   data-toolbar="#toolbar"
-  data-show-toggle="ture"
+  data-show-toggle="true"
+  data-show-columns="true"
   data-url="json/data1.json">
 </table>
 

@@ -1,0 +1,65 @@
+<script>
+  init({
+    title: 'From data',
+    desc: 'Play with large data sets (10000 rows).',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
+<div class="toolbar">
+  <button id="load" class="btn btn-secondary">Load 10000 Rows</button>
+  <button id="append" class="btn btn-secondary">Append 10000 Rows</button>
+  Total rows: <span id="total"></span>
+</div>
+
+<table id="table"
+  data-toolbar=".toolbar"
+  data-height="400"
+  data-show-columns="true">
+  <thead>
+    <tr>
+      <th data-field="id">ID</th>
+      <th data-field="name">Item Name</th>
+      <th data-field="price">Item Price</th>
+    </tr>
+  </thead>
+</table>
+
+<script>
+  var $table = $('#table')
+  var total = 0
+
+  function getData(number, isAppend) {
+    if (!isAppend) {
+      total = 0
+    }
+    var data = []
+    for (var i = total; i < total + number; i++) {
+      data.push({
+        'id': i,
+        'name': 'Item ' + i,
+        'price': '$' + i
+      })
+    }
+    if (isAppend) {
+      total += number
+    } else {
+      total = number
+    }
+    $('#total').text(total)
+    return data
+  }
+
+  function mounted() {
+    $table.bootstrapTable({data: getData(20)})
+
+    $('#load').click(function () {
+      $table.bootstrapTable('load', getData(10000))
+    })
+
+    $('#append').click(function () {
+      $table.bootstrapTable('append', getData(10000, true))
+    })
+  }
+</script>

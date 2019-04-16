@@ -27,18 +27,9 @@
 <script>
   // your custom ajax request here
   function ajaxRequest(params) {
-    // params data you need
-    console.log(params.data)
-    // here we just use setTimeout
-    setTimeout(function () {
-      params.success({
-        total: 100,
-        rows: [{
-          'id': 0,
-          'name': 'Item 0',
-          'price': '$0'
-        }]
-      })
-    }, 1000)
+    var url = 'https://examples.wenzhixin.net.cn/examples/bootstrap_table/data'
+    $.get(url + '?' + $.param(params.data)).then(function (res) {
+      params.success(res)
+    })
   }
 </script>

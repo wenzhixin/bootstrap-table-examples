@@ -224,14 +224,6 @@
       selections = getIdSelections()
       // push or splice the selections if you want to save all data selections
     })
-    $table.on('expand-row.bs.table', function (e, index, row, $detail) {
-      if (index % 2 === 1) {
-        $detail.html('Loading from ajax request...')
-        $.get('LICENSE', function (res) {
-          $detail.html(res.replace(/\n/g, '<br>'))
-        })
-      }
-    })
     $table.on('all.bs.table', function (e, name, args) {
       console.log(name, args)
     })

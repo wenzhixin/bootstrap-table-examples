@@ -21,6 +21,18 @@ body {
   margin-top: 0;
 }
 
+#codefund {
+  margin: 0 0 20px 0!important;
+}
+
+#codefund .cf-wrapper {
+  font-size: 13px!important;
+}
+
+#codefund .cf-powered-by {
+  margin-top: 0!important;
+}
+
 .bd-lead {
   max-width: 100%;
 }

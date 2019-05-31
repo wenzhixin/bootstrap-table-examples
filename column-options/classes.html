@@ -1,0 +1,23 @@
+<script>
+    init({
+      title: 'Define the table classes',
+      desc: 'Use <code>classes</code> to define/overwrite css classes of the table',
+      links: ['bootstrap-table.min.css'],
+      scripts: ['bootstrap-table.min.js']
+    })
+</script>
+
+<table
+        id="table"
+        data-toggle="table"
+        data-height="460"
+        data-classes="table table-striped"
+        data-url="json/data1.json">
+    <thead>
+    <tr>
+        <th data-field="id">ID</th>
+        <th data-field="name">Item Name</th>
+        <th data-field="price">Item Price</th>
+    </tr>
+    </thead>
+</table>

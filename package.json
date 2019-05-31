@@ -19,5 +19,8 @@
     "eslint": "^5.10.0",
     "eslint-plugin-html": "^5.0.0",
     "getopts": "^2.2.3"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
   }
 }

@@ -1,0 +1,24 @@
+<script>
+    init({
+      title: 'Group columns',
+      desc: 'Use <code>colspan, rowspan</code> options to set the group columns header.',
+      links: ['bootstrap-table.min.css'],
+      scripts: ['bootstrap-table.min.js']
+    })
+</script>
+
+<table
+        id="table"
+        data-toggle="table"
+        data-url="json/data1.json">
+    <thead>
+    <tr>
+        <th colspan="2">Item Detail</th>
+        <th data-field="id" rowspan="2" data-valign="middle">Item ID</th>
+    </tr>
+    <tr>
+        <th data-field="name">Item Name</th>
+        <th data-field="price">Item Price</th>
+    </tr>
+    </thead>
+</table>

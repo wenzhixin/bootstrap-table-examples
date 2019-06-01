@@ -1,0 +1,22 @@
+<script>
+    init({
+      title: 'Define table field',
+      desc: 'Use <code>field</code> to define the table fields, the table fields are required for some actions e.g. the <code>load</code> method or the <code>formatter</code> option.',
+      links: ['bootstrap-table.min.css'],
+      scripts: ['bootstrap-table.min.js']
+    })
+</script>
+
+<table
+        id="table"
+        data-toggle="table"
+        data-height="460"
+        data-url="json/data1.json">
+    <thead>
+    <tr>
+        <th data-field="id">ID</th>
+        <th data-field="name">Item Name</th>
+        <th data-field="price">Item Price</th>
+    </tr>
+    </thead>
+</table>

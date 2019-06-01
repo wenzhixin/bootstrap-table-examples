@@ -1,0 +1,22 @@
+<script>
+    init({
+      title: 'Define radio columns',
+      desc: 'Use <code>radio</code> to define that a column contains radio(boxes).',
+      links: ['bootstrap-table.min.css'],
+      scripts: ['bootstrap-table.min.js']
+    })
+</script>
+
+<table
+        id="table"
+        data-toggle="table"
+        data-height="460"
+        data-url="json/data1.json">
+    <thead>
+    <tr>
+        <th data-radio="true"></th>
+        <th data-field="name">Item Name</th>
+        <th data-field="price">Item Price</th>
+    </tr>
+    </thead>
+</table>

@@ -1,0 +1,22 @@
+<script>
+    init({
+      title: 'Define column title',
+      desc: 'Use <code>title</code> to define the name/title of the thead. (Default is name of the <a href="/#column-options/field.html">field</a>)',
+      links: ['bootstrap-table.min.css'],
+      scripts: ['bootstrap-table.min.js']
+    })
+</script>
+
+<table
+        id="table"
+        data-toggle="table"
+        data-height="460"
+        data-url="json/data1.json">
+    <thead>
+    <tr>
+        <th data-field="id" data-title="Item-ID">ID</th>
+        <th data-field="name" data-title="other title">Item Name</th>
+        <th data-field="price">Item Price</th>
+    </tr>
+    </thead>
+</table>

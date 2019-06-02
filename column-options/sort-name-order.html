@@ -1,0 +1,24 @@
+<script>
+  init({
+    title: 'Sort Name Order',
+    desc: 'Use <code>sortName, sortOrder</code> to define by which column the sort will be done.',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
+<table
+  id="table"
+  data-toggle="table"
+  data-height="460"
+  data-pagination="true"
+  data-side-pagination="server"
+  data-url="https://examples.wenzhixin.net.cn/examples/bootstrap_table/data">
+  <thead>
+  <tr>
+    <th data-field="id">ID</th>
+    <th data-field="name" data-sortable="true" data-sort-name="id" data-sort-order="desc">Item Name</th>
+    <th data-field="price">Item Price</th>
+  </tr>
+  </thead>
+</table>

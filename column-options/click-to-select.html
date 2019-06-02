@@ -1,0 +1,24 @@
+<script>
+  init({
+    title: 'Click To Select',
+    desc: 'Use <code>clickToSelect</code> option to select checkbox or radiobox when clicking rows. In this case, we disable the Item Name column to click to select.',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
+<table
+  id="table"
+  data-toggle="table"
+  data-height="460"
+  data-click-to-select="true"
+  data-url="json/data1.json">
+  <thead>
+    <tr>
+      <th data-field="state" data-checkbox="true"></th>
+      <th data-field="id">ID</th>
+      <th data-field="name" data-click-to-select="false">Item Name</th>
+      <th data-field="price">Item Price</th>
+    </tr>
+  </thead>
+</table>

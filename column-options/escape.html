@@ -1,28 +1,28 @@
 <script>
-    init({
-      title: 'Escape data',
-      desc: 'Use <code>escape</code> to escape data (e.g. to prevent javascript injections).',
-      links: ['bootstrap-table.min.css'],
-      scripts: ['bootstrap-table.min.js']
-    })
+  init({
+    title: 'Column Escape',
+    desc: 'Use <code>escape</code> to escape data (e.g. to prevent javascript injections).',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
 </script>
 
 <table
-        id="table"
-        data-toggle="table"
-        data-height="460">
-    <thead>
+  id="table"
+  data-toggle="table"
+  data-height="460">
+  <thead>
+  <tr>
+    <th data-field="id" data-escape="true">ID</th>
+    <th data-field="name">Item Name</th>
+    <th data-field="price">Item Price</th>
+  </tr>
+  </thead>
+  <tbody>
     <tr>
-        <th data-field="id" data-escape="true">ID</th>
-        <th data-field="name">Item Name</th>
-        <th data-field="price">Item Price</th>
+      <td><b>Escape ID: 0</b></td>
+      <td><b>Bold Item</b></td>
+      <td>$0</td>
     </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><b>0</b></td>
-            <td><b>Item Name</b></td>
-            <td>0$</td>
-        </tr>
-    </tbody>
+  </tbody>
 </table>

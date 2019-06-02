@@ -1,22 +1,22 @@
 <script>
-    init({
-      title: 'Define sortable columns',
-      desc: 'Use <code>sortable</code> to define that the column can be sorted.',
-      links: ['bootstrap-table.min.css'],
-      scripts: ['bootstrap-table.min.js']
-    })
+  init({
+    title: 'Column Sortable',
+    desc: 'Use <code>sortable</code> to define that the column can be sorted.',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
 </script>
 
 <table
-        id="table"
-        data-toggle="table"
-        data-height="460"
-        data-url="json/data1.json">
-    <thead>
-    <tr>
-        <th data-field="id" data-sortable="true">ID</th>
-        <th data-field="name" data-sortable="true">Item Name</th>
-        <th data-field="price">Item Price</th>
-    </tr>
-    </thead>
+  id="table"
+  data-toggle="table"
+  data-height="460"
+  data-url="json/data1.json">
+  <thead>
+  <tr>
+    <th data-field="id" data-sortable="true">ID</th>
+    <th data-field="name" data-sortable="true">Item Name</th>
+    <th data-field="price">Item Price</th>
+  </tr>
+  </thead>
 </table>

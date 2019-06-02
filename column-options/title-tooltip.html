@@ -1,22 +1,22 @@
 <script>
-    init({
-      title: 'Define column title as tooltip',
-      desc: 'Use <code>title-tooltip</code> to define the title as tooltip (html attribute) of the thead.',
-      links: ['bootstrap-table.min.css'],
-      scripts: ['bootstrap-table.min.js']
-    })
+  init({
+    title: 'Title Tooltip',
+    desc: 'Use <code>titleTooltip</code> to define the title as tooltip (html attribute) of the thead.',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
 </script>
 
 <table
-        id="table"
-        data-toggle="table"
-        data-height="460"
-        data-url="json/data1.json">
-    <thead>
-    <tr>
-        <th data-field="id" data-title-tooltip="Item-ID">ID</th>
-        <th data-field="name" data-title-tooltip="other title">Item Name</th>
-        <th data-field="price">Item Price</th>
-    </tr>
-    </thead>
+  id="table"
+  data-toggle="table"
+  data-height="460"
+  data-url="json/data1.json">
+  <thead>
+  <tr>
+    <th data-field="id" data-title-tooltip="Item-ID">ID</th>
+    <th data-field="name" data-title-tooltip="other title">Item Name</th>
+    <th data-field="price">Item Price</th>
+  </tr>
+  </thead>
 </table>

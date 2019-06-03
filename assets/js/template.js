@@ -185,24 +185,6 @@ $(function () {
         parent.location.href = 'index.html'
       }
     })
-
-    if (isSource) {
-      $('#viewExample').show().click(function () {
-        $('#viewExample').hide()
-        window.parent.location.hash = window.parent.location.hash.replace('#view-source', '')
-      }).attr({
-        'aria-label': 'View Example'
-      }).addClass('hint--bottom')
-    } else {
-      $('#viewSource').show().click(function () {
-        $('#viewSource').hide()
-        if (window.parent.location.hash.indexOf('view-source') === -1) {
-          window.parent.location.hash += '#view-source'
-        }
-      }).attr({
-        'aria-label': 'View Source'
-      }).addClass('hint--bottom')
-    }
   }
 
   window.addEventListener('popstate', run)

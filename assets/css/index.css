@@ -115,6 +115,38 @@ iframe {
   content: "/";
 }
 
+.corner-ribbon-wrapper {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+}
+
+.corner-ribbon {
+  width: 200px;
+  background: #2980b9;
+  position: absolute;
+  top: 25px;
+  left: -55px;
+  text-align: center;
+  line-height: 28px;
+  font-size: 13px;
+  letter-spacing: 1px;
+  color: #f0f0f0;
+  text-decoration: none;
+  box-shadow: 0 0 3px rgba(0,0,0,.3);
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+.corner-ribbon:hover {
+  background: #0056b3;
+  color: #f0f0f0;
+  text-decoration: none;
+}
+
 @media (max-width: 991.98px) {
   .container-fluid {
     top: 106px;

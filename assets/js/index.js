@@ -133,6 +133,23 @@ function doSearch() {
   search.start()
 }
 
+function initViewSource () {
+  var isSource = /view-source$/.test(location.hash)
+  var title = 'View Source'
+  if (isSource) {
+    title = 'View Example'
+  }
+  $('.corner-ribbon').off('click').click(function () {
+    if (isSource) {
+      location.hash = location.hash.replace('#view-source', '')
+    } else {
+      if (location.hash.indexOf('view-source') === -1) {
+        location.hash += '#view-source'
+      }
+    }
+  }).attr('title', title).text(title)
+}
+
 $(function () {
   $('.bd-sidenav li').each(function () {
     $(this).attr('title', $.trim($(this).text()))
@@ -144,6 +161,7 @@ $(function () {
     var href = initUrl()
     loadUrl(href)
     initNavigation(href)
+    initViewSource()
   })
 
   initThemes()
@@ -152,4 +170,5 @@ $(function () {
   initNavigation(href)
   autoScrollNavigation()
   doSearch()
+  initViewSource()
 })

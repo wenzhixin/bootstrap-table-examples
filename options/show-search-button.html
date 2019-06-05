@@ -1,0 +1,26 @@
+<script>
+  init({
+    title: 'Show Search Button',
+    desc: 'Use <code>showSearchButton</code> to show a search Button behind the search input.',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
+<table
+  id="table"
+  data-toggle="table"
+  data-height="460"
+  data-search="true"
+  data-show-search-button="true"
+  data-url="https://examples.wenzhixin.net.cn/examples/bootstrap_table/data"
+  data-pagination="true"
+  data-side-pagination="server">
+  <thead>
+    <tr>
+      <th data-field="id">ID</th>
+      <th data-field="name">Item Name</th>
+      <th data-field="price">Item Price</th>
+    </tr>
+  </thead>
+</table>

@@ -1,0 +1,41 @@
+<script>
+  init({
+    title: 'Checkbox Disabled',
+    desc: 'Use <code>checkbox</code> and <code>formatter</code> column option to disabled select input.',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
+<table
+  id="table"
+  data-toggle="table"
+  data-height="460"
+  data-click-to-select="true"
+  data-url="json/data1.json">
+  <thead>
+    <tr>
+      <th data-field="state" data-checkbox="true" data-formatter="stateFormatter"></th>
+      <th data-field="id">ID</th>
+      <th data-field="name">Item Name</th>
+      <th data-field="price">Item Price</th>
+    </tr>
+  </thead>
+</table>
+
+<script>
+  function stateFormatter(value, row, index) {
+    if (index === 2) {
+      return {
+        disabled: true
+      }
+    }
+    if (index === 5) {
+      return {
+        disabled: true,
+        checked: true
+      }
+    }
+    return value
+  }
+</script>

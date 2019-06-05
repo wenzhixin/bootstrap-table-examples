@@ -1,14 +1,17 @@
 <script>
   init({
-    title: 'Prepend',
-    desc: 'Prepend the data to table: <code>$table.bootstrapTable(\'prepend\', data)</code>.',
+    title: 'Check/Uncheck All',
+    desc: 'Check/Uncheck all current page rows:<br>' +
+      '<code>$table.bootstrapTable(\'checkAll\')</code><br>' +
+      '<code>$table.bootstrapTable(\'uncheckAll\')</code>.',
     links: ['bootstrap-table.min.css'],
     scripts: ['bootstrap-table.min.js']
   })
 </script>
 
 <div id="toolbar">
-  <button id="button" class="btn btn-secondary">prepend</button>
+  <button id="button" class="btn btn-secondary">checkAll</button>
+  <button id="button2" class="btn btn-secondary">uncheckAll</button>
 </div>
 <table
   id="table"
@@ -18,6 +21,7 @@
   data-url="json/data1.json">
   <thead>
     <tr>
+      <th data-field="state" data-checkbox="true"></th>
       <th data-field="id">ID</th>
       <th data-field="name">Item Name</th>
       <th data-field="price">Item Price</th>
@@ -28,24 +32,14 @@
 <script>
   var $table = $('#table')
   var $button = $('#button')
-
-  function randomData() {
-    var startId = ~~(Math.random() * 100)
-    var rows = []
-
-    for (var i = 0; i < 10; i++) {
-      rows.push({
-        id: startId + i,
-        name: 'test' + (startId + i),
-        price: '$' + (startId + i)
-      })
-    }
-    return rows
-  }
+  var $button2 = $('#button2')
 
   function mounted() {
     $button.click(function () {
-      $table.bootstrapTable('prepend', randomData())
+      $table.bootstrapTable('checkAll')
+    })
+    $button2.click(function () {
+      $table.bootstrapTable('uncheckAll')
     })
   }
 </script>

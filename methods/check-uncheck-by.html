@@ -1,15 +1,17 @@
 <script>
   init({
-    title: 'Destroy',
-    desc: 'Destroy the bootstrap table: <code>$table.bootstrapTable(\'destroy\')</code>.',
+    title: 'Check/Uncheck By',
+    desc: 'Check/Uncheck rows by array of values:<br>' +
+      '<code>$table.bootstrapTable(\'checkBy\', {field: \'id\', values:[1, 2, 3]})</code><br>' +
+      '<code>$table.bootstrapTable(\'uncheckBy\', {field: \'id\', values:[1, 2, 3]})</code>.',
     links: ['bootstrap-table.min.css'],
     scripts: ['bootstrap-table.min.js']
   })
 </script>
 
 <div id="toolbar">
-  <button id="button" class="btn btn-secondary">destroy</button>
-  <button id="button2" class="btn btn-secondary">build</button>
+  <button id="button" class="btn btn-secondary">checkBy</button>
+  <button id="button2" class="btn btn-secondary">uncheckBy</button>
 </div>
 <table
   id="table"
@@ -19,6 +21,7 @@
   data-url="json/data1.json">
   <thead>
     <tr>
+      <th data-field="state" data-checkbox="true"></th>
       <th data-field="id">ID</th>
       <th data-field="name">Item Name</th>
       <th data-field="price">Item Price</th>
@@ -33,10 +36,10 @@
 
   function mounted() {
     $button.click(function () {
-      $table.bootstrapTable('destroy')
+      $table.bootstrapTable('checkBy', {field: 'id', values: [1, 2, 3]})
     })
     $button2.click(function () {
-      $table.bootstrapTable()
+      $table.bootstrapTable('uncheckBy', {field: 'id', values: [1, 2, 3]})
     })
   }
 </script>

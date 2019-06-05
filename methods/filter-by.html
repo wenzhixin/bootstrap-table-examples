@@ -1,20 +1,20 @@
 <script>
   init({
-    title: 'Prepend',
-    desc: 'Prepend the data to table: <code>$table.bootstrapTable(\'prepend\', data)</code>.',
+    title: 'Filter By',
+    desc: 'Filter data in table (can use only in client-side): <code>$table.bootstrapTable(\'filterBy\', {id: [1, 2, 3]})</code>.',
     links: ['bootstrap-table.min.css'],
     scripts: ['bootstrap-table.min.js']
   })
 </script>
 
 <div id="toolbar">
-  <button id="button" class="btn btn-secondary">prepend</button>
+  <button id="button" class="btn btn-secondary">filterBy</button>
 </div>
 <table
   id="table"
   data-toggle="table"
   data-toolbar="#toolbar"
-  data-height="460"
+  data-height="400"
   data-url="json/data1.json">
   <thead>
     <tr>
@@ -29,23 +29,11 @@
   var $table = $('#table')
   var $button = $('#button')
 
-  function randomData() {
-    var startId = ~~(Math.random() * 100)
-    var rows = []
-
-    for (var i = 0; i < 10; i++) {
-      rows.push({
-        id: startId + i,
-        name: 'test' + (startId + i),
-        price: '$' + (startId + i)
-      })
-    }
-    return rows
-  }
-
   function mounted() {
     $button.click(function () {
-      $table.bootstrapTable('prepend', randomData())
+      $table.bootstrapTable('filterBy', {
+        id: [1, 2, 3]
+      })
     })
   }
 </script>

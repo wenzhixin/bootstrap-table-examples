@@ -1,14 +1,14 @@
 <script>
   init({
-    title: 'Prepend',
-    desc: 'Prepend the data to table: <code>$table.bootstrapTable(\'prepend\', data)</code>.',
+    title: 'Get Options',
+    desc: 'Return the options object: <code>$table.bootstrapTable(\'getOptions\')</code>.',
     links: ['bootstrap-table.min.css'],
     scripts: ['bootstrap-table.min.js']
   })
 </script>
 
 <div id="toolbar">
-  <button id="button" class="btn btn-secondary">prepend</button>
+  <button id="button" class="btn btn-secondary">getOptions</button>
 </div>
 <table
   id="table"
@@ -29,23 +29,9 @@
   var $table = $('#table')
   var $button = $('#button')
 
-  function randomData() {
-    var startId = ~~(Math.random() * 100)
-    var rows = []
-
-    for (var i = 0; i < 10; i++) {
-      rows.push({
-        id: startId + i,
-        name: 'test' + (startId + i),
-        price: '$' + (startId + i)
-      })
-    }
-    return rows
-  }
-
   function mounted() {
     $button.click(function () {
-      $table.bootstrapTable('prepend', randomData())
+      alert(JSON.stringify($table.bootstrapTable('getOptions')))
     })
   }
 </script>

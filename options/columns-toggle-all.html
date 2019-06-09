@@ -1,0 +1,27 @@
+<script>
+  init({
+    title: 'Columns toggle all option',
+    desc: 'Use <code>showColumnsToggleAll</code> to show an toggle all checkbox for the columns option.',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
+<table
+  id="table"
+  data-toggle="table"
+  data-height="460"
+  data-url="json/data5.json"
+  data-show-columns="true"
+  data-show-columns-toggle-all="true">
+  <thead>
+    <tr>
+      <th data-field="name">Name</th>
+      <th data-field="price">Price</th>
+      <th data-field="column1">Columns1</th>
+      <th data-field="column2">Columns2</th>
+      <th data-field="column3">Columns3</th>
+      <th data-field="column4">Columns4</th>
+    </tr>
+  </thead>
+</table>

@@ -1,0 +1,24 @@
+<script>
+  init({
+    title: 'Show Button Text',
+    desc: 'Use <code>showButtonText</code> to show text on buttons.',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
+<table
+  id="table"
+  data-toggle="table"
+  data-show-button-text="true"
+  data-show-pagination-switch="true"
+  data-pagination="true"
+  data-url="json/data1.json">
+  <thead>
+    <tr>
+      <th data-field="id">ID</th>
+      <th data-field="name">Item Name</th>
+      <th data-field="price">Item Price</th>
+    </tr>
+  </thead>
+</table>

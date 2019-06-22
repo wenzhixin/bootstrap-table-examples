@@ -1,0 +1,39 @@
+<script>
+  init({
+    title: 'Filter By',
+    desc: 'Filter data in table (can use only in client-side): <code>$table.bootstrapTable(\'filterBy\', {id: [1, 2, 3]})</code>.',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
+<div id="toolbar">
+  <button id="button" class="btn btn-secondary">filterBy</button>
+</div>
+<table
+  id="table"
+  data-toggle="table"
+  data-toolbar="#toolbar"
+  data-height="400"
+  data-url="json/data1.json">
+  <thead>
+    <tr>
+      <th data-field="id">ID</th>
+      <th data-field="name">Item Name</th>
+      <th data-field="price">Item Price</th>
+    </tr>
+  </thead>
+</table>
+
+<script>
+  var $table = $('#table')
+  var $button = $('#button')
+
+  function mounted() {
+    $button.click(function () {
+      $table.bootstrapTable('filterBy', {
+        id: [1, 2, 3]
+      })
+    })
+  }
+</script>

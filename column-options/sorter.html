@@ -1,0 +1,30 @@
+<script>
+  init({
+    title: 'Column Sorter',
+    desc: 'Use <code>sorter</code> column option to custom the sorter.',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
+<table
+  id="table"
+  data-toggle="table"
+  data-height="460"
+  data-url="json/data1.json">
+  <thead>
+    <tr>
+      <th data-field="id">ID</th>
+      <th data-field="name">Item Name</th>
+      <th data-field="price" data-sortable="true" data-sorter="priceSorter">Item Price</th>
+    </tr>
+  </thead>
+</table>
+
+<script>
+  function priceSorter(a, b) {
+    var aa = a.replace('$', '')
+    var bb = b.replace('$', '')
+    return aa - bb
+  }
+</script>

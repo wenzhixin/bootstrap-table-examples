@@ -1,0 +1,23 @@
+<script>
+  init({
+    title: 'Column Searchable',
+    desc: 'Use <code>searchable</code> to define if a column can be found through searching.',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
+<table
+  id="table"
+  data-toggle="table"
+  data-height="460"
+  data-search="true"
+  data-url="json/data1.json">
+  <thead>
+  <tr>
+    <th data-field="id">ID</th>
+    <th data-field="name" data-searchable="false">Item Name</th>
+    <th data-field="price">Item Price</th>
+  </tr>
+  </thead>
+</table>

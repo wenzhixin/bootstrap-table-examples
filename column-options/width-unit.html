@@ -1,0 +1,22 @@
+<script>
+  init({
+    title: 'Width Unit',
+    desc: 'Use <code>widthUnit</code> to define the unit of the column width.',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
+<table
+  id="table"
+  data-toggle="table"
+  data-height="460"
+  data-url="json/data1.json">
+  <thead>
+  <tr>
+    <th data-field="id" data-width="10" data-width-unit="%">ID</th>
+    <th data-field="name" data-width="600" data-width-unit="px">Item Name</th>
+    <th data-field="price">Item Price</th>
+  </tr>
+  </thead>
+</table>

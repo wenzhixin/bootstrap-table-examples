@@ -1,0 +1,45 @@
+<script>
+  init({
+    title: 'Show/Hide Column',
+    desc: 'Show/Hide the specified column:<br>' +
+      '<code>$table.bootstrapTable(\'showColumn\', \'name\')</code><br>' +
+      '<code>$table.bootstrapTable(\'hideColumn\', \'name\')</code>.',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
+<div id="toolbar">
+  <button id="button" class="btn btn-secondary">showColumn</button>
+  <button id="button2" class="btn btn-secondary">hideColumn</button>
+</div>
+<table
+  id="table"
+  data-toggle="table"
+  data-toolbar="#toolbar"
+  data-height="460"
+  data-show-columns="true"
+  data-url="json/data1.json">
+  <thead>
+    <tr>
+      <th data-field="id">ID</th>
+      <th data-field="name">Item Name</th>
+      <th data-field="price">Item Price</th>
+    </tr>
+  </thead>
+</table>
+
+<script>
+  var $table = $('#table')
+  var $button = $('#button')
+  var $button2 = $('#button2')
+
+  function mounted() {
+    $button.click(function () {
+      $table.bootstrapTable('showColumn', 'name')
+    })
+    $button2.click(function () {
+      $table.bootstrapTable('hideColumn', 'name')
+    })
+  }
+</script>

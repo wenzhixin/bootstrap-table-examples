@@ -15,7 +15,13 @@
   })
 </script>
 
-<div id="toolbar">
+<style>
+#toolbar {
+  margin: 0;
+}
+</style>
+
+<div id="toolbar" class="select">
   <select class="form-control">
     <option value="">Export Basic</option>
     <option value="all">Export All</option>
@@ -26,10 +32,12 @@
 <table id="table"
   data-show-export="true"
   data-pagination="true"
+  data-side-pagination="server"
   data-click-to-select="true"
   data-toolbar="#toolbar"
-  data-show-toggle="ture"
-  data-url="json/data1.json">
+  data-show-toggle="true"
+  data-show-columns="true"
+  data-url="https://examples.wenzhixin.net.cn/examples/bootstrap_table/data">
 </table>
 
 <script>

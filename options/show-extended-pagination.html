@@ -1,0 +1,25 @@
+<script>
+  init({
+    title: 'Show Extended Pagination',
+    desc: 'Use <code>showExtendedPagination</code> option to show a extended version of pagination (including the count of all rows with out filters).',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
+<table
+  id="table"
+  data-toggle="table"
+  data-height="460"
+  data-search="true"
+  data-pagination="true"
+  data-show-extended-pagination="true"
+  data-url="json/data1.json">
+  <thead>
+    <tr>
+      <th data-field="id">ID</th>
+      <th data-field="name">Item Name</th>
+      <th data-field="price">Item Price</th>
+    </tr>
+  </thead>
+</table>

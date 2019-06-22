@@ -1,0 +1,29 @@
+<script>
+  init({
+    title: 'Column Class',
+    desc: 'Use <code>class</code> to define/overwrite css classes of the column',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
+<style>
+.success {
+  background: green;
+  color: white;
+}
+</style>
+
+<table
+  id="table"
+  data-toggle="table"
+  data-height="460"
+  data-url="json/data1.json">
+  <thead>
+  <tr>
+    <th data-field="id">ID</th>
+    <th data-field="name" class="success">Item Name</th>
+    <th data-field="price">Item Price</th>
+  </tr>
+  </thead>
+</table>

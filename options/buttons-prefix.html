@@ -1,0 +1,26 @@
+<script>
+  init({
+    title: 'Buttons Class',
+    desc: 'Use <code>buttonsPrefix: \'btn btn-sm\'</code> option to defines the prefix of table buttons.',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
+<table
+  id="table"
+  data-toggle="table"
+  data-height="460"
+  data-show-refresh="true"
+  data-show-columns="true"
+  data-show-fullscreen="true"
+  data-buttons="btn btn-sm"
+  data-url="json/data1.json">
+  <thead>
+    <tr>
+      <th data-field="id">ID</th>
+      <th data-field="name">Item Name</th>
+      <th data-field="price">Item Price</th>
+    </tr>
+  </thead>
+</table>

@@ -1,7 +1,7 @@
 window._config = {
   isDebug: location.hash.slice(1) === 'is-debug' ||
     ['localhost', 'dev.bootstrap-table.com'].indexOf(location.hostname) > -1,
-  cdnUrl: 'https://unpkg.com/bootstrap-table@1.14.2/dist/',
+  cdnUrl: 'https://unpkg.com/bootstrap-table@1.15.0/dist/',
   localUrl: '../bootstrap-table/src/'
 }
 
@@ -40,6 +40,10 @@ function _script(file, callback) {
   var head = document.getElementsByTagName('head')[0]
   var script = document.createElement('script')
 
+  if (window._config.isDebug && !/^http/.test(file)) {
+    script.type = 'module'
+  }
+
   script.src = _getScript(file)
 
   var done = false
@@ -60,6 +64,10 @@ function _script(file, callback) {
 }
 
 function _scripts(scripts, callback) {
+  if (!scripts.length) {
+    return callback()
+  }
+
   var eachSeries = function (arr, iterator, callback_) {
     var callback = callback_ || function () {}
     if (!arr.length) {

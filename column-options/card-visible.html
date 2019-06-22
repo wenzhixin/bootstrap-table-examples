@@ -1,0 +1,23 @@
+<script>
+  init({
+    title: 'Card Visible',
+    desc: 'Use <code>cardVisible</code> to to decide if the column is visible or not in the card view.',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
+<table
+  id="table"
+  data-toggle="table"
+  data-height="460"
+  data-show-toggle="true"
+  data-url="json/data1.json">
+  <thead>
+  <tr>
+    <th data-field="id">ID</th>
+    <th data-field="name" data-card-visible="false">Item Name</th>
+    <th data-field="price">Item Price</th>
+  </tr>
+  </thead>
+</table>

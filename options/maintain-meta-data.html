@@ -1,0 +1,26 @@
+<script>
+  init({
+    title: 'Maintain Meta Data',
+    desc: 'Use <code>maintainMetaData</code> option to maintain the meta data(selected rows and hidden rows) on change page and search.',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
+<table
+  id="table"
+  data-toggle="table"
+  data-height="460"
+  data-pagination="true"
+  data-search="true"
+  data-maintain-meta-data="true"
+  data-url="json/data1.json">
+  <thead>
+    <tr>
+      <th data-field="state" data-checkbox="true"></th>
+      <th data-field="id">ID</th>
+      <th data-field="name">Item Name</th>
+      <th data-field="price">Item Price</th>
+    </tr>
+  </thead>
+</table>

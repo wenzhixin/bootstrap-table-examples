@@ -1,0 +1,47 @@
+<script>
+  init({
+    title: 'Cell Style',
+    desc: 'Use <code>cellStyle</code> to define the style of a cell.',
+    links: [
+      'https://s3-us-west-2.amazonaws.com/colors-css/2.2.0/colors.min.css',
+      'bootstrap-table.min.css'
+    ],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
+<table
+  id="table"
+  data-toggle="table"
+  data-url="json/data1.json">
+  <thead>
+  <tr>
+    <th data-field="id">ID</th>
+    <th data-field="name" data-cell-style="cellStyle">Item Name</th>
+    <th data-field="price">Item Price</th>
+  </tr>
+  </thead>
+</table>
+
+<script>
+  function cellStyle(value, row, index) {
+    var classes = [
+      'bg-blue',
+      'bg-green',
+      'bg-orange',
+      'bg-yellow',
+      'bg-red'
+    ]
+
+    if (index % 2 === 0 && index / 2 < classes.length) {
+      return {
+        classes: classes[index / 2]
+      }
+    }
+    return {
+      css: {
+        color: 'blue'
+      }
+    }
+  }
+</script>

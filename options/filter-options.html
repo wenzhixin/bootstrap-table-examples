@@ -1,0 +1,86 @@
+<script>
+  init({
+    title: 'Filter Options',
+    desc: 'Use <code>filterOptions</code> option to define the default filter options of algorithm. In this case, we are using <code>bootstrapTable(\'filterBy\', {id: 3, price: \'$1\'})</code>.',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
+<style>
+#select {
+  width: 100px;
+  display: inline-block;
+}
+</style>
+
+<div class="toolbar">
+  <select id="select" class="form-control" name="filterAlgorithm">
+    <option value="and" selected>and</option>
+    <option value="or">or</option>
+  </select>
+  <button class="btn btn-secondary" id="filterBy">filterBy</button>
+</div>
+
+<table id="table">
+</table>
+
+<script>
+  var $table = $('#table')
+
+  function mounted() {
+    $table.bootstrapTable({
+      toolbar: '.toolbar',
+      columns: [{
+        title: 'ID',
+        field: 'id'
+      }, {
+        title: 'Item Name',
+        field: 'name'
+      }, {
+        title: 'Item Price',
+        field: 'price'
+      }],
+      data: [{
+        id: 1,
+        name: 'Item 1',
+        price: '$1'
+      },
+      {
+        id: 2,
+        name: 'Item 2',
+        price: '$2'
+      },
+      {
+        id: 3,
+        name: 'Item 3',
+        price: '$1'
+      },
+      {
+        id: 4,
+        name: 'Item 4',
+        price: '$4'
+      },
+      {
+        id: 5,
+        name: 'Item 5',
+        price: '$5'
+      }]
+    })
+
+    $('#filterBy').click(function () {
+      var filterAlgorithm = $('[name="filterAlgorithm"]').val()
+
+      $table.bootstrapTable('refreshOptions', {
+        filterOptions: {
+          filterAlgorithm: filterAlgorithm
+        }
+      })
+
+      $table.bootstrapTable('filterBy', {
+        id: 3,
+        price: '$1'
+      })
+    })
+  }
+</script>

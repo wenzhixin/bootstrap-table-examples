@@ -46,7 +46,15 @@
         title: 'Cell' + i,
         sortable: true,
         rowspan: 2,
-        valign: 'middle'
+        valign: 'middle',
+        formatter: function (val) {
+          return '<div class="item">' + val + '</div>'
+        },
+        events: {
+          'click .item': function () {
+            console.log('click')
+          }
+        }
       })
     }
     for (i = 0; i < rows; i++) {
@@ -105,5 +113,3 @@
     })
   }
 </script>
-</body>
-</html>

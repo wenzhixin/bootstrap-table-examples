@@ -1,0 +1,40 @@
+<script>
+  init({
+    title: 'Copy Rows',
+    desc: 'Use Plugin: bootstrap-table-copy-rows for copying selected rows to the clipboard.',
+    links: [
+      'bootstrap-table.min.css'
+    ],
+    scripts: [
+      'bootstrap-table.min.js',
+      'extensions/copy-rows/bootstrap-table-copy-rows.min.js'
+    ]
+  })
+</script>
+
+<table
+  id="table"
+  data-show-columns="true"
+  data-cookie="true"
+  data-cookie-id-table="saveId"
+  data-pagination="true"
+  data-search="true"
+  data-click-to-select="true"
+  data-show-copy-rows="true"
+  data-url="https://examples.wenzhixin.net.cn/examples/bootstrap_table/data"
+  data-side-pagination="server">
+  <thead>
+    <tr>
+      <th data-field="state" data-checkbox="true"></th>
+      <th data-field="id" data-sortable="true">ID</th>
+      <th data-field="name" data-sortable="true">Item Name</th>
+      <th data-field="price" data-sortable="true">Item Price</th>
+    </tr>
+  </thead>
+</table>
+
+<script>
+  function mounted() {
+    $('#table').bootstrapTable()
+  }
+</script>

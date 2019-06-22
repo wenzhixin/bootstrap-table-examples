@@ -1,0 +1,39 @@
+<script>
+  init({
+    title: 'Detail Formatter',
+    desc: 'Use <code>detailFormatter</code> to Format your detail view when <code>detailView</code> and <code>detailViewByClick</code> is set to <code>true</code>. Return a <code>String</code> and it will be appended into the detail view cell.',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
+<table
+  id="table"
+  data-toggle="table"
+  data-height="460"
+  data-detail-view="true"
+  data-detail-view-by-click="true"
+  data-detail-view-icon="false"
+  data-url="json/data1.json">
+  <thead>
+    <tr>
+      <th data-field="id" data-detail-formatter="idDetailFormatter">ID</th>
+      <th data-field="name" data-detail-formatter="nameDetailFormatter">Item Name</th>
+      <th data-field="price" data-detail-formatter="priceDetailFormatter">Item Price</th>
+    </tr>
+  </thead>
+</table>
+
+<script>
+  function idDetailFormatter(index, row) {
+    return index + '. Item ID: ' + row.id
+  }
+
+  function nameDetailFormatter(index, row) {
+    return index + '. Item Name: ' + row.name
+  }
+
+  function priceDetailFormatter(index, row) {
+    return index + '. Item Price: ' + row.price
+  }
+</script>

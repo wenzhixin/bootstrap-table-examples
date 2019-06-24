@@ -40,9 +40,9 @@ function _script(file, callback) {
   var head = document.getElementsByTagName('head')[0]
   var script = document.createElement('script')
 
-  // if (window._config.isDebug && !/^http/.test(file)) {
-    // script.type = 'module'
-  // }
+  if (window._config.isDebug && !/^http/.test(file)) {
+    script.type = 'module'
+  }
 
   script.src = _getScript(file)
 

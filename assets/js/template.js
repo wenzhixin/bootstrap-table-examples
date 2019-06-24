@@ -1,8 +1,8 @@
 window._config = {
   isDebug: location.hash.slice(1) === 'is-debug' ||
     ['localhost', 'dev.bootstrap-table.com'].indexOf(location.hostname) > -1,
-  cdnUrl: 'https://unpkg.com/bootstrap-table@1.15.1/dist/',
-  localUrl: '../bootstrap-table/src/'
+  cdnUrl: 'https://unpkg.com/bootstrap-table@1.15.2/dist/',
+  localUrl: '../bootstrap-table/dist/'
 }
 
 function _getLink(file) {
@@ -23,7 +23,7 @@ function _getScript(file, isScriptTag) {
     url = window._config.cdnUrl + file
 
     if (window._config.isDebug) {
-      url = window._config.localUrl + file.replace(/\.min/, '') + '?t=' + (+new Date())
+      url = window._config.localUrl + file + '?t=' + (+new Date())
     }
   }
   if (isScriptTag) {
@@ -40,9 +40,9 @@ function _script(file, callback) {
   var head = document.getElementsByTagName('head')[0]
   var script = document.createElement('script')
 
-  if (window._config.isDebug && !/^http/.test(file)) {
-    script.type = 'module'
-  }
+  // if (window._config.isDebug && !/^http/.test(file)) {
+    // script.type = 'module'
+  // }
 
   script.src = _getScript(file)
 

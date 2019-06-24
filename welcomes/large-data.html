@@ -1,7 +1,7 @@
 <script>
   init({
     title: 'Large data',
-    desc: 'Play with large data sets (10000 rows).',
+    desc: 'Use <code>enableVirtualScroll</code> to enable the virtual scroll to play with large data sets (10000 rows).',
     links: ['bootstrap-table.min.css'],
     scripts: ['bootstrap-table.min.js']
   })
@@ -16,6 +16,7 @@
 <table id="table"
   data-toolbar=".toolbar"
   data-height="400"
+  data-enable-virtual-scroll="true"
   data-show-columns="true">
   <thead>
     <tr>

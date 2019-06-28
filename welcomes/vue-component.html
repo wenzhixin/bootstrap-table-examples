@@ -1,0 +1,80 @@
+<script>
+  init({
+    title: 'Vue Component',
+    desc: 'Use Plugin: <a href="https://vuejs.org/" target="_blank">Vue.js</a> and bootstrap-table-vue.',
+    links: [
+      'bootstrap-table.min.css'
+    ],
+    scripts: [
+      'https://cdn.jsdelivr.net/npm/vue',
+      'bootstrap-table.min.js',
+      'https://unpkg.com/bootstrap-table@1.15.2/dist/bootstrap-table-vue.min.js',
+    ]
+  })
+</script>
+
+<div id="table">
+  <bootstrap-table :columns="columns" :data="data" :options="options"></bootstrap-table>
+</div>
+
+<script>
+  function mounted() {
+    new Vue({
+      el: '#table',
+      components: {
+        'BootstrapTable': BootstrapTable
+      },
+      data: {
+        columns: [
+          {
+            title: 'Item ID',
+            field: 'id'
+          },
+          {
+            field: 'name',
+            title: 'Item Name'
+          }, {
+            field: 'price',
+            title: 'Item Price'
+          }
+        ],
+        data: [
+          {
+            id: 0,
+            name: 'Item 0',
+            price: '$0'
+          },
+          {
+            id: 1,
+            name: 'Item 1',
+            price: '$1'
+          },
+          {
+            id: 2,
+            name: 'Item 2',
+            price: '$2'
+          },
+          {
+            id: 3,
+            name: 'Item 3',
+            price: '$3'
+          },
+          {
+            id: 4,
+            name: 'Item 4',
+            price: '$4'
+          },
+          {
+            id: 5,
+            name: 'Item 5',
+            price: '$5'
+          }
+        ],
+        options: {
+          search: true,
+          showColumns: true
+        }
+      }
+    })
+  }
+</script>

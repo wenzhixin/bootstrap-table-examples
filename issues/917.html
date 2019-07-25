@@ -39,13 +39,20 @@
   }
 
   function mounted() {
-    $table.on('check.bs.table check-all.bs.table ' +
-      'uncheck.bs.table uncheck-all.bs.table', function (e, rows) {
-      var ids = $.map(!$.isArray(rows) ? [rows] : rows, function (row) {
-        return row.id
+    $table.on('check.bs.table check-all.bs.table uncheck.bs.table uncheck-all.bs.table',
+      function (e, rowsAfter, rowsBefore) {
+        var rows = rowsAfter
+
+        if (e.type == 'uncheck-all') {
+          rows = rowsBefore
+        }
+
+        var ids = $.map(!$.isArray(rows) ? [rows] : rows, function (row) {
+          return row.id
+        })
+
+        var func = $.inArray(e.type, ['check', 'check-all']) > -1 ? 'union' : 'difference'
+        selections = window._[func](selections, ids)
       })
-      var func = $.inArray(e.type, ['check', 'check-all']) > -1 ? 'union' : 'difference'
-      selections = window._[func](selections, ids)
-    })
   }
 </script>

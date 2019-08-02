@@ -3,40 +3,45 @@
  * examples for projects
  */
 
-var projects = {
+const projects = {
   bootstrap_table: {
-    data: function(req, res) {
-      var offset = +req.query.offset || 0
-      var limit = +req.query.limit || 800
-      var search = req.query.search
-      var name = req.query.sort
-      var order = req.query.order || 'asc'
-      var i
-      var max = offset + limit
-      var rows = []
-      var result = {
-        total: +req.query.total || 800,
+    data(req, res) {
+      const offset = +req.query.offset || 0
+      const limit = +req.query.limit || 0
+      const search = req.query.search
+      const name = req.query.sort
+      const order = req.query.order || 'asc'
+      const total = req.query.total || 800
+      const filter = JSON.parse(req.query.filter || '{}')
+      let i
+      let max = offset + limit
+      let rows = []
+
+      const result = {
+        total,
+        totalNotFiltered: total,
         rows: []
       }
 
       for (i = 0; i < result.total; i++) {
         rows.push({
           id: i,
-          name: 'Item ' + i,
-          price: '$' + i
+          name: `Item ${i}`,
+          price: `$${i}`
         })
       }
       if (search) {
-        rows = rows.filter(function(item) {
-          return item.name.indexOf(search) !== -1
-        })
+        rows = rows.filter(item => item.name.includes(search))
       }
-      if (['id', 'name', 'price'].indexOf(name) !== -1) {
-        rows = rows.sort(function(a, b) {
-          var c = a[name]
-
-
-          var d = b[name]
+      if (Object.keys(filter).length) {
+        for (const [key, value] of Object.entries(filter)) {
+          rows = rows.filter(item => item[key].includes(value))
+        }
+      }
+      if (['id', 'name', 'price'].includes(name)) {
+        rows = rows.sort((a, b) => {
+          let c = a[name]
+          let d = b[name]
 
           if (name === 'price') {
             c = +c.substring(1)
@@ -57,16 +62,18 @@ var projects = {
       }
 
       result.total = rows.length
-      for (i = offset; i < max; i++) {
-        result.rows.push(rows[i])
+      if (max === 0) {
+        result.rows = rows
+      } else {
+        for (i = offset; i < max; i++) {
+          result.rows.push(rows[i])
+        }
       }
       res.json(result)
     }
   }
 }
 
-module.exports = function(req, res) {
-  res.header('Access-Control-Allow-Origin', '*')
-  res.header('Access-Control-Allow-Headers', 'X-Requested-With')
+module.exports = (req, res) => {
   projects[req.params.project][req.params.func](req, res)
 }

@@ -27,15 +27,33 @@
       data: {
         columns: [
           {
+            field: 'state',
+            checkbox: true
+          },
+          {
             title: 'Item ID',
             field: 'id'
           },
           {
             field: 'name',
             title: 'Item Name'
-          }, {
+          },
+          {
             field: 'price',
             title: 'Item Price'
+          },
+          {
+            field: 'action',
+            title: 'Actions',
+            align: 'center',
+            formatter: function () {
+              return '<a href="javascript:" class="like"><i class="fa fa-star"></i></a>'
+            },
+            events: {
+              'click .like': function (e, value, row) {
+                alert(JSON.stringify(row))
+              }
+            }
           }
         ],
         data: [

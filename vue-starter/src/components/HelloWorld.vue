@@ -1,12 +1,27 @@
 <template>
-  <BootstrapTable :columns="columns" :data="data" :options="options"></BootstrapTable>
+  <div>
+    <BootstrapTable
+      ref="table"
+      :columns="columns"
+      :data="data"
+      :options="options"
+      @onPostBody="vueFormatterPostBody"
+    />
+  </div>
 </template>
 
 <script>
+import tableMixin from '../mixins/table'
+
 export default {
+  mixins: [tableMixin],
   data () {
     return {
       columns: [
+        {
+          field: 'state',
+          checkbox: true
+        },
         {
           title: 'Item ID',
           field: 'id'
@@ -14,9 +29,24 @@ export default {
         {
           field: 'name',
           title: 'Item Name'
-        }, {
+        },
+        {
           field: 'price',
           title: 'Item Price'
+        },
+        {
+          field: 'actions',
+          title: 'Actions',
+          align: 'center',
+          formatter: (value, row) => {
+            return this.vueFormatter({
+              template: '<b-button @click="clickRow(row)">Click</b-button>',
+              data: { row },
+              methods: {
+                clickRow: this.clickRow
+              }
+            })
+          }
         }
       ],
       data: [
@@ -50,6 +80,11 @@ export default {
         search: true,
         showColumns: true
       }
+    }
+  },
+  methods: {
+    clickRow (row) {
+      alert(JSON.stringify(row))
     }
   }
 }

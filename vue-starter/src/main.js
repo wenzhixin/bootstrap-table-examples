@@ -1,5 +1,8 @@
-import Vue from 'vue'
+import Vue from 'vue/dist/vue.esm.js'
+import BootstrapVue from 'bootstrap-vue'
 import App from './App.vue'
+
+Vue.use(BootstrapVue)
 
 import './plugins/table.js'
 

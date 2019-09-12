@@ -1,0 +1,75 @@
+<script>
+  init({
+    title: 'Issue #4586',
+    desc: 'Customize data attribute of td.(<a href="https://github.com/wenzhixin/bootstrap-table/issues/4586" target="_blank">#4586</a>).',
+    links: ['bootstrap-table.min.css'],
+    scripts: [
+      'https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js',
+      'bootstrap-table.min.js',
+      'extensions/export/bootstrap-table-export.min.js'
+    ]
+  })
+</script>
+
+<style>
+#toolbar {
+  margin: 0;
+}
+</style>
+
+<div id="toolbar" class="select">
+  <select class="form-control">
+    <option value="">Export Basic</option>
+    <option value="all">Export All</option>
+    <option value="selected">Export Selected</option>
+  </select>
+</div>
+
+<table id="table"
+  data-show-export="true"
+  data-pagination="true"
+  data-side-pagination="server"
+  data-click-to-select="true"
+  data-toolbar="#toolbar"
+  data-show-toggle="true"
+  data-show-columns="true"
+  data-url="https://examples.wenzhixin.net.cn/examples/bootstrap_table/data">
+</table>
+
+<script>
+  var $table = $('#table')
+
+  function mounted() {
+    $('#toolbar').find('select').change(function () {
+      $table.bootstrapTable('destroy').bootstrapTable({
+        exportDataType: $(this).val(),
+        exportTypes: ['json', 'xml', 'csv', 'txt', 'sql', 'excel', 'pdf'],
+        responseHandler (res) {
+          res.rows.forEach(row => {
+            row._id_data = {
+              'tableexport-msonumberformat': '\\@'
+            }
+          })
+          return res
+        },
+        columns: [
+          {
+            field: 'state',
+            checkbox: true,
+            visible: $(this).val() === 'selected'
+          },
+          {
+            field: 'id',
+            title: 'ID'
+          }, {
+            field: 'name',
+            title: 'Item Name'
+          }, {
+            field: 'price',
+            title: 'Item Price'
+          }
+        ]
+      })
+    }).trigger('change')
+  }
+</script>

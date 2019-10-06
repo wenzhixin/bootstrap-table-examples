@@ -72,6 +72,8 @@ module.exports = {
   'globals': {
     '$': true,
     'sprintf': true,
-    'init': true
+    'init': true,
+    'Vue': true,
+    'BootstrapTable': true
   }
 }

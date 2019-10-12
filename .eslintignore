@@ -1,1 +1,4 @@
 assets/js/ga.js
+dist
+node_modules
+*.min.js

@@ -1,6 +1,6 @@
 {
   "name": "bootstrap-table-examples",
-  "version": "1.15.4",
+  "version": "1.15.5",
   "description": "bootstrap-table-examples",
   "repository": {
     "type": "git",
@@ -16,8 +16,10 @@
     "lint": "eslint --ext .html,.js ."
   },
   "devDependencies": {
+    "babel-eslint": "^10.0.3",
     "eslint": "^5.10.0",
     "eslint-plugin-html": "^5.0.0",
+    "eslint-plugin-vue": "^5.2.3",
     "getopts": "^2.2.3"
   },
   "dependencies": {

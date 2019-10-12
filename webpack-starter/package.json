@@ -1,0 +1,23 @@
+{
+  "name": "webpack-bootstrap-table",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "css-loader": "^3.2.0",
+    "style-loader": "^1.0.0",
+    "webpack": "^4.41.0",
+    "webpack-cli": "^3.3.9",
+    "webpack-dev-server": "^3.8.1"
+  },
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "bootstrap-table": "^1.15.5",
+    "jquery": "^3.4.1",
+    "popper.js": "^1.15.0"
+  },
+  "scripts": {
+    "build": "webpack",
+    "dev": "webpack-dev-server --inline --progress"
+  }
+}

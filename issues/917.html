@@ -43,7 +43,7 @@
       function (e, rowsAfter, rowsBefore) {
         var rows = rowsAfter
 
-        if (e.type == 'uncheck-all') {
+        if (e.type === 'uncheck-all') {
           rows = rowsBefore
         }
 

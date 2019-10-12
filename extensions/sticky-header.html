@@ -13,13 +13,6 @@
   })
 </script>
 
-<style>
-.sticky-header-container {
-  left: 3em;
-  right: 3em;
-}
-</style>
-
 <div class="toolbar">
   <div class="radio">
     <label>
@@ -75,6 +68,8 @@
       data: data,
       search: true,
       stickyHeader: true,
+      stickyHeaderOffsetLeft: '3em',
+      stickyHeaderOffsetRight: '3em',
       theadClasses: classes
     })
   }

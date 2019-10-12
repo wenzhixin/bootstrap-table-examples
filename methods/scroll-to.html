@@ -53,12 +53,6 @@
     })
     $button2.click(function () {
       var index = +$('.row-index').val()
-
-      $table.find('tbody tr').each(function (i) {
-        if (i < index) {
-          top += $(this).height()
-        }
-      })
       $table.bootstrapTable('scrollTo', {unit: 'rows', value: index})
     })
     $button3.click(function () {

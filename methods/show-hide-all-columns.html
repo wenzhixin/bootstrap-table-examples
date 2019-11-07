@@ -1,9 +1,7 @@
 <script>
   init({
     title: 'Show/Hide All Columns',
-    desc: 'Show/Hide all columns:<br>' +
-      '<code>$table.bootstrapTable(\'showAllColumns\')</code><br>' +
-      '<code>$table.bootstrapTable(\'hideAllColumns\')</code>.',
+    desc: 'Show/Hide all columns:<br><code>$table.bootstrapTable(\'showAllColumns\')</code><br><code>$table.bootstrapTable(\'hideAllColumns\')</code>.',
     links: ['bootstrap-table.min.css'],
     scripts: ['bootstrap-table.min.js']
   })
@@ -38,15 +36,11 @@
 
   function mounted() {
     $button.click(function() {
-      $table.bootstrapTable('showAllColumns', {
-        index: 1
-      })
+      $table.bootstrapTable('showAllColumns')
     })
 
     $button2.click(function() {
-      $table.bootstrapTable('hideAllColumns', {
-        index: 1
-      })
+      $table.bootstrapTable('hideAllColumns')
     })
   }
 </script>

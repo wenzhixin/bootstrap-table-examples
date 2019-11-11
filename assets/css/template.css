@@ -23,6 +23,12 @@ body {
 
 #codefund {
   margin: 0 0 20px 0!important;
+  display: flex;
+  justify-content: flex-end;
+}
+
+#codefund #cf {
+  margin: 0!important;
 }
 
 #codefund .cf-wrapper {
@@ -33,12 +39,45 @@ body {
   margin-top: 0!important;
 }
 
+.header-wrapper {
+  -js-display: flex;
+	display: flex;
+}
+
+.title-desc {
+  flex: 1;
+  padding-right: 20px;
+}
+
+.header-right {
+  flex: 0 0 330px;
+}
+
+.bd-title {
+  font-size: 2rem;
+  margin-top: 1rem!important;
+  margin-bottom: .5rem!important;
+}
+
 .bd-lead {
   max-width: 100%;
+  font-size: 1.1rem;
 }
 
 @media (max-width: 991.98px) {
   body {
     padding: 0 !important;
+  }
+
+  .header-wrapper {
+    display: block;
+  }
+
+  .title-desc {
+    min-height: auto;
+  }
+
+  #codefund {
+    justify-content: flex-start;
   }
 }

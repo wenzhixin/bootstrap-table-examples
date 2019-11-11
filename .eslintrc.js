@@ -74,6 +74,7 @@ module.exports = {
     'sprintf': true,
     'init': true,
     'Vue': true,
-    'BootstrapTable': true
+    'BootstrapTable': true,
+    'marked': true
   }
 }

@@ -1,15 +1,22 @@
 <script>
   init({
     title: 'Silent Sort',
-    desc: 'Use <code>silentSort: false</code> option to sort the data with loading message.',
+    desc: 'Use `silentSort: false` option to sort the data with loading message, the default value is `true`.',
     links: ['bootstrap-table.min.css'],
     scripts: ['bootstrap-table.min.js']
   })
 </script>
 
+<div class="toolbar">
+  <label>
+    <input type="checkbox" id="silentSort" /> silentSort
+  </label>
+</div>
+
 <table
   id="table"
   data-toggle="table"
+  data-toolbar=".toolbar"
   data-silent-sort="false"
   data-height="460"
   data-pagination="true"
@@ -23,3 +30,13 @@
     </tr>
   </thead>
 </table>
+
+<script>
+  function mounted() {
+    $('#silentSort').change(function () {
+      $('#table').bootstrapTable('refreshOptions', {
+        silentSort: $('#silentSort').prop('checked')
+      })
+    })
+  }
+</script>

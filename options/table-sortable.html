@@ -1,16 +1,23 @@
 <script>
   init({
     title: 'Table Sortable',
-    desc: 'Use <code>sortable</code> option to set the basic sort.',
+    desc: 'Use `sortable` option to set the basic sort, the default value is `true`. We can set `false` to disable `sortable` of all columns.',
     links: ['bootstrap-table.min.css'],
     scripts: ['bootstrap-table.min.js']
   })
 </script>
 
+<div class="toolbar">
+  <label>
+    <input type="checkbox" id="sortable" /> sortable
+  </label>
+</div>
+
 <table
   id="table"
   data-toggle="table"
-  data-sortable="true"
+  data-toolbar=".toolbar"
+  data-sortable="false"
   data-height="460"
   data-url="json/data1.json">
   <thead>
@@ -21,3 +28,13 @@
     </tr>
   </thead>
 </table>
+
+<script>
+  function mounted() {
+    $('#sortable').change(function () {
+      $('#table').bootstrapTable('refreshOptions', {
+        sortable: $('#sortable').prop('checked')
+      })
+    })
+  }
+</script>

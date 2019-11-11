@@ -20,6 +20,8 @@
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/sprintf/1.1.2/sprintf.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://unpkg.com/flexibility@2.0.1/flexibility.js"></script>
   <script src="assets/js/template.js?v=VERSION"></script>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -32,8 +34,8 @@
   </script>
 </head>
 <body>
-  <div class="columns">
-    <div class="column is-two-third title-desc">
+  <div class="header-wrapper">
+    <div class="title-desc">
       <h1 class="bd-title" id="content">
         <span></span>
         <a id="viewSource" href="javascript:">
@@ -46,7 +48,7 @@
       <p class="bd-lead"></p>
     </div>
 
-    <div class="column is-one-third">
+    <div class="header-right">
       <div id="codefund"><!-- fallback content --></div>
       <script src="https://codefund.io/properties/291/funder.js" async="async"></script>
     </div>

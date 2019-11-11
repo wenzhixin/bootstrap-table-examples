@@ -1,15 +1,20 @@
 <script>
   init({
     title: 'Sort Stable',
-    desc: 'Use <code>sortStable</code> option to get a stable sorting.',
+    desc: 'Use `sortStable` option to get a stable sorting.',
     links: ['bootstrap-table.min.css'],
     scripts: ['bootstrap-table.min.js']
   })
 </script>
 
+<div class="toolbar">
+  <label>
+    <input type="checkbox" id="sortStable" checked /> sortStable
+  </label>
+</div>
+
 <table id="table"
-  data-height="400"
-  data-sort-stable="true">
+  data-height="400">
   <thead>
     <tr>
       <th data-field="id" data-sortable="true">Item ID</th>
@@ -131,8 +136,16 @@
   var $table = $('#table')
 
   function mounted() {
-    $('#table').bootstrapTable({
-      data: data
+    $table.bootstrapTable({
+      data: data,
+      sortStable: true
+    })
+
+    $('#sortStable').change(function () {
+      $table.bootstrapTable('refreshOptions', {
+        sortStable: $('#sortStable').prop('checked')
+      })
     })
   }
+
 </script>

@@ -186,7 +186,7 @@ $(function () {
           $('#source').text(_beautifySource(data))
           window.hljs.initHighlightingOnLoad()
         } else {
-          $('#example').html(data.replace(/data-toggle="table"/g, 'data-toggle="bootstrap-table"'))
+          $('#example').html(data.replace(/ data-toggle="table"/g, ' data-toggle="bootstrap-table"'))
         }
       },
       error: function () {
@@ -219,7 +219,7 @@ window.init = function (options_) {
   }, options_)
 
   $('.bd-title span').html(options.title)
-  $('.bd-lead').html(options.desc)
+  $('.bd-lead').html(marked(options.desc))
   $.each(options.links, function (i, file) {
     _link(file)
   })

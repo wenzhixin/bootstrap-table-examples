@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/default.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hint.css/2.5.1/hint.min.css">
   <link rel="stylesheet" href="assets/css/docs.min.css">
-  <link rel="stylesheet" href="assets/css/template.css?v=108">
+  <link rel="stylesheet" href="assets/css/template.css?v=109">
   <style>
   table.highlight {
     padding: 0;
@@ -28,7 +28,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/sprintf/1.1.2/sprintf.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
-  <script src="assets/js/template.js?v=108"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://unpkg.com/flexibility@2.0.1/flexibility.js"></script>
+  <script src="assets/js/template.js?v=109"></script>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-132747866-1"></script>
@@ -40,8 +42,8 @@
   </script>
 </head>
 <body>
-  <div class="row">
-    <div class="col s8 title-desc">
+  <div class="header-wrapper">
+    <div class="title-desc">
       <h1 class="bd-title" id="content">
         <span></span>
         <a id="viewSource" href="javascript:">
@@ -54,7 +56,7 @@
       <p class="bd-lead"></p>
     </div>
 
-    <div class="col s4">
+    <div class="header-right">
       <div id="codefund"><!-- fallback content --></div>
       <script src="https://codefund.io/properties/291/funder.js" async="async"></script>
     </div>

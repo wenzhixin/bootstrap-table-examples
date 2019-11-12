@@ -1,0 +1,87 @@
+<script>
+  init({
+    title: 'Natural Sorting',
+    desc: 'Use the [utils functions](https://github.com/wenzhixin/bootstrap-table-examples/tree/master/utils/natural-sorting) to allow natural sorting on columns.',
+    links: ['bootstrap-table.min.css'],
+    scripts: [
+      'bootstrap-table.min.js',
+      'https://cdn.jsdelivr.net/gh/wenzhixin/bootstrap-table-examples@master/utils/natural-sorting/dist/natural-sorting.js'
+    ]
+  })
+</script>
+
+<style>
+  .toolbar label {
+    margin-right: 10px;
+  }
+</style>
+
+<div class="toolbar">
+  <label><input id="alphanum" type="checkbox" checked> name sorter: 'alphanum'</label>
+  <label><input id="numericOnly" type="checkbox" checked> price sorter: 'numericOnly'</label>
+</div>
+
+<table id="table"></table>
+
+<script>
+  function init() {
+    $('#table').bootstrapTable('destroy').bootstrapTable({
+      toolbar: '.toolbar',
+      columns: [
+        {
+          field: 'id',
+          title: 'ID'
+        },
+        {
+          field: 'name',
+          title: 'Name',
+          sortable: true,
+          sorter: $('#alphanum').prop('checked') ? window.alphanum : undefined
+        },
+        {
+          field: 'price',
+          title: 'Price',
+          sortable: true,
+          sorter: $('#numericOnly').prop('checked') ? window.numericOnly : undefined
+        }
+      ],
+      data: [
+        {
+          'id': 0,
+          'name': 'Item 0',
+          'price': '$0'
+        },
+        {
+          'id': 1,
+          'name': 'Item 1',
+          'price': '$1'
+        },
+        {
+          'id': 2,
+          'name': 'Item 2',
+          'price': '$2'
+        },
+        {
+          'id': 3,
+          'name': 'item 3',
+          'price': '￥3'
+        },
+        {
+          'id': 4,
+          'name': 'item 4',
+          'price': '￥4'
+        },
+        {
+          'id': 5,
+          'name': 'Item 5',
+          'price': '$5'
+        }
+      ]
+    })
+  }
+
+  function mounted() {
+    init()
+    $('#alphanum, #numericOnly').click(init)
+  }
+</script>

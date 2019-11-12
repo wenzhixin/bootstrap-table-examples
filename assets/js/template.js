@@ -219,7 +219,7 @@ window.init = function (options_) {
   }, options_)
 
   $('.bd-title span').html(options.title)
-  $('.bd-lead').html(marked(options.desc))
+  $('.bd-lead').html(marked(options.desc)).find('a').attr('target', '_blank')
   $.each(options.links, function (i, file) {
     _link(file)
   })

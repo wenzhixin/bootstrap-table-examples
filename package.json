@@ -13,9 +13,13 @@
   },
   "homepage": "https://github.com/wenzhixin/bootstrap-table-examples",
   "scripts": {
-    "lint": "eslint --ext .html,.js ."
+    "lint": "eslint --ext .html,.js .",
+    "build": "babel utils/natural-sorting/src -d utils/natural-sorting/dist"
   },
   "devDependencies": {
+    "@babel/cli": "^7.7.0",
+    "@babel/core": "^7.7.2",
+    "@babel/preset-env": "^7.7.1",
     "babel-eslint": "^10.0.3",
     "eslint": "^5.10.0",
     "eslint-plugin-html": "^5.0.0",

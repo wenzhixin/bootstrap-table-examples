@@ -5,16 +5,16 @@ JS functions to allow natural sorting on bootstrap-table columns.
 
 ## Usage
 
-{% highlight html %}
+```html
 <script src="natural-sorting.js"></script>
-{% endhighlight %}
+```
 
 add a data-sorter atribute to any th.
 *e.g.*
 
-{% highlight html %}
+```html
 <th data-sortable="true" data-sorter="alphanum">Price</th>
-{% endhighlight %}
+```
 
 ## Sorter
 

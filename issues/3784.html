@@ -1,0 +1,48 @@
+<script>
+    init({
+      title: 'Issue #3784',
+      desc: 'Overwrite the table scrollbar(<a href="https://github.com/wenzhixin/bootstrap-table/issues/3784" target="_blank">#3784</a>).',
+      links: [
+        'https://unpkg.com/perfect-scrollbar@1.4.0/css/perfect-scrollbar.css',
+        'bootstrap-table.min.css'
+      ],
+      scripts: [
+        'https://unpkg.com/perfect-scrollbar@1.4.0/dist/perfect-scrollbar.min.js',
+        'bootstrap-table.min.js'
+      ]
+    })
+  </script>
+
+  <style>
+  .bootstrap-table .fixed-table-container .fixed-table-body {
+    overflow: hidden;
+    position: relative;
+  }
+  </style>
+
+  <table
+    id="table"
+    data-toggle="table"
+    data-url="json/data1.json"
+    data-height="400"
+    data-search="true">
+    <thead>
+      <tr>
+        <th data-field="state" data-checkbox="true"></th>
+        <th data-field="id">ID</th>
+        <th data-field="name">Item Name</th>
+        <th data-field="price">Item Price</th>
+      </tr>
+    </thead>
+  </table>
+
+  <script>
+    var ps
+
+    function mounted() {
+      $('#table').on('post-body.bs.table', function () {
+        if (ps) ps.destroy()
+        ps = new window.PerfectScrollbar('.fixed-table-body')
+      })
+    }
+  </script>

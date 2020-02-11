@@ -3,20 +3,26 @@
     title: 'Reorder Columns',
     desc: 'Use Plugin: <a href="https://github.com/akottr/dragtable/" target="_blank">dragtable</a> and bootstrap-table-reorder-columns.',
     links: [
-      'https://rawgit.com/akottr/dragtable/master/dragtable.css',
+      'https://cdn.jsdelivr.net/gh/akottr/dragtable@master/dragtable.css',
       'bootstrap-table.min.css'
     ],
     scripts: [
       'https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js',
-      'https://rawgit.com/akottr/dragtable/master/jquery.dragtable.js',
+      'https://cdn.jsdelivr.net/gh/akottr/dragtable@master/jquery.dragtable.js',
       'bootstrap-table.min.js',
       'extensions/reorder-columns/bootstrap-table-reorder-columns.min.js'
     ]
   })
 </script>
 
+<div class="toolbar">
+  <button class="btn btn-primary" id="order1">Order by Name, ID, price</button>
+  <button class="btn btn-primary" id="order2">Order by Price, Name, ID</button>
+</div>
+
 <table
   id="table"
+  data-toolbar=".toolbar"
   data-show-columns="true"
   data-search="true"
   data-show-toggle="true"
@@ -35,5 +41,21 @@
 <script>
   function mounted() {
     $('#table').bootstrapTable()
+
+    $('#order1').on('click', () => {
+      $('#table').bootstrapTable('orderColumns', {
+        name: 0,
+        id: 1,
+        price: 2
+      })
+    })
+
+    $('#order2').on('click', () => {
+      $('#table').bootstrapTable('orderColumns', {
+        price: 0,
+        name: 1,
+        id: 2
+      })
+    })
   }
 </script>

@@ -1,0 +1,42 @@
+<script>
+  init({
+    title: 'Server Sort',
+    desc: 'Use `serverSort: false` option to sort the data in client when `sidePagination` is `server`, the default value is `true`.',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
+<table
+  id="table"
+  data-toggle="table"
+  data-height="460"
+  data-pagination="true"
+  data-side-pagination="server"
+  data-server-sort="false"
+  data-query-params="queryParams"
+  data-response-handler="responseHandler"
+  data-url="https://examples.wenzhixin.net.cn/examples/bootstrap_table/data">
+  <thead>
+    <tr>
+      <th data-field="id" data-sortable="true">ID</th>
+      <th data-field="name" data-sortable="true">Item Name</th>
+      <th data-field="price" data-sortable="true">Item Price</th>
+    </tr>
+  </thead>
+</table>
+
+<script>
+  function queryParams(params) {
+    delete params.sort
+    delete params.order
+    return params
+  }
+
+  function responseHandler(res) {
+    if ($('#table').bootstrapTable('getOptions').sortOrder === 'desc') {
+      res.rows = res.rows.reverse()
+    }
+    return res
+  }
+</script>

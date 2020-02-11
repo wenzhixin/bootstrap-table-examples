@@ -37,12 +37,12 @@ function loadUrl(url_) {
   if (window._config.themes.indexOf(window._config.theme) > -1) {
     template += '-' + window._config.theme
   }
-  var url = template + '.html?v=118&url=' + url_
+  var url = template + '.html?v=119&url=' + url_
   if (window._config.isDebug) {
     url = template + '.html?t=' + (+new Date()) + '&url=' + url_
   }
   if (window._config.isViewSource) {
-    url = template + '.html?v=118&view-source&url=' + url_ + '#view-source'
+    url = template + '.html?v=119&view-source&url=' + url_ + '#view-source'
   }
   $('iframe').attr('src', url)
 }
@@ -135,11 +135,16 @@ function doSearch() {
 
 function initViewSource () {
   var isSource = /view-source$/.test(location.hash)
-  var title = 'View Source'
+
   if (isSource) {
-    title = 'View Example'
+    $('.view-example').css('display', 'block')
+    $('.view-source').css('display', 'none')
+  } else {
+    $('.view-example').css('display', 'none')
+    $('.view-source').css('display', 'block')
   }
-  $('.corner-ribbon').off('click').click(function () {
+
+  $('.view-example, .view-source').off('click').click(function () {
     if (isSource) {
       location.hash = location.hash.replace('#view-source', '')
     } else {
@@ -147,7 +152,10 @@ function initViewSource () {
         location.hash += '#view-source'
       }
     }
-  }).attr('title', title).text(title)
+  })
+
+  $('.view-online').attr('href', 'https://live.bootstrap-table.com/example/' +
+    location.hash.slice(1).split('#')[0])
 }
 
 $(function () {

@@ -1,0 +1,45 @@
+<script>
+  init({
+    title: 'Header Style',
+    desc: 'Use `headerStyle` option to set the header style formatter function.',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
+<style>
+.uppercase {
+  text-transform: uppercase;
+}
+</style>
+
+<table
+  id="table"
+  data-toggle="table"
+  data-height="460"
+  data-header-style="headerStyle"
+  data-url="json/data1.json">
+  <thead>
+    <tr>
+      <th data-field="id">Item ID</th>
+      <th data-field="name">Item Name</th>
+      <th data-field="price">Item Price</th>
+    </tr>
+  </thead>
+</table>
+
+<script>
+  function headerStyle(column) {
+    return {
+      id: {
+        classes: 'uppercase'
+      },
+      name: {
+        css: {background: 'yellow'}
+      },
+      price: {
+        css: {color: 'red'}
+      }
+    }[column.field]
+  }
+</script>

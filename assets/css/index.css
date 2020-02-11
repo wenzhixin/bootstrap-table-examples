@@ -152,3 +152,36 @@ iframe {
     top: 106px;
   }
 }
+
+.bd-content {
+  position: relative;
+}
+
+.icon-buttons {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  /* top: 50%; */
+  /* margin-top: -47px; */
+}
+
+.icon-buttons .view-example {
+  display: none;
+}
+
+.icon-buttons a {
+  display: block;
+  border: 1px solid #dcdfe6;
+  color: #409eff;
+  background: #fff;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.icon-buttons i {
+  font-size: 32px;
+  line-height: 40px;
+}

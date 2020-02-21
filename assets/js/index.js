@@ -37,12 +37,12 @@ function loadUrl(url_) {
   if (window._config.themes.indexOf(window._config.theme) > -1) {
     template += '-' + window._config.theme
   }
-  var url = template + '.html?v=122&url=' + url_
+  var url = template + '.html?v=123&url=' + url_
   if (window._config.isDebug) {
     url = template + '.html?t=' + (+new Date()) + '&url=' + url_
   }
   if (window._config.isViewSource) {
-    url = template + '.html?v=122&view-source&url=' + url_ + '#view-source'
+    url = template + '.html?v=123&view-source&url=' + url_ + '#view-source'
   }
   $('iframe').attr('src', url)
 }
@@ -155,7 +155,7 @@ function initViewSource () {
   })
 
   $('.view-online').attr('href', 'https://live.bootstrap-table.com/example/' +
-    location.hash.slice(1).split('#')[0] || 'welcome.html')
+    (location.hash.slice(1).split('#')[0] || 'welcome.html'))
 }
 
 $(function () {

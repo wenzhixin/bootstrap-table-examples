@@ -155,7 +155,7 @@ function initViewSource () {
   })
 
   $('.view-online').attr('href', 'https://live.bootstrap-table.com/example/' +
-    location.hash.slice(1).split('#')[0] || 'welcome.html')
+    (location.hash.slice(1).split('#')[0] || 'welcome.html'))
 }
 
 $(function () {

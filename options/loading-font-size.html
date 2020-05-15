@@ -1,0 +1,71 @@
+<script>
+  init({
+    title: 'Loading Font Size',
+    desc: 'Use `loadingFontSize` option to custom the loading font size of the loading text.',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
+<style>
+  select.form-control {
+    display: inline-block;
+    width: 80px;
+  }
+</style>
+
+<div id="toolbar" class="select">
+  <span>Font Size: </span>
+  <select id="size" class="form-control">
+    <option value="auto">Auto</option>
+    <option value="12px">12px</option>
+    <option value="2rem">2rem</option>
+  </select>
+  <span> Table Width: </span>
+  <select id="width" class="form-control">
+    <option value="">Auto</option>
+    <option value="600px">600px</option>
+    <option value="400px">400px</option>
+  </select>
+</div>
+
+<div id="wrapper">
+  <table
+    id="table"
+    data-toggle="table"
+    data-height="460"
+    data-toolbar="#toolbar">
+    <thead>
+      <tr>
+        <th data-field="id" data-sortable="true">ID</th>
+        <th data-field="name" data-sortable="true">Item Name</th>
+        <th data-field="price" data-sortable="true">Item Price</th>
+      </tr>
+    </thead>
+  </table>
+</div>
+
+<script>
+  var size = 'auto'
+
+  function rebuild() {
+    $('#table').bootstrapTable('destroy')
+      .bootstrapTable({
+        loadingFontSize: size
+      })
+      .bootstrapTable('showLoading')
+  }
+
+  function mounted() {
+    $('#size').change(function () {
+      size = $(this).val()
+      rebuild()
+    })
+    rebuild()
+
+    $('#width').change(function () {
+      $('#wrapper').css('width', $(this).val())
+      rebuild()
+    })
+  }
+</script>

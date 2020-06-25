@@ -129,6 +129,11 @@ function _themeUpdate(data) {
       .replace(/'bootstrap-table.min.js'/, '\'bootstrap-table.min.js\',\n      \'themes/foundation/bootstrap-table-foundation.min.js\'')
       .replace(/'bootstrap-table.min.css'/, '\'themes/foundation/bootstrap-table-foundation.min.css\'')
   }
+  if (/bootstrap-table.html$/.test(location.pathname)) {
+    return data
+      .replace(/'bootstrap-table.min.js'/, '\'bootstrap-table.min.js\',\n      \'themes/bootstrap-table/bootstrap-table.min.js\'')
+      .replace(/'bootstrap-table.min.css'/, '\'themes/bootstrap-table/bootstrap-table.min.css\'')
+  }
   return data
 }
 

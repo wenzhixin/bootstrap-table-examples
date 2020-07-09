@@ -9,6 +9,7 @@
 
 <div id="toolbar">
   <button id="button" class="btn btn-secondary">remove</button>
+  <button id="button1" class="btn btn-secondary">remove index 1</button>
 </div>
 <table
   id="table"
@@ -29,6 +30,7 @@
 <script>
   var $table = $('#table')
   var $button = $('#button')
+  var $button1 = $('#button1')
 
   function mounted() {
     $button.click(function () {
@@ -38,6 +40,13 @@
       $table.bootstrapTable('remove', {
         field: 'id',
         values: ids
+      })
+    })
+
+    $button1.click(function () {
+      $table.bootstrapTable('remove', {
+        field: '$index',
+        values: [1]
       })
     })
   }

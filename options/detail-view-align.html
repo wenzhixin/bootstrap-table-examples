@@ -1,0 +1,79 @@
+<script>
+  init({
+    title: 'Detail View Align',
+    desc: 'Use `detailViewAlign` option to align the detail view icon.',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
+<div class="toolbar">
+  <label class="checkbox-inline">
+    <input type="radio" name="detailViewAlign" value="left">
+    <code>left</code>
+  </label>
+  <label class="checkbox-inline">
+    <input type="radio" checked name="detailViewAlign" value="right">
+    <code>right</code>
+  </label>
+</div>
+
+<table
+  id="table"
+  data-height="460"
+  data-detail-view="true"
+  data-detail-filter="detailFilter"
+  data-show-footer="true"
+  data-toolbar=".toolbar"
+  data-url="json/data1.json">
+  <thead>
+    <tr>
+      <th data-field="id" data-valign="middle" rowspan="2" data-footer-formatter="idFormatter">ID</th>
+      <th colspan="2">Detail</th>
+    </tr>
+    <tr>
+      <th data-field="name" data-footer-formatter="footerFormatter">Item Name</th>
+      <th data-field="action" data-formatter="actionFormatter" data-events="actionEvents" data-footer-formatter="footerFormatter">Action</th>
+    </tr>
+  </thead>
+</table>
+
+<script>
+  var $table = $('#table')
+
+  window.actionEvents = {
+    'click .btn': function () {
+      alert('Click')
+    }
+  }
+
+  function mounted() {
+    $('.toolbar input').change(function () {
+      var detailViewAlign = $('.toolbar input:checked').val()
+
+      $table.bootstrapTable('refreshOptions', {
+        detailViewAlign: detailViewAlign
+      })
+    })
+
+    $table.bootstrapTable({
+      detailViewAlign: 'right'
+    })
+  }
+
+  function detailFilter(index) {
+    return index % 2 === 0
+  }
+
+  function idFormatter() {
+    return 'Total'
+  }
+
+  function footerFormatter(data) {
+    return data.length
+  }
+
+  function actionFormatter() {
+    return '<button class="btn btn-secondary">Click</>'
+  }
+</script>

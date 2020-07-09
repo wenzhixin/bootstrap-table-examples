@@ -8,22 +8,22 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "bootstrap": "^4.3.1",
-    "bootstrap-table": "^1.16.0",
-    "bootstrap-vue": "^2.0.0-rc.27",
-    "core-js": "^2.6.5",
-    "jquery": "^3.4.1",
-    "popper.js": "^1.15.0",
-    "vue": "^2.6.10"
+    "bootstrap": "^4.5.0",
+    "bootstrap-table": "^1.17.0",
+    "bootstrap-vue": "^2.15.0",
+    "core-js": "^3.6.5",
+    "jquery": "^3.5.1",
+    "popper.js": "^1.16.1",
+    "vue": "^2.6.11"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.8.0",
-    "@vue/cli-plugin-eslint": "^3.8.0",
-    "@vue/cli-service": "^3.8.0",
-    "babel-eslint": "^10.0.1",
-    "eslint": "^5.16.0",
-    "eslint-plugin-vue": "^5.0.0",
-    "vue-template-compiler": "^2.6.10"
+    "@vue/cli-plugin-babel": "^4.4.4",
+    "@vue/cli-plugin-eslint": "^4.4.4",
+    "@vue/cli-service": "^4.4.4",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.3.0",
+    "eslint-plugin-vue": "^6.2.2",
+    "vue-template-compiler": "^2.6.11"
   },
   "eslintConfig": {
     "root": true,

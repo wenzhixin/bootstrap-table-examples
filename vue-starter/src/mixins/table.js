@@ -15,7 +15,7 @@ export default {
         name: key,
         ...obj
       })
-      return `<div class="${key}"/>`
+      return `<div class="${key}"></div>`
     },
 
     vueFormatterPostBody () {

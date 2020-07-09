@@ -1,0 +1,70 @@
+<script>
+  init({
+    title: 'Loading Template',
+    desc: 'Use `loadingTemplate` option to custom the loading type.',
+    links: [
+      'https://unpkg.com/placeholder-loading/dist/css/placeholder-loading.min.css',
+      'bootstrap-table.min.css'
+    ],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
+<style>
+  .ph-item,
+  .ph-picture {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+  }
+</style>
+
+<div id="toolbar" class="select">
+  <select id="type" class="form-control">
+    <option value="fa">Font Awesome Loading</option>
+    <option value="pl">Placeholder Loading</option>
+  </select>
+</div>
+
+<table
+  id="table"
+  data-toggle="table"
+  data-height="460"
+  data-toolbar="#toolbar"
+  data-loading-template="loadingTemplate">
+  <thead>
+    <tr>
+      <th data-field="id" data-sortable="true">ID</th>
+      <th data-field="name" data-sortable="true">Item Name</th>
+      <th data-field="price" data-sortable="true">Item Price</th>
+    </tr>
+  </thead>
+</table>
+
+<script>
+  var type = 'fa'
+
+  function loadingTemplate(message) {
+    if (type === 'fa') {
+      return '<i class="fa fa-spinner fa-spin fa-fw fa-2x"></i>'
+    }
+    if (type === 'pl') {
+      return '<div class="ph-item"><div class="ph-picture"></div></div>'
+    }
+  }
+
+  function rebuild() {
+    $('#table').bootstrapTable('destroy')
+      .bootstrapTable()
+      .bootstrapTable('showLoading')
+  }
+
+  function mounted() {
+    $('#type').change(function () {
+      type = $(this).val()
+      rebuild()
+    })
+    rebuild()
+  }
+</script>

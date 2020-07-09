@@ -1,7 +1,7 @@
 window._config = {
   isDebug: location.hash.slice(1) === 'is-debug' ||
     ['localhost', 'dev.bootstrap-table.com'].indexOf(location.hostname) > -1,
-  cdnUrl: 'https://unpkg.com/bootstrap-table@1.16.0/dist/',
+  cdnUrl: 'https://unpkg.com/bootstrap-table@1.17.0/dist/',
   localUrl: '../bootstrap-table/src/'
 }
 
@@ -128,6 +128,11 @@ function _themeUpdate(data) {
       .replace(/btn btn-danger/g, 'alert button')
       .replace(/'bootstrap-table.min.js'/, '\'bootstrap-table.min.js\',\n      \'themes/foundation/bootstrap-table-foundation.min.js\'')
       .replace(/'bootstrap-table.min.css'/, '\'themes/foundation/bootstrap-table-foundation.min.css\'')
+  }
+  if (/bootstrap-table.html$/.test(location.pathname)) {
+    return data
+      .replace(/'bootstrap-table.min.js'/, '\'bootstrap-table.min.js\',\n      \'themes/bootstrap-table/bootstrap-table.min.js\'')
+      .replace(/'bootstrap-table.min.css'/, '\'themes/bootstrap-table/bootstrap-table.min.css\'')
   }
   return data
 }

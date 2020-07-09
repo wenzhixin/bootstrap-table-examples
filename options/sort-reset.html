@@ -1,7 +1,7 @@
 <script>
   init({
     title: 'Sort Stable',
-    desc: 'Use `sortStable` option to get a stable sorting.',
+    desc: 'Use `sortReset` option to reset the sort on third click.',
     links: ['bootstrap-table.min.css'],
     scripts: ['bootstrap-table.min.js']
   })
@@ -9,7 +9,7 @@
 
 <div class="toolbar">
   <label>
-    <input type="checkbox" id="sortStable" checked /> sortStable
+    <input type="checkbox" id="sortReset" checked /> sortReset
   </label>
 </div>
 
@@ -18,9 +18,9 @@
   data-toolbar=".toolbar">
   <thead>
     <tr>
-      <th data-field="id">Item ID</th>
+      <th data-field="id" data-sortable="true">Item ID</th>
       <th data-field="name" data-sortable="true">Item Name</th>
-      <th data-field="price">Item Price</th>
+      <th data-field="price" data-sortable="true">Item Price</th>
     </tr>
   </thead>
 </table>
@@ -139,12 +139,12 @@
   function mounted() {
     $table.bootstrapTable({
       data: data,
-      sortStable: true
+      sortReset: true
     })
 
-    $('#sortStable').change(function () {
+    $('#sortReset').change(function () {
       $table.bootstrapTable('refreshOptions', {
-        sortStable: $('#sortStable').prop('checked')
+        sortReset: $('#sortReset').prop('checked')
       })
     })
   }

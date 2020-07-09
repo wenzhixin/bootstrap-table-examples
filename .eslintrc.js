@@ -66,8 +66,7 @@ module.exports = {
     'space-infix-ops': 'error',
     'arrow-spacing': ['error', { 'before': true, 'after': true }],
     'no-useless-constructor': 'warn',
-    'comma-dangle': ['error', 'never'],
-    'no-param-reassign': 'warn'
+    'comma-dangle': ['error', 'never']
   },
   'globals': {
     '$': true,

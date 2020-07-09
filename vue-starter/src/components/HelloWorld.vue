@@ -5,7 +5,7 @@
       :columns="columns"
       :data="data"
       :options="options"
-      @onPostBody="vueFormatterPostBody"
+      @on-post-body="vueFormatterPostBody"
     />
   </div>
 </template>

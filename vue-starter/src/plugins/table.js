@@ -5,7 +5,7 @@ import 'bootstrap-table/dist/bootstrap-table.min.css'
 import './jquery.js'
 import Vue from 'vue'
 import 'bootstrap'
-import 'bootstrap-table/dist/bootstrap-table.js'
-import BootstrapTable from 'bootstrap-table/dist/bootstrap-table-vue.esm.js'
+import 'bootstrap-table/src/bootstrap-table'
+import BootstrapTable from 'bootstrap-table/src/vue/BootstrapTable'
 
 Vue.component('BootstrapTable', BootstrapTable)

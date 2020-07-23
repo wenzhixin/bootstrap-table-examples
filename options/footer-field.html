@@ -1,0 +1,38 @@
+<script>
+  init({
+    title: 'Footer Field',
+    desc: 'Use the `footerField` option to set the footer data key of the server response',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
+<table
+  id="table"
+  data-toggle="table"
+  data-height="460"
+  data-show-columns="true"
+  data-show-footer="true"
+  data-url="json/footerField.json">
+  <thead>
+    <tr>
+      <th data-field="id" data-footer-formatter="idFormatter">ID</th>
+      <th data-field="name" data-footer-formatter="nameFormatter">Item Name</th>
+      <th data-field="price" data-footer-formatter="priceFormatter">Item Price</th>
+    </tr>
+  </thead>
+</table>
+
+<script>
+  function idFormatter(data, footerValue) {
+    return footerValue
+  }
+
+  function nameFormatter(data, footerValue) {
+    return footerValue
+  }
+
+  function priceFormatter(data, footerValue) {
+    return footerValue
+  }
+</script>

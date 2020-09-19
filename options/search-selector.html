@@ -1,0 +1,25 @@
+<script>
+  init({
+    title: 'Search Selector',
+    desc: 'Use `searchSelector` to define a custom search input (e.g. `#customSearch`).',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
+
+<input type="text" id="customSearch" style="background-color: #007788; color: white;">
+<table
+  id="table"
+  data-toggle="table"
+  data-search="true"
+  data-search-selector="#customSearch"
+  data-url="json/data1.json">
+  <thead>
+    <tr>
+      <th data-field="id">ID</th>
+      <th data-field="name">Item Name</th>
+      <th data-field="price">Item Price</th>
+    </tr>
+  </thead>
+</table>

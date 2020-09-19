@@ -1,0 +1,56 @@
+<script>
+  init({
+    title: 'Custom Buttons',
+    desc: 'Use `buttons` to add custom buttons which can be highly configured and sorted.',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
+<table
+  id="table"
+  data-toggle="table"
+  data-height="460"
+  data-show-columns="true"
+  data-show-refresh="true"
+  data-show-columns-toggle-all="true"
+  data-show-pagination-switch="true"
+  data-show-toggle="true"
+  data-show-fullscreen="true"
+  data-buttons="buttons"
+  data-url="json/data1.json">
+  <thead>
+    <tr>
+      <th data-field="id">ID</th>
+      <th data-field="name">Item Name</th>
+      <th data-field="price">Item Price</th>
+    </tr>
+  </thead>
+</table>
+
+<script>
+  function buttons () {
+    return {
+      btnUsersAdd: {
+        text: 'Highlight Users',
+        icon: 'fa-users',
+        event: function () {
+          alert('Do some stuff to e.g. search all users which has logged in the last week')
+        },
+        attributes: {
+          title: 'Search all users which has logged in the last week'
+        }
+      },
+      btnAdd: {
+        text: 'Add new row',
+        icon: 'fa-plus',
+        event: function () {
+          alert('Do some stuff to e.g. add a new row')
+        },
+        attributes: {
+          title: 'Add a new row to the table'
+        }
+      }
+    }
+  }
+</script>

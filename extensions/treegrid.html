@@ -22,7 +22,6 @@
   function mounted() {
     $table.bootstrapTable({
       url: 'json/treegrid.json',
-      sidePagination: 'server',
       idField: 'id',
       showColumns: true,
       columns: [
@@ -55,7 +54,7 @@
           $table.treegrid({
             treeColumn: 1,
             onChange: function() {
-              $table.bootstrapTable('resetWidth')
+              $table.bootstrapTable('resetView')
             }
           })
         }

@@ -1,0 +1,29 @@
+<script>
+  init({
+    title: 'Search Highlight Formatter',
+    desc: 'Define a `function` to use a custom highlight formatter for the search highlight option.',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
+<table
+  id="table"
+  data-toggle="table"
+  data-search="true"
+  data-search-highlight="true"
+  data-url="json/data1.json">
+  <thead>
+    <tr>
+      <th data-field="id" data-search-highlight-formatter="customSearchFormatter">ID</th>
+      <th data-field="name" data-search-highlight-formatter="customSearchFormatter">Item Name</th>
+      <th data-field="price" data-search-highlight-formatter="customSearchFormatter">Item Price</th>
+    </tr>
+  </thead>
+</table>
+
+<script>
+  window.customSearchFormatter = function(value, searchText) {
+    return value.toString().replace(new RegExp('(' + searchText + ')', 'gim'), '<span style="background-color: pink;border: 1px solid red;border-radius:90px;padding:4px">$1</span>')
+  }
+</script>

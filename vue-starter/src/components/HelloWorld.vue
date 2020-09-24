@@ -81,7 +81,8 @@ export default {
       },
       options: {
         search: true,
-        showColumns: true
+        showColumns: true,
+        showExport: true
       }
     }
   },

@@ -61,10 +61,13 @@
   function mounted() {
     $('#sortable').sortable({
       stop: function () {
+        var buttonsOrder = []
+
+        $('#sortable').find('li').each(function () {
+          buttonsOrder.push($(this).text().trim())
+        })
         $('#table').bootstrapTable('refreshOptions', {
-          buttonsOrder: $('#sortable').find('li').map(function () {
-            return $(this).text().trim()
-          })
+          buttonsOrder: buttonsOrder
         })
       }
     })

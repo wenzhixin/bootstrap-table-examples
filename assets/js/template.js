@@ -2,7 +2,8 @@ window._config = {
   isDebug: location.hash.slice(1) === 'is-debug' ||
     ['localhost', '127.0.0.1', 'dev.bootstrap-table.com'].indexOf(location.hostname) > -1,
   cdnUrl: 'https://unpkg.com/bootstrap-table@1.18.3/dist/',
-  localUrl: '../bootstrap-table/src/'
+  localUrl: '../bootstrap-table/src/',
+  testUrl: '/src/'
 }
 
 function _getLink(file) {
@@ -11,7 +12,8 @@ function _getLink(file) {
     url = window._config.cdnUrl + file
 
     if (window._config.isDebug) {
-      url = window._config.localUrl + file.replace(/\.min/, '') + '?t=' + (+new Date())
+      url = (location.href.includes('for-test') ? window._config.testUrl : window._config.localUrl) +
+        file.replace(/\.min/, '') + '?t=' + (+new Date())
     }
   }
   return '<link href="' + url + '" rel="stylesheet">'
@@ -23,7 +25,8 @@ function _getScript(file, isScriptTag) {
     url = window._config.cdnUrl + file
 
     if (window._config.isDebug) {
-      url = window._config.localUrl + file.replace(/\.min/, '') + '?t=' + (+new Date())
+      url = (location.href.includes('for-test') ? window._config.testUrl : window._config.localUrl) +
+        file.replace(/\.min/, '') + '?t=' + (+new Date())
     }
   }
   if (isScriptTag) {
@@ -223,8 +226,12 @@ window.init = function (options_) {
     }
   }, options_)
 
-  $('.bd-title span').html(options.title)
-  $('.bd-lead').html(marked(options.desc)).find('a').attr('target', '_blank')
+  if ($('.bd-title span').length) {
+    $('.bd-title span').html(options.title)
+  }
+  if ($('.bd-lead').length) {
+    $('.bd-lead').html(marked(options.desc)).find('a').attr('target', '_blank')
+  }
   $.each(options.links, function (i, file) {
     _link(file)
   })

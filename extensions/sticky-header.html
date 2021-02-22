@@ -69,8 +69,8 @@
       showFullscreen: true,
       search: true,
       stickyHeader: true,
-      stickyHeaderOffsetLeft: '3em',
-      stickyHeaderOffsetRight: '3em',
+      stickyHeaderOffsetLeft: parseInt($('body').css('padding-left'), 10),
+      stickyHeaderOffsetRight: parseInt($('body').css('padding-right'), 10),
       theadClasses: classes
     })
   }

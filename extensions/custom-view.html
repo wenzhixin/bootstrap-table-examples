@@ -1,0 +1,220 @@
+<script>
+  init({
+    title: 'Custom View',
+    desc: 'Use Plugin: bootstrap-table-custom-view adds the ability to create a custom view to display the data.',
+    links: [
+      'bootstrap-table.min.css'
+    ],
+    scripts: [
+      'bootstrap-table.min.js',
+      'extensions/custom-view/bootstrap-table-custom-view.js'
+    ]
+  })
+</script>
+
+<table
+  id="table"
+  data-search="true"
+  data-pagination="true"
+  data-page-size="6"
+  data-show-custom-view="true"
+  data-custom-view="customViewFormatter"
+  data-show-custom-view-button="true">
+  <thead>
+    <tr>
+      <th data-field="name">Name</th>
+      <th data-field="follower">Follower</th>
+      <th data-field="following">Following</th>
+      <th data-field="snippets">Snippets</th>
+    </tr>
+</thead>
+</table>
+
+<template id="profileTemplate">
+  <div class="col-4 mt-3">
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-12 col-lg-8 col-md-6">
+            <h3 class="mb-0 text-truncated">%NAME%</h3>
+            <p class="lead">Web / UI Designer</p>
+            <p>
+              I love to read, hang out with friends, watch football, listen to music, and learn new things.
+            </p>
+            <p>
+              <span class="badge badge-info tags">html5</span>
+              <span class="badge badge-info tags">css3</span>
+              <span class="badge badge-info tags">nodejs</span>
+            </p>
+          </div>
+          <div class="col-12 col-lg-4 col-md-6 text-center">
+            <img src="%IMAGE%" alt="" class="mx-auto rounded-circle img-fluid" style="height: 120px;">
+            <br>
+            <ul class="list-inline ratings text-center" title="Ratings">
+              <li class="list-inline-item"><a href="#"><span class="fa fa-star"></span></a>
+              </li>
+              <li class="list-inline-item"><a href="#"><span class="fa fa-star"></span></a>
+              </li>
+              <li class="list-inline-item"><a href="#"><span class="fa fa-star"></span></a>
+              </li>
+              <li class="list-inline-item"><a href="#"><span class="fa fa-star"></span></a>
+              </li>
+              <li class="list-inline-item"><a href="#"><span class="fa fa-star"></span></a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-12 col-lg-4">
+            <h3 class="mb-0">%FOLLOWER%</h3>
+            <small>Followers</small>
+            <button class="btn btn-block btn-outline-success" title="Follow"><span class="fa fa-plus-circle"></span></button>
+          </div>
+          <div class="col-12 col-lg-4">
+            <h3 class="mb-0">%FOLLOWING%</h3>
+            <small>Following</small>
+            <button class="btn btn-outline-info btn-block" title="View Profile"><span class="fa fa-user"></span></button>
+          </div>
+          <div class="col-12 col-lg-4">
+            <h3 class="mb-0">%SNIPPETS%</h3>
+            <small>Snippets</small>
+            <button type="button" class="btn btn-outline-primary btn-block" title="Options"><span class="fa fa-cog"></span></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+  function mounted() {
+    $('#table').bootstrapTable({
+      data: [
+        {
+          'name': 'Mike',
+          'image': 'https://robohash.org/68.186.255.198.png',
+          'follower': 10,
+          'following': 123,
+          'snippets': 12
+        },
+        {
+          'name': 'Tim',
+          'image': 'https://robohash.org/18.146.255.198.png',
+          'follower': 70,
+          'following': 23,
+          'snippets': 42
+        },
+        {
+          'name': 'Jorge',
+          'image': 'https://robohash.org/63.186.255.198.png',
+          'follower': 40,
+          'following': 74,
+          'snippets': 567
+        },
+        {
+          'name': 'Luke',
+          'image': 'https://robohash.org/68.186.155.198.png',
+          'follower': 550,
+          'following': 23,
+          'snippets': 52
+        },
+        {
+          'name': 'Mike',
+          'image': 'https://robohash.org/68.186.255.198.png',
+          'follower': 10,
+          'following': 123,
+          'snippets': 12
+        },
+        {
+          'name': 'Tim',
+          'image': 'https://robohash.org/18.146.255.198.png',
+          'follower': 70,
+          'following': 23,
+          'snippets': 42
+        },
+        {
+          'name': 'Jorge',
+          'image': 'https://robohash.org/63.186.255.198.png',
+          'follower': 40,
+          'following': 74,
+          'snippets': 567
+        },
+        {
+          'name': 'Luke',
+          'image': 'https://robohash.org/68.186.155.198.png',
+          'follower': 550,
+          'following': 23,
+          'snippets': 52
+        },
+        {
+          'name': 'Mike',
+          'image': 'https://robohash.org/68.186.255.198.png',
+          'follower': 10,
+          'following': 123,
+          'snippets': 12
+        },
+        {
+          'name': 'Tim',
+          'image': 'https://robohash.org/18.146.255.198.png',
+          'follower': 70,
+          'following': 23,
+          'snippets': 42
+        },
+        {
+          'name': 'Jorge',
+          'image': 'https://robohash.org/63.186.255.198.png',
+          'follower': 40,
+          'following': 74,
+          'snippets': 567
+        },
+        {
+          'name': 'Luke',
+          'image': 'https://robohash.org/68.186.155.198.png',
+          'follower': 550,
+          'following': 23,
+          'snippets': 52
+        },
+        {
+          'name': 'Mike',
+          'image': 'https://robohash.org/68.186.255.198.png',
+          'follower': 10,
+          'following': 123,
+          'snippets': 12
+        },
+        {
+          'name': 'Tim',
+          'image': 'https://robohash.org/18.146.255.198.png',
+          'follower': 70,
+          'following': 23,
+          'snippets': 42
+        },
+        {
+          'name': 'Jorge',
+          'image': 'https://robohash.org/63.186.255.198.png',
+          'follower': 40,
+          'following': 74,
+          'snippets': 567
+        },
+        {
+          'name': 'Luke',
+          'image': 'https://robohash.org/68.186.155.198.png',
+          'follower': 550,
+          'following': 23,
+          'snippets': 52
+        }
+      ]
+    })
+  }
+
+  function customViewFormatter (data) {
+    var template = $('#profileTemplate').html()
+    var view = ''
+    $.each(data, function (i, row) {
+      view += template.replace('%NAME%', row.name)
+        .replace('%IMAGE%', row.image)
+        .replace('%FOLLOWER%', row.follower)
+        .replace('%FOLLOWING%', row.following)
+        .replace('%SNIPPETS%', row.snippets);
+    })
+
+    return `<div class="row mx-0">${view}</div>`
+  }
+</script>

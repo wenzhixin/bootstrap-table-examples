@@ -25,24 +25,6 @@ body {
   margin-top: 0;
 }
 
-#codefund {
-  margin: 0 0 20px 0!important;
-  display: flex;
-  justify-content: flex-end;
-}
-
-#codefund #cf {
-  margin: 0!important;
-}
-
-#codefund .cf-wrapper {
-  font-size: 13px!important;
-}
-
-#codefund .cf-powered-by {
-  margin-top: 0!important;
-}
-
 .header-wrapper {
   -js-display: flex;
 	display: flex;
@@ -79,9 +61,5 @@ body {
 
   .title-desc {
     min-height: auto;
-  }
-
-  #codefund {
-    justify-content: flex-start;
   }
 }

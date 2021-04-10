@@ -189,7 +189,7 @@ $(function () {
           $('#example').hide().html(data)
           $('.source-pre').show()
           $('#source').text(_beautifySource(data))
-          window.hljs.initHighlightingOnLoad()
+          window.hljs.highlightAll()
         } else {
           $('#example').html(data.replace(/ data-toggle="table"/g, ' data-toggle="bootstrap-table"'))
         }

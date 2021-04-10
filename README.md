@@ -8,6 +8,22 @@
 
 [CRUD Example](https://github.com/wenzhixin/bootstrap-table-examples/blob/master/crud/README.md)
 
+## Local develop
+
+To develop bootstrap-table and bootstrap-table-examples locally please run:
+
+```bash
+mkdir bootstrap-table-dev
+cd bootstrap-table-dev
+git clone https://github.com/wenzhixin/bootstrap-table
+git clone https://github.com/wenzhixin/bootstrap-table-examples
+
+yarn add http-server
+npx http-server
+```
+
+And then open: http://localhost:8081/bootstrap-table-examples
+
 ## reporting issues
 
 All issues need to be submitted to the main project, not this examples repo.

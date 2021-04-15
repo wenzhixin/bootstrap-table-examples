@@ -14,11 +14,16 @@
   })
 </script>
 
+<div class="toolbar">
+  <button id="button" class="btn btn-secondary">getData</button>
+</div>
+
 <table
   id="table"
   data-pagination="true"
   data-search="true"
   data-show-toggle="true"
+  data-toolbar=".toolbar"
   data-use-row-attr-func="true"
   data-reorderable-rows="true"
   data-url="json/data1.json">
@@ -34,5 +39,11 @@
 <script>
   function mounted() {
     $('#table').bootstrapTable()
+
+    $('#button').click(function () {
+      alert(JSON.stringify($('#table').bootstrapTable('getData').map(function (row) {
+        return row.id
+      })))
+    })
   }
 </script>

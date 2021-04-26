@@ -37,12 +37,12 @@ function loadUrl(url_) {
   if (window._config.themes.indexOf(window._config.theme) > -1) {
     template += '-' + window._config.theme
   }
-  var url = template + '.html?v=141&url=' + url_
+  var url = template + '.html?v=142&url=' + url_
   if (window._config.isDebug) {
     url = template + '.html?t=' + (+new Date()) + '&url=' + url_
   }
   if (window._config.isViewSource) {
-    url = template + '.html?v=141&view-source&url=' + url_ + '#view-source'
+    url = template + '.html?v=142&view-source&url=' + url_ + '#view-source'
   }
   $('iframe').attr('src', url)
 }

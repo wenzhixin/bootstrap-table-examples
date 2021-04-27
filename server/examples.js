@@ -13,6 +13,7 @@ const projects = {
       const order = req.query.order || 'asc'
       const total = req.query.total || 800
       const filter = JSON.parse(req.query.filter || '{}')
+      const sleep = req.query.sort || 0
       let i
       let max = offset + limit
       let rows = []
@@ -69,7 +70,9 @@ const projects = {
           result.rows.push(rows[i])
         }
       }
-      res.json(result)
+      setTimeout(() => {
+        res.json(result)
+      }, sleep)
     }
   }
 }

@@ -2,11 +2,10 @@
 
 * Install
 ```
-# linux maybe you need sudo
-npm install -g json-server
+yarn
 ```
 
 * Run
 ```
-json-server -p 3001 db.json
+yarn serve
 ```

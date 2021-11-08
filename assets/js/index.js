@@ -1,5 +1,5 @@
 window._config = {
-  isDebug: ['localhost', 'dev.bootstrap-table.com'].indexOf(location.hostname) > -1,
+  isDebug: ['localhost', '127.0.0.1'].indexOf(location.hostname) > -1,
   isViewSource: false,
   theme: location.search.slice(1),
   themes: []
@@ -37,12 +37,12 @@ function loadUrl(url_) {
   if (window._config.themes.indexOf(window._config.theme) > -1) {
     template += '-' + window._config.theme
   }
-  var url = template + '.html?v=144&url=' + url_
+  var url = template + '.html?v=145&url=' + url_
   if (window._config.isDebug) {
     url = template + '.html?t=' + (+new Date()) + '&url=' + url_
   }
   if (window._config.isViewSource) {
-    url = template + '.html?v=144&view-source&url=' + url_ + '#view-source'
+    url = template + '.html?v=145&view-source&url=' + url_ + '#view-source'
   }
   $('iframe').attr('src', url)
 }

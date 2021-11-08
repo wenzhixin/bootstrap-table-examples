@@ -1,0 +1,16 @@
+{
+  "name": "crud",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "http-server": "^13.0.2",
+    "json-server": "^0.17.0",
+    "npm-run-all": "^4.1.5"
+  },
+  "scripts": {
+    "serve-http": "http-server",
+    "serve-json": "json-server -p 3001 db.json",
+    "serve": "npm-run-all serve-*"
+  }
+}

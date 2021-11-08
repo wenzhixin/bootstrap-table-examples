@@ -3,18 +3,11 @@
 <head>
   <title>CRUD Table</title>
   <meta charset="utf-8">
-  <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../assets/bootstrap-table/src/bootstrap-table.css">
-  <link rel="stylesheet" href="../assets/examples.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.19.0/dist/bootstrap-table.min.css">
   <style>
-    .update {
-      color: #333;
-      margin-right: 5px;
-    }
-    .remove {
-      color: red;
-      margin-left: 5px;
-    }
+    .mr10 { margin-right: 10px; }
     .alert {
       padding: 0 14px;
       margin-bottom: 0;
@@ -22,9 +15,9 @@
     }
   </style>
   <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
-  <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
-  <script src="../assets/bootstrap-table/src/bootstrap-table.js"></script>
-  <script src="../ga.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/bootstrap-table@1.19.0/dist/bootstrap-table.min.js"></script>
 </head>
 <body>
   <div class="container">
@@ -33,33 +26,17 @@
       <a class="create btn btn-secondary" href="javascript:">Create Item</a>
       <span class="alert"></span>
     </p>
-    <table id="table"
-      data-show-refresh="true"
-      data-show-columns="true"
-      data-search="true"
-      data-query-params="queryParams"
-      data-toolbar=".toolbar">
-      <thead>
-      <tr>
-        <th data-field="name">Name</th>
-        <th data-field="stargazers_count">Stars</th>
-        <th data-field="forks_count">Forks</th>
-        <th data-field="description">Description</th>
-        <th data-field="action"
-          data-align="center"
-          data-formatter="actionFormatter"
-          data-events="actionEvents">Action</th>
-      </tr>
-      </thead>
-    </table>
+    <table id="table"></table>
   </div>
 
   <div id="modal" class="modal fade">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title"></h4>
+          <h5 class="modal-title"></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
         <div class="modal-body">
           <div class="form-group">
@@ -76,7 +53,7 @@
           </div>
           <div class="form-group">
             <label>Description</label>
-            <input type="text" class="form-control" name="description" placeholder="Description">
+            <textarea class="form-control" name="description" placeholder="Description"></textarea>
           </div>
         </div>
         <div class="modal-footer">
@@ -86,9 +63,10 @@
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->
+
 <script>
-  var API_URL = 'http://' + location.host + ':3001/list/'
-  var $table = $('#table').bootstrapTable({url: API_URL})
+  var API_URL = 'http://localhost:3001/list/'
+  var $table = $('#table')
   var $modal = $('#modal').modal({show: false})
   var $alert = $('.alert').hide()
 
@@ -105,7 +83,7 @@
     $modal.find('.modal-title').text(title)
     for (var name in row) {
       if (row[name]) {
-        $modal.find('input[name="' + name + '"]').val(row[name])
+        $modal.find('[name="' + name + '"]').val(row[name])
       }
     }
     $modal.modal('show')
@@ -120,6 +98,66 @@
   }
 
   $(function () {
+    $table.bootstrapTable({
+      url: API_URL,
+      showRefresh: true,
+      showColumns: true,
+      search: true,
+      toolbar: '.toolbar',
+      queryParams: function () {
+        return {}
+      },
+      columns: [
+        {
+          field: 'name',
+          title: 'Name'
+        },
+        {
+          field: 'stargazers_count',
+          title: 'Stars'
+        },
+        {
+          field: 'forks_count',
+          title: 'Forks'
+        },
+        {
+          field: 'description',
+          title: 'Description'
+        },
+        {
+          field: 'action',
+          title: 'Action',
+          align: 'center',
+          formatter: function actionFormatter(value) {
+            return [
+              '<a class="update mr10" href="javascript:" title="Update Item"><i class="fa fa-edit"></i></a>',
+              '<a class="remove" href="javascript:" title="Delete Item"><i class="fa fa-remove"></i></a>'
+            ].join('')
+          },
+          events: {
+            'click .update': function (e, value, row) {
+              showModal($(e.currentTarget).attr('title'), row)
+            },
+            'click .remove': function (e, value, row) {
+              if (confirm('Are you sure to delete this item?')) {
+                $.ajax({
+                  url: API_URL + row.id,
+                  type: 'delete',
+                  success: function () {
+                    $table.bootstrapTable('refresh')
+                    showAlert('Delete item successful!', 'success')
+                  },
+                  error: function () {
+                    showAlert('Delete item error!', 'danger')
+                  }
+                })
+              }
+            }
+          }
+        }
+      ]
+    })
+
     // create event
     $('.create').click(function () {
       showModal($(this).text())
@@ -149,39 +187,6 @@
       })
     })
   })
-
-  function queryParams(params) {
-    return {}
-  }
-
-  function actionFormatter(value) {
-    return [
-      '<a class="update" href="javascript:" title="Update Item"><i class="glyphicon glyphicon-edit"></i></a>',
-      '<a class="remove" href="javascript:" title="Delete Item"><i class="glyphicon glyphicon-remove-circle"></i></a>'
-    ].join('')
-  }
-
-  // update and delete events
-  window.actionEvents = {
-    'click .update': function (e, value, row) {
-      showModal($(this).attr('title'), row)
-    },
-    'click .remove': function (e, value, row) {
-      if (confirm('Are you sure to delete this item?')) {
-        $.ajax({
-          url: API_URL + row.id,
-          type: 'delete',
-          success: function () {
-            $table.bootstrapTable('refresh')
-            showAlert('Delete item successful!', 'success')
-          },
-          error: function () {
-            showAlert('Delete item error!', 'danger')
-          }
-        })
-      }
-    }
-  }
 </script>
 </body>
 </html>

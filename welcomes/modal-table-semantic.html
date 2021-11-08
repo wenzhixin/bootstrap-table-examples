@@ -7,7 +7,7 @@
   })
 </script>
 
-<button type="button" class="ui primary button big lunch">
+<button id="button" type="button" class="ui primary button big lunch">
   Launch modal table
 </button>
 <div class="ui modal">
@@ -17,7 +17,7 @@
   <div class="content">
     <table id="table"
       data-toggle="table"
-      data-height="299"
+      data-height="345"
       data-url="json/data1.json">
       <thead>
         <tr>
@@ -39,7 +39,7 @@
   var $table = $('#table')
 
   function mounted() {
-    $('.lunch').click(function () {
+    $('#button').click(function () {
       $('.ui.modal').modal('show')
       $table.bootstrapTable('resetView')
     })

@@ -1,5 +1,5 @@
 window._config = {
-  isDebug: ['localhost', 'dev.bootstrap-table.com'].indexOf(location.hostname) > -1,
+  isDebug: ['localhost', '127.0.0.1'].indexOf(location.hostname) > -1,
   isViewSource: false,
   theme: location.search.slice(1),
   themes: []

@@ -1,0 +1,33 @@
+<script>
+  init({
+    title: 'Filter Control',
+    desc: 'Use Plugin: bootstrap-table-filter-control to filter table fields.',
+    links: [
+      'bootstrap-table.min.css'
+    ],
+    scripts: [
+      'bootstrap-table.min.js',
+      'extensions/filter-control/bootstrap-table-filter-control.min.js'
+    ]
+  })
+</script>
+
+<table
+  id="table"
+  data-url="json/data1.json"
+  data-filter-control="true"
+  data-filter-control-visible="false">
+  <thead>
+    <tr>
+      <th data-field="id">ID</th>
+      <th data-field="name" data-filter-control="input">Item Name</th>
+      <th data-field="price" data-filter-control="select">Item Price</th>
+    </tr>
+  </thead>
+</table>
+
+<script>
+  function mounted() {
+    $('#table').bootstrapTable()
+  }
+</script>

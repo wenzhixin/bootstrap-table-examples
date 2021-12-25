@@ -11,6 +11,6 @@
   "scripts": {
     "serve-http": "http-server",
     "serve-json": "json-server -p 3001 db.json",
-    "serve": "npm-run-all serve-*"
+    "serve": "npm-run-all --parallel serve-*"
   }
 }

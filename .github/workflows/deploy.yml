@@ -10,12 +10,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: '0'
 
       - name: Copy files to dist
         run: |
           mkdir -p dist
           cp -r *.html favicon.png CNAME assets column-options extensions issues json methods options welcomes utils dist/
-          VERSION=`git rev-list --count master`
+          VERSION=`git rev-list --count gh-pages`
           find dist -type f -exec sed -i "s/v=VERSION/v=$VERSION/g" {} \;
 
       - name: Deploy to GitHub Pages

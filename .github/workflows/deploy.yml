@@ -17,7 +17,7 @@ jobs:
         run: |
           mkdir -p dist
           cp -r *.html favicon.png CNAME assets column-options extensions issues json methods options welcomes utils dist/
-          VERSION=`git rev-list --count gh-pages`
+          VERSION=`git rev-list --count master`
           find dist -type f -exec sed -i "s/v=VERSION/v=$VERSION/g" {} \;
 
       - name: Deploy to GitHub Pages

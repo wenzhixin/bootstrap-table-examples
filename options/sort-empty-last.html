@@ -1,0 +1,58 @@
+<script>
+  init({
+    title: 'Sort Empty Last',
+    desc: 'Use `sortEmptylast` to sort `<empty string>`, `undefined` and `null` as last value.',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
+<table id="table" data-sort-empty-last="true">
+  <thead>
+    <tr>
+      <th data-field="id">ID</th>
+      <th data-field="name" data-sortable="true">Item Name</th>
+      <th data-field="price">Item Price</th>
+    </tr>
+  </thead>
+</table>
+
+<script>
+  function mounted() {
+    var $table = $('#table')
+
+    var data = [
+      {
+        'id': 0,
+        'name': null,
+        'price': '$0'
+      },
+      {
+        'id': 1,
+        'name': 'Item 1',
+        'price': '$1'
+      },
+      {
+        'id': 2,
+        'name': 'Item 2',
+        'price': '$2'
+      },
+      {
+        'id': 3,
+        'name': 'Item 3',
+        'price': '$3'
+      },
+      {
+        'id': 4,
+        'name': 'Item 4',
+        'price': '$4'
+      },
+      {
+        'id': 5,
+        'name': 'Item 5',
+        'price': '$5'
+      }
+    ]
+    $table.bootstrapTable({data: data})
+  }
+</script>

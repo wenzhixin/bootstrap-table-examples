@@ -18,8 +18,9 @@
   data-url="json/data1.json">
   <thead>
     <tr>
+      <th data-checkbox="true" data-field="state"></th>
       <th data-field="id">ID</th>
-      <th data-field="name">Item Name</th>
+      <th data-field="name" data-width="300">Item Name</th>
       <th data-field="price">Item Price</th>
     </tr>
   </thead>
@@ -31,11 +32,15 @@
 
   function mounted() {
     $button.click(function () {
-      $table.bootstrapTable('updateCell', {
-        index: 1,
-        field: 'name',
-        value: 'Updated Name'
-      })
+      let i = 0
+      setInterval(() => {
+        $table.bootstrapTable('updateCell', {
+          index: 1,
+          field: 'name',
+          value: `Updated Name ${i++}`,
+          reinit: false
+        })
+      }, 100)
     })
   }
 </script>

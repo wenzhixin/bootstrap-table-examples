@@ -1,0 +1,25 @@
+<script>
+  init({
+    title: 'Sort Reset Page',
+    desc: 'Use `sortResetPage` option to reset the page number when sorting.',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
+<table
+  id="table"
+  data-toggle="table"
+  data-height="460"
+  data-pagination="true"
+  data-sortable="true"
+  data-sort-reset-page="true"
+  data-url="json/data1.json">
+  <thead>
+    <tr>
+      <th data-field="id" data-sortable="true">ID</th>
+      <th data-field="name" data-sortable="true">Item Name</th>
+      <th data-field="price" data-sortable="true">Item Price</th>
+    </tr>
+  </thead>
+</table>

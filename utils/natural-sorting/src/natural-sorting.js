@@ -55,7 +55,7 @@ function alphanum (a, b) {
 
 function numericOnly (a, b) {
   function stripNonNumber (s) {
-    s = s.replace(new RegExp(/[^0-9]/g), '')
+   s = s.replace(/^(-)|[.,](?=[^.,]*[.,](?!$))|[,.]+$|[^0-9.,]+/g, '$1');
     return parseInt(s, 10)
   }
 

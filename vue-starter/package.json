@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "bootstrap": "^4.5.0",
-    "bootstrap-table": "^1.21.0",
+    "bootstrap-table": "^1.21.2",
     "bootstrap-vue": "^2.15.0",
     "core-js": "^3.6.5",
     "jquery": "^3.5.1",

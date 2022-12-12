@@ -36,7 +36,7 @@ const projects = {
       }
       if (Object.keys(filter).length) {
         for (const [key, value] of Object.entries(filter)) {
-          rows = rows.filter(item => item[key].includes(value))
+          rows = rows.filter(item => String(item[key]).includes(value))
         }
       }
       if (['id', 'name', 'price'].includes(name)) {

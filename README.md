@@ -18,11 +18,24 @@ cd bootstrap-table-dev
 git clone https://github.com/wenzhixin/bootstrap-table
 git clone https://github.com/wenzhixin/bootstrap-table-examples
 
+cd bootstrap-table
+yarn && yarn css:build:src
+
+cd ..
 yarn add http-server
 npx http-server
 ```
 
 And then open: http://localhost:8081/bootstrap-table-examples
+
+## Local server
+
+```bash
+cd bootstrap-table-examples
+yarn
+cd server
+node app.js
+```
 
 ## reporting issues
 

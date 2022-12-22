@@ -1,0 +1,30 @@
+<script>
+  init({
+    title: 'Escape title',
+    desc: 'Use `escapeTitle` to toggle the `escape` option for column titles.',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
+<table
+  id="table"
+  data-toggle="table"
+  data-escape="true"
+  data-escape-title="false"
+  data-height="460">
+  <thead>
+  <tr>
+    <th data-field="id" data-escape="true">ID <h1>XSS</h1></th>
+    <th data-field="name">Item Name</th>
+    <th data-field="price">Item Price</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>Escape ID: 0</b></td>
+      <td><b>Bold Item</b></td>
+      <td>$0</td>
+    </tr>
+  </tbody>
+</table>

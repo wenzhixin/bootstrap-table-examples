@@ -1,0 +1,25 @@
+<script>
+  init({
+    title: 'Searchable',
+    desc: 'Use `searchable` option to enable sending searchable (columns) parameters.',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
+<table
+  id="table"
+  data-toggle="table"
+  data-search="true"
+  data-searchable="true"
+  data-pagination="true"
+  data-side-pagination="server"
+  data-url="https://examples.wenzhixin.net.cn/examples/bootstrap_table/data">
+  <thead>
+    <tr>
+      <th data-field="id">ID</th>
+      <th data-field="name">Item Name</th>
+      <th data-field="price">Item Price</th>
+    </tr>
+  </thead>
+</table>

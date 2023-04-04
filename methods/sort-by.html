@@ -33,10 +33,14 @@ Sort by:
 </table>
 
 <script>
-  $(function() {
-    $("#sort").change(function() {
-      var field = '';
-      var sortOrder = '';
+  var $table = $('#table')
+  var $sort = $('#sort')
+
+  function mounted() {
+    $sort.change(function() {
+      var field = ''
+      var sortOrder = ''
+
       if (this.value == 'name_asc') {
         field = 'github.name'
         sortOrder = 'asc'
@@ -56,7 +60,8 @@ Sort by:
         field = 'github.count.forks'
         sortOrder = 'desc'
       }
-      $('#table').bootstrapTable('sortBy', {
+
+      $table.bootstrapTable('sortBy', {
         field: field,
         sortOrder: sortOrder
       })

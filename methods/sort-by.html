@@ -1,26 +1,36 @@
 <script>
   init({
     title: 'Sort By',
-    desc: 'Sort data in table: `$table.bootstrapTable(\'sortBy\', {field: 'name', sortOrder: 'asc'})`.',
+    desc: 'Sort data in table: `$table.bootstrapTable(\'sortBy\', {field: \'name\', sortOrder: \'asc\'})`.',
     links: ['bootstrap-table.min.css'],
     scripts: ['bootstrap-table.min.js']
   })
 </script>
 
-Sort by:
-<select id="sort">
-  <option value="name_asc">Name ascending</option>
-  <option value="name_desc">Name descending</option>
-  <option value="stargazers_asc">Stargazers low - high</option>
-  <option value="stargazers_desc">Stargazers high - low</option>
-  <option value="forks_asc">Forks low - high</option>
-  <option value="forks_desc">Forks high - low</option>
-</select>
+<style>
+#sort {
+  display: inline-block;
+  width: auto;
+}
+</style>
+
+<div class="toolbar">
+  Sort by:
+  <select id="sort" class="form-control">
+    <option value="name_asc">Name ascending</option>
+    <option value="name_desc">Name descending</option>
+    <option value="stargazers_asc">Stargazers low - high</option>
+    <option value="stargazers_desc">Stargazers high - low</option>
+    <option value="forks_asc">Forks low - high</option>
+    <option value="forks_desc">Forks high - low</option>
+  </select>
+</div>
 
 <table
   id="table"
   data-toggle="table"
   data-sort-name="github.name"
+  data-toolbar=".toolbar"
   data-url="json/data3.json">
   <thead>
     <tr>
@@ -66,5 +76,5 @@ Sort by:
         sortOrder: sortOrder
       })
     })
-  })
+  }
 </script>

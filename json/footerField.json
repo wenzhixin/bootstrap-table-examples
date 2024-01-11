@@ -58,8 +58,8 @@
         }
     ],
     "footer": {
-        "id": "footer id",
-        "_id_colspan": 2,
-        "name": "footer name"
+        "id": "Total",
+        "name": "10",
+        "price": "$55"
     }
 }

@@ -176,45 +176,53 @@
       height: 550,
       locale: $('#locale').val(),
       columns: [
-        [{
-          field: 'state',
-          checkbox: true,
-          rowspan: 2,
-          align: 'center',
-          valign: 'middle'
-        }, {
-          title: 'Item ID',
-          field: 'id',
-          rowspan: 2,
-          align: 'center',
-          valign: 'middle',
-          sortable: true,
-          footerFormatter: totalTextFormatter
-        }, {
-          title: 'Item Detail',
-          colspan: 3,
-          align: 'center'
-        }],
-        [{
-          field: 'name',
-          title: 'Item Name',
-          sortable: true,
-          footerFormatter: totalNameFormatter,
-          align: 'center'
-        }, {
-          field: 'price',
-          title: 'Item Price',
-          sortable: true,
-          align: 'center',
-          footerFormatter: totalPriceFormatter
-        }, {
-          field: 'operate',
-          title: 'Item Operate',
-          align: 'center',
-          clickToSelect: false,
-          events: window.operateEvents,
-          formatter: operateFormatter
-        }]
+        [
+          {
+            field: 'state',
+            checkbox: true,
+            rowspan: 2,
+            align: 'center',
+            valign: 'middle'
+          },
+          {
+            title: 'Item ID',
+            field: 'id',
+            rowspan: 2,
+            align: 'center',
+            valign: 'middle',
+            sortable: true,
+            footerFormatter: totalTextFormatter
+          },
+          {
+            title: 'Item Detail',
+            colspan: 3,
+            align: 'center'
+          }
+        ],
+        [
+          {
+            field: 'name',
+            title: 'Item Name',
+            sortable: true,
+            footerFormatter: totalNameFormatter,
+            align: 'center'
+          },
+          {
+            field: 'price',
+            title: 'Item Price',
+            sortable: true,
+            align: 'center',
+            footerFormatter: totalPriceFormatter
+          },
+          {
+            field: 'operate',
+            title: 'Item Operate',
+            align: 'center',
+            clickToSelect: false,
+            events: window.operateEvents,
+            formatter: operateFormatter
+          }
+        ]
       ]
     })
     $table.on('check.bs.table uncheck.bs.table ' +

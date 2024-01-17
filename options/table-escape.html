@@ -25,15 +25,18 @@
   function mounted() {
     $table.bootstrapTable({
       escape: true,
-      data: [{
-        id: 1,
-        name: '<a href="#">item 1</a>',
-        price: '$1'
-      }, {
-        id: 2,
-        name: '<a href="#">item 2</a>',
-        price: '$2 '
-      }]
+      data: [
+        {
+          id: 1,
+          name: '<a href="#">item 1</a>',
+          price: '$1'
+        },
+        {
+          id: 2,
+          name: '<a href="#">item 2</a>',
+          price: '$2 '
+        }
+      ]
     })
   }
 </script>

@@ -17,36 +17,43 @@
 <table id="table"></table>
 
 <script>
-  var data = [{
-    'name': 'active'
-  }, {
-    'name': 'blocked'
-  }, {
-    'name': 'deleted'
-  }]
+  var data = [
+    {
+      name: 'active'
+    },
+    {
+      name: 'blocked'
+    },
+    {
+      name: 'deleted'
+    }
+  ]
 
   var $table = $('#table')
 
   function mounted() {
     $table.bootstrapTable({
       idField: 'name',
-      columns: [{
-        field: 'state',
-        title: '',
-        checkbox: true
-      }, {
-        field: 'name',
-        title: 'names',
-        sortable: true,
-        editable: {
-          type: 'select',
-          source: [
-            {value: 'active', text: 'Active'},
-            {value: 'blocked', text: 'Blocked'},
-            {value: 'deleted', text: 'Deleted'}
-          ]
+      columns: [
+        {
+          field: 'state',
+          title: '',
+          checkbox: true
+        },
+        {
+          field: 'name',
+          title: 'names',
+          sortable: true,
+          editable: {
+            type: 'select',
+            source: [
+              {value: 'active', text: 'Active'},
+              {value: 'blocked', text: 'Blocked'},
+              {value: 'deleted', text: 'Deleted'}
+            ]
+          }
         }
-      }],
+      ],
       data: data
     })
   }

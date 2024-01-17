@@ -13,27 +13,33 @@
   function mounted() {
     $('#table').bootstrapTable({
       url: 'json/353.json',
-      columns: [{
-        field: 'date',
-        title: 'Date Stamp',
-        sortable: true
-      }, {
-        field: 'm_type',
-        title: 'Type',
-        sortable: true
-      }, {
-        field: 'msdn',
-        title: 'MSDN',
-        sortable: true
-      }, {
-        field: 'file_name',
-        title: 'File Name',
-        sortable: true
-      }, {
-        field: 'message',
-        title: 'Message',
-        sortable: true
-      }],
+      columns: [
+        {
+          field: 'date',
+          title: 'Date Stamp',
+          sortable: true
+        },
+        {
+          field: 'm_type',
+          title: 'Type',
+          sortable: true
+        },
+        {
+          field: 'msdn',
+          title: 'MSDN',
+          sortable: true
+        },
+        {
+          field: 'file_name',
+          title: 'File Name',
+          sortable: true
+        },
+        {
+          field: 'message',
+          title: 'Message',
+          sortable: true
+        }
+      ],
       responseHandler: function (res) {
         return res.messages
       }

@@ -49,42 +49,49 @@ window.angular.module('app', ['bsTable'])
           clickToSelect: false,
           showToggle: true,
           maintainSelected: true,
-          columns: [{
-            field: 'state',
-            checkbox: true
-          }, {
-            field: 'index',
-            title: '#',
-            align: 'right',
-            valign: 'bottom',
-            sortable: true
-          }, {
-            field: 'id',
-            title: 'Item ID',
-            align: 'center',
-            valign: 'bottom',
-            sortable: true
-          }, {
-            field: 'name',
-            title: 'Item Name',
-            align: 'center',
-            valign: 'middle',
-            sortable: true
-          }, {
-            field: 'workspace',
-            title: 'Workspace',
-            align: 'left',
-            valign: 'top',
-            sortable: true
-          }, {
-            field: 'flag',
-            title: 'Flag',
-            align: 'center',
-            valign: 'middle',
-            clickToSelect: false,
-            formatter: flagFormatter
-            // events: flagEvents
-          }]
+          columns: [
+            {
+              field: 'state',
+              checkbox: true
+            },
+            {
+              field: 'index',
+              title: '#',
+              align: 'right',
+              valign: 'bottom',
+              sortable: true
+            },
+            {
+              field: 'id',
+              title: 'Item ID',
+              align: 'center',
+              valign: 'bottom',
+              sortable: true
+            },
+            {
+              field: 'name',
+              title: 'Item Name',
+              align: 'center',
+              valign: 'middle',
+              sortable: true
+            },
+            {
+              field: 'workspace',
+              title: 'Workspace',
+              align: 'left',
+              valign: 'top',
+              sortable: true
+            },
+            {
+              field: 'flag',
+              title: 'Flag',
+              align: 'center',
+              valign: 'middle',
+              clickToSelect: false,
+              formatter: flagFormatter
+              // events: flagEvents
+            }
+          ]
         }
       }
     })

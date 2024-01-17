@@ -24,11 +24,13 @@
   var $table = $('#table')
   function mounted() {
     $table.bootstrapTable({
-      data: [{
-        'id': 0,
-        'name': 'Item 0',
-        'price': '$0'
-      }]
+      data: [
+        {
+          id: 0,
+          name: 'Item 0',
+          price: '$0'
+        }
+      ]
     })
     $('#button').click(function () {
       $table.bootstrapTable('refresh', {url: 'json/data1.json'})

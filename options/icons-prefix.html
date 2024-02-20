@@ -1,14 +1,29 @@
 <script>
   init({
     title: 'Icons Prefix',
-    desc: 'Use `iconsPrefix` option to defines icon set name. In the case we use ionicons as an example.',
+    desc: 'Use `iconsPrefix` option to defines icon set name. In the case we use font-awesome instead of bootstrap-icons by default.',
     links: [
-      'https://cdn.jsdelivr.net/npm/ionicons@7.2.2/dist/collection/components/icon/icon.min.css',
+      'https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css',
       'bootstrap-table.min.css'
     ],
     scripts: ['bootstrap-table.min.js']
   })
 </script>
+
+<div class="toolbar">
+  <div class="checkbox">
+    <label>
+      <input type="radio" name="iconsPrefix" checked value="fa">
+      <code>Font Awesome</code>
+    </label>
+  </div>
+  <div class="checkbox">
+    <label>
+      <input type="radio" name="iconsPrefix" value="bi">
+      <code>Bootstrap Icons</code>
+    </label>
+  </div>
+</div>
 
 <table
   id="table"
@@ -17,8 +32,8 @@
   data-show-refresh="true"
   data-show-columns="true"
   data-show-fullscreen="true"
-  data-icons-prefix="icon"
-  data-icons="icons"
+  data-icons-prefix="fa"
+  data-toolbar=".toolbar"
   data-url="json/data1.json">
   <thead>
     <tr>
@@ -30,9 +45,13 @@
 </table>
 
 <script>
-  window.icons = {
-    refresh: 'ion-md-refresh',
-    columns: 'ion-md-menu',
-    fullscreen: 'ion-md-expand'
+  var $table = $('#table')
+
+  function mounted() {
+    $('.toolbar input').change(function () {
+      $table.bootstrapTable('destroy').bootstrapTable({
+        iconsPrefix: $(this).val()
+      })
+    })
   }
 </script>

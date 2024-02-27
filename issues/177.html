@@ -23,19 +23,22 @@
   function mounted() {
     $('#table').bootstrapTable({
       data: data,
-      columns: [{
-        field: 'fullName',
-        title: 'Full Name',
-        formatter: function (value, row) {
-          return [row.firstName, row.lastName].join(' ')
+      columns: [
+        {
+          field: 'fullName',
+          title: 'Full Name',
+          formatter: function (value, row) {
+            return [row.firstName, row.lastName].join(' ')
+          }
+        },
+        {
+          field: 'field',
+          title: 'Field',
+          formatter: function (value, row) {
+            return [row.field1, row.field2, row.field3].join('+')
+          }
         }
-      }, {
-        field: 'field',
-        title: 'Field',
-        formatter: function (value, row) {
-          return [row.field1, row.field2, row.field3].join('+')
-        }
-      }]
+      ]
     })
   }
 </script>

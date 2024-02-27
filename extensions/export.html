@@ -6,9 +6,8 @@
       'bootstrap-table.min.css'
     ],
     scripts: [
-      'https://cdn.jsdelivr.net/npm/tableexport.jquery.plugin@1.10.21/tableExport.min.js',
-      'https://cdn.jsdelivr.net/npm/tableexport.jquery.plugin@1.10.21/libs/jsPDF/jspdf.min.js',
-      'https://cdn.jsdelivr.net/npm/tableexport.jquery.plugin@1.10.21/libs/jsPDF-AutoTable/jspdf.plugin.autotable.js',
+      'https://cdn.jsdelivr.net/npm/tableexport.jquery.plugin@1.28.0/tableExport.min.js',
+      'https://cdn.jsdelivr.net/npm/tableexport.jquery.plugin@1.28.0/libs/jsPDF/jspdf.umd.min.js',
       'bootstrap-table.min.js',
       'extensions/export/bootstrap-table-export.min.js'
     ]
@@ -57,10 +56,12 @@
           {
             field: 'id',
             title: 'ID'
-          }, {
+          },
+          {
             field: 'name',
             title: 'Item Name'
-          }, {
+          },
+          {
             field: 'price',
             title: 'Item Price'
           }

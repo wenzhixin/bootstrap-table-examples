@@ -77,6 +77,7 @@ select.form-control {
   data-show-refresh="true"
   data-show-toggle="true"
   data-show-columns="true"
+  data-show-button-text="true"
   data-show-export="true"
   data-pagination="true"
   data-url="json/data1.json">
@@ -93,7 +94,11 @@ select.form-control {
   var $table = $('#table')
 
   function mounted() {
-    $table.bootstrapTable()
+    $table.bootstrapTable({
+      formatRefresh: function () {
+        return ''
+      }
+    })
 
     $('#locale').change(function () {
       $table.bootstrapTable('refreshOptions', {

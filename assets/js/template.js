@@ -16,7 +16,7 @@ function _getLink(file) {
         file.replace(/\.min/, '') + '?t=' + (+new Date())
     }
   }
-  return '<link href="' + url + '" rel="stylesheet">'
+  return '<link rel="stylesheet" href="' + url + '">'
 }
 
 function _getScript(file, isScriptTag) {

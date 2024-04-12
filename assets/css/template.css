@@ -27,7 +27,7 @@ body {
 
 .header-wrapper {
   -js-display: flex;
-	display: flex;
+  display: flex;
 }
 
 .title-desc {

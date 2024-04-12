@@ -12,8 +12,8 @@ $('#table').bootstrapTable({
   showColumns: true,
   columns: [
     {
-    field: 'id',
-    title: 'Item ID'
+      field: 'id',
+      title: 'Item ID'
     },
     {
       field: 'name',

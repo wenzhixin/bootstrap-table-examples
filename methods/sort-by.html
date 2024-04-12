@@ -51,22 +51,22 @@
       var field = ''
       var sortOrder = ''
 
-      if (this.value == 'name_asc') {
+      if (this.value === 'name_asc') {
         field = 'github.name'
         sortOrder = 'asc'
-      } else if (this.value == 'name_desc') {
+      } else if (this.value === 'name_desc') {
         field = 'github.name'
         sortOrder = 'desc'
-      } else if (this.value == 'stargazers_asc') {
+      } else if (this.value === 'stargazers_asc') {
         field = 'github.count.stargazers'
         sortOrder = 'asc'
-      } else if (this.value == 'stargazers_desc') {
+      } else if (this.value === 'stargazers_desc') {
         field = 'github.count.stargazers'
         sortOrder = 'desc'
-      } else if (this.value == 'forks_asc') {
+      } else if (this.value === 'forks_asc') {
         field = 'github.count.forks'
         sortOrder = 'asc'
-      } else if (this.value == 'forks_desc') {
+      } else if (this.value === 'forks_desc') {
         field = 'github.count.forks'
         sortOrder = 'desc'
       }

@@ -1,6 +1,6 @@
 {
   "name": "bootstrap-table-examples",
-  "version": "1.22.4",
+  "version": "1.22.5",
   "description": "bootstrap-table-examples",
   "repository": {
     "type": "git",
@@ -13,7 +13,9 @@
   },
   "homepage": "https://github.com/wenzhixin/bootstrap-table-examples",
   "scripts": {
-    "lint": "eslint --ext .html,.js .",
+    "lint:js": "eslint --ext .html,.js .",
+    "lint:editor": "editorconfig-checker",
+    "lint": "run-s lint:*",
     "build": "babel utils/natural-sorting/src -d utils/natural-sorting/dist"
   },
   "devDependencies": {
@@ -21,10 +23,12 @@
     "@babel/core": "^7.7.2",
     "@babel/preset-env": "^7.7.1",
     "babel-eslint": "^10.0.3",
+    "editorconfig-checker": "^5.1.5",
     "eslint": "^5.10.0",
     "eslint-plugin-html": "^5.0.0",
     "eslint-plugin-vue": "^5.2.3",
-    "getopts": "^2.2.3"
+    "getopts": "^2.2.3",
+    "npm-run-all": "^4.1.5"
   },
   "dependencies": {
     "express": "^4.17.1"

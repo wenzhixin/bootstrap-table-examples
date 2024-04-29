@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "bootstrap": "^4.5.0",
-    "bootstrap-table": "^1.22.4",
+    "bootstrap-table": "^1.22.5",
     "jquery": "^3.5.1",
     "popper.js": "^1.16.1"
   },

@@ -1,7 +1,7 @@
 window._config = {
   isDebug: location.hash.slice(1) === 'is-debug' ||
     ['localhost', '127.0.0.1', 'dev.bootstrap-table.com'].indexOf(location.hostname) > -1,
-  cdnUrl: 'https://cdn.jsdelivr.net/npm/bootstrap-table@1.22.4/dist/',
+  cdnUrl: 'https://cdn.jsdelivr.net/npm/bootstrap-table@1.22.5/dist/',
   localUrl: '../bootstrap-table/src/',
   testUrl: '/src/'
 }
@@ -16,7 +16,7 @@ function _getLink(file) {
         file.replace(/\.min/, '') + '?t=' + (+new Date())
     }
   }
-  return '<link href="' + url + '" rel="stylesheet">'
+  return '<link rel="stylesheet" href="' + url + '">'
 }
 
 function _getScript(file, isScriptTag) {

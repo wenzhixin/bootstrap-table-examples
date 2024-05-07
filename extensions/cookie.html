@@ -7,18 +7,35 @@
     ],
     scripts: [
       'bootstrap-table.min.js',
-      'extensions/cookie/bootstrap-table-cookie.min.js'
+      'extensions/cookie/bootstrap-table-cookie.min.js',
+      'https://cdn.jsdelivr.net/npm/bootstrap-table@1.22.5/dist/bootstrap-table-locale-all.min.js'
     ]
   })
 </script>
 
+<style>
+select.form-control {
+  width: 200px;
+}
+</style>
+
+<div class="toolbar">
+  <select class="form-control" id="locale">
+    <option value="en-US">en-US</option>
+    <option value="zh-CN" selected>zh-CN</option>
+  </select>
+</div>
+
 <table
   id="table"
+  data-toolbar=".toolbar"
   data-show-columns="true"
   data-cookie="true"
   data-cookie-id-table="saveId"
+  data-page-list="10,25,50,100,all"
   data-pagination="true"
   data-search="true"
+  data-height="460"
   data-url="https://examples.wenzhixin.net.cn/examples/bootstrap_table/data"
   data-side-pagination="server">
   <thead>
@@ -32,6 +49,16 @@
 
 <script>
   function mounted() {
-    $('#table').bootstrapTable()
+    var $table = $('#table')
+
+    $table.bootstrapTable({
+      cookieStorage: 'localStorage'
+    })
+
+    $('#locale').change(function () {
+      $table.bootstrapTable('refreshOptions', {
+        locale: $(this).val()
+      })
+    })
   }
 </script>

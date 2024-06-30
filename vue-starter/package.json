@@ -1,52 +1,25 @@
 {
   "name": "vue-starter",
-  "version": "0.1.0",
-  "private": true,
+  "version": "2.0.0",
+  "type": "module",
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "serve": "vite",
+    "build": "vite build",
+    "lint": "eslint ."
   },
   "dependencies": {
-    "bootstrap": "^4.5.0",
+    "@popperjs/core": "^2.11.8",
+    "bootstrap": "^5.3.3",
+    "bootstrap-icons": "^1.11.3",
     "bootstrap-table": "^1.22.6",
-    "bootstrap-vue": "^2.15.0",
-    "core-js": "^3.6.5",
-    "jquery": "^3.5.1",
-    "popper.js": "^1.16.1",
-    "tableexport.jquery.plugin": "^1.10.20",
-    "vue": "^2.6.11"
+    "jquery": "^3.7.1",
+    "tableexport.jquery.plugin": "^1.30.0",
+    "vue": "^3.4.27"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^4.4.4",
-    "@vue/cli-plugin-eslint": "^4.4.4",
-    "@vue/cli-service": "^4.4.4",
-    "babel-eslint": "^10.1.0",
-    "eslint": "^7.3.0",
-    "eslint-plugin-vue": "^6.2.2",
-    "vue-template-compiler": "^2.6.11"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/essential",
-      "eslint:recommended"
-    ],
-    "rules": {},
-    "parserOptions": {
-      "parser": "babel-eslint"
-    }
-  },
-  "postcss": {
-    "plugins": {
-      "autoprefixer": {}
-    }
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions"
-  ]
+    "@vitejs/plugin-vue": "^5.0.4",
+    "eslint": "^8.57.0",
+    "eslint-plugin-vue": "^9.26.0",
+    "vite": "^5.2.11"
+  }
 }

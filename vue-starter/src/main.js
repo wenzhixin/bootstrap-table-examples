@@ -1,13 +1,10 @@
-import Vue from 'vue'
-import BootstrapVue from 'bootstrap-vue'
+import { createApp } from 'vue'
 import App from './App.vue'
 
-Vue.use(BootstrapVue)
+import './plugins/table'
+import BootstrapTable from 'bootstrap-table/dist/bootstrap-table-vue'
 
-import './plugins/table.js'
+const app = createApp(App)
 
-Vue.config.productionTip = false
-
-new Vue({
-  render: h => h(App),
-}).$mount('#app')
+app.component('BootstrapTable', BootstrapTable)
+app.mount('#app')

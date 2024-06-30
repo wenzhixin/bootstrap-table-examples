@@ -1,19 +1,16 @@
 <template>
   <div id="app">
-    <img alt="Bootstrap Table logo" src="./assets/logo.png" width="64" height="64">
-    <HelloWorld msg="Welcome to Bootstrap Table App"/>
+    <img
+      src="./assets/logo.png"
+      width="64"
+      height="64"
+    >
+    <HelloTable />
   </div>
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
-
-export default {
-  name: 'app',
-  components: {
-    HelloWorld
-  }
-}
+<script setup>
+import HelloTable from './components/HelloTable.vue'
 </script>
 
 <style>

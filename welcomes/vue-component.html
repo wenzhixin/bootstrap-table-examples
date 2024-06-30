@@ -6,26 +6,23 @@
       'bootstrap-table.min.css'
     ],
     scripts: [
-      'https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.min.js',
+      'https://unpkg.com/vue@3/dist/vue.global.js',
       'bootstrap-table.min.js',
-      'https://cdn.jsdelivr.net/npm/bootstrap-table@1.22.6/dist/bootstrap-table-vue.min.js'
+      'https://cdn.jsdelivr.net/npm/bootstrap-table@1.23.0/dist/bootstrap-table-vue.umd.js'
     ]
   })
 </script>
 
-<div id="table">
+<div id="app">
   <bootstrap-table :columns="columns" :data="data" :options="options"></bootstrap-table>
 </div>
 
 <script>
   function mounted() {
-    new Vue({
-      el: '#table',
-      components: {
-        'BootstrapTable': BootstrapTable
-      },
-      data: {
-        columns: [
+    const { createApp, ref } = Vue
+    const app = createApp({
+      setup () {
+        const columns = ref([
           {
             field: 'state',
             checkbox: true
@@ -46,17 +43,17 @@
             field: 'action',
             title: 'Actions',
             align: 'center',
-            formatter: function () {
+            formatter () {
               return '<a href="javascript:" class="like"><i class="fa fa-star"></i></a>'
             },
             events: {
-              'click .like': function (e, value, row) {
+              'click .like' (e, value, row) {
                 alert(JSON.stringify(row))
               }
             }
           }
-        ],
-        data: [
+        ])
+        const data = ref([
           {
             id: 0,
             name: 'Item 0',
@@ -87,12 +84,21 @@
             name: 'Item 5',
             price: '$5'
           }
-        ],
-        options: {
+        ])
+        const options = ref({
           search: true,
           showColumns: true
+        })
+
+        return {
+          columns,
+          data,
+          options
         }
       }
     })
+
+    app.component('BootstrapTable', BootstrapTable)
+    app.mount('#app')
   }
 </script>

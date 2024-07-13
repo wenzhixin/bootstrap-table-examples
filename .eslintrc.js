@@ -12,8 +12,8 @@ module.exports = {
   'extends': [
     'eslint:recommended'
   ],
-  'plugins': [ 'html' ],
-  "settings": {
+  'plugins': ['html'],
+  'settings': {
     'html/html-extensions': ['.html']
   },
   'rules': {

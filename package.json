@@ -1,6 +1,6 @@
 {
   "name": "bootstrap-table-examples",
-  "version": "1.23.0",
+  "version": "1.23.1",
   "description": "bootstrap-table-examples",
   "repository": {
     "type": "git",
@@ -19,18 +19,18 @@
     "build": "babel utils/natural-sorting/src -d utils/natural-sorting/dist"
   },
   "devDependencies": {
-    "@babel/cli": "^7.7.0",
-    "@babel/core": "^7.7.2",
-    "@babel/preset-env": "^7.7.1",
+    "@babel/cli": "^7.24.8",
+    "@babel/core": "^7.24.8",
+    "@babel/preset-env": "^7.24.8",
     "babel-eslint": "^10.0.3",
-    "editorconfig-checker": "^5.1.5",
-    "eslint": "^5.10.0",
-    "eslint-plugin-html": "^5.0.0",
-    "eslint-plugin-vue": "^5.2.3",
-    "getopts": "^2.2.3",
+    "editorconfig-checker": "^5.1.8",
+    "eslint": "^8.57.0",
+    "eslint-plugin-html": "^8.1.1",
+    "eslint-plugin-vue": "^9.27.0",
+    "getopts": "^2.3.0",
     "npm-run-all": "^4.1.5"
   },
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.19.2"
   }
 }

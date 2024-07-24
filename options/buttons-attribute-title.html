@@ -1,0 +1,35 @@
+<script>
+  init({
+    title: 'Buttons Attribute Title',
+    desc: 'Customize the title attribute of the toolbar buttons, which is mainly used to customize the toolbar style.',
+    links: [
+      'https://unpkg.com/hint-css.js@1.4.0/src/hint-css.css',
+      'bootstrap-table.min.css'
+    ],
+    scripts: [
+      'https://unpkg.com/hint-css.js@1.4.0/src/hint-css.js',
+      'bootstrap-table.min.js'
+    ]
+  })
+</script>
+
+<table
+  id="table"
+  data-toggle="table"
+  data-height="460"
+  data-search="true"
+  data-show-pagination-switch="true"
+  data-show-refresh="true"
+  data-show-toggle="true"
+  data-show-columns="true"
+  data-show-fullscreen="true"
+  data-buttons-attribute-title="data-hint"
+  data-url="json/data1.json">
+  <thead>
+    <tr>
+      <th data-field="id">ID</th>
+      <th data-field="name">Item Name</th>
+      <th data-field="price">Item Price</th>
+    </tr>
+  </thead>
+</table>

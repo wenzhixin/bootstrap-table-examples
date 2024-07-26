@@ -17,7 +17,14 @@
     <tr>
       <th data-field="id">ID</th>
       <th data-field="name">Item Name</th>
-      <th data-field="price">Item Price</th>
+      <th data-field="price" data-formatter="priceFormatter">Item Price</th>
     </tr>
   </thead>
 </table>
+
+<script>
+  function priceFormatter (value, row) {
+    return `<span>${value}</span>
+      <span style="margin-left: 5px">(${row.name})</span>`
+  }
+</script>

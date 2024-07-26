@@ -36,11 +36,29 @@
   data-toolbar="#toolbar"
   data-show-toggle="true"
   data-show-columns="true"
+  data-show-footer="true"
   data-url="https://examples.wenzhixin.net.cn/examples/bootstrap_table/data">
 </table>
 
 <script>
   var $table = $('#table')
+
+  function idFormatter() {
+    return 'Total'
+  }
+
+  function nameFormatter(data) {
+    return data.length
+  }
+
+  function priceFormatter(data) {
+    var field = this.field
+    return '$' + data.map(function (row) {
+      return +row[field].substring(1)
+    }).reduce(function (sum, i) {
+      return sum + i
+    }, 0)
+  }
 
   function mounted() {
     $('#toolbar').find('select').change(function () {
@@ -55,15 +73,18 @@
           },
           {
             field: 'id',
-            title: 'ID'
+            title: 'ID',
+            footerFormatter: idFormatter
           },
           {
             field: 'name',
-            title: 'Item Name'
+            title: 'Item Name',
+            footerFormatter: nameFormatter
           },
           {
             field: 'price',
-            title: 'Item Price'
+            title: 'Item Price',
+            footerFormatter: priceFormatter
           }
         ]
       })

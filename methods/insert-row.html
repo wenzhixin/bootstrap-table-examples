@@ -11,12 +11,13 @@
   <button id="button" class="btn btn-secondary">insertRow</button>
 </div>
 <table id="table"
-      data-toggle="table"
-      data-toolbar="#toolbar"
-      data-height="428"
-      data-url="json/data1.json">
+  data-toggle="table"
+  data-toolbar="#toolbar"
+  data-height="428"
+  data-url="json/data1.json">
   <thead>
   <tr>
+    <th data-field="state" data-checkbox="true"></th>
     <th data-field="id">ID</th>
     <th data-field="name">Item Name</th>
     <th data-field="price">Item Price</th>
@@ -39,6 +40,10 @@
           price: '$' + randomId
         }
       })
+    })
+
+    $table.on('check.bs.table', (event, row) => {
+      console.log(JSON.stringify(row))
     })
   }
 </script>

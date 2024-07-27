@@ -8,6 +8,12 @@
 </script>
 
 <div id="toolbar">
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="checkbox" checked id="reinit">
+    <label class="form-check-label" for="flexCheckDefault">
+      reinit
+    </label>
+  </div>
   <button id="button" class="btn btn-secondary">updateCell</button>
 </div>
 <table
@@ -15,13 +21,14 @@
   data-toggle="table"
   data-toolbar="#toolbar"
   data-height="428"
+  data-search="true"
   data-url="json/data1.json">
   <thead>
     <tr>
       <th data-checkbox="true" data-field="state"></th>
-      <th data-field="id">ID</th>
-      <th data-field="name" data-width="300">Item Name</th>
-      <th data-field="price">Item Price</th>
+      <th data-field="id" data-sortable="true">ID</th>
+      <th data-field="name" data-sortable="true" data-width="300">Item Name</th>
+      <th data-field="price" data-sortable="true">Item Price</th>
     </tr>
   </thead>
 </table>
@@ -32,15 +39,28 @@
 
   function mounted() {
     $button.click(function () {
-      let i = 0
-      setInterval(() => {
+      const checked = $('#reinit').prop('checked')
+
+      if (!checked) {
+        let i = 0
+        const timeout = setInterval(() => {
+          $table.bootstrapTable('updateCell', {
+            index: 1,
+            field: 'name',
+            value: `Updated Name ${i++}`,
+            reinit: false
+          })
+          if (i > 10) {
+            clearInterval(timeout)
+          }
+        }, 100)
+      } else {
         $table.bootstrapTable('updateCell', {
           index: 1,
           field: 'name',
-          value: `Updated Name ${i++}`,
-          reinit: false
+          value: 'Updated Name'
         })
-      }, 100)
+      }
     })
   }
 </script>

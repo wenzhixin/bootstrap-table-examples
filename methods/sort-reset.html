@@ -1,0 +1,84 @@
+<script>
+  init({
+    title: 'Sort reset',
+    desc: 'Resets sort state of the table regardless of whether caused by the user or programmatically.',
+    links: ['bootstrap-table.min.css'],
+    scripts: ['bootstrap-table.min.js']
+  })
+</script>
+
+<style>
+#sort {
+  display: inline-block;
+  width: auto;
+}
+</style>
+
+<div class="toolbar">
+  Sort by:
+  <select id="sort" class="form-control">
+    <option value="name_asc">Name ascending</option>
+    <option value="name_desc">Name descending</option>
+    <option value="stargazers_asc">Stargazers low - high</option>
+    <option value="stargazers_desc">Stargazers high - low</option>
+    <option value="forks_asc">Forks low - high</option>
+    <option value="forks_desc">Forks high - low</option>
+  </select>
+
+  <button id="sortReset" class="btn btn-secondary">Sort reset</button>
+</div>
+
+<table
+  id="table"
+  data-toggle="table"
+  data-sort-name="github.name"
+  data-toolbar=".toolbar"
+  data-url="json/data3.json">
+  <thead>
+    <tr>
+      <th data-field="github.name">Name</th>
+      <th data-field="github.count.stargazers">Stargazers</th>
+      <th data-field="github.count.forks">Forks</th>
+      <th data-field="github.description">Description</th>
+    </tr>
+  </thead>
+</table>
+
+<script>
+  var $table = $('#table')
+  var $sort = $('#sort')
+
+  function mounted() {
+    $sort.change(function() {
+      var field = ''
+      var sortOrder = ''
+
+      if (this.value === 'name_asc') {
+        field = 'github.name'
+        sortOrder = 'asc'
+      } else if (this.value === 'name_desc') {
+        field = 'github.name'
+        sortOrder = 'desc'
+      } else if (this.value === 'stargazers_asc') {
+        field = 'github.count.stargazers'
+        sortOrder = 'asc'
+      } else if (this.value === 'stargazers_desc') {
+        field = 'github.count.stargazers'
+        sortOrder = 'desc'
+      } else if (this.value === 'forks_asc') {
+        field = 'github.count.forks'
+        sortOrder = 'asc'
+      } else if (this.value === 'forks_desc') {
+        field = 'github.count.forks'
+        sortOrder = 'desc'
+      }
+
+      $table.bootstrapTable('sortBy', {
+        field: field,
+        sortOrder: sortOrder
+      })
+    })
+
+    $('#sortReset').on('click', () => $table.bootstrapTable('sortReset'))
+  }
+</script>

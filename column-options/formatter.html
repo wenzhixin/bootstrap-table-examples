@@ -3,7 +3,10 @@
     title: 'Column Formatter',
     desc: 'Use `formatter` column option to format the display of bootstrap table column.',
     links: ['bootstrap-table.min.css'],
-    scripts: ['bootstrap-table.min.js']
+    scripts: [
+      'bootstrap-table.min.js',
+      'https://unpkg.com/echarts@5/dist/echarts.simple.min.js'
+    ]
   })
 </script>
 
@@ -17,6 +20,7 @@
       <th data-field="id" data-formatter="ID: %s">ID</th>
       <th data-field="name" data-formatter="nameFormatter">Item Name</th>
       <th data-field="price" data-formatter="priceFormatter">Item Price</th>
+      <th data-field="price_chart" data-formatter="priceChartFormatter">Price Chart</th>
     </tr>
   </thead>
 </table>
@@ -34,5 +38,38 @@
       '<i class="fa fa-dollar-sign"></i>' +
       value.substring(1) +
       '</div>'
+  }
+
+  function randomData () {
+    return new Array(7).fill(0).map(function () {
+      return Math.round(Math.random() * 20)
+    })
+  }
+
+  function priceChartFormatter() {
+    const chartDom = document.createElement('div')
+
+    // Size needs to be set because DOM is not mounted immediate and size cannot be obtained.
+    chartDom.style.width = '300px'
+    chartDom.style.height = '200px'
+
+    const myChart = echarts.init(chartDom)
+
+    myChart.setOption({
+      xAxis: {
+        type: 'category',
+        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+      },
+      yAxis: {
+        type: 'value'
+      },
+      series: [
+        {
+          data: randomData(),
+          type: 'line'
+        }
+      ]
+    })
+    return chartDom
   }
 </script>

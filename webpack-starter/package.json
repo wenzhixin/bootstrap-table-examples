@@ -4,20 +4,21 @@
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
-    "css-loader": "^3.6.0",
-    "style-loader": "^1.2.1",
-    "webpack": "^4.43.0",
-    "webpack-cli": "^3.3.12",
-    "webpack-dev-server": "^3.11.0"
+    "css-loader": "^7.1.2",
+    "style-loader": "^4.0.0",
+    "webpack": "^5.95.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.1.0"
   },
   "dependencies": {
-    "bootstrap": "^4.5.0",
+    "@popperjs/core": "^2.11.8",
+    "bootstrap": "^5.3.3",
     "bootstrap-table": "^1.23.5",
-    "jquery": "^3.5.1",
-    "popper.js": "^1.16.1"
+    "jquery": "^3.7.1"
   },
   "scripts": {
     "build": "webpack",
-    "dev": "webpack-dev-server --inline --progress"
+    "watch": "webpack --watch",
+    "serve": "webpack serve --open"
   }
 }

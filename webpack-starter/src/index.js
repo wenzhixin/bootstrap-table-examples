@@ -1,7 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap-table/dist/bootstrap-table.min.css'
 
-import $ from 'jquery'
+import './jquery'
 import 'bootstrap'
 import 'bootstrap-table' // dist/bootstrap-table.min.js by default
 

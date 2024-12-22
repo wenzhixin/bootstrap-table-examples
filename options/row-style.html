@@ -10,6 +10,13 @@
   })
 </script>
 
+<style>
+.table>:not(caption)>*>* {
+  color: inherit;
+  background-color: inherit;
+}
+</style>
+
 <table
   data-toggle="table"
   data-url="json/data1.json"
@@ -42,7 +49,11 @@
 
     if (index % 2 === 0 && index / 2 < classes.length) {
       return {
-        classes: classes[index / 2]
+        classes: classes[index / 2],
+        css: {
+          color: 'white',
+          'font-weight': 'bold'
+        }
       }
     }
     return {

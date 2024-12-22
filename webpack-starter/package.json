@@ -13,7 +13,7 @@
   "dependencies": {
     "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.3",
-    "bootstrap-table": "^1.23.5",
+    "bootstrap-table": "^1.24.0",
     "jquery": "^3.7.1"
   },
   "scripts": {

@@ -1,25 +1,27 @@
 <script>
-  init({
-    title: 'Treegrid',
-    desc: 'Use Plugin: <a href="https://github.com/maxazan/jquery-treegrid" target="_blank">jquery-treegrid</a> and bootstrap-table-treegrid.',
-    links: [
-      'https://cdn.jsdelivr.net/npm/jquery-treegrid@0.3.0/css/jquery.treegrid.css',
-      'bootstrap-table.min.css'
-    ],
-    scripts: [
-      'https://cdn.jsdelivr.net/npm/jquery-treegrid@0.3.0/js/jquery.treegrid.min.js',
-      'bootstrap-table.min.js',
-      'extensions/treegrid/bootstrap-table-treegrid.min.js'
-    ]
-  })
+init({
+  title: 'Treegrid',
+  desc: 'Use Plugin: <a href="https://github.com/maxazan/jquery-treegrid" target="_blank">jquery-treegrid</a> and bootstrap-table-treegrid.',
+  links: [
+    'https://cdn.jsdelivr.net/npm/jquery-treegrid@0.3.0/css/jquery.treegrid.css',
+    'bootstrap-table.min.css'
+  ],
+  scripts: [
+    'https://cdn.jsdelivr.net/npm/jquery-treegrid@0.3.0/js/jquery.treegrid.min.js',
+    'bootstrap-table.min.js',
+    'extensions/treegrid/bootstrap-table-treegrid.min.js'
+  ]
+})
 </script>
 
-<table id="table"></table>
+<template>
+  <table id="table" />
+</template>
 
 <script>
-  var $table = $('#table')
+  const $table = $('#table')
 
-  function mounted() {
+  function mounted () {
     $table.bootstrapTable({
       url: 'json/treegrid.json',
       idField: 'id',
@@ -47,13 +49,13 @@
       ],
       treeShowField: 'name',
       parentIdField: 'pid',
-      onPostBody: function() {
-        var columns = $table.bootstrapTable('getOptions').columns
+      onPostBody () {
+        const columns = $table.bootstrapTable('getOptions').columns
 
         if (columns && columns[0][1].visible) {
           $table.treegrid({
             treeColumn: 1,
-            onChange: function() {
+            onChange () {
               $table.bootstrapTable('resetView')
             }
           })
@@ -62,7 +64,7 @@
     })
   }
 
-  function typeFormatter(value, row, index) {
+  function typeFormatter (value, row, index) {
     if (value === 'menu') {
       return '菜单'
     }
@@ -75,7 +77,7 @@
     return '-'
   }
 
-  function statusFormatter(value, row, index) {
+  function statusFormatter (value, row, index) {
     if (value === 1) {
       return '<span class="label label-success">正常</span>'
     }

@@ -1,33 +1,43 @@
 <script>
-  init({
-    title: 'Print',
-    desc: 'Use Plugin: bootstrap-table-print.',
-    links: [
-      'bootstrap-table.min.css'
-    ],
-    scripts: [
-      'bootstrap-table.min.js',
-      'extensions/print/bootstrap-table-print.min.js'
-    ]
-  })
+init({
+  title: 'Print',
+  desc: 'Use Plugin: bootstrap-table-print.',
+  links: [
+    'bootstrap-table.min.css'
+  ],
+  scripts: [
+    'bootstrap-table.min.js',
+    'extensions/print/bootstrap-table-print.min.js'
+  ]
+})
 </script>
 
-<table id="table"
-  data-show-print="true"
-  data-url="json/data1.json">
-  <thead>
-    <tr>
-      <th data-field="id">ID</th>
-      <th data-field="name">Item Name</th>
-      <th data-field="price"><i class="fa fa-print"></i> Item Price</th>
-    </tr>
-  </thead>
-</table>
+<template>
+  <table
+    id="table"
+    data-show-print="true"
+    data-url="json/data1.json"
+  >
+    <thead>
+      <tr>
+        <th data-field="id">
+          ID
+        </th>
+        <th data-field="name">
+          Item Name
+        </th>
+        <th data-field="price">
+          <i class="fa fa-print" /> Item Price
+        </th>
+      </tr>
+    </thead>
+  </table>
+</template>
 
 <script>
-  var $table = $('#table')
+  const $table = $('#table')
 
-  function mounted() {
+  function mounted () {
     $table.bootstrapTable({
       printStyles: ['https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css']
     })

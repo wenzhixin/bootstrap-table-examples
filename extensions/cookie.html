@@ -1,56 +1,83 @@
 <script>
-  init({
-    title: 'Cookie',
-    desc: 'Use Plugin: bootstrap-table-cookie to save the state of a table.',
-    links: [
-      'bootstrap-table.min.css'
-    ],
-    scripts: [
-      'bootstrap-table.min.js',
-      'extensions/cookie/bootstrap-table-cookie.min.js',
-      'https://cdn.jsdelivr.net/npm/bootstrap-table@1.22.5/dist/bootstrap-table-locale-all.min.js'
-    ]
-  })
+init({
+  title: 'Cookie',
+  desc: 'Use Plugin: bootstrap-table-cookie to save the state of a table.',
+  links: [
+    'bootstrap-table.min.css'
+  ],
+  scripts: [
+    'bootstrap-table.min.js',
+    'extensions/cookie/bootstrap-table-cookie.min.js',
+    'https://cdn.jsdelivr.net/npm/bootstrap-table@1.22.5/dist/bootstrap-table-locale-all.min.js'
+  ]
+})
 </script>
 
-<style>
-select.form-control {
-  width: 200px;
-}
-</style>
+<template>
+  <div class="toolbar">
+    <select
+      id="locale"
+      class="form-control"
+    >
+      <option value="en-US">
+        en-US
+      </option>
+      <option
+        value="zh-CN"
+        selected
+      >
+        zh-CN
+      </option>
+    </select>
+  </div>
 
-<div class="toolbar">
-  <select class="form-control" id="locale">
-    <option value="en-US">en-US</option>
-    <option value="zh-CN" selected>zh-CN</option>
-  </select>
-</div>
-
-<table
-  id="table"
-  data-toolbar=".toolbar"
-  data-show-columns="true"
-  data-cookie="true"
-  data-cookie-id-table="saveId"
-  data-page-list="10,25,50,100,all"
-  data-pagination="true"
-  data-search="true"
-  data-height="460"
-  data-url="https://examples.wenzhixin.net.cn/examples/bootstrap_table/data"
-  data-side-pagination="server">
-  <thead>
-    <tr>
-      <th data-field="id" data-sortable="true">ID</th>
-      <th data-field="name" data-sortable="true">Item Name</th>
-      <th data-field="price" data-sortable="true">Item Price</th>
-      <th data-field="test" data-visible="false">Item Price</th>
-    </tr>
-  </thead>
-</table>
+  <table
+    id="table"
+    data-toolbar=".toolbar"
+    data-show-columns="true"
+    data-cookie="true"
+    data-cookie-id-table="saveId"
+    data-page-list="10,25,50,100,all"
+    data-pagination="true"
+    data-search="true"
+    data-height="460"
+    data-url="https://examples.wenzhixin.net.cn/examples/bootstrap_table/data"
+    data-side-pagination="server"
+  >
+    <thead>
+      <tr>
+        <th
+          data-field="id"
+          data-sortable="true"
+        >
+          ID
+        </th>
+        <th
+          data-field="name"
+          data-sortable="true"
+        >
+          Item Name
+        </th>
+        <th
+          data-field="price"
+          data-sortable="true"
+        >
+          Item Price
+        </th>
+        <th
+          data-field="test"
+          data-visible="false"
+        >
+          Item Price
+        </th>
+      </tr>
+    </thead>
+  </table>
+</template>
 
 <script>
-  function mounted() {
-    var $table = $('#table')
+  function mounted () {
+    const $table = $('#table')
 
     $table.bootstrapTable({
       cookieStorage: 'localStorage'
@@ -63,3 +90,9 @@ select.form-control {
     })
   }
 </script>
+
+<style>
+select.form-control {
+  width: 200px;
+}
+</style>

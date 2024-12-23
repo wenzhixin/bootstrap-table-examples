@@ -1,37 +1,56 @@
 <script>
-  init({
-    title: 'Resizable',
-    desc: 'Use Plugin: <a href="https://github.com/dobtco/jquery-resizable-columns" target="_blank">jquery-resizable-columns</a> and bootstrap-table-resizable.',
-    links: [
-      'https://cdn.jsdelivr.net/npm/jquery-resizable-columns@0.2.3/dist/jquery.resizableColumns.min.css',
-      'bootstrap-table.min.css'
-    ],
-    scripts: [
-      'https://cdn.jsdelivr.net/npm/jquery-resizable-columns@0.2.3/dist/jquery.resizableColumns.min.js',
-      'bootstrap-table.min.js',
-      'extensions/resizable/bootstrap-table-resizable.min.js'
-    ]
-  })
+init({
+  title: 'Resizable',
+  desc: 'Use Plugin: <a href="https://github.com/dobtco/jquery-resizable-columns" target="_blank">jquery-resizable-columns</a> and bootstrap-table-resizable.',
+  links: [
+    'https://cdn.jsdelivr.net/npm/jquery-resizable-columns@0.2.3/dist/jquery.resizableColumns.min.css',
+    'bootstrap-table.min.css'
+  ],
+  scripts: [
+    'https://cdn.jsdelivr.net/npm/jquery-resizable-columns@0.2.3/dist/jquery.resizableColumns.min.js',
+    'bootstrap-table.min.js',
+    'extensions/resizable/bootstrap-table-resizable.min.js'
+  ]
+})
 </script>
 
-<table id="table"
-  data-show-columns="true"
-  data-search="true"
-  data-show-toggle="true"
-  data-pagination="true"
-  data-url="json/data1.json"
-  data-resizable="true">
-  <thead>
-    <tr>
-      <th data-field="id" data-sortable="true">ID</th>
-      <th data-field="name" data-sortable="true">Item Name</th>
-      <th data-field="price" data-sortable="true">Item Price</th>
-    </tr>
-  </thead>
-</table>
+<template>
+  <table
+    id="table"
+    data-show-columns="true"
+    data-search="true"
+    data-show-toggle="true"
+    data-pagination="true"
+    data-url="json/data1.json"
+    data-resizable="true"
+  >
+    <thead>
+      <tr>
+        <th
+          data-field="id"
+          data-sortable="true"
+        >
+          ID
+        </th>
+        <th
+          data-field="name"
+          data-sortable="true"
+        >
+          Item Name
+        </th>
+        <th
+          data-field="price"
+          data-sortable="true"
+        >
+          Item Price
+        </th>
+      </tr>
+    </thead>
+  </table>
+</template>
 
 <script>
-  function mounted() {
+  function mounted () {
     $('#table').bootstrapTable()
   }
 </script>

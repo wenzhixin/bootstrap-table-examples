@@ -1,42 +1,65 @@
 <script>
-  init({
-    title: 'Remove',
-    desc: 'Remove data from table: `$table.bootstrapTable(\'remove\', {field: \'id\', values: ids})`.',
-    links: ['bootstrap-table.min.css'],
-    scripts: ['bootstrap-table.min.js']
-  })
+init({
+  title: 'Remove',
+  desc: 'Remove data from table: `$table.bootstrapTable(\'remove\', {field: \'id\', values: ids})`.',
+  links: ['bootstrap-table.min.css'],
+  scripts: ['bootstrap-table.min.js']
+})
 </script>
 
-<div id="toolbar">
-  <button id="button" class="btn btn-secondary">remove</button>
-  <button id="button1" class="btn btn-secondary">remove index 1</button>
-</div>
-<table
-  id="table"
-  data-toggle="table"
-  data-toolbar="#toolbar"
-  data-height="428"
-  data-url="json/data1.json">
-  <thead>
-    <tr>
-      <th data-field="state" data-checkbox="true"></th>
-      <th data-field="id">ID</th>
-      <th data-field="name">Item Name</th>
-      <th data-field="price">Item Price</th>
-    </tr>
-  </thead>
-</table>
+<template>
+  <div id="toolbar">
+    <button
+      id="button"
+      class="btn btn-secondary"
+    >
+      remove
+    </button>
+    <button
+      id="button1"
+      class="btn btn-secondary"
+    >
+      remove index 1
+    </button>
+  </div>
+  <table
+    id="table"
+    data-toggle="table"
+    data-toolbar="#toolbar"
+    data-height="428"
+    data-url="json/data1.json"
+  >
+    <thead>
+      <tr>
+        <th
+          data-field="state"
+          data-checkbox="true"
+        />
+        <th data-field="id">
+          ID
+        </th>
+        <th data-field="name">
+          Item Name
+        </th>
+        <th data-field="price">
+          Item Price
+        </th>
+      </tr>
+    </thead>
+  </table>
+</template>
 
 <script>
-  var $table = $('#table')
-  var $button = $('#button')
-  var $button1 = $('#button1')
+  const $table = $('#table')
+  const $button = $('#button')
+  const $button1 = $('#button1')
 
-  function mounted() {
+  function mounted () {
     $button.click(function () {
-      var ids = $.map($table.bootstrapTable('getSelections'), function (row) {
+      const ids = $.map($table.bootstrapTable('getSelections'), function (row) {
         return row.id
       })
+
       $table.bootstrapTable('remove', {
         field: 'id',
         values: ids

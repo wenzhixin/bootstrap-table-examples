@@ -1,43 +1,78 @@
 <script>
-  init({
-    title: 'Update Cell',
-    desc: 'Update the specified cell: `$table.bootstrapTable(\'updateCell\', {index: 1, field: \'name\', value: \'Updated Name\'})`.',
-    links: ['bootstrap-table.min.css'],
-    scripts: ['bootstrap-table.min.js']
-  })
+init({
+  title: 'Update Cell',
+  desc: 'Update the specified cell: `$table.bootstrapTable(\'updateCell\', {index: 1, field: \'name\', value: \'Updated Name\'})`.',
+  links: ['bootstrap-table.min.css'],
+  scripts: ['bootstrap-table.min.js']
+})
 </script>
 
-<div id="toolbar">
-  <div class="form-check form-check-inline">
-    <input class="form-check-input" type="checkbox" checked id="reinit">
-    <label class="form-check-label" for="flexCheckDefault">
-      reinit
-    </label>
+<template>
+  <div id="toolbar">
+    <div class="form-check form-check-inline">
+      <input
+        id="reinit"
+        class="form-check-input"
+        type="checkbox"
+        checked
+      >
+      <label
+        class="form-check-label"
+        for="flexCheckDefault"
+      >
+        reinit
+      </label>
+    </div>
+    <button
+      id="button"
+      class="btn btn-secondary"
+    >
+      updateCell
+    </button>
   </div>
-  <button id="button" class="btn btn-secondary">updateCell</button>
-</div>
-<table
-  id="table"
-  data-toggle="table"
-  data-toolbar="#toolbar"
-  data-height="428"
-  data-search="true"
-  data-url="json/data1.json">
-  <thead>
-    <tr>
-      <th data-checkbox="true" data-field="state"></th>
-      <th data-field="id" data-sortable="true">ID</th>
-      <th data-field="name" data-sortable="true" data-width="300">Item Name</th>
-      <th data-field="price" data-sortable="true">Item Price</th>
-    </tr>
-  </thead>
-</table>
+  <table
+    id="table"
+    data-toggle="table"
+    data-toolbar="#toolbar"
+    data-height="428"
+    data-search="true"
+    data-url="json/data1.json"
+  >
+    <thead>
+      <tr>
+        <th
+          data-checkbox="true"
+          data-field="state"
+        />
+        <th
+          data-field="id"
+          data-sortable="true"
+        >
+          ID
+        </th>
+        <th
+          data-field="name"
+          data-sortable="true"
+          data-width="300"
+        >
+          Item Name
+        </th>
+        <th
+          data-field="price"
+          data-sortable="true"
+        >
+          Item Price
+        </th>
+      </tr>
+    </thead>
+  </table>
+</template>
 
 <script>
-  var $table = $('#table')
-  var $button = $('#button')
+  const $table = $('#table')
+  const $button = $('#button')
 
-  function mounted() {
+  function mounted () {
     $button.click(function () {
       const checked = $('#reinit').prop('checked')
 

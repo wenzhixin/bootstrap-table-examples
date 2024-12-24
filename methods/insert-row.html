@@ -1,43 +1,62 @@
 <script>
-  init({
-    title: 'insertRow',
-    desc: 'Insert a new row: `$table.bootstrapTable(\'insertRow\', {index: 1, row: row})`.',
-    links: ['bootstrap-table.min.css'],
-    scripts: ['bootstrap-table.min.js']
-  })
+init({
+  title: 'insertRow',
+  desc: 'Insert a new row: `$table.bootstrapTable(\'insertRow\', {index: 1, row: row})`.',
+  links: ['bootstrap-table.min.css'],
+  scripts: ['bootstrap-table.min.js']
+})
 </script>
 
-<div id="toolbar">
-  <button id="button" class="btn btn-secondary">insertRow</button>
-</div>
-<table id="table"
-  data-toggle="table"
-  data-toolbar="#toolbar"
-  data-height="428"
-  data-url="json/data1.json">
-  <thead>
-  <tr>
-    <th data-field="state" data-checkbox="true"></th>
-    <th data-field="id">ID</th>
-    <th data-field="name">Item Name</th>
-    <th data-field="price">Item Price</th>
-  </tr>
-  </thead>
-</table>
+<template>
+  <div id="toolbar">
+    <button
+      id="button"
+      class="btn btn-secondary"
+    >
+      insertRow
+    </button>
+  </div>
+  <table
+    id="table"
+    data-toggle="table"
+    data-toolbar="#toolbar"
+    data-height="428"
+    data-url="json/data1.json"
+  >
+    <thead>
+      <tr>
+        <th
+          data-field="state"
+          data-checkbox="true"
+        />
+        <th data-field="id">
+          ID
+        </th>
+        <th data-field="name">
+          Item Name
+        </th>
+        <th data-field="price">
+          Item Price
+        </th>
+      </tr>
+    </thead>
+  </table>
+</template>
 
 <script>
-  var $table = $('#table')
-  var $button = $('#button')
+  const $table = $('#table')
+  const $button = $('#button')
 
-  function mounted() {
+  function mounted () {
     $button.click(function () {
-      var randomId = 100 + ~~(Math.random() * 100)
+      const randomId = 100 + ~~(Math.random() * 100)
+
       $table.bootstrapTable('insertRow', {
         index: 1,
         row: {
           id: randomId,
-          name: 'Item ' + randomId,
-          price: '$' + randomId
+          name: `Item ${randomId}`,
+          price: `$${randomId}`
         }
       })
     })

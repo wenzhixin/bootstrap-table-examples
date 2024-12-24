@@ -1,39 +1,58 @@
 <script>
-  init({
-    title: 'Expand/Collapse Row',
-    desc: '`$table.bootstrapTable(\'expandRow\', 1)`<br>`$table.bootstrapTable(\'collapseRow\', 1)`.',
-    links: ['bootstrap-table.min.css'],
-    scripts: ['bootstrap-table.min.js']
-  })
+init({
+  title: 'Expand/Collapse Row',
+  desc: '`$table.bootstrapTable(\'expandRow\', 1)`<br>`$table.bootstrapTable(\'collapseRow\', 1)`.',
+  links: ['bootstrap-table.min.css'],
+  scripts: ['bootstrap-table.min.js']
+})
 </script>
 
-<div id="toolbar">
-  <button id="button" class="btn btn-secondary">expandRow</button>
-  <button id="button2" class="btn btn-secondary">collapseRow</button>
-</div>
-<table
-  id="table"
-  data-toggle="table"
-  data-toolbar="#toolbar"
-  data-height="460"
-  data-detail-view="true"
-  data-detail-formatter="detailFormatter"
-  data-url="json/data1.json">
-  <thead>
-    <tr>
-      <th data-field="id">ID</th>
-      <th data-field="name">Item Name</th>
-      <th data-field="price">Item Price</th>
-    </tr>
-  </thead>
-</table>
+<template>
+  <div id="toolbar">
+    <button
+      id="button"
+      class="btn btn-secondary"
+    >
+      expandRow
+    </button>
+    <button
+      id="button2"
+      class="btn btn-secondary"
+    >
+      collapseRow
+    </button>
+  </div>
+  <table
+    id="table"
+    data-toggle="table"
+    data-toolbar="#toolbar"
+    data-height="460"
+    data-detail-view="true"
+    data-detail-formatter="detailFormatter"
+    data-url="json/data1.json"
+  >
+    <thead>
+      <tr>
+        <th data-field="id">
+          ID
+        </th>
+        <th data-field="name">
+          Item Name
+        </th>
+        <th data-field="price">
+          Item Price
+        </th>
+      </tr>
+    </thead>
+  </table>
+</template>
 
 <script>
-  var $table = $('#table')
-  var $button = $('#button')
-  var $button2 = $('#button2')
+  const $table = $('#table')
+  const $button = $('#button')
+  const $button2 = $('#button2')
 
-  function mounted() {
+  function mounted () {
     $button.click(function () {
       $table.bootstrapTable('expandRow', 1)
     })
@@ -42,10 +61,11 @@
     })
   }
 
-  function detailFormatter(index, row) {
-    var html = []
+  function detailFormatter (index, row) {
+    const html = []
+
     $.each(row, function (key, value) {
-      html.push('<p><b>' + key + ':</b> ' + value + '</p>')
+      html.push(`<p><b>${key}:</b> ${value}</p>`)
     })
     return html.join('')
   }

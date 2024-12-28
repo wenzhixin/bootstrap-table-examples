@@ -1,36 +1,59 @@
 <script>
-  init({
-    title: 'Sort Stable',
-    desc: 'Use `sortReset` option to reset the sort on third click.',
-    links: ['bootstrap-table.min.css'],
-    scripts: ['bootstrap-table.min.js']
-  })
+init({
+  title: 'Sort Stable',
+  desc: 'Use `sortReset` option to reset the sort on third click.',
+  links: ['bootstrap-table.min.css'],
+  scripts: ['bootstrap-table.min.js']
+})
 </script>
 
-<div class="toolbar">
-  <label>
-    <input type="checkbox" id="sortReset" checked /> sortReset
-  </label>
-</div>
+<template>
+  <div class="toolbar">
+    <label>
+      <input
+        id="sortReset"
+        type="checkbox"
+        checked
+      > sortReset
+    </label>
+  </div>
 
-<table id="table"
-  data-url="json/data1.json"
-  data-height="400"
-  data-search="true"
-  data-toolbar=".toolbar">
-  <thead>
-    <tr>
-      <th data-field="id" data-sortable="true">Item ID</th>
-      <th data-field="name" data-sortable="true">Item Name</th>
-      <th data-field="price" data-sortable="true">Item Price</th>
-    </tr>
-  </thead>
-</table>
+  <table
+    id="table"
+    data-url="json/data1.json"
+    data-height="400"
+    data-search="true"
+    data-toolbar=".toolbar"
+  >
+    <thead>
+      <tr>
+        <th
+          data-field="id"
+          data-sortable="true"
+        >
+          Item ID
+        </th>
+        <th
+          data-field="name"
+          data-sortable="true"
+        >
+          Item Name
+        </th>
+        <th
+          data-field="price"
+          data-sortable="true"
+        >
+          Item Price
+        </th>
+      </tr>
+    </thead>
+  </table>
+</template>
 
 <script>
-  var $table = $('#table')
+  const $table = $('#table')
 
-  function mounted() {
+  function mounted () {
     $table.bootstrapTable({
       sortReset: true
     })

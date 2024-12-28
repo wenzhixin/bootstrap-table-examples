@@ -1,51 +1,24 @@
 <script>
-  init({
-    title: 'Row Style',
-    desc: 'Use `rowStyle` option to set the row style.',
-    links: [
-      'https://s3-us-west-2.amazonaws.com/colors-css/2.2.0/colors.min.css',
-      'bootstrap-table.min.css'
-    ],
-    scripts: ['bootstrap-table.min.js']
-  })
+init({
+  title: 'Row Style',
+  desc: 'Use `rowStyle` option to set the row style.',
+  links: [
+    'https://s3-us-west-2.amazonaws.com/colors-css/2.2.0/colors.min.css',
+    'bootstrap-table.min.css'
+  ],
+  scripts: ['bootstrap-table.min.js']
+})
 </script>
 
-<style>
-.table>:not(caption)>*>* {
-  color: inherit;
-  background-color: inherit;
-}
-</style>
-
-<table
-  data-toggle="table"
-  data-url="json/data1.json"
-  data-height="400"
-  data-row-style="rowStyle">
-  <thead>
-    <tr>
-      <th data-field="id">Item ID</th>
-      <th data-field="name">
-        <i class="fa fa-star"></i>
-        Item Name
-      </th>
-      <th data-field="price">
-        <i class="fa fa-heart"></i>
-        Item Price
-      </th>
-    </tr>
-  </thead>
-</table>
-
 <script>
-  function rowStyle(row, index) {
-    var classes = [
+  function rowStyle (row, index) {
+    const classes = [
       'bg-blue',
       'bg-green',
       'bg-orange',
       'bg-yellow',
       'bg-red'
-    ]
+  ]
 
     if (index % 2 === 0 && index / 2 < classes.length) {
       return {
@@ -63,3 +36,35 @@
     }
   }
 </script>
+
+<template>
+  <table
+    data-toggle="table"
+    data-url="json/data1.json"
+    data-height="400"
+    data-row-style="rowStyle"
+  >
+    <thead>
+      <tr>
+        <th data-field="id">
+          Item ID
+        </th>
+        <th data-field="name">
+          <i class="fa fa-star"></i>
+          Item Name
+        </th>
+        <th data-field="price">
+          <i class="fa fa-heart"></i>
+          Item Price
+        </th>
+      </tr>
+    </thead>
+  </table>
+</template>
+
+<style>
+.table>:not(caption)>*>* {
+  color: inherit;
+  background-color: inherit;
+}
+</style>

@@ -1,43 +1,62 @@
 <script>
-  init({
-    title: 'Show Footer',
-    desc: 'Use `showFooter` option to show the summary footer row.',
-    links: ['bootstrap-table.min.css'],
-    scripts: ['bootstrap-table.min.js']
-  })
+init({
+  title: 'Show Footer',
+  desc: 'Use `showFooter` option to show the summary footer row.',
+  links: ['bootstrap-table.min.css'],
+  scripts: ['bootstrap-table.min.js']
+})
 </script>
 
-<table
-  id="table"
-  data-toggle="table"
-  data-height="460"
-  data-show-columns="true"
-  data-show-footer="true"
-  data-url="json/data1.json">
-  <thead>
-    <tr>
-      <th data-field="id" data-footer-formatter="idFormatter">ID</th>
-      <th data-field="name" data-footer-formatter="nameFormatter">Item Name</th>
-      <th data-field="price" data-footer-formatter="priceFormatter">Item Price</th>
-    </tr>
-  </thead>
-</table>
+<template>
+  <table
+    id="table"
+    data-toggle="table"
+    data-height="460"
+    data-show-columns="true"
+    data-show-footer="true"
+    data-url="json/data1.json"
+  >
+    <thead>
+      <tr>
+        <th
+          data-field="id"
+          data-footer-formatter="idFormatter"
+        >
+          ID
+        </th>
+        <th
+          data-field="name"
+          data-footer-formatter="nameFormatter"
+        >
+          Item Name
+        </th>
+        <th
+          data-field="price"
+          data-footer-formatter="priceFormatter"
+        >
+          Item Price
+        </th>
+      </tr>
+    </thead>
+  </table>
+</template>
 
 <script>
-  function idFormatter() {
+  function idFormatter () {
     return 'Total'
   }
 
-  function nameFormatter(data) {
+  function nameFormatter (data) {
     return data.length
   }
 
-  function priceFormatter(data) {
-    var field = this.field
-    return '$' + data.map(function (row) {
+  function priceFormatter (data) {
+    const field = this.field
+
+    return `$${data.map(function (row) {
       return +row[field].substring(1)
-    }).reduce(function (sum, i) {
+  }).reduce(function (sum, i) {
       return sum + i
-    }, 0)
+  }, 0)}`
   }
 </script>

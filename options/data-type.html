@@ -1,30 +1,39 @@
 <script>
-  init({
-    title: 'Data Type',
-    desc: 'Use `dataType` option to set the type of data that you are expecting back from the server, for example `text`. In this case, we need to use `responseHandler` to handle the response data.',
-    links: ['bootstrap-table.min.css'],
-    scripts: ['bootstrap-table.min.js']
-  })
+init({
+  title: 'Data Type',
+  desc: 'Use `dataType` option to set the type of data that you are expecting back from the server, for example `text`. In this case, we need to use `responseHandler` to handle the response data.',
+  links: ['bootstrap-table.min.css'],
+  scripts: ['bootstrap-table.min.js']
+})
 </script>
 
-<table
-  id="table"
-  data-toggle="table"
-  data-height="460"
-  data-data-type="text"
-  data-response-handler="responseHandler"
-  data-url="json/data1.json">
-  <thead>
-    <tr>
-      <th data-field="id">ID</th>
-      <th data-field="name">Item Name</th>
-      <th data-field="price">Item Price</th>
-    </tr>
-  </thead>
-</table>
+<template>
+  <table
+    id="table"
+    data-toggle="table"
+    data-height="460"
+    data-data-type="text"
+    data-response-handler="responseHandler"
+    data-url="json/data1.json"
+  >
+    <thead>
+      <tr>
+        <th data-field="id">
+          ID
+        </th>
+        <th data-field="name">
+          Item Name
+        </th>
+        <th data-field="price">
+          Item Price
+        </th>
+      </tr>
+    </thead>
+  </table>
+</template>
 
 <script>
-  function responseHandler(res) {
+  function responseHandler (res) {
     return JSON.parse(res)
   }
 </script>

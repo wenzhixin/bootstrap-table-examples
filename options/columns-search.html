@@ -1,27 +1,42 @@
 <script>
-  init({
-    title: 'Columns Search',
-    desc: 'Use `showColumnsSearch` to show a search for the columns filter.',
-    links: ['bootstrap-table.min.css'],
-    scripts: ['bootstrap-table.min.js']
-  })
+init({
+  title: 'Columns Search',
+  desc: 'Use `showColumnsSearch` to show a search for the columns filter.',
+  links: ['bootstrap-table.min.css'],
+  scripts: ['bootstrap-table.min.js']
+})
 </script>
 
-<table
-  id="table"
-  data-toggle="table"
-  data-height="460"
-  data-url="json/data5.json"
-  data-show-columns="true"
-  data-show-columns-search="true">
-  <thead>
-    <tr>
-      <th data-field="name">Name</th>
-      <th data-field="price">Price</th>
-      <th data-field="column1">Columns1</th>
-      <th data-field="column2">Columns2</th>
-      <th data-field="column3">Columns3</th>
-      <th data-field="column4">Columns4</th>
-    </tr>
-  </thead>
-</table>
+<template>
+  <table
+    id="table"
+    data-toggle="table"
+    data-height="460"
+    data-url="json/data5.json"
+    data-show-columns="true"
+    data-show-columns-search="true"
+  >
+    <thead>
+      <tr>
+        <th data-field="name">
+          Name
+        </th>
+        <th data-field="price">
+          Price
+        </th>
+        <th data-field="column1">
+          Columns1
+        </th>
+        <th data-field="column2">
+          Columns2
+        </th>
+        <th data-field="column3">
+          Columns3
+        </th>
+        <th data-field="column4">
+          Columns4
+        </th>
+      </tr>
+    </thead>
+  </table>
+</template>

@@ -1,43 +1,49 @@
 <script>
-  init({
-    title: 'Large Columns',
-    desc: 'Bootstrap table support large columns, it will auto to show the horizontal scroll bar.',
-    links: ['bootstrap-table.min.css'],
-    scripts: ['bootstrap-table.min.js']
-  })
+init({
+  title: 'Large Columns',
+  desc: 'Bootstrap table support large columns, it will auto to show the horizontal scroll bar.',
+  links: ['bootstrap-table.min.css'],
+  scripts: ['bootstrap-table.min.js']
+})
 </script>
 
-<table id="table" data-height="400" data-show-columns="true"></table>
+<template>
+  <table
+    id="table"
+    data-height="400"
+    data-show-columns="true"
+  ></table>
+</template>
 
 <script>
-  var $table = $('#table')
+  const $table = $('#table')
 
-  function buildTable($el, cells, rows) {
-    var i; var j; var row
-    var columns = []
-    var data = []
+  function buildTable ($el, cells, rows) {
+    let i; let j; let row
+    const columns = []
+    const data = []
 
     for (i = 0; i < cells; i++) {
       columns.push({
-        field: 'field' + i,
-        title: 'Cell' + i,
+        field: `field${i}`,
+        title: `Cell${i}`,
         sortable: true
       })
     }
     for (i = 0; i < rows; i++) {
       row = {}
       for (j = 0; j < cells; j++) {
-        row['field' + j] = 'Row-' + i + '-' + j
+        row[`field${j}`] = `Row-${i}-${j}`
       }
       data.push(row)
     }
     $el.bootstrapTable('destroy').bootstrapTable({
-      columns: columns,
-      data: data
+      columns,
+      data
     })
   }
 
-  function mounted() {
+  function mounted () {
     buildTable($table, 50, 50)
   }
 </script>

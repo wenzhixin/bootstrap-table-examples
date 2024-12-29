@@ -1,16 +1,18 @@
 <script>
-  init({
-    title: 'Response Handler',
-    desc: 'Use `responseHandler` option to handle the response data.',
-    links: ['bootstrap-table.min.css'],
-    scripts: ['bootstrap-table.min.js']
-  })
+init({
+  title: 'Response Handler',
+  desc: 'Use `responseHandler` option to handle the response data.',
+  links: ['bootstrap-table.min.css'],
+  scripts: ['bootstrap-table.min.js']
+})
 </script>
 
-<table id="table"></table>
+<template>
+  <table id="table"></table>
+</template>
 
 <script>
-  function mounted() {
+  function mounted () {
     $('#table').bootstrapTable({
       url: 'json/353.json',
       columns: [
@@ -40,7 +42,7 @@
           sortable: true
         }
       ],
-      responseHandler: function (res) {
+      responseHandler (res) {
         return res.messages
       }
     })

@@ -1,34 +1,16 @@
 <script>
-  init({
-    title: 'Filter Options',
-    desc: 'Use `filterOptions` option to define the default filter options of algorithm. In this case, we are using `bootstrapTable(\'filterBy\', {id: 3, price: \'$1\'})`.',
-    links: ['bootstrap-table.min.css'],
-    scripts: ['bootstrap-table.min.js']
-  })
+init({
+  title: 'Filter Options',
+  desc: 'Use `filterOptions` option to define the default filter options of algorithm. In this case, we are using `bootstrapTable(\'filterBy\', {id: 3, price: \'$1\'})`.',
+  links: ['bootstrap-table.min.css'],
+  scripts: ['bootstrap-table.min.js']
+})
 </script>
 
-<style>
-#select {
-  width: 100px;
-  display: inline-block;
-}
-</style>
-
-<div class="toolbar">
-  <select id="select" class="form-control" name="filterAlgorithm">
-    <option value="and" selected>and</option>
-    <option value="or">or</option>
-  </select>
-  <button class="btn btn-secondary" id="filterBy">filterBy</button>
-</div>
-
-<table id="table">
-</table>
-
 <script>
-  var $table = $('#table')
+  const $table = $('#table')
 
-  function mounted() {
+  function mounted () {
     $table.bootstrapTable({
       toolbar: '.toolbar',
       columns: [
@@ -75,11 +57,11 @@
     })
 
     $('#filterBy').click(function () {
-      var filterAlgorithm = $('[name="filterAlgorithm"]').val()
+      const filterAlgorithm = $('[name="filterAlgorithm"]').val()
 
       $table.bootstrapTable('refreshOptions', {
         filterOptions: {
-          filterAlgorithm: filterAlgorithm
+          filterAlgorithm
         }
       })
 
@@ -90,3 +72,38 @@
     })
   }
 </script>
+
+<template>
+  <div class="toolbar">
+    <select
+      id="select"
+      class="form-control"
+      name="filterAlgorithm"
+    >
+      <option
+        value="and"
+        selected
+      >
+        and
+      </option>
+      <option value="or">
+        or
+      </option>
+    </select>
+    <button
+      id="filterBy"
+      class="btn btn-secondary"
+    >
+      filterBy
+    </button>
+  </div>
+
+  <table id="table"></table>
+</template>
+
+<style>
+#select {
+  width: 100px;
+  display: inline-block;
+}
+</style>

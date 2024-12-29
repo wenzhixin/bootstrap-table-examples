@@ -1,24 +1,33 @@
 <script>
-  init({
-    title: 'Server Side Pagination',
-    desc: 'Use `sidePagination: \'server\'` option to define the server side pagination of table.',
-    links: ['bootstrap-table.min.css'],
-    scripts: ['bootstrap-table.min.js']
-  })
+init({
+  title: 'Server Side Pagination',
+  desc: 'Use `sidePagination: \'server\'` option to define the server side pagination of table.',
+  links: ['bootstrap-table.min.css'],
+  scripts: ['bootstrap-table.min.js']
+})
 </script>
 
-<table
-  id="table"
-  data-toggle="table"
-  data-url="https://examples.wenzhixin.net.cn/examples/bootstrap_table/data"
-  data-height="400"
-  data-side-pagination="server"
-  data-pagination="true">
-  <thead>
-    <tr>
-      <th data-field="id">ID</th>
-      <th data-field="name">Item Name</th>
-      <th data-field="price">Item Price</th>
-    </tr>
-  </thead>
-</table>
+<template>
+  <table
+    id="table"
+    data-toggle="table"
+    data-url="https://examples.wenzhixin.net.cn/examples/bootstrap_table/data"
+    data-height="400"
+    data-side-pagination="server"
+    data-pagination="true"
+  >
+    <thead>
+      <tr>
+        <th data-field="id">
+          ID
+        </th>
+        <th data-field="name">
+          Item Name
+        </th>
+        <th data-field="price">
+          Item Price
+        </th>
+      </tr>
+    </thead>
+  </table>
+</template>

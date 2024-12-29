@@ -1,25 +1,37 @@
 <script>
-  init({
-    title: 'Checkbox Header',
-    desc: 'Use `checkboxHeader: false` option to hide check-all checkbox in header row.',
-    links: ['bootstrap-table.min.css'],
-    scripts: ['bootstrap-table.min.js']
-  })
+init({
+  title: 'Checkbox Header',
+  desc: 'Use `checkboxHeader: false` option to hide check-all checkbox in header row.',
+  links: ['bootstrap-table.min.css'],
+  scripts: ['bootstrap-table.min.js']
+})
 </script>
 
-<table
-  id="table"
-  data-toggle="table"
-  data-height="460"
-  data-checkbox-header="false"
-  data-click-to-select="true"
-  data-url="json/data1.json">
-  <thead>
-    <tr>
-      <th data-field="state" data-checkbox="true"></th>
-      <th data-field="id">ID</th>
-      <th data-field="name">Item Name</th>
-      <th data-field="price">Item Price</th>
-    </tr>
-  </thead>
-</table>
+<template>
+  <table
+    id="table"
+    data-toggle="table"
+    data-height="460"
+    data-checkbox-header="false"
+    data-click-to-select="true"
+    data-url="json/data1.json"
+  >
+    <thead>
+      <tr>
+        <th
+          data-field="state"
+          data-checkbox="true"
+        ></th>
+        <th data-field="id">
+          ID
+        </th>
+        <th data-field="name">
+          Item Name
+        </th>
+        <th data-field="price">
+          Item Price
+        </th>
+      </tr>
+    </thead>
+  </table>
+</template>

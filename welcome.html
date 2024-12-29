@@ -106,32 +106,33 @@
 </table>
 
 <script>
-  var $table = $('#table')
-  var $remove = $('#remove')
-  var selections = []
+  const $table = $('#table')
+  const $remove = $('#remove')
+  let selections = []
 
-  function getIdSelections() {
+  function getIdSelections () {
     return $.map($table.bootstrapTable('getSelections'), function (row) {
       return row.id
     })
   }
 
-  function responseHandler(res) {
+  function responseHandler (res) {
     $.each(res.rows, function (i, row) {
       row.state = $.inArray(row.id, selections) !== -1
     })
     return res
   }
 
-  function detailFormatter(index, row) {
-    var html = []
+  function detailFormatter (index, row) {
+    const html = []
+
     $.each(row, function (key, value) {
-      html.push('<p><b>' + key + ':</b> ' + value + '</p>')
+      html.push(`<p><b>${key}:</b> ${value}</p>`)
     })
     return html.join('')
   }
 
-  function operateFormatter(value, row, index) {
+  function operateFormatter (value, row, index) {
     return [
       '<a class="like" href="javascript:void(0)" title="Like">',
       '<i class="fa fa-heart"></i>',
@@ -143,35 +144,36 @@
   }
 
   window.operateEvents = {
-    'click .like': function (e, value, row, index) {
-      alert('You click like action, row: ' + JSON.stringify(row))
-    },
-    'click .remove': function (e, value, row, index) {
+    'click .like' (e, value, row, index) {
+      alert(`You click like action, row: ${JSON.stringify(row)}`)
+  },
+    'click .remove' (e, value, row, index) {
       $table.bootstrapTable('remove', {
         field: 'id',
         values: [row.id]
       })
-    }
+  }
   }
 
-  function totalTextFormatter(data) {
+  function totalTextFormatter (data) {
     return 'Total'
   }
 
-  function totalNameFormatter(data) {
+  function totalNameFormatter (data) {
     return data.length
   }
 
-  function totalPriceFormatter(data) {
-    var field = this.field
-    return '$' + data.map(function (row) {
+  function totalPriceFormatter (data) {
+    const field = this.field
+
+    return `$${data.map(function (row) {
       return +row[field].substring(1)
     }).reduce(function (sum, i) {
-      return sum + i
-    }, 0)
+        return sum + i
+    }, 0)}`
   }
 
-  function initTable() {
+  function initTable () {
     $table.bootstrapTable('destroy').bootstrapTable({
       height: 550,
       locale: $('#locale').val(),
@@ -238,7 +240,8 @@
       console.log(name, args)
     })
     $remove.click(function () {
-      var ids = getIdSelections()
+      const ids = getIdSelections()
+
       $table.bootstrapTable('remove', {
         field: 'id',
         values: ids
@@ -247,7 +250,7 @@
     })
   }
 
-  function mounted() {
+  function mounted () {
     initTable()
 
     $('#locale').change(initTable)

@@ -6,42 +6,44 @@ window._config = {
   testUrl: '/src/'
 }
 
-function _getLink(file) {
-  var url = file
+function _getLink (file) {
+  let url = file
+
   if (!/^http/.test(file)) {
     url = window._config.cdnUrl + file
 
     if (window._config.isDebug) {
-      url = (location.href.includes('for-test') ? window._config.testUrl : window._config.localUrl) +
-        file.replace(/\.min/, '') + '?t=' + (+new Date())
+      url = `${(location.href.includes('for-test') ? window._config.testUrl : window._config.localUrl) +
+        file.replace(/\.min/, '')}?t=${+new Date()}`
     }
   }
-  return '<link rel="stylesheet" href="' + url + '">'
+  return `<link rel="stylesheet" href="${url}">`
 }
 
-function _getScript(file, isScriptTag) {
-  var url = file
+function _getScript (file, isScriptTag) {
+  let url = file
+
   if (!/^http/.test(file)) {
     url = window._config.cdnUrl + file
 
     if (window._config.isDebug) {
-      url = (location.href.includes('for-test') ? window._config.testUrl : window._config.localUrl) +
-        file.replace(/\.min/, '') + '?t=' + (+new Date())
+      url = `${(location.href.includes('for-test') ? window._config.testUrl : window._config.localUrl) +
+        file.replace(/\.min/, '')}?t=${+new Date()}`
     }
   }
   if (isScriptTag) {
-    return '<script src="' + url + '"></script>'
+    return `<script src="${url}"></script>`
   }
   return url
 }
 
-function _link(file) {
+function _link (file) {
   $('head').append(_getLink(file))
 }
 
-function _script(file, callback) {
-  var head = document.getElementsByTagName('head')[0]
-  var script = document.createElement('script')
+function _script (file, callback) {
+  const head = document.getElementsByTagName('head')[0]
+  const script = document.createElement('script')
 
   if (window._config.isDebug && !/^http/.test(file)) {
     script.type = 'module'
@@ -49,9 +51,10 @@ function _script(file, callback) {
 
   script.src = _getScript(file)
 
-  var done = false
+  let done = false
+
   // Attach handlers for all browsers
-  script.onload = script.onreadystatechange = function() {
+  script.onload = script.onreadystatechange = function () {
     if (!done && (!this.readyState ||
       this.readyState === 'loaded' || this.readyState === 'complete')) {
       done = true
@@ -66,18 +69,19 @@ function _script(file, callback) {
   head.appendChild(script)
 }
 
-function _scripts(scripts, callback) {
+function _scripts (scripts, callback) {
   if (!scripts.length) {
     return callback()
   }
 
-  var eachSeries = function (arr, iterator, callback_) {
-    var callback = callback_ || function () {}
+  const eachSeries = function (arr, iterator, callback_) {
+    let callback = callback_ || function () {}
+
     if (!arr.length) {
       return callback()
     }
-    var completed = 0
-    var iterate = function () {
+    let completed = 0
+    const iterate = function () {
       iterator(arr[completed], function (err) {
         if (err) {
           callback(err)
@@ -92,6 +96,7 @@ function _scripts(scripts, callback) {
         }
       })
     }
+
     iterate()
   }
 
@@ -100,7 +105,9 @@ function _scripts(scripts, callback) {
   })
 }
 
-function _themeUpdate(data) {
+function _themeUpdate (_data) {
+  const data = _data.replace('<template>', '').replace('</template>', '')
+
   if (/bootstrap3.html$/.test(location.pathname)) {
     return data.replace(/btn-secondary/g, 'btn-default')
   }
@@ -140,19 +147,21 @@ function _themeUpdate(data) {
   return data
 }
 
-function _beautifySource(data) {
-  var lines = data.split('\n')
-  var scriptStart = lines.indexOf('<script>')
-  var scriptEnd = lines.indexOf('</script>', scriptStart)
-  var strings = lines.slice(scriptStart + 1, scriptEnd)
+function _beautifySource (data) {
+  let lines = data.split('\n')
+  const scriptStart = lines.indexOf('<script>')
+  const scriptEnd = lines.indexOf('</script>', scriptStart)
+  let strings = lines.slice(scriptStart + 1, scriptEnd)
+
   strings = $.map(strings, function (s) {
     return $.trim(s)
   })
   /* eslint-disable no-control-regex */
-  var obj = eval('(' + strings.join('').replace(/[^\u0000-\u007E]/g, '')
-    .replace(/^init\((.*)\)$/, '$1') + ')')
+  const obj = eval(`(${strings.join('').replace(/[^\u0000-\u007E]/g, '')
+    .replace(/^init\((.*)\)$/, '$1')})`)
 
-  var result = []
+  let result = []
+
   result = result.concat($.map(obj.links, _getLink))
   result.push('')
   result = result.concat($.map(obj.scripts, function (script) {
@@ -160,8 +169,9 @@ function _beautifySource(data) {
   }))
   lines = result.concat(lines.slice(scriptEnd + 1))
 
-  var mountedStart = lines.indexOf('  function mounted() {')
-  var mountedEnd = lines.indexOf('  }', mountedStart)
+  const mountedStart = lines.indexOf('  function mounted() {')
+  const mountedEnd = lines.indexOf('  }', mountedStart)
+
   lines[mountedStart] = '  $(function() {'
   lines[mountedEnd] = '  })'
 
@@ -169,24 +179,25 @@ function _beautifySource(data) {
 }
 
 $(function () {
-  var run = function () {
-    var query = {}
+  const run = function () {
+    const query = {}
+
     location.search.substring(1).split('&').forEach(function (item) {
       query[item.split('=')[0]] = item.split('=')[1]
     })
-    var url = query.url
-    var isSource = location.hash.substring(1) === 'view-source'
+    const url = query.url
+    const isSource = location.hash.substring(1) === 'view-source'
 
     delete query.url
 
     $.ajax({
       type: 'GET',
-      url: url + '?' + $.param(query),
+      url: `${url}?${$.param(query)}`,
       dataType: 'html',
       global: false,
       cache: true, // (warning: setting it to false will cause a timestamp and will call the request twice)
-      success: function (_data) {
-        var data = _themeUpdate(_data)
+      success (_data) {
+        const data = _themeUpdate(_data)
 
         if (isSource) {
           $('#example').hide().html(data)
@@ -197,7 +208,7 @@ $(function () {
           $('#example').html(data.replace(/ data-toggle="table"/g, ' data-toggle="bootstrap-table"'))
         }
       },
-      error: function () {
+      error () {
         parent.location.href = 'index.html'
       }
     })
@@ -208,12 +219,12 @@ $(function () {
 })
 
 window.init = function (options_) {
-  var options = $.extend({
+  const options = $.extend({
     title: '',
     desc: '',
     links: [],
     scripts: [],
-    callback: function () {
+    callback () {
       if ($('[data-toggle="bootstrap-table"]').length) {
         $('[data-toggle="bootstrap-table"]').bootstrapTable()
       }
@@ -230,7 +241,7 @@ window.init = function (options_) {
     $('.bd-title span').html(options.title)
   }
   if ($('.bd-lead').length) {
-    $('.bd-lead').html(marked(options.desc)).find('a').attr('target', '_blank')
+    $('.bd-lead').html(window.marked(options.desc)).find('a').attr('target', '_blank')
   }
   $.each(options.links, function (i, file) {
     _link(file)

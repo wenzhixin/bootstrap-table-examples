@@ -1,27 +1,42 @@
 <script>
-  init({
-    title: 'Issue #579',
-    desc: 'Show images formatter (<a href="https://github.com/wenzhixin/bootstrap-table/issues/579" target="_blank">#579</a>).',
-    links: ['bootstrap-table.min.css'],
-    scripts: [
-      'https://cdnjs.cloudflare.com/ajax/libs/holder/2.6.0/holder.js',
-      'bootstrap-table.min.js'
-    ]
-  })
+init({
+  title: 'Issue #579',
+  desc: 'Show images formatter (<a href="https://github.com/wenzhixin/bootstrap-table/issues/579" target="_blank">#579</a>).',
+  links: ['bootstrap-table.min.css'],
+  scripts: [
+    'https://cdnjs.cloudflare.com/ajax/libs/holder/2.6.0/holder.js',
+    'bootstrap-table.min.js'
+  ]
+})
 </script>
 
-<table
-  id="table"
-  data-show-header="false"
-  data-classes="table table-hover table-no-bordered">
-  <thead>
-    <tr>
-      <th data-field="image" data-formatter="imageFormatter">Image</th>
-      <th data-field="name">Name</th>
-      <th data-field="action" data-formatter="actionFormatter">Action</th>
-    </tr>
-  </thead>
-</table>
+<template>
+  <table
+    id="table"
+    data-show-header="false"
+    data-classes="table table-hover table-no-bordered"
+  >
+    <thead>
+      <tr>
+        <th
+          data-field="image"
+          data-formatter="imageFormatter"
+        >
+          Image
+        </th>
+        <th data-field="name">
+          Name
+        </th>
+        <th
+          data-field="action"
+          data-formatter="actionFormatter"
+        >
+          Action
+        </th>
+      </tr>
+    </thead>
+  </table>
+</template>
 
 <script>
   var $table = $('#table')

@@ -1,8 +1,10 @@
-const express = require('express')
+import express from 'express'
+import examples from './examples.js'
+
 const app = express()
 
-app.get('/examples/:project/:func', require('./examples'))
-app.post('/examples/:project/:func', require('./examples'))
+app.get('/examples/:project/:func', examples)
+app.post('/examples/:project/:func', examples)
 
 const server = app.listen(3000, () => {
 

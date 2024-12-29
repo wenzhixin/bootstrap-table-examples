@@ -1,7 +1,6 @@
-const rollup = require('rollup')
-const babel = require('rollup-plugin-babel')
+import babel from 'rollup-plugin-babel'
 
-module.exports = [
+export default [
   {
     input: 'utils/natural-sorting/src/natural-sorting.js',
     output: {

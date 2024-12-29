@@ -2,6 +2,7 @@
   "name": "bootstrap-table-examples",
   "version": "1.24.0",
   "description": "bootstrap-table-examples",
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "https://github.com/wenzhixin/bootstrap-table-examples.git"
@@ -13,24 +14,28 @@
   },
   "homepage": "https://github.com/wenzhixin/bootstrap-table-examples",
   "scripts": {
-    "lint:js": "eslint --ext .html,.js .",
+    "prelint:js": "./tools/lint.sh --pre",
+    "lint:js": "eslint .",
+    "postlint:js": "./tools/lint.sh --post",
     "lint:editor": "editorconfig-checker",
     "lint": "run-s lint:*",
-    "build": "babel utils/natural-sorting/src -d utils/natural-sorting/dist"
+    "build": "babel utils/natural-sorting/src -d utils/natural-sorting/dist",
+    "serve": "node server/app.js"
   },
   "devDependencies": {
-    "@babel/cli": "^7.24.8",
-    "@babel/core": "^7.24.8",
-    "@babel/preset-env": "^7.24.8",
-    "babel-eslint": "^10.0.3",
-    "editorconfig-checker": "^5.1.8",
-    "eslint": "^8.57.0",
-    "eslint-plugin-html": "^8.1.1",
-    "eslint-plugin-vue": "^9.27.0",
+    "@babel/cli": "^7.26.4",
+    "@babel/core": "^7.26.0",
+    "@babel/eslint-parser": "^7.25.9",
+    "bootstrap-table": "^1.24.0",
+    "editorconfig-checker": "^6.0.0",
+    "eslint": "^9.17.0",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-vue": "^9.32.0",
     "getopts": "^2.3.0",
-    "npm-run-all": "^4.1.5"
+    "globals": "^15.14.0",
+    "npm-run-all2": "^7.0.2"
   },
   "dependencies": {
-    "express": "^4.19.2"
+    "express": "^5.0.1"
   }
 }

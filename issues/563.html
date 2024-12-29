@@ -1,33 +1,11 @@
 <script>
-  init({
-    title: 'Issue #563',
-    desc: 'Change the background color on selected rows (<a href="https://github.com/wenzhixin/bootstrap-table/issues/563" target="_blank">#563</a>).',
-    links: ['bootstrap-table.min.css'],
-    scripts: ['bootstrap-table.min.js']
-  })
+init({
+  title: 'Issue #563',
+  desc: 'Change the background color on selected rows (<a href="https://github.com/wenzhixin/bootstrap-table/issues/563" target="_blank">#563</a>).',
+  links: ['bootstrap-table.min.css'],
+  scripts: ['bootstrap-table.min.js']
+})
 </script>
-
-<style>
-.active td {
-  color: red;
-  font-weight: bold;
-}
-</style>
-
-<table
-  id="table"
-  data-toggle="table"
-  data-url="json/data1.json"
-  data-show-refresh="true"
-  data-pagination="true"
-  data-row-style="rowStyle">
-  <thead>
-  <tr>
-    <th data-field="name">Item Name</th>
-    <th data-field="price">Item Price</th>
-  </tr>
-  </thead>
-</table>
 
 <script>
   var $table = $('#table')
@@ -50,3 +28,32 @@
     return {}
   }
 </script>
+
+<template>
+  <table
+    id="table"
+    data-toggle="table"
+    data-url="json/data1.json"
+    data-show-refresh="true"
+    data-pagination="true"
+    data-row-style="rowStyle"
+  >
+    <thead>
+      <tr>
+        <th data-field="name">
+          Item Name
+        </th>
+        <th data-field="price">
+          Item Price
+        </th>
+      </tr>
+    </thead>
+  </table>
+</template>
+
+<style>
+.active td {
+  color: red;
+  font-weight: bold;
+}
+</style>

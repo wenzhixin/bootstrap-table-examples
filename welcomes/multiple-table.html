@@ -1,10 +1,37 @@
 <script>
-  init({
-    title: 'Multiple Table',
-    desc: 'Multiple tables in one page.',
-    links: ['bootstrap-table.min.css'],
-    scripts: ['bootstrap-table.min.js']
-  })
+init({
+  title: 'Multiple Table',
+  desc: 'Multiple tables in one page.',
+  links: ['bootstrap-table.min.css'],
+  scripts: ['bootstrap-table.min.js']
+})
+</script>
+
+<script>
+  window.operateEvents = {
+    'click .like': function (e, value, row) {
+      alert('You click like action, row: ' + JSON.stringify(row))
+    },
+    'click .remove': function (e, value, row) {
+      alert('You click remove action, row: ' + JSON.stringify(row))
+    }
+  }
+
+  function operateFormatter(value, row, index) {
+    return [
+      '<div class="left">',
+      '<a href="https://github.com/wenzhixin/' + value + '" target="_blank">' + value + '</a>',
+      '</div>',
+      '<div class="right">',
+      '<a class="like" href="javascript:void(0)" title="Like">',
+      '<i class="fa fa-heart"></i>',
+      '</a>  ',
+      '<a class="remove" href="javascript:void(0)" title="Remove">',
+      '<i class="fa fa-trash"></i>',
+      '</a>',
+      '</div>'
+    ].join('')
+  }
 </script>
 
 <style>
@@ -77,30 +104,3 @@
     </thead>
   </table>
 </div>
-
-<script>
-  window.operateEvents = {
-    'click .like': function (e, value, row) {
-      alert('You click like action, row: ' + JSON.stringify(row))
-    },
-    'click .remove': function (e, value, row) {
-      alert('You click remove action, row: ' + JSON.stringify(row))
-    }
-  }
-
-  function operateFormatter(value, row, index) {
-    return [
-      '<div class="left">',
-      '<a href="https://github.com/wenzhixin/' + value + '" target="_blank">' + value + '</a>',
-      '</div>',
-      '<div class="right">',
-      '<a class="like" href="javascript:void(0)" title="Like">',
-      '<i class="fa fa-heart"></i>',
-      '</a>  ',
-      '<a class="remove" href="javascript:void(0)" title="Remove">',
-      '<i class="fa fa-trash"></i>',
-      '</a>',
-      '</div>'
-    ].join('')
-  }
-</script>

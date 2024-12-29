@@ -1,10 +1,10 @@
 <script>
-  init({
-    title: 'Flat Json',
-    desc: 'Support flat json, for example: <br>`field: \'github.count.stargazers\'`.',
-    links: ['bootstrap-table.min.css'],
-    scripts: ['bootstrap-table.min.js']
-  })
+init({
+  title: 'Flat Json',
+  desc: 'Support flat json, for example: <br>`field: \'github.count.stargazers\'`.',
+  links: ['bootstrap-table.min.css'],
+  scripts: ['bootstrap-table.min.js']
+})
 </script>
 
 <table
@@ -12,7 +12,8 @@
   data-toggle="table"
   data-flat="true"
   data-search="true"
-  data-url="json/data3.json">
+  data-url="json/data3.json"
+>
   <thead>
     <tr>
       <th data-field="github.name" data-sortable="true">Name</th>

@@ -42,21 +42,17 @@ init({
 </template>
 
 <script>
-  function idFormatter () {
-    return 'Total'
-  }
+  window.idFormatter = () => 'Total'
 
-  function nameFormatter (data) {
-    return data.length
-  }
+  window.nameFormatter = data => data.length
 
-  function priceFormatter (data) {
+  window.priceFormatter = data => {
     const field = this.field
 
     return `$${data.map(function (row) {
       return +row[field].substring(1)
-  }).reduce(function (sum, i) {
+    }).reduce(function (sum, i) {
       return sum + i
-  }, 0)}`
+    }, 0)}`
   }
 </script>

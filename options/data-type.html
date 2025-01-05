@@ -33,7 +33,5 @@ init({
 </template>
 
 <script>
-  function responseHandler (res) {
-    return JSON.parse(res)
-  }
+  window.responseHandler = res => JSON.parse(res)
 </script>

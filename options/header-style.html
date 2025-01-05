@@ -7,22 +7,6 @@ init({
 })
 </script>
 
-<script>
-  function headerStyle (column) {
-    return {
-      id: {
-        classes: 'uppercase'
-      },
-      name: {
-        css: { background: 'yellow' }
-      },
-      price: {
-        css: { color: 'red' }
-      }
-    }[column.field]
-  }
-</script>
-
 <template>
   <table
     id="table"
@@ -46,6 +30,20 @@ init({
     </thead>
   </table>
 </template>
+
+<script>
+  window.headerStyle = column => ({
+    id: {
+      classes: 'uppercase'
+    },
+    name: {
+      css: { background: 'yellow' }
+    },
+    price: {
+      css: { color: 'red' }
+    }
+  }[column.field])
+</script>
 
 <style>
 .uppercase {

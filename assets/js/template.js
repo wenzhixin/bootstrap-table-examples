@@ -106,7 +106,7 @@ function _scripts (scripts, callback) {
 }
 
 function _themeUpdate (_data) {
-  const data = _data.replace('<template>', '').replace('</template>', '')
+  const data = _data
 
   if (/bootstrap3.html$/.test(location.pathname)) {
     return data.replace(/btn-secondary/g, 'btn-default')
@@ -151,25 +151,33 @@ function _beautifySource (data) {
   let lines = data.split('\n')
   const scriptStart = lines.indexOf('<script>')
   const scriptEnd = lines.indexOf('</script>', scriptStart)
-  let strings = lines.slice(scriptStart + 1, scriptEnd)
+  const strings = lines.slice(scriptStart + 1, scriptEnd)
+    .map(s => s.trim())
+  const templateStart = lines.indexOf('<template>')
+  const templateEnd = lines.indexOf('</template>', scriptStart)
+  const templates = lines.slice(templateStart + 1, templateEnd)
+    .map(s => s.replace(/^ {2}/, ''))
 
-  strings = $.map(strings, function (s) {
-    return $.trim(s)
-  })
   /* eslint-disable no-control-regex */
   const obj = eval(`(${strings.join('').replace(/[^\u0000-\u007E]/g, '')
     .replace(/^init\((.*)\)$/, '$1')})`)
 
   let result = []
+  const addEmptyLine = () => {
+    if (result[result.length - 1] !== '') {
+      result.push('')
+    }
+  }
 
   result = result.concat($.map(obj.links, _getLink))
-  result.push('')
+  addEmptyLine()
   result = result.concat($.map(obj.scripts, function (script) {
     return _getScript(script, true)
   }))
-  lines = result.concat(lines.slice(scriptEnd + 1))
+  addEmptyLine()
+  lines = result.concat(templates, lines.slice(templateEnd + 1))
 
-  const mountedStart = lines.indexOf('  function mounted() {')
+  const mountedStart = lines.indexOf('  function mounted () {')
   const mountedEnd = lines.indexOf('  }', mountedStart)
 
   lines[mountedStart] = '  $(function() {'
@@ -205,7 +213,9 @@ $(function () {
           $('#source').text(_beautifySource(data))
           window.hljs.highlightAll()
         } else {
-          $('#example').html(data.replace(/ data-toggle="table"/g, ' data-toggle="bootstrap-table"'))
+          $('#example').html(data
+            .replace('<template>', '').replace('</template>', '')
+            .replace(/ data-toggle="table"/g, ' data-toggle="bootstrap-table"'))
         }
       },
       error () {

@@ -31,9 +31,9 @@ init({
 </template>
 
 <script>
-  var $table = $('#table')
+  const $table = $('#table')
 
-  function getData(number, size) {
+  function getData (number, size) {
     $.get('https://examples.wenzhixin.net.cn/examples/bootstrap_table/data', {
       offset: (number - 1) * size,
       limit: size
@@ -42,11 +42,12 @@ init({
     })
   }
 
-  function mounted() {
+  function mounted () {
     $table.on('page-change.bs.table', function (e, number, size) {
       getData(number, size)
     })
-    var options = $table.bootstrapTable('getOptions')
+    const options = $table.bootstrapTable('getOptions')
+
     getData(options.pageNumber, options.pageSize)
   }
 </script>

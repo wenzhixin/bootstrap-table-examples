@@ -34,7 +34,7 @@ init({
 </template>
 
 <script>
-  function queryParams (params) {
+  window.queryParams = params => {
     params.search = 8
     return params
   }

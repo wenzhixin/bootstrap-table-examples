@@ -37,8 +37,9 @@ init({
 </template>
 
 <script>
-  var $table = $('#table')
-  function mounted() {
+  const $table = $('#table')
+
+  function mounted () {
     $table.bootstrapTable({
       data: [
         {
@@ -49,7 +50,7 @@ init({
       ]
     })
     $('#button').click(function () {
-      $table.bootstrapTable('refresh', {url: 'json/data1.json'})
+      $table.bootstrapTable('refresh', { url: 'json/data1.json' })
     })
   }
 </script>

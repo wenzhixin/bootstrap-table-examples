@@ -39,9 +39,9 @@ init({
 </template>
 
 <script>
-  var $table = $('#table')
+  const $table = $('#table')
 
-  function mounted() {
+  function mounted () {
     $table.bootstrapTable({
       data: [
         {
@@ -63,11 +63,7 @@ init({
     })
   }
 
-  function imageFormatter() {
-    return '<img src="holder.js/100x150">'
-  }
+  window.imageFormatter = () => '<img src="holder.js/100x150">'
 
-  function actionFormatter() {
-    return '<i class="glyphicon glyphicon-heart"></i> <i class="glyphicon glyphicon-remove"></i>'
-  }
+  window.actionFormatter = () => '<i class="glyphicon glyphicon-heart"></i> <i class="glyphicon glyphicon-remove"></i>'
 </script>

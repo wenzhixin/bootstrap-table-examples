@@ -51,17 +51,17 @@ init({
 </template>
 
 <script>
-  var $table = $('#table')
-  var params = {}
+  const $table = $('#table')
+  let params = {}
 
-  function queryParams(_params) {
+  window.queryParams = _params => {
     params = _params
     return _params
   }
 
-  function mounted() {
+  function mounted () {
     $('button').click(function () {
-      alert($table.bootstrapTable('getOptions').url + '?' + $.param(params))
+      alert(`${$table.bootstrapTable('getOptions').url}?${$.param(params)}`)
     })
   }
 </script>

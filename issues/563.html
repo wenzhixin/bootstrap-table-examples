@@ -8,10 +8,10 @@ init({
 </script>
 
 <script>
-  var $table = $('#table')
-  var selectedRow = {}
+  const $table = $('#table')
+  let selectedRow = {}
 
-  function mounted() {
+  function mounted () {
     $table.on('click-row.bs.table', function (e, row, $element) {
       selectedRow = row
       $('.active').removeClass('active')
@@ -19,7 +19,7 @@ init({
     })
   }
 
-  function rowStyle(row) {
+  window.rowStyle = row => {
     if (row.id === selectedRow.id) {
       return {
         classes: 'active'

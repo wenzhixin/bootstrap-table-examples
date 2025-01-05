@@ -14,9 +14,9 @@ init({
 </script>
 
 <script>
-  var ps
+  let ps
 
-  function mounted() {
+  function mounted () {
     $('#table').on('post-body.bs.table', function () {
       if (ps) ps.destroy()
       ps = new window.PerfectScrollbar('.fixed-table-body')

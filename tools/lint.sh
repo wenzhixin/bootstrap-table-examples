@@ -29,9 +29,11 @@ process_files() {
 # 根据参数执行对应操作
 case $1 in
   --pre)
+    mv welcome.html welcome.vue
     process_files "html" "vue"
     ;;
   --post)
+    mv welcome.vue welcome.html
     process_files "vue" "html"
     ;;
   *)

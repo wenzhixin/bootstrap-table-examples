@@ -43,15 +43,14 @@ init({
 </template>
 
 <script>
-  var $table = $('#table')
-
-  function mounted() {
+  function mounted () {
     $('#show').click(function () {
-      var index = []
+      const index = []
+
       $('input[name="selectItemName"]:checked').each(function () {
         index.push($(this).data('index'))
       })
-      alert('Checked row index: ' + index.join(', '))
+      alert(`Checked row index: ${index.join(', ')}`)
     })
   }
 </script>

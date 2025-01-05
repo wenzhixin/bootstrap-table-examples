@@ -54,9 +54,9 @@ init({
 </template>
 
 <script>
-  var checkAll = false
+  let checkAll = false
 
-  function mounted() {
+  function mounted () {
     $('#checkAll').click(function () {
       checkAll = true
       $('#table').bootstrapTable('checkAll')
@@ -67,7 +67,7 @@ init({
     })
   }
 
-  function responseHandler(res) {
+  window.responseHandler = res => {
     res.rows.forEach(function (item) {
       item.state = checkAll
     })

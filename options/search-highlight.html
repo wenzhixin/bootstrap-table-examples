@@ -35,8 +35,6 @@ init({
 </template>
 
 <script>
-  function priceFormatter (value, row) {
-    return `<span>${value}</span>
-      <span style="margin-left: 5px">(${row.name})</span>`
-  }
+  window.priceFormatter = (value, row) => `<span>${value}</span>
+    <span style="margin-left: 5px">(${row.name})</span>`
 </script>

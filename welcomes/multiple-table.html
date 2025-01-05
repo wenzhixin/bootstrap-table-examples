@@ -9,30 +9,106 @@ init({
 
 <script>
   window.operateEvents = {
-    'click .like': function (e, value, row) {
-      alert('You click like action, row: ' + JSON.stringify(row))
+    'click .like' (e, value, row) {
+      alert(`You click like action, row: ${JSON.stringify(row)}`)
     },
-    'click .remove': function (e, value, row) {
-      alert('You click remove action, row: ' + JSON.stringify(row))
+    'click .remove' (e, value, row) {
+      alert(`You click remove action, row: ${JSON.stringify(row)}`)
     }
   }
 
-  function operateFormatter(value, row, index) {
-    return [
-      '<div class="left">',
-      '<a href="https://github.com/wenzhixin/' + value + '" target="_blank">' + value + '</a>',
-      '</div>',
-      '<div class="right">',
-      '<a class="like" href="javascript:void(0)" title="Like">',
-      '<i class="fa fa-heart"></i>',
-      '</a>  ',
-      '<a class="remove" href="javascript:void(0)" title="Remove">',
-      '<i class="fa fa-trash"></i>',
-      '</a>',
-      '</div>'
-    ].join('')
-  }
+  window.operateFormatter = value => [
+    '<div class="left">',
+    `<a href="https://github.com/wenzhixin/${value}" target="_blank">${value}</a>`,
+    '</div>',
+    '<div class="right">',
+    '<a class="like" href="javascript:void(0)" title="Like">',
+    '<i class="fa fa-heart"></i>',
+    '</a>  ',
+    '<a class="remove" href="javascript:void(0)" title="Remove">',
+    '<i class="fa fa-trash"></i>',
+    '</a>',
+    '</div>'
+  ].join('')
 </script>
+
+<template>
+  <div class="item">
+    <table
+      data-toggle="table"
+      data-url="json/data3.json"
+    >
+      <thead>
+        <tr>
+          <th
+            data-field="github.name"
+            data-formatter="operateFormatter"
+            data-events="operateEvents"
+          >
+            Bookmark 1
+          </th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+
+  <div class="item">
+    <table
+      data-toggle="table"
+      data-url="json/data3.json"
+    >
+      <thead>
+        <tr>
+          <th
+            data-field="github.name"
+            data-formatter="operateFormatter"
+            data-events="operateEvents"
+          >
+            Bookmark 2
+          </th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+
+  <div class="item">
+    <table
+      data-toggle="table"
+      data-url="json/data3.json"
+    >
+      <thead>
+        <tr>
+          <th
+            data-field="github.name"
+            data-formatter="operateFormatter"
+            data-events="operateEvents"
+          >
+            Bookmark 3
+          </th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+
+  <div class="item">
+    <table
+      data-toggle="table"
+      data-url="json/data3.json"
+    >
+      <thead>
+        <tr>
+          <th
+            data-field="github.name"
+            data-formatter="operateFormatter"
+            data-events="operateEvents"
+          >
+            Bookmark 4
+          </th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+</template>
 
 <style>
 .left {
@@ -48,59 +124,3 @@ init({
   margin-bottom: 20px;
 }
 </style>
-
-<div class="item">
-  <table
-    data-toggle="table"
-    data-url="json/data3.json">
-    <thead>
-      <tr>
-        <th data-field="github.name"
-          data-formatter="operateFormatter"
-          data-events="operateEvents">Bookmark 1</th>
-      </tr>
-    </thead>
-  </table>
-</div>
-
-<div class="item">
-  <table
-    data-toggle="table"
-    data-url="json/data3.json">
-    <thead>
-      <tr>
-        <th data-field="github.name"
-          data-formatter="operateFormatter"
-          data-events="operateEvents">Bookmark 2</th>
-      </tr>
-    </thead>
-  </table>
-</div>
-
-<div class="item">
-  <table
-    data-toggle="table"
-    data-url="json/data3.json">
-    <thead>
-      <tr>
-        <th data-field="github.name"
-          data-formatter="operateFormatter"
-          data-events="operateEvents">Bookmark 3</th>
-      </tr>
-    </thead>
-  </table>
-</div>
-
-<div class="item">
-  <table
-    data-toggle="table"
-    data-url="json/data3.json">
-    <thead>
-      <tr>
-        <th data-field="github.name"
-          data-formatter="operateFormatter"
-          data-events="operateEvents">Bookmark 4</th>
-      </tr>
-    </thead>
-  </table>
-</div>

@@ -19,7 +19,7 @@ init({
 </template>
 
 <script>
-  var data = [
+  const data = [
     {
       name: 'active'
     },
@@ -31,9 +31,9 @@ init({
     }
   ]
 
-  var $table = $('#table')
+  const $table = $('#table')
 
-  function mounted() {
+  function mounted () {
     $table.bootstrapTable({
       idField: 'name',
       columns: [
@@ -49,14 +49,14 @@ init({
           editable: {
             type: 'select',
             source: [
-              {value: 'active', text: 'Active'},
-              {value: 'blocked', text: 'Blocked'},
-              {value: 'deleted', text: 'Deleted'}
+              { value: 'active', text: 'Active' },
+              { value: 'blocked', text: 'Blocked' },
+              { value: 'deleted', text: 'Deleted' }
             ]
           }
         }
       ],
-      data: data
+      data
     })
   }
 </script>

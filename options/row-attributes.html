@@ -32,22 +32,20 @@ init({
 </template>
 
 <script>
-  function rowAttributes (row, index) {
-    return {
-      'data-toggle': 'popover',
-      'data-placement': 'bottom',
-      'data-trigger': 'hover',
-      'data-content': [
-        `Index: ${index}`,
-        `ID: ${row.id}`,
-        `Name: ${row.name}`,
-        `Price: ${row.price}`
-      ].join(', ')
-    }
-  }
+  window.rowAttributes = (row, index) => ({
+    'data-toggle': 'popover',
+    'data-placement': 'bottom',
+    'data-trigger': 'hover',
+    'data-content': [
+      `Index: ${index}`,
+      `ID: ${row.id}`,
+      `Name: ${row.name}`,
+      `Price: ${row.price}`
+    ].join(', ')
+  })
 
   function mounted () {
-    $('#table').on('post-body.bs.table', function (e) {
+    $('#table').on('post-body.bs.table', () => {
       $('[data-toggle="popover"]').popover()
     })
   }

@@ -39,9 +39,7 @@ init({
     })
   }
 
-  function customSearch (data, text) {
-    return data.filter(function (row) {
-      return row.price.indexOf(text) > -1
-    })
-  }
+  window.customSearch = (data, text) => data.filter(function (row) {
+    return row.price.indexOf(text) > -1
+  })
 </script>

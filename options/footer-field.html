@@ -45,15 +45,9 @@ init({
 </template>
 
 <script>
-  function idFormatter (data, footerValue) {
-    return footerValue
-  }
+  window.idFormatter = (data, footerValue) => footerValue
 
-  function nameFormatter (data, footerValue) {
-    return footerValue
-  }
+  window.nameFormatter = (data, footerValue) => footerValue
 
-  function priceFormatter (data, footerValue) {
-    return footerValue
-  }
+  window.priceFormatter = (data, footerValue) => footerValue
 </script>

@@ -65,7 +65,7 @@ init({
 </template>
 
 <script>
-  function queryParams(params) {
+  window.queryParams = params => {
     params.your_param1 = 1 // add param1
     params.your_param2 = 2 // add param2
     // console.log(JSON.stringify(params));
@@ -73,7 +73,7 @@ init({
     return params
   }
 
-  function postQueryParams(params) {
+  window.postQueryParams = params => {
     params.your_param1 = 1 // add param1
     params.your_param2 = 2 // add param2
     return params // body data

@@ -41,13 +41,9 @@ init({
 </template>
 
 <script>
-  function nameFormatter (value) {
-    return `<label><input type="checkbox"> ${value}</label>`
-  }
+  window.nameFormatter = value => `<label><input type="checkbox"> ${value}</label>`
 
-  function priceFormatter (value) {
-    return `<button class="btn btn-secondary">${value}</button>`
-  }
+  window.priceFormatter = value => `<button class="btn btn-secondary">${value}</button>`
 
   function ignoreClickToSelectOn (e) {
     return ['A', 'BUTTON', 'LABEL', 'INPUT'].indexOf(e.tagName) > -1

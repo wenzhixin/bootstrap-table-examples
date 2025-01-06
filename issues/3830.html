@@ -40,14 +40,15 @@ init({
 </template>
 
 <script>
-  var $table = $('#table')
+  const $table = $('#table')
 
-  function mounted() {
+  function mounted () {
     $table.bootstrapTable()
   }
 
-  function queryParams(params) {
-    var options = $table.bootstrapTable('getOptions')
+  window.queryParams = params => {
+    const options = $table.bootstrapTable('getOptions')
+
     if (!options.pagination) {
       params.limit = options.totalRows
     }

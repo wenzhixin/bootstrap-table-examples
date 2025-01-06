@@ -12,31 +12,31 @@ init({
 </template>
 
 <script>
-  var data = [
+  const data = [
     {
-      'firstName': 'zhixin',
-      'lastName': 'wen',
-      'field1': 'field1',
-      'field2': 'field2',
-      'field3': 'field3'
+      firstName: 'zhixin',
+      lastName: 'wen',
+      field1: 'field1',
+      field2: 'field2',
+      field3: 'field3'
     }
   ]
 
-  function mounted() {
+  function mounted () {
     $('#table').bootstrapTable({
-      data: data,
+      data,
       columns: [
         {
           field: 'fullName',
           title: 'Full Name',
-          formatter: function (value, row) {
+          formatter (value, row) {
             return [row.firstName, row.lastName].join(' ')
           }
         },
         {
           field: 'field',
           title: 'Field',
-          formatter: function (value, row) {
+          formatter (value, row) {
             return [row.field1, row.field2, row.field3].join('+')
           }
         }

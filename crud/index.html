@@ -77,7 +77,7 @@
       stargazers_count: 0,
       forks_count: 0,
       description: ''
-  } // default row value
+    } // default row value
 
     $modal.data('id', row.id)
     $modal.find('.modal-title').text(title)
@@ -90,7 +90,7 @@
   }
 
   function showAlert (title, type) {
-    $alert.attr('class', `alert alert-${type}` || 'success')
+    $alert.attr('class', `alert alert-${type || 'success'}`)
       .html(`<i class="glyphicon glyphicon-check"></i> ${title}`).show()
     setTimeout(function () {
       $alert.hide()
@@ -128,12 +128,10 @@
           field: 'action',
           title: 'Action',
           align: 'center',
-          formatter: function actionFormatter (value) {
-            return [
-              '<a class="update mr10" href="javascript:" title="Update Item"><i class="fa fa-edit"></i></a>',
-              '<a class="remove" href="javascript:" title="Delete Item"><i class="fa fa-remove"></i></a>'
-            ].join('')
-          },
+          formatter: () => [
+            '<a class="update mr10" href="javascript:" title="Update Item"><i class="fa fa-edit"></i></a>',
+            '<a class="remove" href="javascript:" title="Delete Item"><i class="fa fa-remove"></i></a>'
+          ].join(''),
           events: {
             'click .update' (e, value, row) {
               showModal($(e.currentTarget).attr('title'), row)

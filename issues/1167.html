@@ -51,9 +51,9 @@ init({
 </template>
 
 <script>
-  var $table = $('#table')
+  const $table = $('#table')
 
-  function mounted() {
+  function mounted () {
     $('#checkAll').click(function () {
       $table.bootstrapTable('togglePagination').bootstrapTable('checkAll').bootstrapTable('togglePagination')
     })

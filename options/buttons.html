@@ -38,28 +38,26 @@ init({
 </template>
 
 <script>
-  function buttons () {
-    return {
-      btnUsersAdd: {
-        text: 'Highlight Users',
-        icon: 'bi-person',
-        event () {
-          alert('Do some stuff to e.g. search all users which has logged in the last week')
-        },
-        attributes: {
-          title: 'Search all users which has logged in the last week'
-        }
+  window.buttons = () => ({
+    btnUsersAdd: {
+      text: 'Highlight Users',
+      icon: 'bi-person',
+      event () {
+        alert('Do some stuff to e.g. search all users which has logged in the last week')
       },
-      btnAdd: {
-        text: 'Add new row',
-        icon: 'bi-plus-lg',
-        event () {
-          alert('Do some stuff to e.g. add a new row')
-        },
-        attributes: {
-          title: 'Add a new row to the table'
-        }
+      attributes: {
+        title: 'Search all users which has logged in the last week'
+      }
+    },
+    btnAdd: {
+      text: 'Add new row',
+      icon: 'bi-plus-lg',
+      event () {
+        alert('Do some stuff to e.g. add a new row')
+      },
+      attributes: {
+        title: 'Add a new row to the table'
       }
     }
-  }
+  })
 </script>

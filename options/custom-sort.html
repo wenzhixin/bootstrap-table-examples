@@ -41,7 +41,7 @@ init({
 </template>
 
 <script>
-  function customSort (sortName, sortOrder, data) {
+  window.customSort = (sortName, sortOrder, data) => {
     const order = sortOrder === 'desc' ? -1 : 1
 
     data.sort(function (a, b) {

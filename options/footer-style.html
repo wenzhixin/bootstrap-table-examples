@@ -7,40 +7,6 @@ init({
 })
 </script>
 
-<script>
-  function idFormatter () {
-    return 'Total'
-  }
-
-  function nameFormatter (data) {
-    return data.length
-  }
-
-  function priceFormatter (data) {
-    const field = this.field
-
-    return `$${data.map(function (row) {
-      return +row[field].substring(1)
-  }).reduce(function (sum, i) {
-      return sum + i
-  }, 0)}`
-  }
-
-  function footerStyle (column) {
-    return {
-      id: {
-        classes: 'uppercase'
-      },
-      name: {
-        css: { 'font-weight': 'normal' }
-      },
-      price: {
-        css: { color: 'red' }
-      }
-    }[column.field]
-  }
-</script>
-
 <template>
   <table
     id="table"
@@ -74,6 +40,34 @@ init({
     </thead>
   </table>
 </template>
+
+<script>
+  window.idFormatter = () => 'Total'
+
+  window.nameFormatter = data => data.length
+
+  window.priceFormatter = data => {
+    const field = this.field
+
+    return `$${data.map(function (row) {
+      return +row[field].substring(1)
+    }).reduce(function (sum, i) {
+      return sum + i
+    }, 0)}`
+  }
+
+  window.footerStyle = column => ({
+    id: {
+      classes: 'uppercase'
+    },
+    name: {
+      css: { 'font-weight': 'normal' }
+    },
+    price: {
+      css: { color: 'red' }
+    }
+  }[column.field])
+</script>
 
 <style>
 .uppercase {

@@ -8,21 +8,22 @@ init({
 </script>
 
 <script>
-  var $table = $('#table')
+  const $table = $('#table')
 
-  function totalTextFormatter(data) {
+  function totalTextFormatter () {
     return 'Total'
   }
 
-  function sumFormatter(data) {
-    var field = this.field
-    var total_sum = data.reduce(function (sum, row) {
-      return (sum) + (row[field] || 0)
+  function sumFormatter (data) {
+    const field = this.field
+    const total_sum = data.reduce(function (sum, row) {
+      return sum + (row[field] || 0)
     }, 0)
+
     return total_sum
   }
 
-  function mounted() {
+  function mounted () {
     $table.bootstrapTable({
       columns: [
         {

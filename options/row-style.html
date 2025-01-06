@@ -11,14 +11,14 @@ init({
 </script>
 
 <script>
-  function rowStyle (row, index) {
+  window.rowStyle = (row, index) => {
     const classes = [
       'bg-blue',
       'bg-green',
       'bg-orange',
       'bg-yellow',
       'bg-red'
-  ]
+    ]
 
     if (index % 2 === 0 && index / 2 < classes.length) {
       return {

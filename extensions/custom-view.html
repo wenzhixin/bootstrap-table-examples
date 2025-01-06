@@ -215,7 +215,7 @@ init({
     })
   }
 
-  function customViewFormatter (data) {
+  window.customViewFormatter = data => {
     const template = $('#profileTemplate').html()
     let view = ''
 

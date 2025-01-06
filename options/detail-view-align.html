@@ -77,7 +77,7 @@ init({
   window.actionEvents = {
     'click .btn' () {
       alert('Click')
-  }
+    }
   }
 
   function mounted () {
@@ -94,19 +94,11 @@ init({
     })
   }
 
-  function detailFilter (index) {
-    return index % 2 === 0
-  }
+  window.detailFilter = index => index % 2 === 0
 
-  function idFormatter () {
-    return 'Total'
-  }
+  window.idFormatter = () => 'Total'
 
-  function footerFormatter (data) {
-    return data.length
-  }
+  window.footerFormatter = data => data.length
 
-  function actionFormatter () {
-    return '<button class="btn btn-secondary">Click</button>'
-  }
+  window.actionFormatter = () => '<button class="btn btn-secondary">Click</button>'
 </script>

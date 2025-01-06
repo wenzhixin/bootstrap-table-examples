@@ -61,7 +61,7 @@ init({
     })
   }
 
-  function detailFormatter (index, row) {
+  window.detailFormatter = (index, row) => {
     const html = []
 
     $.each(row, function (key, value) {

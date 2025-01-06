@@ -34,13 +34,11 @@ init({
 </template>
 
 <script>
-  function queryParams(params) {
-    return {
-      page: params.pageNumber,
-      pageLimit: params.pageSize,
-      searchRecord: params.searchText,
-      sortName: params.sortName,
-      sortOrder: params.sortOrder
-    }
-  }
+  window.queryParams = params => ({
+    page: params.pageNumber,
+    pageLimit: params.pageSize,
+    searchRecord: params.searchText,
+    sortName: params.sortName,
+    sortOrder: params.sortOrder
+  })
 </script>

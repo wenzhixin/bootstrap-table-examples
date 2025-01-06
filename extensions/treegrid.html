@@ -64,7 +64,7 @@ init({
     })
   }
 
-  function typeFormatter (value, row, index) {
+  window.typeFormatter = value => {
     if (value === 'menu') {
       return '菜单'
     }
@@ -77,7 +77,7 @@ init({
     return '-'
   }
 
-  function statusFormatter (value, row, index) {
+  window.statusFormatter = value => {
     if (value === 1) {
       return '<span class="label label-success">正常</span>'
     }

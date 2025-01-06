@@ -8,48 +8,48 @@ init({
 </script>
 
 <script>
-  var $table = $('#table')
+  const $table = $('#table')
 
-  function buildTable($el, cells, rows) {
-    var i
-    var j
-    var row
-    var columns = []
-    var data = []
+  function buildTable ($el, cells, rows) {
+    let i
+    let j
+    let row
+    const columns = []
+    const data = []
 
     for (i = 0; i < cells; i++) {
       columns.push({
-        field: 'field' + i,
-        title: 'Cell' + i
+        field: `field${i}`,
+        title: `Cell${i}`
       })
     }
     for (i = 0; i < rows; i++) {
       row = {}
       for (j = 0; j < cells; j++) {
-        row['field' + j] = 'Row-' + i + '-' + j
+        row[`field${j}`] = `Row-${i}-${j}`
       }
       data.push(row)
     }
     $el.bootstrapTable('destroy').bootstrapTable({
-      columns: columns,
-      data: data
+      columns,
+      data
     })
   }
 
-  function mounted() {
+  function mounted () {
     buildTable($('#table'), 10, 50)
 
-    var $d = $('#d')
-    var width = $d.width()
+    const $d = $('#d')
+    let width = $d.width()
 
-    $('#b').click(function() {
+    $('#b').click(function () {
       width += 100
-      $d.css('width', width + 'px')
+      $d.css('width', `${width}px`)
       $table.bootstrapTable('resetView')
     })
-    $('#s').click(function() {
+    $('#s').click(function () {
       width -= 100
-      $d.css('width', width + 'px')
+      $d.css('width', `${width}px`)
       $table.bootstrapTable('resetView')
     })
   }

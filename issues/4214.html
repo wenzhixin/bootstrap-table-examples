@@ -41,7 +41,7 @@ init({
 </template>
 
 <script>
-  function responseHandler(res) {
+  window.responseHandler = res => {
     res.forEach(function (row, i) {
       row.index = i
     })

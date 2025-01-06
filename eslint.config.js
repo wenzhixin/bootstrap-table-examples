@@ -1,4 +1,5 @@
 import eslintConfig from 'bootstrap-table/eslint.config.js'
+import html from 'eslint-plugin-html'
 import vue from 'eslint-plugin-vue'
 
 const globals = eslintConfig[eslintConfig.length - 1].languageOptions.globals
@@ -13,6 +14,10 @@ export default [
       'integrate/',
       'webpack-starter/'
     ]
+  },
+  {
+    files: ['**/*.html'],
+    plugins: { html }
   },
   ...eslintConfig,
   ...vue.configs['flat/recommended'],

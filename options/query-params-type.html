@@ -68,7 +68,7 @@ init({
 <script>
   const $table = $('#table')
 
-  function queryParams (params) {
+  window.queryParams = params => {
     alert(`queryParams: ${JSON.stringify(params)}`)
     return params
   }

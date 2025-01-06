@@ -57,7 +57,7 @@ init({
 </template>
 
 <script>
-  function stateFormatter(value, row, index) {
+  window.stateFormatter = (value, row, index) => {
     if (index === 2) {
       return { disabled: true }
     }

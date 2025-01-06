@@ -7,38 +7,52 @@ init({
 })
 </script>
 
-<button id="button" type="button" class="ui primary button big lunch">
-  Launch modal table
-</button>
-<div class="ui modal">
-  <div class="header">
-    Modal table
-  </div>
-  <div class="content">
-    <table id="table"
-      data-toggle="table"
-      data-height="345"
-      data-url="json/data1.json">
-      <thead>
-        <tr>
-          <th data-field="id">ID</th>
-          <th data-field="name">Item Name</th>
-          <th data-field="price">Item Price</th>
-        </tr>
-      </thead>
-    </table>
-  </div>
-  <div class="actions">
-    <div class="ui black deny button">
+<template>
+  <button
+    id="button"
+    type="button"
+    class="ui primary button big lunch"
+  >
+    Launch modal table
+  </button>
+  <div class="ui modal">
+    <div class="header">
+      Modal table
+    </div>
+    <div class="content">
+      <table
+        id="table"
+        data-toggle="table"
+        data-height="345"
+        data-url="json/data1.json"
+      >
+        <thead>
+          <tr>
+            <th data-field="id">
+              ID
+            </th>
+            <th data-field="name">
+              Item Name
+            </th>
+            <th data-field="price">
+              Item Price
+            </th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+    <div class="actions">
+      <div class="ui black deny button">
         Close
+      </div>
     </div>
   </div>
-</div>
+</template>
 
 <script>
-  var $table = $('#table')
+  const $table = $('#table')
 
-  function mounted() {
+  function mounted () {
     $('#button').click(function () {
       $('.ui.modal').modal('show')
       $table.bootstrapTable('resetView')

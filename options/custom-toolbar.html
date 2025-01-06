@@ -92,7 +92,7 @@ init({
     })
   }
 
-  function queryParams () {
+  window.queryParams = () => {
     const params = {}
 
     $('#toolbar').find('input[name]').each(function () {
@@ -101,9 +101,7 @@ init({
     return params
   }
 
-  function responseHandler (res) {
-    return res.rows
-  }
+  window.responseHandler = res => res.rows
 </script>
 
 <style>

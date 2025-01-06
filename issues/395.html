@@ -44,15 +44,15 @@ init({
 </template>
 
 <script>
-  var $table = $('#table')
-  var $remove = $('#remove')
+  const $table = $('#table')
+  const $remove = $('#remove')
 
-  function mounted() {
+  function mounted () {
     $table.on('check.bs.table uncheck.bs.table check-all.bs.table uncheck-all.bs.table', function () {
       $remove.prop('disabled', !$table.bootstrapTable('getSelections').length)
     })
     $remove.click(function () {
-      var ids = $.map($table.bootstrapTable('getSelections'), function (row) {
+      const ids = $.map($table.bootstrapTable('getSelections'), function (row) {
         return row.id
       })
 

@@ -47,19 +47,20 @@ init({
 </template>
 
 <script>
-  var $table = $('#table')
+  const $table = $('#table')
 
-  function inputFormatter(value) {
-    var checked = value ? 'checked' : ''
-    return '<input type="checkbox" ' + checked + '>'
+  window.inputFormatter = value => {
+    const checked = value ? 'checked' : ''
+
+    return `<input type="checkbox" ${checked}>`
   }
 
   window.inputEvents = {
-    'change :checkbox': function (e, value, row, index) {
+    'change :checkbox' (e, value, row, index) {
       row.selling = $(e.target).prop('checked')
       $table.bootstrapTable('updateRow', {
-        index: index,
-        row: row
+        index,
+        row
       })
     }
   }

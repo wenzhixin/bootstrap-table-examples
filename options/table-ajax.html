@@ -35,7 +35,7 @@ init({
 
 <script>
   // your custom ajax request here
-  function ajaxRequest (params) {
+  window.ajaxRequest = params => {
     const url = 'https://examples.wenzhixin.net.cn/examples/bootstrap_table/data'
 
     $.get(`${url}?${$.param(params.data)}`).then(function (res) {

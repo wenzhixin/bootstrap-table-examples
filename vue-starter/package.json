@@ -14,12 +14,13 @@
     "bootstrap-table": "^1.24.0",
     "jquery": "^3.7.1",
     "tableexport.jquery.plugin": "^1.30.0",
-    "vue": "^3.4.27"
+    "vue": "^3.5.13"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^5.0.4",
-    "eslint": "^8.57.0",
-    "eslint-plugin-vue": "^9.26.0",
-    "vite": "^5.2.11"
+    "@eslint/js": "^9.21.0",
+    "@vitejs/plugin-vue": "^5.2.1",
+    "eslint": "^9.21.0",
+    "eslint-plugin-vue": "^9.32.0",
+    "vite": "^6.2.0"
   }
 }

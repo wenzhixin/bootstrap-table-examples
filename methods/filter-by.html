@@ -1,37 +1,56 @@
 <script>
-  init({
-    title: 'Filter By',
-    desc: 'Filter data in table (can use only in client-side): `$table.bootstrapTable(\'filterBy\', {id: [1, 2, 3]})`.<br>The custom filter shows only entries which id devided through 4 has a rest of 0.',
-    links: ['bootstrap-table.min.css'],
-    scripts: ['bootstrap-table.min.js']
-  })
+init({
+  title: 'Filter By',
+  desc: 'Filter data in table (can use only in client-side): `$table.bootstrapTable(\'filterBy\', {id: [1, 2, 3]})`.<br>The custom filter shows only entries which id devided through 4 has a rest of 0.',
+  links: ['bootstrap-table.min.css'],
+  scripts: ['bootstrap-table.min.js']
+})
 </script>
 
-<div id="toolbar">
-  <button id="button" class="btn btn-secondary">filterBy</button>
-  <button id="custom" class="btn btn-secondary">filterBy custom</button>
-</div>
-<table
-  id="table"
-  data-toggle="table"
-  data-toolbar="#toolbar"
-  data-height="400"
-  data-url="json/data1.json">
-  <thead>
-    <tr>
-      <th data-field="id">ID</th>
-      <th data-field="name">Item Name</th>
-      <th data-field="price">Item Price</th>
-    </tr>
-  </thead>
-</table>
+<template>
+  <div id="toolbar">
+    <button
+      id="button"
+      class="btn btn-secondary"
+    >
+      filterBy
+    </button>
+    <button
+      id="custom"
+      class="btn btn-secondary"
+    >
+      filterBy custom
+    </button>
+  </div>
+  <table
+    id="table"
+    data-toggle="table"
+    data-toolbar="#toolbar"
+    data-height="400"
+    data-url="json/data1.json"
+  >
+    <thead>
+      <tr>
+        <th data-field="id">
+          ID
+        </th>
+        <th data-field="name">
+          Item Name
+        </th>
+        <th data-field="price">
+          Item Price
+        </th>
+      </tr>
+    </thead>
+  </table>
+</template>
 
 <script>
-  var $table = $('#table')
-  var $button = $('#button')
-  var $customButton = $('#custom')
+  const $table = $('#table')
+  const $button = $('#button')
+  const $customButton = $('#custom')
 
-  function mounted() {
+  function mounted () {
     $button.click(function () {
       $table.bootstrapTable('filterBy', {
         id: [1, 2, 3]
@@ -42,9 +61,7 @@
       $table.bootstrapTable('filterBy', {
         id: 4
       }, {
-        'filterAlgorithm': (row, filters) => {
-          return row.id % filters.id === 0
-        }
+        filterAlgorithm: (row, filters) => row.id % filters.id === 0
       })
     })
   }

@@ -1,45 +1,73 @@
 <script>
-  init({
-    title: 'Reorder Columns',
-    desc: 'Use Plugin: <a href="https://github.com/akottr/dragtable/" target="_blank">dragtable</a> and bootstrap-table-reorder-columns.',
-    links: [
-      'https://cdn.jsdelivr.net/gh/akottr/dragtable@master/dragtable.css',
-      'bootstrap-table.min.css'
-    ],
-    scripts: [
-      'https://cdn.jsdelivr.net/npm/jqueryui@1.11.1/jquery-ui.min.js',
-      'https://cdn.jsdelivr.net/gh/akottr/dragtable@master/jquery.dragtable.js',
-      'bootstrap-table.min.js',
-      'extensions/reorder-columns/bootstrap-table-reorder-columns.min.js'
-    ]
-  })
+init({
+  title: 'Reorder Columns',
+  desc: 'Use Plugin: <a href="https://github.com/akottr/dragtable/" target="_blank">dragtable</a> and bootstrap-table-reorder-columns.',
+  links: [
+    'https://cdn.jsdelivr.net/gh/akottr/dragtable@master/dragtable.css',
+    'bootstrap-table.min.css'
+  ],
+  scripts: [
+    'https://cdn.jsdelivr.net/npm/jqueryui@1.11.1/jquery-ui.min.js',
+    'https://cdn.jsdelivr.net/gh/akottr/dragtable@master/jquery.dragtable.js',
+    'bootstrap-table.min.js',
+    'extensions/reorder-columns/bootstrap-table-reorder-columns.min.js'
+  ]
+})
 </script>
 
-<div class="toolbar">
-  <button class="btn btn-primary" id="order1">Order by Name, ID, price</button>
-  <button class="btn btn-primary" id="order2">Order by Price, Name, ID</button>
-</div>
+<template>
+  <div class="toolbar">
+    <button
+      id="order1"
+      class="btn btn-primary"
+    >
+      Order by Name, ID, price
+    </button>
+    <button
+      id="order2"
+      class="btn btn-primary"
+    >
+      Order by Price, Name, ID
+    </button>
+  </div>
 
-<table
-  id="table"
-  data-toolbar=".toolbar"
-  data-show-columns="true"
-  data-search="true"
-  data-show-toggle="true"
-  data-pagination="true"
-  data-url="json/data1.json"
-  data-reorderable-columns="true">
-  <thead>
-  <tr>
-    <th data-field="id" data-sortable="true">ID</th>
-    <th data-field="name" data-sortable="true">Item Name</th>
-    <th data-field="price" data-sortable="true">Item Price</th>
-  </tr>
-  </thead>
-</table>
+  <table
+    id="table"
+    data-toolbar=".toolbar"
+    data-show-columns="true"
+    data-search="true"
+    data-show-toggle="true"
+    data-pagination="true"
+    data-url="json/data1.json"
+    data-reorderable-columns="true"
+  >
+    <thead>
+      <tr>
+        <th
+          data-field="id"
+          data-sortable="true"
+        >
+          ID
+        </th>
+        <th
+          data-field="name"
+          data-sortable="true"
+        >
+          Item Name
+        </th>
+        <th
+          data-field="price"
+          data-sortable="true"
+        >
+          Item Price
+        </th>
+      </tr>
+    </thead>
+  </table>
+</template>
 
 <script>
-  function mounted() {
+  function mounted () {
     $('#table').bootstrapTable()
 
     $('#order1').on('click', () => {

@@ -1,21 +1,23 @@
 <script>
-  init({
-    title: 'Table Columns',
-    desc: 'Use `columns` option to define the table columns.',
-    links: ['bootstrap-table.min.css'],
-    scripts: ['bootstrap-table.min.js']
-  })
+init({
+  title: 'Table Columns',
+  desc: 'Use `columns` option to define the table columns.',
+  links: ['bootstrap-table.min.css'],
+  scripts: ['bootstrap-table.min.js']
+})
 </script>
 
-<table
-  id="table"
-  data-url="json/data1.json">
-</table>
+<template>
+  <table
+    id="table"
+    data-url="json/data1.json"
+  ></table>
+</template>
 
 <script>
-  var $table = $('#table')
+  const $table = $('#table')
 
-  function mounted() {
+  function mounted () {
     $table.bootstrapTable({
       columns: [
         {

@@ -1,37 +1,51 @@
 <script>
-  init({
-    title: 'Get Data',
-    desc: 'Get the loaded data of table: `$table.bootstrapTable(\'getData\')`.',
-    links: ['bootstrap-table.min.css'],
-    scripts: ['bootstrap-table.min.js']
-  })
+init({
+  title: 'Get Data',
+  desc: 'Get the loaded data of table: `$table.bootstrapTable(\'getData\')`.',
+  links: ['bootstrap-table.min.css'],
+  scripts: ['bootstrap-table.min.js']
+})
 </script>
 
-<div id="toolbar">
-  <button id="button" class="btn btn-secondary">getData</button>
-</div>
-<table
-  id="table"
-  data-toggle="table"
-  data-toolbar="#toolbar"
-  data-height="460"
-  data-side-pagination="server"
-  data-pagination="true"
-  data-url="https://examples.wenzhixin.net.cn/examples/bootstrap_table/data">
-  <thead>
-    <tr>
-      <th data-field="id">ID</th>
-      <th data-field="name">Item Name</th>
-      <th data-field="price">Item Price</th>
-    </tr>
-  </thead>
-</table>
+<template>
+  <div id="toolbar">
+    <button
+      id="button"
+      class="btn btn-secondary"
+    >
+      getData
+    </button>
+  </div>
+  <table
+    id="table"
+    data-toggle="table"
+    data-toolbar="#toolbar"
+    data-height="460"
+    data-side-pagination="server"
+    data-pagination="true"
+    data-url="https://examples.wenzhixin.net.cn/examples/bootstrap_table/data"
+  >
+    <thead>
+      <tr>
+        <th data-field="id">
+          ID
+        </th>
+        <th data-field="name">
+          Item Name
+        </th>
+        <th data-field="price">
+          Item Price
+        </th>
+      </tr>
+    </thead>
+  </table>
+</template>
 
 <script>
-  var $table = $('#table')
-  var $button = $('#button')
+  const $table = $('#table')
+  const $button = $('#button')
 
-  function mounted() {
+  function mounted () {
     $button.click(function () {
       alert(JSON.stringify($table.bootstrapTable('getData')))
     })

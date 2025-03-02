@@ -1,45 +1,20 @@
 <script>
-  init({
-    title: 'Issue #4586',
-    desc: 'Customize data attribute of td.(<a href="https://github.com/wenzhixin/bootstrap-table/issues/4586" target="_blank">#4586</a>).',
-    links: ['bootstrap-table.min.css'],
-    scripts: [
-      'https://cdn.jsdelivr.net/npm/tableexport.jquery.plugin@1.29.0/tableExport.min.js',
-      'bootstrap-table.min.js',
-      'extensions/export/bootstrap-table-export.min.js'
-    ]
-  })
+init({
+  title: 'Issue #4586',
+  desc: 'Customize data attribute of td.(<a href="https://github.com/wenzhixin/bootstrap-table/issues/4586" target="_blank">#4586</a>).',
+  links: ['bootstrap-table.min.css'],
+  scripts: [
+    'https://cdn.jsdelivr.net/npm/tableexport.jquery.plugin@1.29.0/tableExport.min.js',
+    'bootstrap-table.min.js',
+    'extensions/export/bootstrap-table-export.min.js'
+  ]
+})
 </script>
 
-<style>
-#toolbar {
-  margin: 0;
-}
-</style>
-
-<div id="toolbar" class="select">
-  <select class="form-control">
-    <option value="">Export Basic</option>
-    <option value="all">Export All</option>
-    <option value="selected">Export Selected</option>
-  </select>
-</div>
-
-<table id="table"
-  data-show-export="true"
-  data-pagination="true"
-  data-side-pagination="server"
-  data-click-to-select="true"
-  data-toolbar="#toolbar"
-  data-show-toggle="true"
-  data-show-columns="true"
-  data-url="https://examples.wenzhixin.net.cn/examples/bootstrap_table/data">
-</table>
-
 <script>
-  var $table = $('#table')
+  const $table = $('#table')
 
-  function mounted() {
+  function mounted () {
     $('#toolbar').find('select').change(function () {
       $table.bootstrapTable('destroy').bootstrapTable({
         exportDataType: $(this).val(),
@@ -75,3 +50,41 @@
     }).trigger('change')
   }
 </script>
+
+<template>
+  <div
+    id="toolbar"
+    class="select"
+  >
+    <select class="form-control">
+      <option value="">
+        Export Basic
+      </option>
+      <option value="all">
+        Export All
+      </option>
+      <option value="selected">
+        Export Selected
+      </option>
+    </select>
+  </div>
+
+  <table
+    id="table"
+    data-show-export="true"
+    data-pagination="true"
+    data-side-pagination="server"
+    data-click-to-select="true"
+    data-toolbar="#toolbar"
+    data-show-toggle="true"
+    data-show-columns="true"
+    data-url="https://examples.wenzhixin.net.cn/examples/bootstrap_table/data"
+  >
+  </table>
+</template>
+
+<style>
+#toolbar {
+  margin: 0;
+}
+</style>

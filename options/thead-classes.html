@@ -1,49 +1,16 @@
 <script>
-  init({
-    title: 'Thead Classes',
-    desc: 'Use `theadClasses` option to set the table header styles.',
-    links: ['bootstrap-table.min.css'],
-    scripts: ['bootstrap-table.min.js']
-  })
+init({
+  title: 'Thead Classes',
+  desc: 'Use `theadClasses` option to set the table header styles.',
+  links: ['bootstrap-table.min.css'],
+  scripts: ['bootstrap-table.min.js']
+})
 </script>
 
-<style>
-  .radio {
-    float: left;
-    margin-right: 15px;
-  }
-</style>
-
-<div class="toolbar">
-  <div class="radio">
-    <label>
-      <input type="radio" checked name="theadClasses">
-      <code>undefined</code>
-    </label>
-  </div>
-  <div class="radio">
-    <label>
-      <input type="radio" name="theadClasses">
-      <code>table-light</code>
-    </label>
-  </div>
-  <div class="radio">
-    <label>
-      <input type="radio" name="theadClasses">
-      <code>table-dark</code>
-    </label>
-  </div>
-</div>
-
-<table
-  id="table"
-  data-url="json/data1.json">
-</table>
-
 <script>
-  var $table = $('#table')
+  const $table = $('#table')
 
-  function mounted() {
+  function mounted () {
     $table.bootstrapTable({
       columns: [
         {
@@ -62,7 +29,7 @@
     })
 
     $('.toolbar input').change(function () {
-      var classes = $('.toolbar input:checked').next().text()
+      const classes = $('.toolbar input:checked').next().text()
 
       $table.bootstrapTable('refreshOptions', {
         theadClasses: classes
@@ -70,3 +37,49 @@
     })
   }
 </script>
+
+<template>
+  <div class="toolbar">
+    <div class="radio">
+      <label>
+        <input
+          type="radio"
+          checked
+          name="theadClasses"
+        >
+        <code>undefined</code>
+      </label>
+    </div>
+    <div class="radio">
+      <label>
+        <input
+          type="radio"
+          name="theadClasses"
+        >
+        <code>table-light</code>
+      </label>
+    </div>
+  </div>
+
+  <div class="radio">
+    <label>
+      <input
+        type="radio"
+        name="theadClasses"
+      >
+      <code>table-dark</code>
+    </label>
+  </div>
+
+  <table
+    id="table"
+    data-url="json/data1.json"
+  ></table>
+</template>
+
+<style>
+  .radio {
+    float: left;
+    margin-right: 15px;
+  }
+</style>

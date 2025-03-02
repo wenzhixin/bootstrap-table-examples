@@ -5,8 +5,9 @@ window._config = {
   themes: []
 }
 
-function initUrl() {
-  var href = location.hash.substring(1)
+function initUrl () {
+  let href = location.hash.substring(1)
+
   window._config.isViewSource = false
   if (href.indexOf('view-source') > -1) {
     href = href.replace('#view-source', '').replace('view-source', '')
@@ -15,7 +16,7 @@ function initUrl() {
   return href || 'welcome.html'
 }
 
-function initThemes() {
+function initThemes () {
   $('[data-theme]').each(function () {
     if ($(this).data('theme')) {
       window._config.themes.push($(this).data('theme'))
@@ -24,7 +25,8 @@ function initThemes() {
   if (window._config.themes.indexOf(window._config.theme) === -1) {
     window._config.theme = ''
   }
-  var $theme = $('[data-theme="' + window._config.theme + '"]').addClass('active')
+  const $theme = $(`[data-theme="${window._config.theme}"]`).addClass('active')
+
   $('#theme-title').text($theme.text())
 
   $('[data-show]').each(function () {
@@ -32,24 +34,26 @@ function initThemes() {
   })
 }
 
-function loadUrl(url_) {
-  var template = 'template'
+function loadUrl (url_) {
+  let template = 'template'
+
   if (window._config.themes.indexOf(window._config.theme) > -1) {
-    template += '-' + window._config.theme
+    template += `-${window._config.theme}`
   }
-  var url = template + '.html?v=945&url=' + url_
+  let url = `${template}.html?v=961&url=${url_}`
+
   if (window._config.isDebug) {
-    url = template + '.html?t=' + (+new Date()) + '&url=' + url_
+    url = `${template}.html?t=${+new Date()}&url=${url_}`
   }
   if (window._config.isViewSource) {
-    url = template + '.html?v=945&view-source&url=' + url_ + '#view-source'
+    url = `${template}.html?v=961&view-source&url=${url_}#view-source`
   }
   $('iframe').attr('src', url)
 }
 
-function initNavigation(href) {
-  var $el = $('a[href="#' + href + '"]')
-  var $parent = $el.parent()
+function initNavigation (href) {
+  const $el = $(`a[href="#${href}"]`)
+  const $parent = $el.parent()
 
   if (!$el.length) {
     return
@@ -61,20 +65,21 @@ function initNavigation(href) {
 }
 
 function autoScrollNavigation () {
-  var $el = $('.bd-sidenav >li.active')
+  const $el = $('.bd-sidenav >li.active')
+
   $('#bd-docs-nav').scrollTop(0)
   if ($el.length && $el.offset().top > $(window).height() / 2) {
     $('#bd-docs-nav').scrollTop($el.offset().top - $(window).height() / 2)
   }
 }
 
-function doSearch() {
-  var searchClient = window.algoliasearch('FXDJ517Z8G', '9b89c4a7048370f4809b0bc77b2564ac')
+function doSearch () {
+  const searchClient = window.algoliasearch('FXDJ517Z8G', '9b89c4a7048370f4809b0bc77b2564ac')
 
-  var search = window.instantsearch({
+  const search = window.instantsearch({
     indexName: 'bootstrap-table-example',
-    searchClient: searchClient,
-    searchFunction: function (helper) {
+    searchClient,
+    searchFunction (helper) {
       if (helper.state.query) {
         helper.clearTags()
         helper.addTag(window._config.theme)
@@ -96,13 +101,14 @@ function doSearch() {
     window.instantsearch.widgets.hits({
       container: '.hits-body',
       templates: {
-        item: function (hit) {
-          var search = ''
+        item (hit) {
+          let search = ''
+
           if (window._config.theme) {
-            search = '?' + window._config.theme
+            search = `?${window._config.theme}`
           }
           return [
-            '<div class="link" data-href="' + hit.url + search + hit.anchor + '">',
+            `<div class="link" data-href="${hit.url}${search}${hit.anchor}">`,
             '<div class="category">',
             hit.anchor.split('/')[0].slice(1),
             '</div>',
@@ -120,7 +126,8 @@ function doSearch() {
   )
 
   $(document).on('click', '.ais-Hits-item .link', function (e) {
-    var href = $(e.currentTarget).data('href')
+    const href = $(e.currentTarget).data('href')
+
     if ($(e.target).is('a')) {
       return
     }
@@ -134,7 +141,7 @@ function doSearch() {
 }
 
 function initViewSource () {
-  var isSource = /view-source$/.test(location.hash)
+  const isSource = /view-source$/.test(location.hash)
 
   if (isSource) {
     $('.view-example').css('display', 'block')
@@ -147,15 +154,13 @@ function initViewSource () {
   $('.view-example, .view-source').off('click').click(function () {
     if (isSource) {
       location.hash = location.hash.replace('#view-source', '')
-    } else {
-      if (location.hash.indexOf('view-source') === -1) {
-        location.hash += '#view-source'
-      }
+    } else if (location.hash.indexOf('view-source') === -1) {
+      location.hash += '#view-source'
     }
   })
 
-  $('.view-online').attr('href', 'https://live.bootstrap-table.com/example/' +
-    (location.hash.slice(1).split('#')[0] || 'welcome.html'))
+  $('.view-online').attr('href', `https://live.bootstrap-table.com/example/${
+    location.hash.slice(1).split('#')[0] || 'welcome.html'}`)
 }
 
 $(function () {
@@ -166,14 +171,16 @@ $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 
   $(window).hashchange(function () {
-    var href = initUrl()
+    const href = initUrl()
+
     loadUrl(href)
     initNavigation(href)
     initViewSource()
   })
 
   initThemes()
-  var href = initUrl()
+  const href = initUrl()
+
   loadUrl(href)
   initNavigation(href)
   autoScrollNavigation()

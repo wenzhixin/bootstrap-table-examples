@@ -1,61 +1,70 @@
 <script>
-  init({
-    title: 'Undefined Text',
-    desc: 'Use `undefinedText` option to set `undefined` text. In this example, we set to `N/A`.',
-    links: ['bootstrap-table.min.css'],
-    scripts: ['bootstrap-table.min.js']
-  })
+init({
+  title: 'Undefined Text',
+  desc: 'Use `undefinedText` option to set `undefined` text. In this example, we set to `N/A`.',
+  links: ['bootstrap-table.min.css'],
+  scripts: ['bootstrap-table.min.js']
+})
 </script>
 
-<table id="table">
-  <thead>
-    <tr>
-      <th data-field="id">ID</th>
-      <th data-field="name">Item Name</th>
-      <th data-field="price">Item Price</th>
-    </tr>
-  </thead>
-</table>
+<template>
+  <table id="table">
+    <thead>
+      <tr>
+        <th data-field="id">
+          ID
+        </th>
+        <th data-field="name">
+          Item Name
+        </th>
+        <th data-field="price">
+          Item Price
+        </th>
+      </tr>
+    </thead>
+  </table>
+</template>
 
 <script>
-  var $table = $('#table')
+  const $table = $('#table')
 
-  function mounted() {
-    var data = [
+  function mounted () {
+    const data = [
       {
-        'id': 0,
-        'name': undefined,
-        'price': '$0'
+        id: 0,
+        name: undefined,
+        price: '$0'
       },
       {
-        'id': 1,
-        'name': 'Item 1',
-        'price': undefined
+        id: 1,
+        name: 'Item 1',
+        price: undefined
       },
       {
-        'id': 2,
-        'name': 'Item 2',
-        'price': '$2'
+        id: 2,
+        name: 'Item 2',
+        price: '$2'
       },
       {
-        'id': 3,
-        'name': undefined,
-        'price': '$3'
+        id: 3,
+        name: undefined,
+        price: '$3'
       },
       {
-        'id': 4,
-        'name': 'Item 4',
-        'price': undefined
+        id: 4,
+        name: 'Item 4',
+        price: undefined
       },
       {
-        'id': 5,
-        'name': 'Item 5',
-        'price': '$5'
+        id: 5,
+        name: 'Item 5',
+        price: '$5'
       }
     ]
+
     $table.bootstrapTable({
       undefinedText: 'N/A',
-      data: data
+      data
     })
   }
 </script>

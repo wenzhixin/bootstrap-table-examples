@@ -1,24 +1,47 @@
 <script>
-  init({
-    title: 'Flat Json',
-    desc: 'Support flat json, for example: <br>`field: \'github.count.stargazers\'`.',
-    links: ['bootstrap-table.min.css'],
-    scripts: ['bootstrap-table.min.js']
-  })
+init({
+  title: 'Flat Json',
+  desc: 'Support flat json, for example: <br>`field: \'github.count.stargazers\'`.',
+  links: ['bootstrap-table.min.css'],
+  scripts: ['bootstrap-table.min.js']
+})
 </script>
 
-<table
-  id="table"
-  data-toggle="table"
-  data-flat="true"
-  data-search="true"
-  data-url="json/data3.json">
-  <thead>
-    <tr>
-      <th data-field="github.name" data-sortable="true">Name</th>
-      <th data-field="github.count.stargazers" data-sortable="true">Stargazers</th>
-      <th data-field="github.count.forks" data-sortable="true">Forks</th>
-      <th data-field="github.description" data-sortable="true">Description</th>
-    </tr>
-  </thead>
-</table>
+<template>
+  <table
+    id="table"
+    data-toggle="table"
+    data-flat="true"
+    data-search="true"
+    data-url="json/data3.json"
+  >
+    <thead>
+      <tr>
+        <th
+          data-field="github.name"
+          data-sortable="true"
+        >
+          Name
+        </th>
+        <th
+          data-field="github.count.stargazers"
+          data-sortable="true"
+        >
+          Stargazers
+        </th>
+        <th
+          data-field="github.count.forks"
+          data-sortable="true"
+        >
+          Forks
+        </th>
+        <th
+          data-field="github.description"
+          data-sortable="true"
+        >
+          Description
+        </th>
+      </tr>
+    </thead>
+  </table>
+</template>

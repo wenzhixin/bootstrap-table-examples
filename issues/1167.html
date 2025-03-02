@@ -1,37 +1,59 @@
 <script>
-  init({
-    title: 'Issue #1167',
-    desc: 'Check/Uncheck All in all page with client side(<a href="https://github.com/wenzhixin/bootstrap-table/issues/1167" target="_blank">#1167</a>).',
-    links: ['bootstrap-table.min.css'],
-    scripts: ['bootstrap-table.min.js']
-  })
+init({
+  title: 'Issue #1167',
+  desc: 'Check/Uncheck All in all page with client side(<a href="https://github.com/wenzhixin/bootstrap-table/issues/1167" target="_blank">#1167</a>).',
+  links: ['bootstrap-table.min.css'],
+  scripts: ['bootstrap-table.min.js']
+})
 </script>
 
-<div class="toolbar">
-  <button id="checkAll" class="btn btn-secondary">Check All</button>
-  <button id="uncheckAll" class="btn btn-secondary">Uncheck All</button>
-</div>
-<table
-  id="table"
-  data-toggle="table"
-  data-toolbar=".toolbar"
-  data-pagination="true"
-  data-maintain-meta-data="true"
-  data-url="json/data1.json">
-  <thead>
-    <tr>
-      <th data-field="state" data-checkbox="true"></th>
-      <th data-field="id">ID</th>
-      <th data-field="name">Item Name</th>
-      <th data-field="price">Item Price</th>
-    </tr>
-  </thead>
-</table>
+<template>
+  <div class="toolbar">
+    <button
+      id="checkAll"
+      class="btn btn-secondary"
+    >
+      Check All
+    </button>
+    <button
+      id="uncheckAll"
+      class="btn btn-secondary"
+    >
+      Uncheck All
+    </button>
+  </div>
+  <table
+    id="table"
+    data-toggle="table"
+    data-toolbar=".toolbar"
+    data-pagination="true"
+    data-maintain-meta-data="true"
+    data-url="json/data1.json"
+  >
+    <thead>
+      <tr>
+        <th
+          data-field="state"
+          data-checkbox="true"
+        ></th>
+        <th data-field="id">
+          ID
+        </th>
+        <th data-field="name">
+          Item Name
+        </th>
+        <th data-field="price">
+          Item Price
+        </th>
+      </tr>
+    </thead>
+  </table>
+</template>
 
 <script>
-  var $table = $('#table')
+  const $table = $('#table')
 
-  function mounted() {
+  function mounted () {
     $('#checkAll').click(function () {
       $table.bootstrapTable('togglePagination').bootstrapTable('checkAll').bootstrapTable('togglePagination')
     })

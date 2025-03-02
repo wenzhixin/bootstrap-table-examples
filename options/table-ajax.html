@@ -1,34 +1,44 @@
 <script>
-  init({
-    title: 'Custom AJAX',
-    desc: 'Use `ajax` option to replace ajax call. Should implement the same API as jQuery ajax method.',
-    links: ['bootstrap-table.min.css'],
-    scripts: ['bootstrap-table.min.js']
-  })
+init({
+  title: 'Custom AJAX',
+  desc: 'Use `ajax` option to replace ajax call. Should implement the same API as jQuery ajax method.',
+  links: ['bootstrap-table.min.css'],
+  scripts: ['bootstrap-table.min.js']
+})
 </script>
 
-<table
-  id="table"
-  data-toggle="table"
-  data-height="460"
-  data-ajax="ajaxRequest"
-  data-search="true"
-  data-side-pagination="server"
-  data-pagination="true">
-  <thead>
-    <tr>
-      <th data-field="id">ID</th>
-      <th data-field="name">Item Name</th>
-      <th data-field="price">Item Price</th>
-    </tr>
-  </thead>
-</table>
+<template>
+  <table
+    id="table"
+    data-toggle="table"
+    data-height="460"
+    data-ajax="ajaxRequest"
+    data-search="true"
+    data-side-pagination="server"
+    data-pagination="true"
+  >
+    <thead>
+      <tr>
+        <th data-field="id">
+          ID
+        </th>
+        <th data-field="name">
+          Item Name
+        </th>
+        <th data-field="price">
+          Item Price
+        </th>
+      </tr>
+    </thead>
+  </table>
+</template>
 
 <script>
   // your custom ajax request here
-  function ajaxRequest(params) {
-    var url = 'https://examples.wenzhixin.net.cn/examples/bootstrap_table/data'
-    $.get(url + '?' + $.param(params.data)).then(function (res) {
+  window.ajaxRequest = params => {
+    const url = 'https://examples.wenzhixin.net.cn/examples/bootstrap_table/data'
+
+    $.get(`${url}?${$.param(params.data)}`).then(function (res) {
       params.success(res)
     })
   }

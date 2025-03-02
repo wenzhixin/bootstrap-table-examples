@@ -1,36 +1,46 @@
 <script>
-  init({
-    title: 'Detail View Icon',
-    desc: 'Use `detailViewIcon: false` and `detailViewByClick: true` options to hide the detail view column (plus/minus icon).',
-    links: ['bootstrap-table.min.css'],
-    scripts: ['bootstrap-table.min.js']
-  })
+init({
+  title: 'Detail View Icon',
+  desc: 'Use `detailViewIcon: false` and `detailViewByClick: true` options to hide the detail view column (plus/minus icon).',
+  links: ['bootstrap-table.min.css'],
+  scripts: ['bootstrap-table.min.js']
+})
 </script>
 
-<table
-  id="table"
-  data-toggle="table"
-  data-height="460"
-  data-show-toggle="true"
-  data-detail-view="true"
-  data-detail-view-icon="false"
-  data-detail-view-by-click="true"
-  data-detail-formatter="detailFormatter"
-  data-url="json/data1.json">
-  <thead>
-    <tr>
-      <th data-field="id">ID</th>
-      <th data-field="name">Item Name</th>
-      <th data-field="price">Item Price</th>
-    </tr>
-  </thead>
-</table>
+<template>
+  <table
+    id="table"
+    data-toggle="table"
+    data-height="460"
+    data-show-toggle="true"
+    data-detail-view="true"
+    data-detail-view-icon="false"
+    data-detail-view-by-click="true"
+    data-detail-formatter="detailFormatter"
+    data-url="json/data1.json"
+  >
+    <thead>
+      <tr>
+        <th data-field="id">
+          ID
+        </th>
+        <th data-field="name">
+          Item Name
+        </th>
+        <th data-field="price">
+          Item Price
+        </th>
+      </tr>
+    </thead>
+  </table>
+</template>
 
 <script>
-  function detailFormatter(index, row) {
-    var html = []
+  window.detailFormatter = (index, row) => {
+    const html = []
+
     $.each(row, function (key, value) {
-      html.push('<p><b>' + key + ':</b> ' + value + '</p>')
+      html.push(`<p><b>${key}:</b> ${value}</p>`)
     })
     return html.join('')
   }

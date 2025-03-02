@@ -1,44 +1,54 @@
 <script>
-  init({
-    title: 'Issue #3830',
-    desc: 'Export all records with server side pagination(<a href="https://github.com/wenzhixin/bootstrap-table/issues/3830" target="_blank">#3830</a>).',
-    links: ['bootstrap-table.min.css'],
-    scripts: [
-      'https://cdn.jsdelivr.net/npm/tableexport.jquery.plugin@1.29.0/tableExport.min.js',
-      'bootstrap-table.min.js',
-      'extensions/export/bootstrap-table-export.min.js'
-    ]
-  })
+init({
+  title: 'Issue #3830',
+  desc: 'Export all records with server side pagination(<a href="https://github.com/wenzhixin/bootstrap-table/issues/3830" target="_blank">#3830</a>).',
+  links: ['bootstrap-table.min.css'],
+  scripts: [
+    'https://cdn.jsdelivr.net/npm/tableexport.jquery.plugin@1.29.0/tableExport.min.js',
+    'bootstrap-table.min.js',
+    'extensions/export/bootstrap-table-export.min.js'
+  ]
+})
 </script>
 
-<table
-  id="table"
-  data-height="460"
-  data-url="https://examples.wenzhixin.net.cn/examples/bootstrap_table/data"
-  data-search="true"
-  data-pagination="true"
-  data-side-pagination="server"
-  data-show-export="true"
-  data-export-data-type="all"
-  data-query-params="queryParams">
-  <thead>
-    <tr>
-      <th data-field="id">ID</th>
-      <th data-field="name">Item Name</th>
-      <th data-field="price">Item Price</th>
-    </tr>
-  </thead>
-</table>
+<template>
+  <table
+    id="table"
+    data-height="460"
+    data-url="https://examples.wenzhixin.net.cn/examples/bootstrap_table/data"
+    data-search="true"
+    data-pagination="true"
+    data-side-pagination="server"
+    data-show-export="true"
+    data-export-data-type="all"
+    data-query-params="queryParams"
+  >
+    <thead>
+      <tr>
+        <th data-field="id">
+          ID
+        </th>
+        <th data-field="name">
+          Item Name
+        </th>
+        <th data-field="price">
+          Item Price
+        </th>
+      </tr>
+    </thead>
+  </table>
+</template>
 
 <script>
-  var $table = $('#table')
+  const $table = $('#table')
 
-  function mounted() {
+  function mounted () {
     $table.bootstrapTable()
   }
 
-  function queryParams(params) {
-    var options = $table.bootstrapTable('getOptions')
+  window.queryParams = params => {
+    const options = $table.bootstrapTable('getOptions')
+
     if (!options.pagination) {
       params.limit = options.totalRows
     }

@@ -1,41 +1,66 @@
 <script>
-  init({
-    title: 'i18n Enhance',
-    desc: 'Use Plugin: bootstrap-table-i18n-enhance.',
-    links: ['bootstrap-table.min.css'],
-    scripts: [
-      'bootstrap-table.min.js',
-      'extensions/i18n-enhance/bootstrap-table-i18n-enhance.min.js'
-    ]
-  })
+init({
+  title: 'i18n Enhance',
+  desc: 'Use Plugin: bootstrap-table-i18n-enhance.',
+  links: ['bootstrap-table.min.css'],
+  scripts: [
+    'bootstrap-table.min.js',
+    'extensions/i18n-enhance/bootstrap-table-i18n-enhance.min.js'
+  ]
+})
 </script>
 
-<div id="toolbar">
-  <label>Language:</label>
-  <div class="btn-group" role="group" style="margin-bottom: 4px">
-    <button id="tw_Btn" type="button" class="btn btn-secondary btn-sm active">zh_TW</button>
-    <button id="us_Btn" type="button" class="btn btn-secondary btn-sm">en_US</button>
+<template>
+  <div id="toolbar">
+    <label>Language:</label>
+    <div
+      class="btn-group"
+      role="group"
+      style="margin-bottom: 4px"
+    >
+      <button
+        id="tw_Btn"
+        type="button"
+        class="btn btn-secondary btn-sm active"
+      >
+        zh_TW
+      </button>
+      <button
+        id="us_Btn"
+        type="button"
+        class="btn btn-secondary btn-sm"
+      >
+        en_US
+      </button>
+    </div>
   </div>
-</div>
 
-<table
-  id="table"
-  data-url="json/data1.json"
-  data-pagination="true"
-  data-toolbar="#toolbar">
-  <thead>
-    <tr>
-      <th data-field="id">代碼</th>
-      <th data-field="name">項目名稱</th>
-      <th data-field="price">項目金額</th>
-    </tr>
-  </thead>
-</table>
+  <table
+    id="table"
+    data-url="json/data1.json"
+    data-pagination="true"
+    data-toolbar="#toolbar"
+  >
+    <thead>
+      <tr>
+        <th data-field="id">
+          代碼
+        </th>
+        <th data-field="name">
+          項目名稱
+        </th>
+        <th data-field="price">
+          項目金額
+        </th>
+      </tr>
+    </thead>
+  </table>
+</template>
 
 <script>
-  function mounted() {
-    var $table = $('#table')
-    var $buttons = $('button')
+  function mounted () {
+    const $table = $('#table')
+    const $buttons = $('button')
 
     $table.bootstrapTable()
 

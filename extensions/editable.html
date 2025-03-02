@@ -1,34 +1,50 @@
 <script>
-  init({
-    title: 'Editable',
-    desc: 'Use Plugin: <a href="https://github.com/vitalets/x-editable" target="_blank">x-editable</a> and bootstrap-table-editable.',
-    links: [
-      'https://cdn.jsdelivr.net/npm/x-editable@1.5.11/dist/bootstrap3-editable/css/bootstrap-editable.css',
-      'bootstrap-table.min.css'
-    ],
-    scripts: [
-      'https://cdn.jsdelivr.net/npm/x-editable@1.5.11/dist/bootstrap3-editable/js/bootstrap-editable.min.js',
-      'bootstrap-table.min.js',
-      'extensions/editable/bootstrap-table-editable.min.js'
-    ]
-  })
+init({
+  title: 'Editable',
+  desc: 'Use Plugin: <a href="https://github.com/vitalets/x-editable" target="_blank">x-editable</a> and bootstrap-table-editable.',
+  links: [
+    'https://cdn.jsdelivr.net/npm/x-editable@1.5.11/dist/bootstrap3-editable/css/bootstrap-editable.css',
+    'bootstrap-table.min.css'
+  ],
+  scripts: [
+    'https://cdn.jsdelivr.net/npm/x-editable@1.5.11/dist/bootstrap3-editable/js/bootstrap-editable.min.js',
+    'bootstrap-table.min.js',
+    'extensions/editable/bootstrap-table-editable.min.js'
+  ]
+})
 </script>
 
-<table id="table"
-  data-pagination="true"
-  data-show-export="true"
-  data-url="json/data1.json">
-  <thead>
-    <tr>
-      <th data-field="id">ID</th>
-      <th data-field="name" data-editable="true">Item Name</th>
-      <th data-field="price" data-editable="true">Item Price</th>
-    </tr>
-  </thead>
-</table>
+<template>
+  <table
+    id="table"
+    data-pagination="true"
+    data-show-export="true"
+    data-url="json/data1.json"
+  >
+    <thead>
+      <tr>
+        <th data-field="id">
+          ID
+        </th>
+        <th
+          data-field="name"
+          data-editable="true"
+        >
+          Item Name
+        </th>
+        <th
+          data-field="price"
+          data-editable="true"
+        >
+          Item Price
+        </th>
+      </tr>
+    </thead>
+  </table>
+</template>
 
 <script>
-  function mounted() {
+  function mounted () {
     $('#table').bootstrapTable()
   }
 </script>

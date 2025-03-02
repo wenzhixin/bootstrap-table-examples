@@ -1,43 +1,57 @@
 <script>
-  init({
-    title: 'Ignore Click To Select On',
-    desc: 'Use `ignoreClickToSelectOn` option to set the ignore elements `clickToSelect` on.',
-    links: ['bootstrap-table.min.css'],
-    scripts: ['bootstrap-table.min.js']
-  })
+init({
+  title: 'Ignore Click To Select On',
+  desc: 'Use `ignoreClickToSelectOn` option to set the ignore elements `clickToSelect` on.',
+  links: ['bootstrap-table.min.css'],
+  scripts: ['bootstrap-table.min.js']
+})
 </script>
 
-<table
-  id="table"
-  data-height="460"
-  data-click-to-select="true"
-  data-url="json/data1.json">
-  <thead>
-    <tr>
-      <th data-field="state" data-checkbox="true"></th>
-      <th data-field="id">ID</th>
-      <th data-field="name" data-formatter="nameFormatter">Item Name</th>
-      <th data-field="price" data-formatter="priceFormatter">Item Price</th>
-    </tr>
-  </thead>
-</table>
+<template>
+  <table
+    id="table"
+    data-height="460"
+    data-click-to-select="true"
+    data-url="json/data1.json"
+  >
+    <thead>
+      <tr>
+        <th
+          data-field="state"
+          data-checkbox="true"
+        ></th>
+        <th data-field="id">
+          ID
+        </th>
+        <th
+          data-field="name"
+          data-formatter="nameFormatter"
+        >
+          Item Name
+        </th>
+        <th
+          data-field="price"
+          data-formatter="priceFormatter"
+        >
+          Item Price
+        </th>
+      </tr>
+    </thead>
+  </table>
+</template>
 
 <script>
-  function nameFormatter(value) {
-    return '<label><input type="checkbox"> ' + value + '</label>'
-  }
+  window.nameFormatter = value => `<label><input type="checkbox"> ${value}</label>`
 
-  function priceFormatter(value) {
-    return '<button class="btn btn-secondary">' + value + '</button>'
-  }
+  window.priceFormatter = value => `<button class="btn btn-secondary">${value}</button>`
 
-  function ignoreClickToSelectOn(e) {
+  function ignoreClickToSelectOn (e) {
     return ['A', 'BUTTON', 'LABEL', 'INPUT'].indexOf(e.tagName) > -1
   }
 
-  function mounted() {
+  function mounted () {
     $('#table').bootstrapTable({
-      ignoreClickToSelectOn: ignoreClickToSelectOn
+      ignoreClickToSelectOn
     })
   }
 </script>

@@ -1,33 +1,53 @@
 <script>
-  init({
-    title: 'Custom Sort',
-    desc: 'Use `customSort` option to custom sort by the number instead of string.',
-    links: ['bootstrap-table.min.css'],
-    scripts: ['bootstrap-table.min.js']
-  })
+init({
+  title: 'Custom Sort',
+  desc: 'Use `customSort` option to custom sort by the number instead of string.',
+  links: ['bootstrap-table.min.css'],
+  scripts: ['bootstrap-table.min.js']
+})
 </script>
 
-<table
-  id="table"
-  data-toggle="table"
-  data-height="460"
-  data-custom-sort="customSort"
-  data-url="json/data1.json">
-  <thead>
-    <tr>
-      <th data-field="id" data-sortable="true">ID</th>
-      <th data-field="name" data-sortable="true">Item Name</th>
-      <th data-field="price" data-sortable="true">Item Price</th>
-    </tr>
-  </thead>
-</table>
+<template>
+  <table
+    id="table"
+    data-toggle="table"
+    data-height="460"
+    data-custom-sort="customSort"
+    data-url="json/data1.json"
+  >
+    <thead>
+      <tr>
+        <th
+          data-field="id"
+          data-sortable="true"
+        >
+          ID
+        </th>
+        <th
+          data-field="name"
+          data-sortable="true"
+        >
+          Item Name
+        </th>
+        <th
+          data-field="price"
+          data-sortable="true"
+        >
+          Item Price
+        </th>
+      </tr>
+    </thead>
+  </table>
+</template>
 
 <script>
-  function customSort(sortName, sortOrder, data) {
-    var order = sortOrder === 'desc' ? -1 : 1
+  window.customSort = (sortName, sortOrder, data) => {
+    const order = sortOrder === 'desc' ? -1 : 1
+
     data.sort(function (a, b) {
-      var aa = +((a[sortName] + '').replace(/[^\d]/g, ''))
-      var bb = +((b[sortName] + '').replace(/[^\d]/g, ''))
+      const aa = +`${a[sortName]}`.replace(/[^\d]/g, '')
+      const bb = +`${b[sortName]}`.replace(/[^\d]/g, '')
+
       if (aa < bb) {
         return order * -1
       }

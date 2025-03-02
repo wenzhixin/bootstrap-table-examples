@@ -1,28 +1,35 @@
 <script>
-  init({
-    title: 'Addrbar',
-    desc: 'Use Plugin: bootstrap-table-addrbar to enable query params of the address bar. Use browser history forward to try this case.',
-    links: [
-      'bootstrap-table.min.css'
-    ],
-    scripts: [
-      'bootstrap-table.min.js',
-      'extensions/addrbar/bootstrap-table-addrbar.min.js'
-    ]
-  })
+init({
+  title: 'Addrbar',
+  desc: 'Use Plugin: bootstrap-table-addrbar to enable query params of the address bar. Use browser history forward to try this case.',
+  links: [
+    'bootstrap-table.min.css'
+  ],
+  scripts: [
+    'bootstrap-table.min.js',
+    'extensions/addrbar/bootstrap-table-addrbar.min.js'
+  ]
+})
 </script>
 
-<a id="launch" class="btn btn-secondary" target="_blank">
-  Launch in a new page
-</a>
+<template>
+  <a
+    id="launch"
+    class="btn btn-secondary"
+    target="_blank"
+  >
+    Launch in a new page
+  </a>
+</template>
 
 <script>
-  function mounted() {
-    var theme = parent.location.search.replace('?', '')
-    var template = 'template.html'
+  function mounted () {
+    const theme = parent.location.search.replace('?', '')
+    let template = 'template.html'
+
     if (theme) {
-      template = 'template-' + theme + '.html'
+      template = `template-${theme}.html`
     }
-    $('#launch').attr('href', template + '?v=VERSION&url=extensions/addrbar-page.html')
+    $('#launch').attr('href', `${template}?v=VERSION&url=extensions/addrbar-page.html`)
   }
 </script>

@@ -5,6 +5,7 @@
  * add data-sorter="alphanum" or data-sorter="numericOnly" to any th
  */
 
+// eslint-disable-next-line no-unused-vars
 function alphanum (a, b) {
   function chunkify (t) {
     const tz = []
@@ -14,7 +15,8 @@ function alphanum (a, b) {
     for (let i = 0; i <= t.length; i++) {
       const char = t.charAt(i)
       const charCode = char.charCodeAt(0)
-      const m = (charCode === 46 || (charCode >= 48 && charCode <= 57))
+      const m = charCode === 46 || charCode >= 48 && charCode <= 57
+
       if (m !== n) {
         tz[++y] = ''
         n = m
@@ -26,7 +28,7 @@ function alphanum (a, b) {
   }
 
   function stringfy (v) {
-    if (typeof(v) === 'number') {
+    if (typeof v === 'number') {
       v = `${v}`
     }
     if (!v) {
@@ -46,13 +48,14 @@ function alphanum (a, b) {
       if (c === aa[x] && d === bb[x]) {
         return c - d
       }
-      return (aa[x] > bb[x]) ? 1 : -1
+      return aa[x] > bb[x] ? 1 : -1
 
     }
   }
   return aa.length - bb.length
 }
 
+// eslint-disable-next-line no-unused-vars
 function numericOnly (a, b) {
   function stripNonNumber (s) {
     s = s.replace(/^(-)|[.,](?=[^.,]*[.,](?!$))|[,.]+$|[^0-9.,]+/g, '$1')

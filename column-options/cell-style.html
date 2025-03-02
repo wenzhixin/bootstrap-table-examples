@@ -1,31 +1,43 @@
 <script>
-  init({
-    title: 'Cell Style',
-    desc: 'Use `cellStyle` to define the style of a cell.',
-    links: [
-      'https://s3-us-west-2.amazonaws.com/colors-css/2.2.0/colors.min.css',
-      'bootstrap-table.min.css'
-    ],
-    scripts: ['bootstrap-table.min.js']
-  })
+init({
+  title: 'Cell Style',
+  desc: 'Use `cellStyle` to define the style of a cell.',
+  links: [
+    'https://s3-us-west-2.amazonaws.com/colors-css/2.2.0/colors.min.css',
+    'bootstrap-table.min.css'
+  ],
+  scripts: ['bootstrap-table.min.js']
+})
 </script>
 
-<table
-  id="table"
-  data-toggle="table"
-  data-url="json/data1.json">
-  <thead>
-  <tr>
-    <th data-field="id">ID</th>
-    <th data-field="name" data-cell-style="cellStyle">Item Name</th>
-    <th data-field="price">Item Price</th>
-  </tr>
-  </thead>
-</table>
+<template>
+  <table
+    id="table"
+    data-toggle="table"
+    data-url="json/data1.json"
+  >
+    <thead>
+      <tr>
+        <th data-field="id">
+          ID
+        </th>
+        <th
+          data-field="name"
+          data-cell-style="cellStyle"
+        >
+          Item Name
+        </th>
+        <th data-field="price">
+          Item Price
+        </th>
+      </tr>
+    </thead>
+  </table>
+</template>
 
 <script>
-  function cellStyle(value, row, index) {
-    var classes = [
+  window.cellStyle = (value, row, index) => {
+    const classes = [
       'bg-blue',
       'bg-green',
       'bg-orange',

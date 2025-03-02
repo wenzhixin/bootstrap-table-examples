@@ -1,28 +1,36 @@
 <script>
-  init({
-    title: 'From data',
-    desc: 'Use `data` option to load the table data.',
-    links: ['bootstrap-table.min.css'],
-    scripts: ['bootstrap-table.min.js']
-  })
+init({
+  title: 'From data',
+  desc: 'Use `data` option to load the table data.',
+  links: ['bootstrap-table.min.css'],
+  scripts: ['bootstrap-table.min.js']
+})
 </script>
 
-<table id="table">
-  <thead>
-    <tr>
-      <th data-field="id">ID</th>
-      <th data-field="name">Item Name</th>
-      <th data-field="price">Item Price</th>
-    </tr>
-  </thead>
-</table>
+<template>
+  <table id="table">
+    <thead>
+      <tr>
+        <th data-field="id">
+          ID
+        </th>
+        <th data-field="name">
+          Item Name
+        </th>
+        <th data-field="price">
+          Item Price
+        </th>
+      </tr>
+    </thead>
+  </table>
+</template>
 
 <script>
-  var $table = $('#table')
+  const $table = $('#table')
 
-  function mounted() {
-    var data = [
-    {
+  function mounted () {
+    const data = [
+      {
         id: 0,
         name: 'Item 0',
         _name_rowspan: 2,
@@ -53,6 +61,7 @@
         price: '$5'
       }
     ]
-    $table.bootstrapTable({data: data})
+
+    $table.bootstrapTable({ data })
   }
 </script>

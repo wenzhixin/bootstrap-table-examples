@@ -1,26 +1,35 @@
 <script>
-  init({
-    title: 'Total/Data Field',
-    desc: 'Use `totalField` and `dataField` options to custom the response keys. In this case, we use `count` and `items` keys.',
-    links: ['bootstrap-table.min.css'],
-    scripts: ['bootstrap-table.min.js']
-  })
+init({
+  title: 'Total/Data Field',
+  desc: 'Use `totalField` and `dataField` options to custom the response keys. In this case, we use `count` and `items` keys.',
+  links: ['bootstrap-table.min.css'],
+  scripts: ['bootstrap-table.min.js']
+})
 </script>
 
-<table
-  id="table"
-  data-toggle="table"
-  data-height="460"
-  data-url="json/data8.json"
-  data-pagination="true"
-  data-side-pagination="server"
-  data-total-field="count"
-  data-data-field="items">
-  <thead>
-    <tr>
-      <th data-field="id">ID</th>
-      <th data-field="name">Item Name</th>
-      <th data-field="price">Item Price</th>
-    </tr>
-  </thead>
-</table>
+<template>
+  <table
+    id="table"
+    data-toggle="table"
+    data-height="460"
+    data-url="json/data8.json"
+    data-pagination="true"
+    data-side-pagination="server"
+    data-total-field="count"
+    data-data-field="items"
+  >
+    <thead>
+      <tr>
+        <th data-field="id">
+          ID
+        </th>
+        <th data-field="name">
+          Item Name
+        </th>
+        <th data-field="price">
+          Item Price
+        </th>
+      </tr>
+    </thead>
+  </table>
+</template>

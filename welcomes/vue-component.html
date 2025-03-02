@@ -1,25 +1,31 @@
 <script>
-  init({
-    title: 'Vue Component',
-    desc: 'Use plugins: [Vue.js](https://vuejs.org) and `bootstrap-table` vue component.',
-    links: [
-      'bootstrap-table.min.css'
-    ],
-    scripts: [
-      'https://unpkg.com/vue@3/dist/vue.global.js',
-      'bootstrap-table.min.js',
-      'https://cdn.jsdelivr.net/npm/bootstrap-table@1.24.0/dist/bootstrap-table-vue.umd.js'
-    ]
-  })
+init({
+  title: 'Vue Component',
+  desc: 'Use plugins: [Vue.js](https://vuejs.org) and `bootstrap-table` vue component.',
+  links: [
+    'bootstrap-table.min.css'
+  ],
+  scripts: [
+    'https://unpkg.com/vue@3/dist/vue.global.js',
+    'bootstrap-table.min.js',
+    'https://cdn.jsdelivr.net/npm/bootstrap-table@1.24.1/dist/bootstrap-table-vue.umd.js'
+  ]
+})
 </script>
 
-<div id="app">
-  <bootstrap-table :columns="columns" :data="data" :options="options"></bootstrap-table>
-</div>
+<template>
+  <div id="app">
+    <bootstrap-table
+      :columns="columns"
+      :data="data"
+      :options="options"
+    ></bootstrap-table>
+  </div>
+</template>
 
 <script>
-  function mounted() {
-    const { createApp, ref } = Vue
+  function mounted () {
+    const { createApp, ref } = window.Vue
     const app = createApp({
       setup () {
         const columns = ref([
@@ -102,7 +108,7 @@
       }
     })
 
-    app.component('BootstrapTable', BootstrapTable)
+    app.component('BootstrapTable', window.BootstrapTable)
     app.mount('#app')
   }
 </script>

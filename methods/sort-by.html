@@ -1,55 +1,74 @@
 <script>
-  init({
-    title: 'Sort By',
-    desc: 'Sort data in table: `$table.bootstrapTable(\'sortBy\', {field: \'name\', sortOrder: \'asc\'})`.',
-    links: ['bootstrap-table.min.css'],
-    scripts: ['bootstrap-table.min.js']
-  })
+init({
+  title: 'Sort By',
+  desc: 'Sort data in table: `$table.bootstrapTable(\'sortBy\', {field: \'name\', sortOrder: \'asc\'})`.',
+  links: ['bootstrap-table.min.css'],
+  scripts: ['bootstrap-table.min.js']
+})
 </script>
 
-<style>
-#sort {
-  display: inline-block;
-  width: auto;
-}
-</style>
+<template>
+  <div class="toolbar">
+    Sort by:
+    <select
+      id="sort"
+      class="form-control"
+    >
+      <option value="name_asc">
+        Name ascending
+      </option>
+      <option value="name_desc">
+        Name descending
+      </option>
+      <option value="stargazers_asc">
+        Stargazers low - high
+      </option>
+      <option value="stargazers_desc">
+        Stargazers high - low
+      </option>
+      <option value="forks_asc">
+        Forks low - high
+      </option>
+      <option value="forks_desc">
+        Forks high - low
+      </option>
+    </select>
+  </div>
 
-<div class="toolbar">
-  Sort by:
-  <select id="sort" class="form-control">
-    <option value="name_asc">Name ascending</option>
-    <option value="name_desc">Name descending</option>
-    <option value="stargazers_asc">Stargazers low - high</option>
-    <option value="stargazers_desc">Stargazers high - low</option>
-    <option value="forks_asc">Forks low - high</option>
-    <option value="forks_desc">Forks high - low</option>
-  </select>
-</div>
-
-<table
-  id="table"
-  data-toggle="table"
-  data-sort-name="github.name"
-  data-toolbar=".toolbar"
-  data-url="json/data3.json">
-  <thead>
-    <tr>
-      <th data-field="github.name">Name</th>
-      <th data-field="github.count.stargazers">Stargazers</th>
-      <th data-field="github.count.forks">Forks</th>
-      <th data-field="github.description">Description</th>
-    </tr>
-  </thead>
-</table>
+  <table
+    id="table"
+    data-toggle="table"
+    data-sort-name="github.name"
+    data-toolbar=".toolbar"
+    data-url="json/data3.json"
+  >
+    <thead>
+      <tr>
+        <th data-field="github.name">
+          Name
+        </th>
+        <th data-field="github.count.stargazers">
+          Stargazers
+        </th>
+        <th data-field="github.count.forks">
+          Forks
+        </th>
+        <th data-field="github.description">
+          Description
+        </th>
+      </tr>
+    </thead>
+  </table>
+</template>
 
 <script>
-  var $table = $('#table')
-  var $sort = $('#sort')
+  const $table = $('#table')
+  const $sort = $('#sort')
 
-  function mounted() {
-    $sort.change(function() {
-      var field = ''
-      var sortOrder = ''
+  function mounted () {
+    $sort.change(function () {
+      let field = ''
+      let sortOrder = ''
 
       if (this.value === 'name_asc') {
         field = 'github.name'
@@ -72,9 +91,16 @@
       }
 
       $table.bootstrapTable('sortBy', {
-        field: field,
-        sortOrder: sortOrder
+        field,
+        sortOrder
       })
     })
   }
 </script>
+
+<style>
+#sort {
+  display: inline-block;
+  width: auto;
+}
+</style>

@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-table@1.24.0/dist/bootstrap-table.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-table@1.24.1/dist/bootstrap-table.min.css">
   <style>
     .mr10 { margin-right: 10px; }
     .alert {
@@ -17,7 +17,7 @@
   <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap-table@1.24.0/dist/bootstrap-table.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap-table@1.24.1/dist/bootstrap-table.min.js"></script>
 </head>
 <body>
   <div class="container">
@@ -65,13 +65,13 @@
   </div><!-- /.modal -->
 
 <script>
-  var API_URL = 'http://localhost:3001/list/'
-  var $table = $('#table')
-  var $modal = $('#modal').modal({show: false})
-  var $alert = $('.alert').hide()
+  const API_URL = 'http://localhost:3001/list/'
+  const $table = $('#table')
+  const $modal = $('#modal').modal({ show: false })
+  const $alert = $('.alert').hide()
 
-  function showModal(title, row_) {
-    var row = row_ || {
+  function showModal (title, row_) {
+    const row = row_ || {
       id: '',
       name: '',
       stargazers_count: 0,
@@ -81,17 +81,17 @@
 
     $modal.data('id', row.id)
     $modal.find('.modal-title').text(title)
-    for (var name in row) {
+    for (const name in row) {
       if (row[name]) {
-        $modal.find('[name="' + name + '"]').val(row[name])
+        $modal.find(`[name="${name}"]`).val(row[name])
       }
     }
     $modal.modal('show')
   }
 
-  function showAlert(title, type) {
-    $alert.attr('class', 'alert alert-' + type || 'success')
-      .html('<i class="glyphicon glyphicon-check"></i> ' + title).show()
+  function showAlert (title, type) {
+    $alert.attr('class', `alert alert-${type || 'success'}`)
+      .html(`<i class="glyphicon glyphicon-check"></i> ${title}`).show()
     setTimeout(function () {
       $alert.hide()
     }, 3000)
@@ -104,7 +104,7 @@
       showColumns: true,
       search: true,
       toolbar: '.toolbar',
-      queryParams: function () {
+      queryParams () {
         return {}
       },
       columns: [
@@ -128,26 +128,24 @@
           field: 'action',
           title: 'Action',
           align: 'center',
-          formatter: function actionFormatter(value) {
-            return [
-              '<a class="update mr10" href="javascript:" title="Update Item"><i class="fa fa-edit"></i></a>',
-              '<a class="remove" href="javascript:" title="Delete Item"><i class="fa fa-remove"></i></a>'
-            ].join('')
-          },
+          formatter: () => [
+            '<a class="update mr10" href="javascript:" title="Update Item"><i class="fa fa-edit"></i></a>',
+            '<a class="remove" href="javascript:" title="Delete Item"><i class="fa fa-remove"></i></a>'
+          ].join(''),
           events: {
-            'click .update': function (e, value, row) {
+            'click .update' (e, value, row) {
               showModal($(e.currentTarget).attr('title'), row)
             },
-            'click .remove': function (e, value, row) {
+            'click .remove' (e, value, row) {
               if (confirm('Are you sure to delete this item?')) {
                 $.ajax({
                   url: API_URL + row.id,
                   type: 'delete',
-                  success: function () {
+                  success () {
                     $table.bootstrapTable('refresh')
                     showAlert('Delete item successful!', 'success')
                   },
-                  error: function () {
+                  error () {
                     showAlert('Delete item error!', 'danger')
                   }
                 })
@@ -164,7 +162,7 @@
     })
 
     $modal.find('.submit').click(function () {
-      var row = {}
+      const row = {}
 
       $modal.find('input[name]').each(function () {
         row[$(this).attr('name')] = $(this).val()
@@ -175,14 +173,14 @@
         type: $modal.data('id') ? 'put' : 'post',
         contentType: 'application/json',
         data: JSON.stringify(row),
-        success: function () {
+        success () {
           $modal.modal('hide')
           $table.bootstrapTable('refresh')
-          showAlert(($modal.data('id') ? 'Update' : 'Create') + ' item successful!', 'success')
+          showAlert(`${$modal.data('id') ? 'Update' : 'Create'} item successful!`, 'success')
         },
-        error: function () {
+        error () {
           $modal.modal('hide')
-          showAlert(($modal.data('id') ? 'Update' : 'Create') + ' item error!', 'danger')
+          showAlert(`${$modal.data('id') ? 'Update' : 'Create'} item error!`, 'danger')
         }
       })
     })

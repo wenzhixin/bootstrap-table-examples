@@ -1,33 +1,44 @@
 <script>
-  init({
-    title: 'Search Formatter',
-    desc: 'Use `searchFormatter` to define that the formatted data will be used while searching. You can search `Formatted` and `Price` to the difference.',
-    links: ['bootstrap-table.min.css'],
-    scripts: ['bootstrap-table.min.js']
-  })
+init({
+  title: 'Search Formatter',
+  desc: 'Use `searchFormatter` to define that the formatted data will be used while searching. You can search `Formatted` and `Price` to the difference.',
+  links: ['bootstrap-table.min.css'],
+  scripts: ['bootstrap-table.min.js']
+})
 </script>
 
-<table
-  id="table"
-  data-toggle="table"
-  data-height="460"
-  data-search="true"
-  data-url="json/data1.json">
-  <thead>
-  <tr>
-    <th data-field="id">ID</th>
-    <th data-field="name" data-search-formatter="false" data-formatter="nameFormatter">Item Name</th>
-    <th data-field="price" data-formatter="priceFormatter">Item Price</th>
-  </tr>
-  </thead>
-</table>
+<template>
+  <table
+    id="table"
+    data-toggle="table"
+    data-height="460"
+    data-search="true"
+    data-url="json/data1.json"
+  >
+    <thead>
+      <tr>
+        <th data-field="id">
+          ID
+        </th>
+        <th
+          data-field="name"
+          data-search-formatter="false"
+          data-formatter="nameFormatter"
+        >
+          Item Name
+        </th>
+        <th
+          data-field="price"
+          data-formatter="priceFormatter"
+        >
+          Item Price
+        </th>
+      </tr>
+    </thead>
+  </table>
+</template>
 
 <script>
-  function nameFormatter(value) {
-    return 'Formatted ' + value
-  }
-
-  function priceFormatter(value) {
-    return 'Price: ' + value
-  }
+  window.nameFormatter = value => `Formatted ${value}`
+  window.priceFormatter = value => `Price: ${value}`
 </script>

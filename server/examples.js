@@ -5,7 +5,7 @@
 
 const projects = {
   bootstrap_table: {
-    data(req, res) {
+    data (req, res) {
       const offset = +req.query.offset || 0
       const limit = +req.query.limit || 0
       const search = req.query.search
@@ -77,6 +77,6 @@ const projects = {
   }
 }
 
-module.exports = (req, res) => {
+export default (req, res) => {
   projects[req.params.project][req.params.func](req, res)
 }

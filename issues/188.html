@@ -1,33 +1,42 @@
 <script>
-  init({
-    title: 'Issue #188',
-    desc: 'Show Export button only(<a href="https://github.com/wenzhixin/bootstrap-table/issues/188" target="_blank">#188</a>).',
-    links: [
-      'bootstrap-table.min.css'
-    ],
-    scripts: [
-      'https://cdn.jsdelivr.net/npm/tableexport.jquery.plugin@1.29.0/tableExport.min.js',
-      'bootstrap-table.min.js',
-      'extensions/export/bootstrap-table-export.min.js'
-    ]
-  })
+init({
+  title: 'Issue #188',
+  desc: 'Show Export button only(<a href="https://github.com/wenzhixin/bootstrap-table/issues/188" target="_blank">#188</a>).',
+  links: [
+    'bootstrap-table.min.css'
+  ],
+  scripts: [
+    'https://cdn.jsdelivr.net/npm/tableexport.jquery.plugin@1.29.0/tableExport.min.js',
+    'bootstrap-table.min.js',
+    'extensions/export/bootstrap-table-export.min.js'
+  ]
+})
 </script>
 
-<table
-  id="table"
-  data-show-export="true"
-  data-url="json/data1.json">
-  <thead>
-    <tr>
-      <th data-field="id">ID</th>
-      <th data-field="name">Item Name</th>
-      <th data-field="price">Item Price</th>
-    </tr>
-  </thead>
-</table>
+<template>
+  <table
+    id="table"
+    data-show-export="true"
+    data-url="json/data1.json"
+  >
+    <thead>
+      <tr>
+        <th data-field="id">
+          ID
+        </th>
+        <th data-field="name">
+          Item Name
+        </th>
+        <th data-field="price">
+          Item Price
+        </th>
+      </tr>
+    </thead>
+  </table>
+</template>
 
 <script>
-  function mounted() {
+  function mounted () {
     $('#table').bootstrapTable()
   }
 </script>

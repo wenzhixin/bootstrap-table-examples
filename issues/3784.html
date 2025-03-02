@@ -1,17 +1,56 @@
 <script>
-  init({
-    title: 'Issue #3784',
-    desc: 'Overwrite the table scrollbar(<a href="https://github.com/wenzhixin/bootstrap-table/issues/3784" target="_blank">#3784</a>).',
-    links: [
-      'https://cdn.jsdelivr.net/npm/perfect-scrollbar@1.5.5/css/perfect-scrollbar.min.css',
-      'bootstrap-table.min.css'
-    ],
-    scripts: [
-      'https://cdn.jsdelivr.net/npm/perfect-scrollbar@1.5.5/dist/perfect-scrollbar.min.js',
-      'bootstrap-table.min.js'
-    ]
-  })
+init({
+  title: 'Issue #3784',
+  desc: 'Overwrite the table scrollbar(<a href="https://github.com/wenzhixin/bootstrap-table/issues/3784" target="_blank">#3784</a>).',
+  links: [
+    'https://cdn.jsdelivr.net/npm/perfect-scrollbar@1.5.5/css/perfect-scrollbar.min.css',
+    'bootstrap-table.min.css'
+  ],
+  scripts: [
+    'https://cdn.jsdelivr.net/npm/perfect-scrollbar@1.5.5/dist/perfect-scrollbar.min.js',
+    'bootstrap-table.min.js'
+  ]
+})
 </script>
+
+<script>
+  let ps
+
+  function mounted () {
+    $('#table').on('post-body.bs.table', function () {
+      if (ps) ps.destroy()
+      ps = new window.PerfectScrollbar('.fixed-table-body')
+    })
+  }
+</script>
+
+<template>
+  <table
+    id="table"
+    data-toggle="table"
+    data-url="json/data1.json"
+    data-height="400"
+    data-search="true"
+  >
+    <thead>
+      <tr>
+        <th
+          data-field="state"
+          data-checkbox="true"
+        ></th>
+        <th data-field="id">
+          ID
+        </th>
+        <th data-field="name">
+          Item Name
+        </th>
+        <th data-field="price">
+          Item Price
+        </th>
+      </tr>
+    </thead>
+  </table>
+</template>
 
 <style>
 .bootstrap-table .fixed-table-container .fixed-table-body {
@@ -19,30 +58,3 @@
   position: relative;
 }
 </style>
-
-<table
-  id="table"
-  data-toggle="table"
-  data-url="json/data1.json"
-  data-height="400"
-  data-search="true">
-  <thead>
-    <tr>
-      <th data-field="state" data-checkbox="true"></th>
-      <th data-field="id">ID</th>
-      <th data-field="name">Item Name</th>
-      <th data-field="price">Item Price</th>
-    </tr>
-  </thead>
-</table>
-
-<script>
-  var ps
-
-  function mounted() {
-    $('#table').on('post-body.bs.table', function () {
-      if (ps) ps.destroy()
-      ps = new window.PerfectScrollbar('.fixed-table-body')
-    })
-  }
-</script>

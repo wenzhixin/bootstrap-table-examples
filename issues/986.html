@@ -1,23 +1,25 @@
 <script>
-  init({
-    title: 'Issue #986',
-    desc: 'Editable select box(<a href="https://github.com/wenzhixin/bootstrap-table/issues/986" target="_blank">#986</a>).',
-    links: [
-      'https://cdn.jsdelivr.net/npm/x-editable@1.5.11/dist/bootstrap3-editable/css/bootstrap-editable.css',
-      'bootstrap-table.min.css'
-    ],
-    scripts: [
-      'https://cdn.jsdelivr.net/npm/x-editable@1.5.11/dist/bootstrap3-editable/js/bootstrap-editable.min.js',
-      'bootstrap-table.min.js',
-      'extensions/editable/bootstrap-table-editable.min.js'
-    ]
-  })
+init({
+  title: 'Issue #986',
+  desc: 'Editable select box(<a href="https://github.com/wenzhixin/bootstrap-table/issues/986" target="_blank">#986</a>).',
+  links: [
+    'https://cdn.jsdelivr.net/npm/x-editable@1.5.11/dist/bootstrap3-editable/css/bootstrap-editable.css',
+    'bootstrap-table.min.css'
+  ],
+  scripts: [
+    'https://cdn.jsdelivr.net/npm/x-editable@1.5.11/dist/bootstrap3-editable/js/bootstrap-editable.min.js',
+    'bootstrap-table.min.js',
+    'extensions/editable/bootstrap-table-editable.min.js'
+  ]
+})
 </script>
 
-<table id="table"></table>
+<template>
+  <table id="table"></table>
+</template>
 
 <script>
-  var data = [
+  const data = [
     {
       name: 'active'
     },
@@ -29,9 +31,9 @@
     }
   ]
 
-  var $table = $('#table')
+  const $table = $('#table')
 
-  function mounted() {
+  function mounted () {
     $table.bootstrapTable({
       idField: 'name',
       columns: [
@@ -47,14 +49,14 @@
           editable: {
             type: 'select',
             source: [
-              {value: 'active', text: 'Active'},
-              {value: 'blocked', text: 'Blocked'},
-              {value: 'deleted', text: 'Deleted'}
+              { value: 'active', text: 'Active' },
+              { value: 'blocked', text: 'Blocked' },
+              { value: 'deleted', text: 'Deleted' }
             ]
           }
         }
       ],
-      data: data
+      data
     })
   }
 </script>

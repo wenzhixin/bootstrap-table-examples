@@ -1,11 +1,49 @@
 <script>
-  init({
-    title: 'Issue #2211',
-    desc: 'Rotated table column headers(<a href="https://github.com/wenzhixin/bootstrap-table/issues/2211" target="_blank">#2211</a>).',
-    links: ['bootstrap-table.min.css'],
-    scripts: ['bootstrap-table.min.js']
-  })
+init({
+  title: 'Issue #2211',
+  desc: 'Rotated table column headers(<a href="https://github.com/wenzhixin/bootstrap-table/issues/2211" target="_blank">#2211</a>).',
+  links: ['bootstrap-table.min.css'],
+  scripts: ['bootstrap-table.min.js']
+})
 </script>
+
+<template>
+  <table
+    id="table"
+    data-toggle="table"
+    data-classes="table table-hover table-header-rotated"
+    data-url="json/data5.json"
+  >
+    <thead>
+      <tr>
+        <th
+          data-field="id"
+          class="id"
+          data-width="100"
+          data-formatter="Row %s"
+        ></th>
+        <th data-field="name">
+          Item Name
+        </th>
+        <th data-field="price">
+          Item Price
+        </th>
+        <th data-field="column1">
+          Item Column1
+        </th>
+        <th data-field="column2">
+          Item Column2
+        </th>
+        <th data-field="column3">
+          Item Column3
+        </th>
+        <th data-field="column4">
+          Item Column4
+        </th>
+      </tr>
+    </thead>
+  </table>
+</template>
 
 <style>
 .bootstrap-table .fixed-table-container .table thead th .th-inner {
@@ -26,21 +64,3 @@
   padding: 5px 10px;
 }
 </style>
-
-<table
-  id="table"
-  data-toggle="table"
-  data-classes="table table-hover table-header-rotated"
-  data-url="json/data5.json">
-  <thead>
-    <tr>
-      <th data-field="id" class="id" data-width="100" data-formatter="Row %s"></th>
-      <th data-field="name">Item Name</th>
-      <th data-field="price">Item Price</th>
-      <th data-field="column1">Item Column1</th>
-      <th data-field="column2">Item Column2</th>
-      <th data-field="column3">Item Column3</th>
-      <th data-field="column4">Item Column4</th>
-    </tr>
-  </thead>
-</table>

@@ -16,7 +16,7 @@ const options = getopts(process.argv.slice(2), {
   }
 })
 
-function showHelp() {
+function showHelp () {
   const baseCmd = 'node tools/template.js'
 
   console.info(`usage:
@@ -34,7 +34,7 @@ function showHelp() {
   `)
 }
 
-function run() {
+function run () {
   if (options.help || Object.keys(options).length === 1) {
     return showHelp()
   }
@@ -50,12 +50,14 @@ function run() {
 
   let url = CLIENT_URL
   let attrs = ''
+
   if (options.server) {
     url = SERVER_URL
     attrs = '\n  data-pagination="true"\n  data-side-pagination="server"'
   }
 
   let content = fs.readFileSync(`${__dirname}/example.tpl`).toString()
+
   content = content.replace(/@title@/, options.title || '')
     .replace(/@desc@/, options.desc || '')
     .replace(/@url@/, url)

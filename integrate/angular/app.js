@@ -7,34 +7,36 @@ window.angular.module('app', ['bsTable'])
     $scope.workspaces.push({ name: 'Workspace 3' })
 
     function makeRandomRows (colData) {
-      var rows = []
-      for (var i = 0; i < 500; i++) {
+      const rows = []
+
+      for (let i = 0; i < 500; i++) {
         rows.push($.extend({
           index: i,
-          id: 'row ' + i,
-          name: 'GOOG' + i,
-          flagImage: Math.random() < 0.4
-            ? 'img/blueFlag16.png'
-            : Math.random() < 0.75
-              ? 'img/yellowFlag16.png'
-              : 'img/greenFlag16.png'
+          id: `row ${i}`,
+          name: `GOOG${i}`,
+          flagImage: Math.random() < 0.4 ?
+            'img/blueFlag16.png' :
+            Math.random() < 0.75 ?
+              'img/yellowFlag16.png' :
+              'img/greenFlag16.png'
         }, colData))
       }
       return rows
     }
 
-    function flagFormatter(value, row, index) {
-      return '<img src="' + row.flagImage + '"/>'
+    function flagFormatter (value, row, index) {
+      return `<img src="${row.flagImage}">`
     }
 
-    $scope.workspaces.forEach(function (wk,index) {
-      var colData = {workspace: wk.name}
+    $scope.workspaces.forEach(function (wk, index) {
+      const colData = { workspace: wk.name }
+
       wk.rows = makeRandomRows(colData)
 
       wk.bsTableControl = {
         options: {
           data: wk.rows,
-          rowStyle: function (row, index) {
+          rowStyle (row, index) {
             return { classes: 'none' }
           },
           cache: false,

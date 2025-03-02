@@ -1,28 +1,39 @@
 <script>
-  init({
-    title: 'Search Accent Neutralise',
-    desc: 'Can be used to remove accents from values for easier searching. In this case, you can try to search `Jose`.',
-    links: ['bootstrap-table.min.css'],
-    scripts: ['bootstrap-table.min.js']
-  })
+init({
+  title: 'Search Accent Neutralise',
+  desc: 'Can be used to remove accents from values for easier searching. In this case, you can try to search `Jose`.',
+  links: ['bootstrap-table.min.css'],
+  scripts: ['bootstrap-table.min.js']
+})
 </script>
 
-<table
-  id="table"
-  data-search="true"
-  data-search-accent-neutralise="true">
-  <thead>
-    <tr>
-      <th data-field="name">Name</th>
-      <th data-field="stargazers_count">Stars</th>
-      <th data-field="forks_count">Forks</th>
-      <th data-field="description">Description</th>
-    </tr>
-  </thead>
-</table>
+<template>
+  <table
+    id="table"
+    data-search="true"
+    data-search-accent-neutralise="true"
+  >
+    <thead>
+      <tr>
+        <th data-field="name">
+          Name
+        </th>
+        <th data-field="stargazers_count">
+          Stars
+        </th>
+        <th data-field="forks_count">
+          Forks
+        </th>
+        <th data-field="description">
+          Description
+        </th>
+      </tr>
+    </thead>
+  </table>
+</template>
 
 <script>
-  var data = [
+  const data = [
     {
       name: 'bootstrap-table',
       stargazers_count: '8827',
@@ -55,9 +66,9 @@
     }
   ]
 
-  function mounted() {
+  function mounted () {
     $('#table').bootstrapTable({
-      data: data
+      data
     })
   }
 </script>

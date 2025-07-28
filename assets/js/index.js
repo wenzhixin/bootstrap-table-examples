@@ -40,13 +40,13 @@ function loadUrl (url_) {
   if (window._config.themes.indexOf(window._config.theme) > -1) {
     template += `-${window._config.theme}`
   }
-  let url = `${template}.html?v=961&url=${url_}`
+  let url = `${template}.html?v=963&url=${url_}`
 
   if (window._config.isDebug) {
     url = `${template}.html?t=${+new Date()}&url=${url_}`
   }
   if (window._config.isViewSource) {
-    url = `${template}.html?v=961&view-source&url=${url_}#view-source`
+    url = `${template}.html?v=963&view-source&url=${url_}#view-source`
   }
   $('iframe').attr('src', url)
 }

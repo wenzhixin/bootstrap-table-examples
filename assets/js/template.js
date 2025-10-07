@@ -186,7 +186,22 @@ function _beautifySource (data) {
   return lines.join('\n')
 }
 
+function getSystemTheme () {
+  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+}
+
+function applyBootstrapTheme (theme) {
+  let actualTheme = theme
+
+  if (theme === 'auto') {
+    actualTheme = getSystemTheme()
+  }
+
+  $('html').attr('data-bs-theme', actualTheme)
+}
+
 $(function () {
+  const bootstrapTheme = localStorage.getItem('bootstrap-theme')
   const run = function () {
     const query = {}
 
@@ -226,6 +241,20 @@ $(function () {
 
   window.addEventListener('popstate', run)
   run()
+
+  if (bootstrapTheme) {
+    applyBootstrapTheme(bootstrapTheme)
+  }
+
+  // Listen for system theme changes
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+    const storedTheme = localStorage.getItem('bootstrap-theme')
+
+    // If current theme is auto, respond to system theme changes
+    if (storedTheme === 'auto') {
+      applyBootstrapTheme('auto')
+    }
+  })
 })
 
 window.init = function (options_) {

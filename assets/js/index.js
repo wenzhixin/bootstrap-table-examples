@@ -1,189 +1,228 @@
-window._config = {
-  isDebug: ['localhost', '127.0.0.1'].indexOf(location.hostname) > -1,
-  isViewSource: false,
-  theme: location.search.slice(1),
-  themes: []
-}
+const isDebug = ['localhost', '127.0.0.1'].indexOf(location.hostname) > -1
+const { computed, createApp, onMounted, ref } = window.Vue
 
-function initUrl () {
-  let href = location.hash.substring(1)
+const Utils = {
+  getUrl () {
+    let href = location.hash.substring(1)
+    let isViewSource = false
 
-  window._config.isViewSource = false
-  if (href.indexOf('view-source') > -1) {
-    href = href.replace('#view-source', '').replace('view-source', '')
-    window._config.isViewSource = true
-  }
-  return href || 'welcome.html'
-}
-
-function initThemes () {
-  $('[data-theme]').each(function () {
-    if ($(this).data('theme')) {
-      window._config.themes.push($(this).data('theme'))
+    if (href.includes('view-source')) {
+      href = href.replace('#view-source', '').replace('view-source', '')
+      isViewSource = true
     }
-  })
-  if (window._config.themes.indexOf(window._config.theme) === -1) {
-    window._config.theme = ''
-  }
-  const $theme = $(`[data-theme="${window._config.theme}"]`).addClass('active')
-
-  $('#theme-title').text($theme.text())
-
-  $('[data-show]').each(function () {
-    $(this).toggle($(this).data('show').split(',').indexOf(window._config.theme) > -1)
-  })
-}
-
-function loadUrl (url_) {
-  let template = 'template'
-
-  if (window._config.themes.indexOf(window._config.theme) > -1) {
-    template += `-${window._config.theme}`
-  }
-  let url = `${template}.html?v=VERSION&url=${url_}`
-
-  if (window._config.isDebug) {
-    url = `${template}.html?t=${+new Date()}&url=${url_}`
-  }
-  if (window._config.isViewSource) {
-    url = `${template}.html?v=VERSION&view-source&url=${url_}#view-source`
-  }
-  $('iframe').attr('src', url)
-}
-
-function initNavigation (href) {
-  const $el = $(`a[href="#${href}"]`)
-  const $parent = $el.parent()
-
-  if (!$el.length) {
-    return
-  }
-
-  $('#bd-docs-nav .active').removeClass('active')
-  $parent.addClass('active')
-  $el.parents('.bd-toc-item').addClass('active')
-}
-
-function autoScrollNavigation () {
-  const $el = $('.bd-sidenav >li.active')
-
-  $('#bd-docs-nav').scrollTop(0)
-  if ($el.length && $el.offset().top > $(window).height() / 2) {
-    $('#bd-docs-nav').scrollTop($el.offset().top - $(window).height() / 2)
-  }
-}
-
-function doSearch () {
-  const searchClient = window.algoliasearch('FXDJ517Z8G', '9b89c4a7048370f4809b0bc77b2564ac')
-
-  const search = window.instantsearch({
-    indexName: 'bootstrap-table-example',
-    searchClient,
-    searchFunction (helper) {
-      if (helper.state.query) {
-        helper.clearTags()
-        helper.addTag(window._config.theme)
-        helper.search()
-        $('#hits').show()
-      } else {
-        $('#hits').hide()
-      }
+    return {
+      href: href || 'welcome.html',
+      isViewSource
     }
-  })
+  },
 
-  search.addWidget(
-    window.instantsearch.widgets.searchBox({
-      container: '#searchbox'
+  loadUrl (theme, href, isViewSource) {
+    let template = 'template'
+
+    if (theme) {
+      template += `-${theme}`
+    }
+    let url = `${template}.html?v=VERSION&url=${href}`
+
+    if (isDebug) {
+      url = `${template}.html?t=${+new Date()}&url=${href}`
+    }
+    if (isViewSource) {
+      url = `${template}.html?v=VERSION&view-source&url=${href}#view-source`
+    }
+    $('iframe').attr('src', url)
+  },
+
+  initSearch () {
+    window.docsearch({
+      container: '.bd-search',
+      appId: 'FXDJ517Z8G',
+      apiKey: '9b89c4a7048370f4809b0bc77b2564ac',
+      indexName: 'bootstrap-table-examples',
+      transformItems: items => items.map(item => {
+        // Replace the production domain with the current origin
+        if (item.url && item.url.startsWith('https://examples.bootstrap-table.com')) {
+          item.url = item.url.replace('https://examples.bootstrap-table.com', window.location.origin)
+        }
+        return item
+      })
     })
-  )
+  },
 
-  search.addWidget(
-    window.instantsearch.widgets.hits({
-      container: '.hits-body',
-      templates: {
-        item (hit) {
-          let search = ''
+  autoScrollNavigation () {
+    const $el = $('#bd-docs-nav li a.active')
 
-          if (window._config.theme) {
-            search = `?${window._config.theme}`
-          }
-          return [
-            `<div class="link" data-href="${hit.url}${search}${hit.anchor}">`,
-            '<div class="category">',
-            hit.anchor.split('/')[0].slice(1),
-            '</div>',
-            '<div class="title">',
-            hit.title,
-            '</div>',
-            '<div class="description">',
-            hit.description,
-            '</div>',
-            '</div>'
-          ].join('')
+    $('#bd-docs-nav').scrollTop(0)
+    setTimeout(() => {
+      if ($el.length && $el.offset().top > $(window).height() / 2) {
+        $('#bd-docs-nav').scrollTop($el.offset().top - $(window).height() / 2)
+      }
+    }, 100)
+  },
+
+  initViewSource () {
+    const isSource = /view-source$/.test(location.hash)
+
+    if (isSource) {
+      $('.view-example').css('display', 'block')
+      $('.view-source').css('display', 'none')
+    } else {
+      $('.view-example').css('display', 'none')
+      $('.view-source').css('display', 'block')
+    }
+
+    $('.view-example, .view-source').off('click').click(function () {
+      if (isSource) {
+        location.hash = location.hash.replace('#view-source', '')
+      } else if (location.hash.indexOf('view-source') === -1) {
+        location.hash += '#view-source'
+      }
+    })
+
+    $('.view-online').attr('href', `https://live.bootstrap-table.com/example/${
+      location.hash.slice(1).split('#')[0] || 'welcome.html'}`)
+  }
+}
+
+const setup = () => {
+  const {
+    navItems,
+    bootstrapThemes,
+    icons,
+    themes,
+    menus
+  } = window.Config || {}
+
+  const theme = ref('')
+  const bootstrapTheme = ref('')
+  const currentHref = ref('')
+
+  const themeText = computed(() => themes.find(it => it.value === theme.value)?.label)
+  const bootstrapThemeIcon = computed(() => bootstrapThemes.find(it => it.value === bootstrapTheme.value)?.icon)
+  const displayMenus = computed(() => menus.map(group => ({
+    ...group,
+    children: group.children.filter(item => !item.show || item.show.includes(theme.value))
+  })))
+
+  const getSystemTheme = () => window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+
+  const setBootstrapTheme = value => {
+    localStorage.setItem('bootstrap-theme', value)
+    location.reload()
+  }
+
+  const applyBootstrapTheme = value => {
+    let actualTheme = value
+
+    if (value === 'auto') {
+      actualTheme = getSystemTheme()
+    }
+
+    $('html').attr('data-bs-theme', actualTheme)
+  }
+
+  const initThemes = () => {
+    const t = location.search.slice(1)
+    const bt = localStorage.getItem('bootstrap-theme') || 'light'
+
+    if (themes.map(it => it.value).includes(t)) {
+      theme.value = t
+    }
+
+    if (theme.value) {
+      localStorage.removeItem('bootstrap-theme')
+    } else {
+      if (bootstrapThemes.map(it => it.value).includes(bt)) {
+        bootstrapTheme.value = bt
+      }
+
+      applyBootstrapTheme(bootstrapTheme.value)
+    }
+
+    $('[data-show]').each(function () {
+      $(this).toggle($(this).data('show').split(',').includes(theme.value))
+    })
+  }
+  const initData = () => {
+    const { href, isViewSource } = Utils.getUrl()
+
+    Utils.loadUrl(theme.value, href, isViewSource)
+
+    currentHref.value = `#${href}`
+
+    Utils.initViewSource()
+  }
+  const initViews = () => {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+
+    $(window).hashchange(function () {
+      initData()
+    })
+
+    // Listen for system theme changes
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+      const storedTheme = localStorage.getItem('bootstrap-theme')
+
+      // If current theme is auto, respond to system theme changes
+      if (storedTheme === 'auto') {
+        location.reload()
+      }
+    })
+
+    // Close offcanvas when clicking menu items on mobile
+    $('.bd-links-link').on('click', function () {
+      // Check if it's mobile (offcanvas visible)
+      const offcanvasElement = document.getElementById('bdSidebar')
+
+      if (window.getComputedStyle(offcanvasElement).visibility !== 'hidden') {
+        const offcanvas = window.bootstrap.Offcanvas.getInstance(offcanvasElement)
+
+        if (offcanvas) {
+          offcanvas.hide()
         }
       }
     })
-  )
 
-  $(document).on('click', '.ais-Hits-item .link', function (e) {
-    const href = $(e.currentTarget).data('href')
-
-    if ($(e.target).is('a')) {
-      return
-    }
-    location.href = href
-    $('.ais-SearchBox-reset').click()
-    $('.ais-SearchBox-input').blur()
-    setTimeout(autoScrollNavigation, 200)
-  })
-
-  search.start()
-}
-
-function initViewSource () {
-  const isSource = /view-source$/.test(location.hash)
-
-  if (isSource) {
-    $('.view-example').css('display', 'block')
-    $('.view-source').css('display', 'none')
-  } else {
-    $('.view-example').css('display', 'none')
-    $('.view-source').css('display', 'block')
+    initData()
+    Utils.initSearch()
+    Utils.autoScrollNavigation()
   }
 
-  $('.view-example, .view-source').off('click').click(function () {
-    if (isSource) {
-      location.hash = location.hash.replace('#view-source', '')
-    } else if (location.hash.indexOf('view-source') === -1) {
-      location.hash += '#view-source'
-    }
+  onMounted(() => {
+    initThemes()
+    initViews()
   })
 
-  $('.view-online').attr('href', `https://live.bootstrap-table.com/example/${
-    location.hash.slice(1).split('#')[0] || 'welcome.html'}`)
+  return {
+    navItems,
+    themes,
+    bootstrapThemes,
+    icons,
+
+    // ref
+    theme,
+    bootstrapTheme,
+    currentHref,
+
+    // computed
+    themeText,
+    bootstrapThemeIcon,
+    displayMenus,
+
+    // methods
+    setBootstrapTheme
+  }
+}
+
+function initApp () {
+  const app = createApp({
+    setup
+  })
+
+  app.mount('#app')
+  $('#app').removeClass('d-none')
 }
 
 $(function () {
-  $('.bd-sidenav li').each(function () {
-    $(this).attr('title', $.trim($(this).text()))
-  })
-
-  $('[data-toggle="tooltip"]').tooltip()
-
-  $(window).hashchange(function () {
-    const href = initUrl()
-
-    loadUrl(href)
-    initNavigation(href)
-    initViewSource()
-  })
-
-  initThemes()
-  const href = initUrl()
-
-  loadUrl(href)
-  initNavigation(href)
-  autoScrollNavigation()
-  doSearch()
-  initViewSource()
+  initApp()
 })

@@ -5,14 +5,14 @@
   <meta name="description" content="An extended Bootstrap table with radio, checkbox, sort, pagination, and other added features.">
   <meta name="keywords" content="table, bootstrap, bootstrap plugin, bootstrap resources, bootstrap table, jQuery plugin">
   <meta name="author" content="Zhixin Wen, and Bootstrap table contributors">
-  <!-- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@7.1.0/themes/reset-min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@7.1.0/themes/algolia-min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@4" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hover.css@2.3.2/css/hover.min.css">
   <link rel="stylesheet" href="assets/css/docs.min.css">
-  <link rel="stylesheet" href="assets/css/index.css?v=963">
+  <link rel="stylesheet" href="assets/css/index.css?v=969">
   <!-- Favicons -->
   <link rel="apple-touch-icon" href="favicon.png">
   <link rel="icon" href="favicon.png">
@@ -35,572 +35,269 @@
 </head>
 
 <body>
-  <a class="skippy sr-only sr-only-focusable" href="#content">
-    <span class="skippy-text">Skip to main content</span>
-  </a>
-
-  <header class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar">
-    <a class="navbar-brand mr-0 mr-md-2" href="https://bootstrap-table.com/" aria-label="Bootstrap">
-      <img src="favicon.png" width="36" height="36">
-    </a>
-
-    <div class="navbar-nav-scroll">
-      <ul class="navbar-nav bd-navbar-nav flex-row">
-        <li class="nav-item">
-          <a class="nav-link" href="https://bootstrap-table.com/">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="https://bootstrap-table.com/docs/getting-started/introduction/">
-            Documentation
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="https://bootstrap-table.com/themes">
-            Themes
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" href="https://examples.bootstrap-table.com">
-            Examples
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="https://live.bootstrap-table.com" target="_blank">
-            Online Editor
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="https://bootstrap-table.com/news">
-            News
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="https://blog.bootstrap-table.com" target="_blank">
-            Blog
-          </a>
-        </li>
-      </ul>
-    </div>
-
-    <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
-      <li class="nav-item dropdown">
-        <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" id="bd-theme" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <span id="theme-title"></span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="bd-theme">
-          <a class="dropdown-item" data-theme="" href="index.html">Bootstrap v5</a>
-          <a class="dropdown-item" data-theme="bootstrap4" href="index.html?bootstrap4">Bootstrap v4</a>
-          <a class="dropdown-item" data-theme="bootstrap3" href="index.html?bootstrap3">Bootstrap v3</a>
-          <a class="dropdown-item" data-theme="bootstrap-table" href="index.html?bootstrap-table">Bootstrap Table</a>
-          <a class="dropdown-item" data-theme="semantic" href="index.html?semantic">Semantic UI</a>
-          <a class="dropdown-item" data-theme="bulma" href="index.html?bulma">Bulma</a>
-          <a class="dropdown-item" data-theme="materialize" href="index.html?materialize">Materialize</a>
-          <a class="dropdown-item" data-theme="foundation" href="index.html?foundation">Foundation</a>
+  <div id="app" class="d-none">
+    <header class="navbar navbar-expand-lg bd-navbar sticky-top">
+      <nav class="container-fluid bd-gutter flex-wrap flex-lg-nowrap px-3" aria-label="Main navigation">
+        <div class="bd-navbar-toggle">
+          <button
+            class="navbar-toggler p-2"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#bdSidebar"
+            aria-controls="bdSidebar"
+            aria-label="Toggle docs navigation"
+          >
+            <i class="bi bi-list"></i>
+            <span class="d-none fs-6 pe-1">Browse</span>
+          </button>
         </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link p-2" href="https://github.com/wenzhixin/bootstrap-table" target="_blank" rel="noopener" aria-label="GitHub"><svg class="navbar-nav-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 499.36" focusable="false" role="img"><title>GitHub</title><path d="M256 0C114.64 0 0 114.61 0 256c0 113.09 73.34 209 175.08 242.9 12.8 2.35 17.47-5.56 17.47-12.34 0-6.08-.22-22.18-.35-43.54-71.2 15.49-86.2-34.34-86.2-34.34-11.64-29.57-28.42-37.45-28.42-37.45-23.27-15.84 1.73-15.55 1.73-15.55 25.69 1.81 39.21 26.38 39.21 26.38 22.84 39.12 59.92 27.82 74.5 21.27 2.33-16.54 8.94-27.82 16.25-34.22-56.84-6.43-116.6-28.43-116.6-126.49 0-27.95 10-50.8 26.35-68.69-2.63-6.48-11.42-32.5 2.51-67.75 0 0 21.49-6.88 70.4 26.24a242.65 242.65 0 0 1 128.18 0c48.87-33.13 70.33-26.24 70.33-26.24 14 35.25 5.18 61.27 2.55 67.75 16.41 17.9 26.31 40.75 26.31 68.69 0 98.35-59.85 120-116.88 126.32 9.19 7.9 17.38 23.53 17.38 47.41 0 34.22-.31 61.83-.31 70.23 0 6.85 4.61 14.81 17.6 12.31C438.72 464.97 512 369.08 512 256.02 512 114.62 397.37 0 256 0z" fill="currentColor" fill-rule="evenodd"/></svg>
+        <a
+          class="navbar-brand p-0 me-0 me-lg-2"
+          href="https://bootstrap-table.com/"
+          aria-label="Bootstrap"
+        >
+          <img src="favicon.png" width="32" height="32">
         </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link p-2" href="https://twitter.com/wenzhixin2010" target="_blank" rel="noopener" aria-label="Twitter"><svg class="navbar-nav-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 416.32" focusable="false" role="img"><title>Twitter</title><path d="M160.83 416.32c193.2 0 298.92-160.22 298.92-298.92 0-4.51 0-9-.2-13.52A214 214 0 0 0 512 49.38a212.93 212.93 0 0 1-60.44 16.6 105.7 105.7 0 0 0 46.3-58.19 209 209 0 0 1-66.79 25.37 105.09 105.09 0 0 0-181.73 71.91 116.12 116.12 0 0 0 2.66 24c-87.28-4.3-164.73-46.3-216.56-109.82A105.48 105.48 0 0 0 68 159.6a106.27 106.27 0 0 1-47.53-13.11v1.43a105.28 105.28 0 0 0 84.21 103.06 105.67 105.67 0 0 1-47.33 1.84 105.06 105.06 0 0 0 98.14 72.94A210.72 210.72 0 0 1 25 370.84a202.17 202.17 0 0 1-25-1.43 298.85 298.85 0 0 0 160.83 46.92" fill="currentColor"/></svg>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link p-2" href="https://opencollective.com/bootstrap-table" target="_blank" rel="noopener" aria-label="Open Collective"><svg class="navbar-nav-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 41" focusable="false" role="img" fill="currentColor" fill-rule="evenodd"><title>Open Collective</title><path d="M32.8 21c0 2.4-.8 4.9-2 6.9l5.1 5.1c2.5-3.4 4.1-7.6 4.1-12 0-4.6-1.6-8.8-4-12.2L30.7 14c1.2 2 2 4.3 2 7z" fill-opacity=".4"/><path d="M20 33.7a12.8 12.8 0 0 1 0-25.6c2.6 0 5 .7 7 2.1L32 5a20 20 0 1 0 .1 31.9l-5-5.2a13 13 0 0 1-7 2z"/></svg>
-        </a>
-      </li>
-    </ul>
 
-    <a class="btn btn-bd-download d-none d-lg-inline-block mb-3 mb-md-0 ml-md-3" href="https://bootstrap-table.com/docs/getting-started/download/">Download</a>
-  </header>
+        <div class="d-flex">
+          <div class="bd-search"></div>
+          <button
+            class="navbar-toggler d-flex d-lg-none order-3 p-2"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#bdNavbar"
+            aria-controls="bdNavbar"
+            aria-label="Toggle navigation"
+          >
+            <i class="bi bi-three-dots"></i>
+          </button>
+        </div>
 
-  <div class="container-fluid">
-    <div class="row flex-xl-nowrap">
-      <div class="col-12 col-md-3 col-xl-2 bd-sidebar">
-        <form class="bd-search d-flex align-items-center">
-          <div id="searchbox"></div>
-          <div id="hits">
-            <div class="hits-body"></div>
-            <div class="hits-footer">
-              Search by <a class="algolia-docsearch-footer--logo" href="https://www.algolia.com/docsearch">Algolia</a>
+        <div
+          class="offcanvas-lg offcanvas-end flex-grow-1"
+          tabindex="-1"
+          id="bdNavbar"
+          aria-labelledby="bdNavbarOffcanvasLabel"
+        >
+          <div class="offcanvas-header px-4 pb-0">
+            <h5 class="offcanvas-title text-white" id="bdNavbarOffcanvasLabel">Bootstrap Table</h5>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="offcanvas"
+              aria-label="Close"
+              data-bs-target="#bdNavbar"></button>
+          </div>
+
+          <div class="offcanvas-body p-4 pt-0 p-lg-0">
+            <hr class="d-lg-none" />
+            <ul class="navbar-nav flex-row flex-wrap bd-navbar-nav">
+              <li
+                v-for="(item, index) in navItems"
+                :key="index"
+                class="nav-item col-6 col-lg-auto"
+              >
+                <a
+                  class="nav-link"
+                  :class="{ active: item.active }"
+                  :href="item.href"
+                  :target="item.target"
+                >
+                  {{ item.text }}
+                </a>
+              </li>
+            </ul>
+
+            <hr class="d-lg-none" />
+
+            <ul class="navbar-nav flex-row flex-wrap ms-md-auto">
+              <li
+                v-for="(item, index) in icons"
+                :key="index"
+                class="nav-item col-6 col-lg-auto"
+              >
+                <a
+                  class="nav-link py-2 px-0 px-lg-2"
+                  :href="item.href"
+                  target="_blank"
+                  rel="noopener"
+                  :title="item.ariaLabel"
+                  :aria-label="item.ariaLabel"
+                >
+                  <i
+                    class="bi"
+                    :class="item.icon"
+                  ></i>
+                  <small class="d-lg-none ms-2">{{ item.ariaLabel }}</small>
+                </a>
+              </li>
+
+              <li class="nav-item py-2 py-lg-1 col-12 col-lg-auto">
+                <div class="vr d-none d-lg-flex h-100 mx-lg-2"></div>
+                <hr class="d-lg-none my-2" />
+              </li>
+
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle me-md-2"
+                  href="#"
+                  id="bd-versions"
+                  data-bs-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  <span>{{ themeText }}</span>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme">
+                  <li v-for="(item, index) in themes" :key="index">
+                    <a
+                      class="dropdown-item"
+                      :class="{ active: theme === item.value }"
+                      :data-theme="item.value"
+                      :href="`index.html${item.value ? '?' + item.value : ''}`"
+                    >
+                      {{ item.label }}
+                    </a>
+                  </li>
+                </ul>
+              </li>
+
+              <li class="nav-item py-2 py-lg-1 col-12 col-lg-auto">
+                <div class="vr d-none d-lg-flex h-100 mx-lg-2"></div>
+                <hr class="d-lg-none my-2" />
+              </li>
+
+              <li v-if="!theme" class="nav-item dropdown bd-bootstrap-theme">
+                <a
+                  class="nav-link dropdown-toggle me-md-2"
+                  href="#"
+                  data-bs-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  <span>
+                    <i class="bi" :class="bootstrapThemeIcon"></i>
+                  </span>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-bootstrap-theme">
+                  <li v-for="(item, index) in bootstrapThemes" :key="index">
+                    <a
+                      class="dropdown-item"
+                      :class="{ active: bootstrapTheme === item.value }"
+                      :data-bootstrap-theme="item.value"
+                      href="#"
+                      @click="setBootstrapTheme(item.value)"
+                    >
+                      <i class="bi" :class="item.icon"></i> {{ item.label }}
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <div class="container-fluid">
+      <div class="row flex-xl-nowrap h-100">
+        <aside class="bd-sidebar col-12 col-md-3 col-xl-2 ps-3">
+          <div class="offcanvas-lg offcanvas-start" tabindex="-1" id="bdSidebar" aria-labelledby="bdSidebarOffcanvasLabel">
+            <div class="offcanvas-header border-bottom">
+              <h5 class="offcanvas-title" id="bdSidebarOffcanvasLabel">Browse docs</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="offcanvas"
+                aria-label="Close"
+                data-bs-target="#bdSidebar"></button>
+            </div>
+
+            <div class="offcanvas-body d-flex flex-column">
+              <ul class="bd-links-nav list-unstyled mb-0 pb-3 pb-md-2 pe-lg-2 flex-grow-1 overflow-y-auto" id="bd-docs-nav">
+                <li
+                  v-for="group in displayMenus"
+                  :key="group.title"
+                  class="bd-links-group py-2"
+                >
+                  <strong class="bd-links-heading d-flex w-100 align-items-center fw-semibold">
+                    {{ group.title }}
+                  </strong>
+                  <ul class="list-unstyled fw-normal pb-2 small">
+                    <li
+                      v-for="item in group.children"
+                      :key="item.href"
+                    >
+                      <a
+                        class="bd-links-link d-inline-block rounded"
+                        :class="{ active: currentHref === item.href }"
+                        :href="item.href"
+                      >
+                        {{ item.label }}
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="bd-links-group py-2">
+                  <ul class="list-unstyled fw-normal pb-2 small">
+                    <li class="bd-links-span-all mt-1 mb-3 mx-4 border-top"></li>
+                    <li>
+                      <a class="bd-links-link d-inline-block rounded" href="https://github.com/wenzhixin/bootstrap-table-examples" target="_blank">
+                        Examples GitHub
+                      </a>
+                    </li>
+                </li>
+              </ul>
             </div>
           </div>
-          <button class="btn btn-link bd-search-docs-toggle d-md-none p-0 ml-3" type="button" data-toggle="collapse" data-target="#bd-docs-nav" aria-controls="bd-docs-nav" aria-expanded="false" aria-label="Toggle docs navigation"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30" focusable="false" role="img"><title>Menu</title><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"/></svg>
-          </button>
-        </form>
+        </aside>
 
-        <nav class="collapse bd-links" id="bd-docs-nav">
-          <div class="bd-toc-item">
-            <a class="bd-toc-link" href="#welcome.html">Welcome</a>
-            <ul class="nav bd-sidenav">
-              <li><a href="#welcome.html">Index</a></li>
-              <li><a href="#welcomes/from-html.html">From HTML</a></li>
-              <li><a href="#welcomes/from-data.html">From Data</a></li>
-              <li><a href="#welcomes/from-url.html">From URL</a></li>
-              <li><a href="#welcomes/no-data.html">No Data</a></li>
-              <li data-show=""><a href="#welcomes/modal-table.html">Modal Table</a></li>
-              <li data-show="bootstrap4"><a href="#welcomes/modal-table-bootstrap4.html">Modal Table</a></li>
-              <li data-show="bootstrap3"><a href="#welcomes/modal-table-bootstrap3.html">Modal Table</a></li>
-              <li data-show="semantic"><a href="#welcomes/modal-table-semantic.html">Modal Table</a></li>
-              <li data-show="bulma"><a href="#welcomes/modal-table-bulma.html">Modal Table</a></li>
-              <li data-show="materialize"><a href="#welcomes/modal-table-materialize.html">Modal Table</a></li>
-              <li data-show="foundation"><a href="#welcomes/modal-table-foundation.html">Modal Table</a></li>
-              <li><a href="#welcomes/group-columns.html">Group Columns</a></li>
-              <li><a href="#welcomes/sub-table.html">Sub Table</a></li>
-              <li><a href="#welcomes/multiple-table.html">Multiple Table</a></li>
-              <li><a href="#welcomes/flat-json.html">Flat Json</a></li>
-              <li><a href="#welcomes/large-data.html">Large Data</a></li>
-              <li><a href="#welcomes/vue-component.html">Vue Component</a></li>
-            </ul>
-          </div>
-
-          <div class="bd-toc-item">
-            <a class="bd-toc-link" href="#options/table-ajax.html">Options</a>
-            <ul class="nav bd-sidenav">
-              <li><a href="#options/table-ajax.html">AJAX</a></li>
-              <li><a href="#options/ajax-options.html">AJAX Options</a></li>
-              <li><a href="#options/basic-columns.html">Basic Columns</a></li>
-              <li><a href="#options/buttons.html">Buttons Custom</a></li>
-              <li><a href="#options/buttons-align.html">Buttons Align</a></li>
-              <li><a href="#options/buttons-attribute-title.html">Buttons Attribute Title</a></li>
-              <li data-show="bootstrap3,bootstrap4,"><a href="#options/buttons-class.html">Buttons Class</a></li>
-              <li><a href="#options/buttons-order.html">Buttons Order</a></li>
-              <li data-show="bootstrap3,bootstrap4,"><a href="#options/buttons-prefix.html">Buttons Prefix</a></li>
-              <li><a href="#options/buttons-toolbar.html">Buttons Toolbar</a></li>
-              <li><a href="#options/table-cache.html">Cache</a></li>
-              <li><a href="#options/card-view.html">Card View</a></li>
-              <li><a href="#options/checkbox-header.html">Checkbox Header</a></li>
-              <li data-show=""><a href="#options/table-classes.html">Classes</a></li>
-              <li><a href="#options/click-to-select.html">Click To Select</a></li>
-              <li><a href="#options/client-side-pagination.html">Client Side Pagination</a></li>
-              <li><a href="#options/table-columns.html">Columns</a></li>
-              <li><a href="#options/columns-search.html">Columns Search</a></li>
-              <li><a href="#options/columns-toggle-all.html">Columns Toggle All</a></li>
-              <li><a href="#options/content-type.html">Content Type</a></li>
-              <li><a href="#options/custom-search.html">Custom Search</a></li>
-              <li><a href="#options/custom-sort.html">Custom Sort</a></li>
-              <li><a href="#options/custom-toolbar.html">Custom Toolbar</a></li>
-              <li><a href="#options/data-type.html">Data Type</a></li>
-              <li><a href="#options/detail-filter.html">Detail Filter</a></li>
-              <li><a href="#options/detail-view.html">Detail View</a></li>
-              <li><a href="#options/detail-view-align.html">Detail View Align</a></li>
-              <li><a href="#options/detail-view-icon.html">Detail View Icon</a></li>
-              <li><a href="#options/detail-view-unique-id.html">Detail View Unique ID</a></li>
-              <li><a href="#options/table-escape.html">Escape</a></li>
-              <li><a href="#options/table-escape-title.html">Escape Title</a></li>
-              <li><a href="#options/filter-options.html">Filter Options</a></li>
-              <li><a href="#options/fixed-scroll.html">Fixed Scroll</a></li>
-              <li><a href="#options/footer-field.html">Footer Field</a></li>
-              <li><a href="#options/footer-style.html">Footer Style</a></li>
-              <li><a href="#options/header-style.html">Header Style</a></li>
-              <li><a href="#options/table-height.html">Height</a></li>
-              <li data-show="bootstrap3,bootstrap4,"><a href="#options/icon-size.html">Icon Size</a></li>
-              <li data-show="bootstrap3,bootstrap4,"><a href="#options/icons-prefix.html">Icons Prefix</a></li>
-              <li><a href="#options/id-field.html">Id Field</a></li>
-              <li><a href="#options/ignore-click-to-select-on.html">Ignore Click To Select On</a></li>
-              <li><a href="#options/large-columns.html">Large Columns</a></li>
-              <li><a href="#options/table-locale.html">Locale</a></li>
-              <li><a href="#options/loading-font-size.html">Loading Font Size</a></li>
-              <li><a href="#options/loading-template.html">Loading Template</a></li>
-              <li><a href="#options/maintain-meta-data.html">Maintain Meta Data</a></li>
-              <li><a href="#options/table-method.html">Method</a></li>
-              <li><a href="#options/minimum-count-columns.html">Minimum Count Columns</a></li>
-              <li><a href="#options/multiple-select-row.html">Multiple Select Row</a></li>
-              <li><a href="#options/page-list.html">Page List</a></li>
-              <li><a href="#options/page-number.html">Page Number</a></li>
-              <li><a href="#options/page-size.html">Page Size</a></li>
-              <li><a href="#options/table-pagination.html">Pagination</a></li>
-              <li><a href="#options/pagination-h-align.html">Pagination H Align</a></li>
-              <li><a href="#options/pagination-index-number.html">Pagination Index Number</a></li>
-              <li><a href="#options/pagination-load-more.html">Pagination Load More</a></li>
-              <li><a href="#options/pagination-loop.html">Pagination Loop</a></li>
-              <li><a href="#options/pagination-parts.html">Pagination Parts</a></li>
-              <li><a href="#options/pagination-text.html">Pagination Text</a></li>
-              <li><a href="#options/pagination-v-align.html">Pagination V Align</a></li>
-              <li><a href="#options/query-params.html">Query Params</a></li>
-              <li><a href="#options/query-params-type.html">Query Params Type</a></li>
-              <li><a href="#options/regex-search.html">Regex Search</a></li>
-              <li><a href="#options/remember-order.html">Remember Order</a></li>
-              <li><a href="#options/response-handler.html">Response Handler</a></li>
-              <li data-show="bootstrap3,bootstrap4,"><a href="#options/row-attributes.html">Row Attributes</a></li>
-              <li><a href="#options/row-style.html">Row Style</a></li>
-              <li><a href="#options/table-search.html">Search</a></li>
-              <li><a href="#options/searchable.html">Searchable</a></li>
-              <li><a href="#options/search-accent-neutralise.html">Search Accent Neutralise</a></li>
-              <li><a href="#options/search-align.html">Search Align</a></li>
-              <li><a href="#options/search-highlight.html">Search Highlight</a></li>
-              <li><a href="#options/search-on-enter-key.html">Search On Enter Key</a></li>
-              <li><a href="#options/search-selector.html">Search Selector</a></li>
-              <li><a href="#options/search-text.html">Search Text</a></li>
-              <li><a href="#options/search-time-out.html">Search Time Out</a></li>
-              <li><a href="#options/server-side-pagination.html">Server Side Pagination</a></li>
-              <li><a href="#options/server-sort.html">Server Sort</a></li>
-              <li><a href="#options/show-button-icons.html">Show Button Icon</a></li>
-              <li><a href="#options/show-button-text.html">Show Button Text</a></li>
-              <li><a href="#options/show-extended-pagination.html">Show Extended Pagination</a></li>
-              <li><a href="#options/show-footer.html">Show Footer</a></li>
-              <li><a href="#options/show-fullscreen.html">Show Fullscreen</a></li>
-              <li><a href="#options/show-header.html">Show Header</a></li>
-              <li><a href="#options/show-pagination-switch.html">Show Pagination Switch</a></li>
-              <li><a href="#options/show-refresh.html">Show Refresh</a></li>
-              <li><a href="#options/show-search-button.html">Show Search Button</a></li>
-              <li><a href="#options/show-search-clear-button.html">Show Search Clear Button</a></li>
-              <li><a href="#options/show-toggle.html">Show Toggle</a></li>
-              <li><a href="#options/silent-sort.html">Silent Sort</a></li>
-              <li><a href="#options/single-select.html">Single Select</a></li>
-              <li><a href="#options/smart-display.html">Smart Display</a></li>
-              <li><a href="#options/sort-class.html">Sort Class</a></li>
-              <li><a href="#options/sort-empty-last.html">Sort Empty Last</a></li>
-              <li><a href="#options/sort-name-order.html">Sort Name Order</a></li>
-              <li><a href="#options/sort-reset.html">Sort Reset</a></li>
-              <li><a href="#options/sort-reset-page.html">Sort Reset Page</a></li>
-              <li><a href="#options/sort-stable.html">Sort Stable</a></li>
-              <li><a href="#options/table-sortable.html">Sortable</a></li>
-              <li><a href="#options/strict-search.html">Strict Search</a></li>
-              <li data-show="bootstrap3,bootstrap4,"><a href="#options/table-icons.html">Table Icons</a></li>
-              <li data-show=""><a href="#options/thead-classes.html">Thead Classes</a></li>
-              <li><a href="#options/toolbar-align.html">Toolbar Align</a></li>
-              <li><a href="#options/total-not-filtered-field.html">Total Not Filtered Field</a></li>
-              <li><a href="#options/total-data-field.html">Total/Data Field</a></li>
-              <li><a href="#options/trim-on-search.html">Trim On Search</a></li>
-              <li><a href="#options/undefined-text.html">Undefined Text</a></li>
-              <li><a href="#options/visible-search.html">Visible Search</a></li>
-            </ul>
-          </div>
-
-          <div class="bd-toc-item">
-            <a class="bd-toc-link" href="#column-options/aligning-columns.html">Column Options</a>
-            <ul class="nav bd-sidenav">
-              <li><a href="#column-options/aligning-columns.html">Aligning Columns</a></li>
-              <li><a href="#column-options/aligning-footer.html">Aligning Footer</a></li>
-              <li><a href="#column-options/card-visible.html">Card Visible</a></li>
-              <li><a href="#column-options/cell-style.html">Cell Style</a></li>
-              <li><a href="#column-options/checkbox.html">Checkbox</a></li>
-              <li><a href="#column-options/checkbox-disabled.html">Checkbox Disabled</a></li>
-              <li><a href="#column-options/checkbox-enabled.html">Checkbox Enabled</a></li>
-              <li><a href="#column-options/class.html">Class</a></li>
-              <li><a href="#column-options/click-to-select.html">Click To Select</a></li>
-              <li><a href="#column-options/detail-formatter.html">Detail Formatter</a></li>
-              <li><a href="#column-options/escape.html">Escape</a></li>
-              <li><a href="#column-options/events.html">Events</a></li>
-              <li><a href="#column-options/field.html">Fields</a></li>
-              <li><a href="#column-options/footer-formatter.html">Footer Formatter</a></li>
-              <li><a href="#column-options/formatter.html">Formatter</a></li>
-              <li><a href="#column-options/natural-sorting.html">Natural Sorting</a></li>
-              <li><a href="#column-options/radio.html">Radio</a></li>
-              <li><a href="#column-options/rowspan-colspan.html">Rowspan Colspan</a></li>
-              <li><a href="#column-options/search-formatter.html">Search Formatter</a></li>
-              <li><a href="#column-options/search-highlight-formatter.html">Search Highlight Formatter</a></li>
-              <li><a href="#column-options/searchable.html">Searchable</a></li>
-              <li><a href="#column-options/show-select-title.html">Show Select Title</a></li>
-              <li><a href="#column-options/sort-name-order.html">Sort Name Order</a></li>
-              <li><a href="#column-options/sortable.html">Sortable</a></li>
-              <li><a href="#column-options/sorter.html">Sorter</a></li>
-              <li><a href="#column-options/switchable.html">Switchable</a></li>
-              <li><a href="#column-options/title.html">Title</a></li>
-              <li><a href="#column-options/title-tooltip.html">Title Tooltip</a></li>
-              <li><a href="#column-options/visible.html">Visible</a></li>
-              <li><a href="#column-options/width.html">Width</a></li>
-              <li><a href="#column-options/width-unit.html">Width Unit</a></li>
-            </ul>
-          </div>
-
-          <div class="bd-toc-item">
-            <a class="bd-toc-link" href="#methods/append.html">Methods</a>
-            <ul class="nav bd-sidenav">
-              <li><a href="#methods/append.html">Append</a></li>
-              <li><a href="#methods/check-invert.html">Check Invert</a></li>
-              <li><a href="#methods/check-uncheck.html">Check/Uncheck</a></li>
-              <li><a href="#methods/check-uncheck-all.html">Check/Uncheck All</a></li>
-              <li><a href="#methods/check-uncheck-by.html">Check/Uncheck By</a></li>
-              <li><a href="#methods/destroy.html">Destroy</a></li>
-              <li><a href="#methods/expand-collapse-all-rows.html">Expand/Collapse All Rows</a></li>
-              <li><a href="#methods/expand-collapse-row-by-uniqueid.html">Expand/Collapse Row by uniqueId</a></li>
-              <li><a href="#methods/expand-collapse-row.html">Expand/Collapse Row</a></li>
-              <li><a href="#methods/filter-by.html">Filter By</a></li>
-              <li><a href="#methods/get-data.html">Get Data</a></li>
-              <li><a href="#methods/get-footer-data.html">Get Footer Data</a></li>
-              <li><a href="#methods/get-hidden-rows.html">Get Hidden Rows</a></li>
-              <li><a href="#methods/get-options.html">Get Options</a></li>
-              <li><a href="#methods/get-row-by-unique-id.html">Get Row By Unique Id</a></li>
-              <li><a href="#methods/get-scroll-position.html">Get Scroll Position</a></li>
-              <li><a href="#methods/get-selections.html">Get Selections</a></li>
-              <li><a href="#methods/get-visible-hidden-columns.html">Get Visible/Hidden Columns</a></li>
-              <li><a href="#methods/insert-row.html">Insert Row</a></li>
-              <li><a href="#methods/load.html">Load</a></li>
-              <li><a href="#methods/merge-cells.html">Merge Cells</a></li>
-              <li><a href="#methods/prepend.html">Prepend</a></li>
-              <li><a href="#methods/refresh.html">Refresh</a></li>
-              <li><a href="#methods/refresh-options.html">Refresh Options</a></li>
-              <li><a href="#methods/remove.html">Remove</a></li>
-              <li><a href="#methods/remove-all.html">Remove All</a></li>
-              <li><a href="#methods/remove-by-unique-id.html">Remove By Unique Id</a></li>
-              <li><a href="#methods/reset-search.html">Reset Search</a></li>
-              <li><a href="#methods/reset-view.html">Reset View</a></li>
-              <li><a href="#methods/scroll-to.html">Scroll To</a></li>
-              <li><a href="#methods/select-prev-next-page.html">Select/Prev/Next Page</a></li>
-              <li><a href="#methods/show-hide-all-columns.html">Show/Hide All Columns</a></li>
-              <li><a href="#methods/show-hide-column.html">Show/Hide Column</a></li>
-              <li><a href="#methods/show-hide-loading.html">Show/Hide Loading</a></li>
-              <li><a href="#methods/show-hide-row.html">Show/Hide Row</a></li>
-              <li><a href="#methods/sort-by.html">Sort By</a></li>
-              <li><a href="#methods/sort-reset.html">Sort reset</a></li>
-              <li><a href="#methods/toggle-detail-view.html">Toggle Detail View</a></li>
-              <li><a href="#methods/toggle-fullscreen.html">Toggle Fullscreen</a></li>
-              <li><a href="#methods/toggle-pagination.html">Toggle Pagination</a></li>
-              <li><a href="#methods/toggle-view.html">Toggle View</a></li>
-              <li><a href="#methods/update-by-unique-id.html">Update By Unique Id</a></li>
-              <li><a href="#methods/update-cell.html">Update Cell</a></li>
-              <li><a href="#methods/update-cell-by-unique-id.html">Update Cell By Unique Id</a></li>
-              <li><a href="#methods/update-column-title.html">Update Column Title</a></li>
-              <li><a href="#methods/update-format-text.html">Update Format Text</a></li>
-              <li><a href="#methods/update-row.html">Update Row</a></li>
-            </ul>
-          </div>
-
-          <div class="bd-toc-item">
-            <a class="bd-toc-link" href="#extensions/addrbar.html">Extensions</a>
-            <ul class="nav bd-sidenav">
-              <li><a href="#extensions/addrbar.html">Addrbar</a></li>
-              <li><a href="#extensions/auto-refresh.html">Auto Refresh</a></li>
-              <li><a href="#extensions/cookie.html">Cookie</a></li>
-              <li><a href="#extensions/copy-rows.html">Copy Rows</a></li>
-              <li><a href="#extensions/custom-view.html">Custom View</a></li>
-              <li><a href="#extensions/defer-url.html">Defer Url</a></li>
-              <li data-show="bootstrap3"><a href="#extensions/editable.html">Editable</a></li>
-              <li><a href="#extensions/export.html">Export</a></li>
-              <li data-show="bootstrap3,bootstrap4,"><a href="#extensions/filter-control.html">Filter Control</a></li>
-              <li><a href="#extensions/fixed-columns.html">Fixed Columns</a></li>
-              <li data-show="bootstrap3,bootstrap4,"><a href="#extensions/group-by-v2.html">Group By V2</a></li>
-              <li><a href="#extensions/i18n-enhance.html">I18n Enhance</a></li>
-              <li><a href="#extensions/key-events.html">Key Events</a></li>
-              <li><a href="#extensions/mobile.html">Mobile</a></li>
-              <li data-show="bootstrap3,bootstrap4,"><a href="#extensions/multiple-sort.html">Multiple Sort</a></li>
-              <li data-show="bootstrap3,bootstrap4,"><a href="#extensions/page-jump-to.html">Page Jump To</a></li>
-              <li data-show="bootstrap3,bootstrap4,"><a href="#extensions/pipeline.html">Pipeline</a></li>
-              <li data-show="bootstrap3,bootstrap4,"><a href="#extensions/print.html">Print</a></li>
-              <li><a href="#extensions/reorder-columns.html">Reorder Columns</a></li>
-              <li><a href="#extensions/reorder-rows.html">Reorder Rows</a></li>
-              <li><a href="#extensions/resizable.html">Resizable</a></li>
-              <li><a href="#extensions/sticky-header.html">Sticky Header</a></li>
-              <li><a href="#extensions/toolbar.html">Toolbar</a></li>
-              <li><a href="#extensions/treegrid.html">Treegrid</a></li>
-            </ul>
-          </div>
-
-          <div class="bd-toc-item">
-            <a class="bd-toc-link" href="#issues/137.html">Issues</a>
-            <ul class="nav bd-sidenav">
-              <li>
-                <a href="#issues/137.html">
-                  137. Refresh from url after use data option
-                </a>
-              </li>
-              <li>
-                <a href="#issues/152.html">
-                  152. How to pass parameter to server
-                </a>
-              </li>
-              <li>
-                <a href="#issues/177.html">
-                  177. The Multiple Fields in Column
-                </a>
-              </li>
-              <li>
-                <a href="#issues/188.html">
-                  188. Show Export button only
-                </a>
-              </li>
-              <li>
-                <a href="#issues/220.html">
-                  220. Hide state column
-                </a>
-              </li>
-              <li>
-                <a href="#issues/221.html">
-                  221. Use cellStyle
-                </a>
-              </li>
-              <li>
-                <a href="#issues/283.html">
-                  283. Use resetView to reset the header width
-                </a>
-              </li>
-              <li>
-                <a href="#issues/337.html">
-                  337. Custom fontawsome icons
-                </a>
-              </li>
-              <li>
-                <a href="#issues/371.html">
-                  371. Using table content in a HTML form
-                </a>
-              </li>
-              <li>
-                <a href="#issues/383.html">
-                  383. Use Flat UI to style the checkboxes
-                </a>
-              </li>
-              <li>
-                <a href="#issues/386.html">
-                  386. Override default queryParam variables
-                </a>
-              </li>
-              <li>
-                <a href="#issues/395.html">
-                  395. Enable/disable delete button on click checkbox
-                </a>
-              </li>
-              <li>
-                <a href="#issues/406.html">
-                  406. Align the toolbar and search input
-                </a>
-              </li>
-              <li>
-                <a href="#issues/409.html">
-                  409. Refresh method with new url
-                </a>
-              </li>
-              <li>
-                <a href="#issues/415.html">
-                  415. Get checked row index
-                </a>
-              </li>
-              <li>
-                <a href="#issues/424.html">
-                  424. Toggle pagination
-                </a>
-              </li>
-              <li>
-                <a href="#issues/431.html">
-                  431. Load pagination data
-                </a>
-              </li>
-              <li>
-                <a href="#issues/457.html">
-                  457. Set the global defaults for the table
-                </a>
-              </li>
-              <li>
-                <a href="#issues/563.html">
-                  563. Change the background color on selected rows
-                </a>
-              </li>
-              <li>
-                <a href="#issues/579.html">
-                  579. Show images formatter
-                </a>
-              </li>
-              <li>
-                <a href="#issues/639.html">
-                  639. Footer resizing problem.
-                </a>
-              </li>
-              <li>
-                <a href="#issues/917.html">
-                  917. Maintain selected on server side.
-                </a>
-              </li>
-              <li>
-                <a href="#issues/986.html">
-                  986. Editable select box
-                </a>
-              </li>
-              <li>
-                <a href="#issues/987.html">
-                  987. Save row data using input.
-                </a>
-              </li>
-              <li>
-                <a href="#issues/1167.html">
-                  1167. Check/Uncheck All in all page with client side
-                </a>
-              </li>
-              <li>
-                <a href="#issues/2211.html">
-                  2211. Rotated table column headers
-                </a>
-              </li>
-              <li>
-                <a href="#issues/2619.html">
-                  2619. Click sort with html Checkbox
-                </a>
-              </li>
-              <li>
-                <a href="#issues/3345.html">
-                  3345. Check/Uncheck All in all page with server side
-                </a>
-              </li>
-              <li>
-                <a href="#issues/3784.html">
-                  3784. Overwrite the table scrollbar
-                </a>
-              </li>
-              <li>
-                <a href="#issues/3830.html">
-                  3830. Export all records with server side pagination
-                </a>
-              </li>
-              <li>
-                <a href="#issues/3949.html">
-                  3949. Multiple group header and large columns
-                </a>
-              </li>
-              <li>
-                <a href="#issues/4210.html">
-                  4210. Get table full url
-                </a>
-              </li>
-              <li>
-                <a href="#issues/4214.html">
-                  4214. Added index field
-                </a>
-              </li>
-              <li>
-                <a href="#issues/4586.html">
-                  4586. Customize data attribute of td
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <div class="bd-toc-item">
-            <a class="bd-toc-link" href="https://github.com/wenzhixin/bootstrap-table-examples" target="_blank">
-              Examples GitHub
+        <main class="col-12 col-md-9 col-xl-10 py-md-3 ps-md-5 bd-content" role="main">
+          <iframe width="100%" height="100%"></iframe>
+          <div class="icon-buttons">
+            <a
+              data-bs-toggle="tooltip"
+              data-bs-placement="left"
+              href="javascript:"
+              class="btn btn-outline-primary view-example hvr-icon-wobble-vertical"
+              title="View Example"
+            >
+              <i class="fa fa-eye hvr-icon"></i>
+            </a>
+            <a
+              data-bs-toggle="tooltip"
+              data-bs-placement="left"
+              href="javascript:"
+              class="btn btn-outline-primary view-source hvr-icon-wobble-vertical"
+              title="View Source"
+            >
+              <i class="fa fa-code hvr-icon"></i>
+            </a>
+            <a
+              data-bs-toggle="tooltip"
+              data-bs-placement="left"
+              href="javascript:"
+              target="_blank"
+              class="btn btn-outline-primary view-online hvr-icon-wobble-vertical"
+              title="Run on Online Editor"
+            >
+              <i class="fa fa-cube hvr-icon"></i>
             </a>
           </div>
-        </nav>
+        </main>
       </div>
-
-      <main class="col-12 col-md-9 col-xl-10 py-md-3 bd-content" role="main">
-        <!-- <div class="corner-ribbon-wrapper">
-          <a class="corner-ribbon" href="javascript:"></a>
-        </div> -->
-        <iframe width="100%" height="100%"></iframe>
-        <div class="icon-buttons">
-          <a data-toggle="tooltip" data-placement="left" href="javascript:" class="view-example hvr-icon-wobble-vertical" title="View Example">
-            <i class="fa fa-eye hvr-icon"></i>
-          </a>
-          <a data-toggle="tooltip" data-placement="left" href="javascript:" class="view-source hvr-icon-wobble-vertical" title="View Source">
-            <i class="fa fa-code hvr-icon"></i>
-          </a>
-          <a data-toggle="tooltip" data-placement="left" href="javascript:" target="_blank" class="view-online hvr-icon-wobble-vertical" title="Run on Online Editor">
-            <i class="fa fa-cube hvr-icon"></i>
-          </a>
-        </div>
-      </main>
     </div>
   </div>
 
+  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@4"></script>
   <script>$.browser = {}
 </script>
   <script src="https://cdn.jsdelivr.net/npm/jquery-hashchange@2.0.0/jquery.ba-hashchange.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/algoliasearch@3.32.0/dist/algoliasearchLite.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@3.0.0/dist/instantsearch.production.min.js"></script>
-  <script src="assets/js/docs.min.js"></script>
-  <script src="assets/js/index.js?v=963"></script>
-</body></html>
+  <script src="assets/js/config.js?v=969" type="module"></script>
+  <script src="assets/js/index.js?v=969"></script>
+</body>
+</html>

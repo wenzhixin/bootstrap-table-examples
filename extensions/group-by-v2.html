@@ -14,30 +14,43 @@ init({
 </script>
 
 <template>
-  <table
-    id="table"
-    data-group-by="true"
-    data-group-by-field="shape"
-    data-url="json/data6.json"
-  >
-    <thead>
-      <tr>
-        <th data-field="shape">
-          Shape
-        </th>
-        <th data-field="color">
-          Color
-        </th>
-        <th data-field="area">
-          Area
-        </th>
-      </tr>
-    </thead>
-  </table>
+  <table id="table"></table>
 </template>
 
 <script>
   function mounted () {
-    $('#table').bootstrapTable()
+    $('#table').bootstrapTable({
+      url: 'json/data6.json',
+      groupBy: true,
+      groupByField: 'shape',
+      groupByFormatter: value => {
+        const strong = document.createElement('strong')
+
+        strong.className = 'text-primary'
+        strong.textContent = `GROUP: ${value}`
+        return strong.outerHTML
+      },
+      columns: [
+        {
+          field: 'state',
+          checkbox: true
+        },
+        {
+          field: 'shape',
+          title: 'Shape',
+          sortable: true
+        },
+        {
+          field: 'color',
+          title: 'Color',
+          sortable: true
+        },
+        {
+          field: 'area',
+          title: 'Area',
+          sortable: true
+        }
+      ]
+    })
   }
 </script>

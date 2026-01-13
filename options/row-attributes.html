@@ -14,6 +14,7 @@ init({
     data-height="460"
     data-url="json/data1.json"
     data-row-attributes="rowAttributes"
+    data-pagination="true"
   >
     <thead>
       <tr>
@@ -33,20 +34,26 @@ init({
 
 <script>
   window.rowAttributes = (row, index) => ({
-    'data-toggle': 'popover',
-    'data-placement': 'bottom',
-    'data-trigger': 'hover',
-    'data-content': [
+    'data-bs-toggle': 'popover',
+    'data-bs-placement': 'bottom',
+    'data-bs-trigger': 'hover focus',
+    'data-bs-html': 'true',
+    'data-bs-title': `Row ${index}`,
+    'data-bs-content': [
       `Index: ${index}`,
       `ID: ${row.id}`,
       `Name: ${row.name}`,
       `Price: ${row.price}`
-    ].join(', ')
+    ].join('<br>')
   })
 
   function mounted () {
     $('#table').on('post-body.bs.table', () => {
-      $('[data-toggle="popover"]').popover()
+      const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
+
+      popoverTriggerList.forEach(function (popoverTriggerEl) {
+        new bootstrap.Popover(popoverTriggerEl)
+      })
     })
   }
 </script>

@@ -208,14 +208,14 @@ init({
   let selections = []
 
   function getIdSelections () {
-    return $.map($table.bootstrapTable('getSelections'), function (row) {
+    return $table.bootstrapTable('getSelections').map(function (row) {
       return row.id
     })
   }
 
   window.responseHandler = res => {
-    $.each(res.rows, function (i, row) {
-      row.state = $.inArray(row.id, selections) !== -1
+    res.rows.forEach(function (row) {
+      row.state = selections.includes(row.id)
     })
     return res
   }
@@ -223,9 +223,9 @@ init({
   window.detailFormatter = (index, row) => {
     const html = []
 
-    $.each(row, function (key, value) {
-      html.push(`<p><b>${key}:</b> ${value}</p>`)
-    })
+    for (const key in row) {
+      html.push(`<p><b>${key}:</b> ${row[key]}</p>`)
+    }
     return html.join('')
   }
 

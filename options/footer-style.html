@@ -50,7 +50,7 @@ init({
     const field = this.field
 
     return `$${data.map(function (row) {
-      return +row[field].substring(1)
+      return row[field] ? +row[field].substring(1) : 0
     }).reduce(function (sum, i) {
       return sum + i
     }, 0)}`

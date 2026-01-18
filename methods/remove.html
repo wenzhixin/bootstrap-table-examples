@@ -56,7 +56,7 @@ init({
 
   function mounted () {
     $button.click(function () {
-      const ids = $.map($table.bootstrapTable('getSelections'), function (row) {
+      const ids = $table.bootstrapTable('getSelections').map(function (row) {
         return row.id
       })
 

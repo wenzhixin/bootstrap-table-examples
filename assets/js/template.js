@@ -1,6 +1,6 @@
 window._config = {
   isDebug: location.hash.slice(1) === 'is-debug' ||
-    ['localhost', '127.0.0.1', 'dev.bootstrap-table.com'].indexOf(location.hostname) > -1,
+    ['localhost', '127.0.0.1', 'dev.bootstrap-table.com'].includes(location.hostname),
   cdnUrl: 'https://cdn.jsdelivr.net/npm/bootstrap-table@1.26.0/dist/',
   localUrl: '../bootstrap-table/src/',
   testUrl: '/src/'
@@ -169,9 +169,9 @@ function _beautifySource (data) {
     }
   }
 
-  result = result.concat($.map(obj.links, _getLink))
+  result = result.concat(obj.links.map(_getLink))
   addEmptyLine()
-  result = result.concat($.map(obj.scripts, function (script) {
+  result = result.concat(obj.scripts.map(function (script) {
     return _getScript(script, true)
   }))
   addEmptyLine()
@@ -282,7 +282,7 @@ window.init = function (options_) {
   if ($('.bd-lead').length) {
     $('.bd-lead').html(window.marked(options.desc)).find('a').attr('target', '_blank')
   }
-  $.each(options.links, function (i, file) {
+  options.links.forEach(function (file) {
     _link(file)
   })
   _scripts(options.scripts, options.callback)

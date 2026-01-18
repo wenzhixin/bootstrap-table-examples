@@ -219,7 +219,7 @@ init({
     const template = $('#profileTemplate').html()
     let view = ''
 
-    $.each(data, function (i, row) {
+    data.forEach(function (row) {
       view += template.replace('%NAME%', row.name)
         .replace('%IMAGE%', row.image)
         .replace('%FOLLOWER%', row.follower)

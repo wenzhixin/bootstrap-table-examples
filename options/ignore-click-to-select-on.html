@@ -46,7 +46,7 @@ init({
   window.priceFormatter = value => `<button class="btn btn-secondary">${value}</button>`
 
   function ignoreClickToSelectOn (e) {
-    return ['A', 'BUTTON', 'LABEL', 'INPUT'].indexOf(e.tagName) > -1
+    return ['A', 'BUTTON', 'LABEL', 'INPUT'].includes(e.tagName)
   }
 
   function mounted () {

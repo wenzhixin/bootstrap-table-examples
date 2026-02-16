@@ -5,6 +5,7 @@ import vue from 'eslint-plugin-vue'
 const globals = eslintConfig[eslintConfig.length - 1].languageOptions.globals
 
 globals.init = true
+globals.bootstrap = true
 
 export default [
   {

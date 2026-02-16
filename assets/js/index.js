@@ -1,4 +1,4 @@
-const isDebug = ['localhost', '127.0.0.1'].indexOf(location.hostname) > -1
+const isDebug = ['localhost', '127.0.0.1'].includes(location.hostname)
 const { computed, createApp, onMounted, ref } = window.Vue
 
 const Utils = {
@@ -74,7 +74,7 @@ const Utils = {
     $('.view-example, .view-source').off('click').click(function () {
       if (isSource) {
         location.hash = location.hash.replace('#view-source', '')
-      } else if (location.hash.indexOf('view-source') === -1) {
+      } else if (!location.hash.includes('view-source')) {
         location.hash += '#view-source'
       }
     })

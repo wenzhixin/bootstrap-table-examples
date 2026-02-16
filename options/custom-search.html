@@ -40,6 +40,6 @@ init({
   }
 
   window.customSearch = (data, text) => data.filter(function (row) {
-    return row.price.indexOf(text) > -1
+    return row.price.includes(text)
   })
 </script>

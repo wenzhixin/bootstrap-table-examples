@@ -8,7 +8,7 @@ init({
   scripts: [
     'https://cdn.jsdelivr.net/npm/tableexport.jquery.plugin@1.29.0/tableExport.min.js',
     'bootstrap-table.min.js',
-    'https://cdn.jsdelivr.net/npm/bootstrap-table@1.26.0/dist/bootstrap-table-locale-all.min.js',
+    'https://cdn.jsdelivr.net/npm/bootstrap-table@1.27.0/dist/bootstrap-table-locale-all.min.js',
     'extensions/export/bootstrap-table-export.min.js'
   ]
 })
@@ -208,14 +208,14 @@ init({
   let selections = []
 
   function getIdSelections () {
-    return $.map($table.bootstrapTable('getSelections'), function (row) {
+    return $table.bootstrapTable('getSelections').map(function (row) {
       return row.id
     })
   }
 
   window.responseHandler = res => {
-    $.each(res.rows, function (i, row) {
-      row.state = $.inArray(row.id, selections) !== -1
+    res.rows.forEach(function (row) {
+      row.state = selections.includes(row.id)
     })
     return res
   }
@@ -223,9 +223,9 @@ init({
   window.detailFormatter = (index, row) => {
     const html = []
 
-    $.each(row, function (key, value) {
-      html.push(`<p><b>${key}:</b> ${value}</p>`)
-    })
+    for (const key in row) {
+      html.push(`<p><b>${key}:</b> ${row[key]}</p>`)
+    }
     return html.join('')
   }
 

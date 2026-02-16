@@ -21,8 +21,10 @@ init({
   function mounted () {
     $('#table').bootstrapTable({
       url: 'json/data6.json',
+      search: true,
       groupBy: true,
       groupByField: 'shape',
+      groupByToggle: true,
       groupByFormatter: value => {
         const strong = document.createElement('strong')
 

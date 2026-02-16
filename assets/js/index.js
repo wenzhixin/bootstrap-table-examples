@@ -1,4 +1,4 @@
-const isDebug = ['localhost', '127.0.0.1'].indexOf(location.hostname) > -1
+const isDebug = ['localhost', '127.0.0.1'].includes(location.hostname)
 const { computed, createApp, onMounted, ref } = window.Vue
 
 const Utils = {
@@ -22,13 +22,13 @@ const Utils = {
     if (theme) {
       template += `-${theme}`
     }
-    let url = `${template}.html?v=971&url=${href}`
+    let url = `${template}.html?v=983&url=${href}`
 
     if (isDebug) {
       url = `${template}.html?t=${+new Date()}&url=${href}`
     }
     if (isViewSource) {
-      url = `${template}.html?v=971&view-source&url=${href}#view-source`
+      url = `${template}.html?v=983&view-source&url=${href}#view-source`
     }
     $('iframe').attr('src', url)
   },
@@ -74,7 +74,7 @@ const Utils = {
     $('.view-example, .view-source').off('click').click(function () {
       if (isSource) {
         location.hash = location.hash.replace('#view-source', '')
-      } else if (location.hash.indexOf('view-source') === -1) {
+      } else if (!location.hash.includes('view-source')) {
         location.hash += '#view-source'
       }
     })

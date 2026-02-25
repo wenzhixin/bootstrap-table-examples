@@ -15,17 +15,16 @@ init({
 
 <template>
   <ul id="sortable">
-    <li>paginationSwitch</li>
-    <li>refresh</li>
-    <li>toggle</li>
-    <li>fullscreen</li>
-    <li>columns</li>
+    <li data-value="fullscreen">fullscreen</li>
+    <li data-value="paginationSwitch">paginationSwitch</li>
+    <li data-value="refresh">refresh</li>
+    <li data-value="toggle">toggle</li>
+    <li data-value="columns">columns</li>
   </ul>
 
   <table
     id="table"
     data-toolbar="#sortable"
-    data-toggle="table"
     data-height="460"
     data-show-pagination-switch="true"
     data-show-refresh="true"
@@ -52,17 +51,25 @@ init({
 
 <script>
   function mounted () {
+    const getButtonsOrder = () => {
+      const buttonsOrder = []
+
+      $('#sortable').find('li').each(function () {
+        buttonsOrder.push($(this).text().trim())
+      })
+      return buttonsOrder
+    }
+
     $('#sortable').sortable({
       stop () {
-        const buttonsOrder = []
-
-        $('#sortable').find('li').each(function () {
-          buttonsOrder.push($(this).text().trim())
-        })
         $('#table').bootstrapTable('refreshOptions', {
-          buttonsOrder
+          buttonsOrder: getButtonsOrder()
         })
       }
+    })
+
+    $('#table').bootstrapTable({
+      buttonsOrder: getButtonsOrder()
     })
   }
 </script>

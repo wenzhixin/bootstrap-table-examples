@@ -7,26 +7,6 @@ init({
 })
 </script>
 
-<script>
-  const $table = $('#table')
-
-  function mounted () {
-    $table.bootstrapTable()
-
-    $('.toolbar input').change(function () {
-      const classes = []
-
-      $('.toolbar input:checked').map(function () {
-        classes.push($(this).next().text())
-      })
-
-      $table.bootstrapTable('refreshOptions', {
-        classes: classes.join(' ')
-      })
-    })
-  }
-</script>
-
 <template>
   <div class="toolbar">
     <div class="checkbox">
@@ -59,7 +39,10 @@ init({
     </div>
     <div class="checkbox">
       <label>
-        <input type="checkbox">
+        <input
+          type="checkbox"
+          checked
+        >
         <code>table-striped</code>
       </label>
     </div>
@@ -103,6 +86,31 @@ init({
     </thead>
   </table>
 </template>
+
+<script>
+  const $table = $('#table')
+
+  function mounted () {
+    const getClasses = () => {
+      const classes = []
+
+      $('.toolbar input:checked').map(function () {
+        classes.push($(this).next().text())
+      })
+
+      return classes.join(' ')
+    }
+
+    $('.toolbar input').change(function () {
+      $table.bootstrapTable('refreshOptions', {
+        classes: getClasses()
+      })
+    })
+    $table.bootstrapTable({
+      classes: getClasses()
+    })
+  }
+</script>
 
 <style>
   .checkbox {

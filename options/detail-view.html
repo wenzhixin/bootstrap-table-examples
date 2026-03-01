@@ -37,8 +37,8 @@ init({
   window.detailFormatter = (index, row) => {
     const html = []
 
-    for (const key in row) {
-      html.push(`<p><b>${key}:</b> ${row[key]}</p>`)
+    for (const [key, value] of Object.entries(row)) {
+      html.push(`<p><b>${key}:</b> ${value}</p>`)
     }
     return html.join('')
   }

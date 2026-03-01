@@ -67,7 +67,9 @@ init({
     const html = []
 
     for (const key in row) {
-      html.push(`<p><b>${key}:</b> ${row[key]}</p>`)
+      if (Object.prototype.hasOwnProperty.call(row, key)) {
+        html.push(`<p><b>${key}:</b> ${row[key]}</p>`)
+      }
     }
     return html.join('')
   }

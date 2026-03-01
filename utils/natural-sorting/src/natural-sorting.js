@@ -1,5 +1,4 @@
 /**
- * version: 1.1.0
  * @author: Brian Huisman
  * @webSite: http://www.greywyvern.com
  * JS functions to allow natural sorting on bootstrap-table columns
@@ -73,5 +72,5 @@ function numericOnly (a, b) {
   return stripNonNumber(a) - stripNonNumber(b)
 }
 
-// Export for ES modules (Node.js and modern browsers)
+// Export for ES modules
 export { alphanum, numericOnly }

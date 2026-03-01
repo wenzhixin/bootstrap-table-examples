@@ -4,8 +4,6 @@ JS functions to allow natural sorting on bootstrap-table columns.
 
 ## Usage
 
-### Browser (CDN)
-
 ```html
 <script src="natural-sorting.js"></script>
 ```
@@ -16,23 +14,25 @@ Add a data-sorter attribute to any th:
 <th data-sortable="true" data-sorter="numericOnly">Price</th>
 ```
 
-### ES Modules
+## Files
 
-```javascript
-import { alphanum, numericOnly } from './utils/natural-sorting/src/natural-sorting.js'
-```
+- **`src/natural-sorting.js`** - ES module source
+  - For development and testing
+  - Use with: `import { alphanum, numericOnly } from './natural-sorting.js'`
+
+- **`dist/natural-sorting.js`** - Browser-ready build
+  - Compiled and optimized for browsers
+  - Exposes global functions: `alphanum()` and `numericOnly()`
 
 ## Development
 
 ### Build
 
-After modifying `src/natural-sorting.js`, run:
-
 ```bash
 npm run build
 ```
 
-This will compile the source files to `dist/natural-sorting.js` using Babel.
+This compiles `src/natural-sorting.js` to `dist/natural-sorting.js` for browser usage.
 
 ### Test
 
@@ -45,8 +45,6 @@ npm run test
 ```bash
 npm run lint
 ```
-
-Note: The `dist/` directory is excluded from linting as it contains build artifacts.
 
 ## Sorters
 
@@ -63,12 +61,12 @@ Note: The `dist/` directory is excluded from linting as it contains build artifa
 * Ideal for columns with formatted numeric content
 * Removes HTML tags, currency symbols, and commas before sorting
 * Example: `$1, $2, $20, $100` instead of `$1, $100, $2, $20`
+* **Issue #558 fix**: Now properly handles complex HTML with debug comments
 
 ## Changelog
 
 ### v1.1.0 (2026-03-01)
 
 - Fixed `numericOnly` to properly extract numbers from complex HTML (Issue #558)
-- Added ES modules export for better tree-shaking and IDE support
 - Added comprehensive unit tests using Vitest
 - Improved error handling for edge cases (null, undefined, empty strings)

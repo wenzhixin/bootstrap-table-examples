@@ -58,6 +58,19 @@ init({
       attributes: {
         title: 'Add a new row to the table'
       }
+    },
+    btnDom: {
+      html: () => {
+        const button = document.createElement('button')
+
+        button.className = 'btn btn-secondary'
+        button.name = 'btnDom'
+        button.innerHTML = '<i class="bi bi-code-slash"></i>'
+        button.addEventListener('click', () => {
+          alert('DOM Button clicked!')
+        })
+        return button
+      }
     }
   })
 </script>

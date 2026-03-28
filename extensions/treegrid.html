@@ -24,6 +24,7 @@ init({
   function mounted () {
     $table.bootstrapTable({
       url: 'json/treegrid.json',
+      // idField: The field that uniquely identifies each row
       idField: 'id',
       showColumns: true,
       columns: [
@@ -33,27 +34,31 @@ init({
         },
         {
           field: 'name',
-          title: '名称'
+          // The field value used for the tree display; must match the 'treeShowField' option below
+          title: 'Name'
         },
         {
           field: 'status',
-          title: '状态',
+          title: 'Status',
           sortable: true,
           align: 'center',
           formatter: 'statusFormatter'
         },
         {
           field: 'permissionValue',
-          title: '权限值'
+          title: 'Permission Value'
         }
       ],
+      // treeShowField: Specify the field whose text is shown for tree nodes (required by the treegrid extension)
       treeShowField: 'name',
+      // parentIdField: The field that contains the parent node id
       parentIdField: 'pid',
       onPostBody () {
         const columns = $table.bootstrapTable('getOptions').columns
 
         if (columns && columns[0][1].visible) {
           $table.treegrid({
+            // treeColumn: The zero-based index of the column to show the tree
             treeColumn: 1,
             onChange () {
               $table.bootstrapTable('resetView')
@@ -64,23 +69,10 @@ init({
     })
   }
 
-  window.typeFormatter = value => {
-    if (value === 'menu') {
-      return '菜单'
-    }
-    if (value === 'button') {
-      return '按钮'
-    }
-    if (value === 'api') {
-      return '接口'
-    }
-    return '-'
-  }
-
   window.statusFormatter = value => {
     if (value === 1) {
-      return '<span class="label label-success">正常</span>'
+      return '<span class="label label-success">Active</span>'
     }
-    return '<span class="label label-default">锁定</span>'
+    return '<span class="label label-default">Inactive</span>'
   }
 </script>

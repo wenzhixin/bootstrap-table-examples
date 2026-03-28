@@ -5,7 +5,6 @@
  * add data-sorter="alphanum" or data-sorter="numericOnly" to any th
  */
 
-// eslint-disable-next-line no-unused-vars
 function alphanum (a, b) {
   function chunkify (t) {
     const tz = []
@@ -55,12 +54,23 @@ function alphanum (a, b) {
   return aa.length - bb.length
 }
 
-// eslint-disable-next-line no-unused-vars
 function numericOnly (a, b) {
   function stripNonNumber (s) {
-    s = s.replace(/^(-)|[.,](?=[^.,]*[.,](?!$))|[,.]+$|[^0-9.,]+/g, '$1')
-    return parseInt(s, 10)
+    if (typeof s !== 'string') {
+      s = String(s)
+    }
+
+    // Remove all HTML tags
+    s = s.replace(/<[^>]+>/g, '')
+
+    // Extract the first valid number (handles negative numbers)
+    const match = s.match(/-?\d+/)
+
+    return match ? parseInt(match[0], 10) : 0
   }
 
   return stripNonNumber(a) - stripNonNumber(b)
 }
+
+// Export for ES modules
+export { alphanum, numericOnly }

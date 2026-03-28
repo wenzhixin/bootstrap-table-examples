@@ -1,71 +1,66 @@
-"use strict";
-
 /**
  * @author: Brian Huisman
  * @webSite: http://www.greywyvern.com
  * JS functions to allow natural sorting on bootstrap-table columns
  * add data-sorter="alphanum" or data-sorter="numericOnly" to any th
  */
+
 function alphanum(a, b) {
   function chunkify(t) {
-    var tz = [];
-    var y = -1;
-    var n = 0;
-
-    for (var i = 0; i <= t.length; i++) {
-      var _char = t.charAt(i);
-
-      var charCode = _char.charCodeAt(0);
-
-      var m = charCode === 46 || charCode >= 48 && charCode <= 57;
-
+    const tz = [];
+    let y = -1;
+    let n = 0;
+    for (let i = 0; i <= t.length; i++) {
+      const char = t.charAt(i);
+      const charCode = char.charCodeAt(0);
+      const m = charCode === 46 || charCode >= 48 && charCode <= 57;
       if (m !== n) {
         tz[++y] = '';
         n = m;
       }
-
-      tz[y] += _char;
+      tz[y] += char;
     }
-
     return tz;
   }
-
   function stringfy(v) {
     if (typeof v === 'number') {
-      v = "".concat(v);
+      v = `${v}`;
     }
-
     if (!v) {
       v = '';
     }
-
     return v;
   }
-
-  var aa = chunkify(stringfy(a));
-  var bb = chunkify(stringfy(b));
-
-  for (var x = 0; aa[x] && bb[x]; x++) {
+  const aa = chunkify(stringfy(a));
+  const bb = chunkify(stringfy(b));
+  for (let x = 0; aa[x] && bb[x]; x++) {
     if (aa[x] !== bb[x]) {
-      var c = Number(aa[x]);
-      var d = Number(bb[x]);
-
+      const c = Number(aa[x]);
+      const d = Number(bb[x]);
       if (c === aa[x] && d === bb[x]) {
         return c - d;
       }
-
       return aa[x] > bb[x] ? 1 : -1;
     }
   }
-
   return aa.length - bb.length;
 }
-
 function numericOnly(a, b) {
   function stripNonNumber(s) {
-    s = s.replace(new RegExp(/[^0-9]/g), '');
-    return parseInt(s, 10);
-  }
+    if (typeof s !== 'string') {
+      s = String(s);
+    }
 
+    // Remove all HTML tags
+    s = s.replace(/<[^>]+>/g, '');
+
+    // Extract the first valid number (handles negative numbers)
+    const match = s.match(/-?\d+/);
+    return match ? parseInt(match[0], 10) : 0;
+  }
   return stripNonNumber(a) - stripNonNumber(b);
 }
+
+// Export for ES modules
+window.alphanum = alphanum
+window.numericOnly = numericOnly

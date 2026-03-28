@@ -1,0 +1,5 @@
+{
+  "Exclude": [
+    "utils/natural-sorting/dist"
+  ]
+}

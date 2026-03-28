@@ -4,19 +4,27 @@ const { computed, createApp, onMounted, ref } = window.Vue
 const Utils = {
   getUrl () {
     let href = location.hash.substring(1)
-    let isViewSource = false
+    let viewType = 'example' // default value
 
-    if (href.includes('view-source')) {
+    // Parse view type
+    if (href.includes('#view-')) {
+      const parts = href.split('#view-')
+
+      viewType = parts[1] || 'example'
+      href = parts[0].replace('#', '')
+    } else if (href.includes('view-source')) {
+      // Backward compatibility for legacy view-source hash
       href = href.replace('#view-source', '').replace('view-source', '')
-      isViewSource = true
+      viewType = 'html'
     }
+
     return {
       href: href || 'welcome.html',
-      isViewSource
+      viewType: ['example', 'html', 'data'].includes(viewType) ? viewType : 'example'
     }
   },
 
-  loadUrl (theme, href, isViewSource) {
+  loadUrl (theme, href, viewType) {
     let template = 'template'
 
     if (theme) {
@@ -27,9 +35,12 @@ const Utils = {
     if (isDebug) {
       url = `${template}.html?t=${+new Date()}&url=${href}`
     }
-    if (isViewSource) {
-      url = `${template}.html?v=VERSION&view-source&url=${href}#view-source`
+
+    // Pass view type to iframe
+    if (viewType !== 'example') {
+      url += `&view-type=${viewType}#view-${viewType}`
     }
+
     $('iframe').attr('src', url)
   },
 
@@ -60,27 +71,32 @@ const Utils = {
     }, 100)
   },
 
-  initViewSource () {
-    const isSource = /view-source$/.test(location.hash)
+  initViewToggle () {
+    const { href, viewType } = Utils.getUrl()
 
-    if (isSource) {
-      $('.view-example').css('display', 'block')
-      $('.view-source').css('display', 'none')
-    } else {
-      $('.view-example').css('display', 'none')
-      $('.view-source').css('display', 'block')
-    }
+    // Update button states
+    $('.icon-buttons .view-example, .icon-buttons .view-html, .icon-buttons .view-data').removeClass('active')
+    $(`.view-${viewType}`).addClass('active')
 
-    $('.view-example, .view-source').off('click').click(function () {
-      if (isSource) {
-        location.hash = location.hash.replace('#view-source', '')
-      } else if (!location.hash.includes('view-source')) {
-        location.hash += '#view-source'
-      }
-    })
+    // Bind click events using on() method and prevent default behavior
+    $('.view-example, .view-html, .view-data')
+      .off('click.viewToggle')
+      .on('click.viewToggle', function (e) {
+        e.preventDefault()
+        const newType = $(this).hasClass('view-example') ? 'example' :
+          $(this).hasClass('view-html') ? 'html' : 'data'
+        const currentHref = location.hash.slice(1).split('#')[0] || 'welcome.html'
 
-    $('.view-online').attr('href', `https://live.bootstrap-table.com/example/${
-      location.hash.slice(1).split('#')[0] || 'welcome.html'}`)
+        // example is the default view, no need to add #view-example
+        if (newType === 'example') {
+          location.hash = currentHref
+        } else {
+          location.hash = `${currentHref}#view-${newType}`
+        }
+      })
+
+    // Update online editor link
+    $('.view-online').attr('href', `https://live.bootstrap-table.com/example/${href}`)
   }
 }
 
@@ -144,13 +160,13 @@ const setup = () => {
     })
   }
   const initData = () => {
-    const { href, isViewSource } = Utils.getUrl()
+    const { href, viewType } = Utils.getUrl()
 
-    Utils.loadUrl(theme.value, href, isViewSource)
+    Utils.loadUrl(theme.value, href, viewType)
 
     currentHref.value = `#${href}`
 
-    Utils.initViewSource()
+    Utils.initViewToggle()
   }
   const initViews = () => {
     $('[data-bs-toggle="tooltip"]').tooltip()

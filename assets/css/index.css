@@ -27,23 +27,37 @@ iframe {
   position: absolute;
   bottom: 10px;
   left: 10px;
-}
-
-.icon-buttons .view-example {
-  display: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 1000;
 }
 
 .icon-buttons a {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 50%;
   width: 40px;
   height: 40px;
-  margin-top: 10px;
+  margin: 0;
   padding: 0;
   text-align: center;
+  transition: all 0.2s;
+}
+
+.icon-buttons a:hover {
+  transform: scale(1.1);
+}
+
+.icon-buttons a.active {
+  background: var(--bs-primary);
+  color: white;
+  transform: scale(1.1);
 }
 
 .icon-buttons i {
-  font-size: 24px;
+  font-size: 20px;
   line-height: 40px;
+  margin: 0;
 }

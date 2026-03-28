@@ -22,13 +22,13 @@ const Utils = {
     if (theme) {
       template += `-${theme}`
     }
-    let url = `${template}.html?v=983&url=${href}`
+    let url = `${template}.html?v=984&url=${href}`
 
     if (isDebug) {
       url = `${template}.html?t=${+new Date()}&url=${href}`
     }
     if (isViewSource) {
-      url = `${template}.html?v=983&view-source&url=${href}#view-source`
+      url = `${template}.html?v=984&view-source&url=${href}#view-source`
     }
     $('iframe').attr('src', url)
   },

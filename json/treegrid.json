@@ -3,63 +3,63 @@
       "id": 1,
       "pid": 0,
       "status": 1,
-      "name": "系统管理",
+      "name": "System Management",
       "permissionValue": "open:system:get"
     },
     {
       "id": 2,
       "pid": 0,
       "status": 1,
-      "name": "字典管理",
+      "name": "Dictionary Management",
       "permissionValue": "open:dict:get"
     },
     {
       "id": 20,
       "pid": 1,
       "status": 1,
-      "name": "新增系统",
+      "name": "Add System",
       "permissionValue": "open:system:add"
     },
     {
       "id": 21,
       "pid": 1,
       "status": 1,
-      "name": "编辑系统",
+      "name": "Edit System",
       "permissionValue": "open:system:edit"
     },
     {
       "id": 22,
       "pid": 1,
       "status": 1,
-      "name": "删除系统",
+      "name": "Delete System",
       "permissionValue": "open:system:delete"
     },
     {
       "id": 33,
       "pid": 2,
       "status": 1,
-      "name": "系统环境",
+      "name": "System Environment",
       "permissionValue": "open:env:get"
     },
     {
       "id": 333,
       "pid": 33,
       "status": 1,
-      "name": "新增环境",
+      "name": "Add Environment",
       "permissionValue": "open:env:add"
     },
     {
       "id": 3333,
       "pid": 33,
       "status": 1,
-      "name": "编辑环境",
+      "name": "Edit Environment",
       "permissionValue": "open:env:edit"
     },
     {
       "id": 233332,
       "pid": 33,
       "status": 0,
-      "name": "删除环境",
+      "name": "Delete Environment",
       "permissionValue": "open:env:delete"
     }
 ]

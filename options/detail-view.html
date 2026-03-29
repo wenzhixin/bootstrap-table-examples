@@ -36,9 +36,20 @@ init({
 <script>
   window.detailFormatter = (index, row) => {
     const html = []
+    const columns = $('#table').bootstrapTable('getOptions').columns
+    const getTitle = key => {
+      if (!Array.isArray(columns) || columns.length === 0) {
+        return key
+      }
+
+      const flatColumns = columns.flatMap(row => Array.isArray(row) ? row : [])
+      const column = flatColumns.find(col => col && col.field === key)
+
+      return column && column.title ? column.title : key
+    }
 
     for (const [key, value] of Object.entries(row)) {
-      html.push(`<p><b>${key}:</b> ${value}</p>`)
+      html.push(`<p><b>${getTitle(key)}:</b> ${value}</p>`)
     }
     return html.join('')
   }

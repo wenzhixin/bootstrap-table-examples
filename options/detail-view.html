@@ -38,9 +38,14 @@ init({
     const html = []
     const columns = $('#table').bootstrapTable('getOptions').columns
     const getTitle = key => {
-      const column = columns[0].find(column => column.field === key)
+      if (!Array.isArray(columns) || columns.length === 0) {
+        return key
+      }
 
-      return column ? column.title : key
+      const flatColumns = columns.flatMap(row => Array.isArray(row) ? row : [])
+      const column = flatColumns.find(col => col && col.field === key)
+
+      return column && column.title ? column.title : key
     }
 
     for (const [key, value] of Object.entries(row)) {

@@ -36,9 +36,15 @@ init({
 <script>
   window.detailFormatter = (index, row) => {
     const html = []
+    const columns = $('#table').bootstrapTable('getOptions').columns
+    const getTitle = key => {
+      const column = columns[0].find(column => column.field === key)
+
+      return column ? column.title : key
+    }
 
     for (const [key, value] of Object.entries(row)) {
-      html.push(`<p><b>${key}:</b> ${value}</p>`)
+      html.push(`<p><b>${getTitle(key)}:</b> ${value}</p>`)
     }
     return html.join('')
   }

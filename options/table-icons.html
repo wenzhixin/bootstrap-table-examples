@@ -7,75 +7,58 @@ init({
 })
 </script>
 
-<script>
-  const $table = $('#table')
-
-  function mounted () {
-    $('label input').blur(function () {
-      const icons = {}
-
-      $('label').each(function () {
-        icons[$(this).find('span').text()] = $(this).find('input').val()
-      })
-      $table.bootstrapTable('destroy').bootstrapTable({
-        icons
-      })
-    })
-  }
-</script>
-
 <template>
   <div>
-    <label><span>paginationSwitchDown</span> <input
+    <label class="icon-label"><span>paginationSwitchDown</span> <input
       class="form-control"
       type="text"
       value="fa-caret-square-down"
     ></label>
   </div>
   <div>
-    <label><span>paginationSwitchUp</span> <input
+    <label class="icon-label"><span>paginationSwitchUp</span> <input
       class="form-control"
       type="text"
       value="fa-caret-square-up"
     ></label>
   </div>
   <div>
-    <label><span>refresh</span> <input
+    <label class="icon-label"><span>refresh</span> <input
       class="form-control"
       type="text"
       value="fa-sync"
     ></label>
   </div>
   <div>
-    <label><span>toggleOff</span> <input
+    <label class="icon-label"><span>toggleOff</span> <input
       class="form-control"
       type="text"
       value="fa-toggle-off"
     ></label>
   </div>
   <div>
-    <label><span>toggleOn</span> <input
+    <label class="icon-label"><span>toggleOn</span> <input
       class="form-control"
       type="text"
       value="fa-toggle-on"
     ></label>
   </div>
   <div>
-    <label><span>columns</span> <input
+    <label class="icon-label"><span>columns</span> <input
       class="form-control"
       type="text"
       value="fa-th-list"
     ></label>
   </div>
   <div>
-    <label><span>fullscreen</span> <input
+    <label class="icon-label"><span>fullscreen</span> <input
       class="form-control"
       type="text"
       value="fa-arrows-alt"
     ></label>
   </div>
   <div>
-    <label><span>detailOpen</span> <input
+    <label class="icon-label"><span>detailOpen</span> <input
       class="form-control"
       type="text"
       value="fa-plus"
@@ -83,7 +66,7 @@ init({
   </div>
 
   <div>
-    <label><span>detailClose</span> <input
+    <label class="icon-label"><span>detailClose</span> <input
       class="form-control"
       type="text"
       value="fa-minus"
@@ -92,7 +75,6 @@ init({
 
   <table
     id="table"
-    data-toggle="table"
     data-height="460"
     data-show-pagination-switch="true"
     data-show-refresh="true"
@@ -117,6 +99,31 @@ init({
     </thead>
   </table>
 </template>
+
+<script>
+  const $table = $('#table')
+
+  function mounted () {
+    const getIconsOptions = () => {
+      const icons = {}
+
+      $('label.icon-label').each(function () {
+        icons[$(this).find('span').text()] = $(this).find('input').val()
+      })
+
+      return {
+        iconsPrefix: 'fa',
+        icons
+      }
+    }
+
+    $('label.icon-label input').blur(function () {
+      $table.bootstrapTable('destroy').bootstrapTable(getIconsOptions())
+    })
+
+    $table.bootstrapTable(getIconsOptions())
+  }
+</script>
 
 <style>
 label input {

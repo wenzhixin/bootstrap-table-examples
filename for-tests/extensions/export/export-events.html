@@ -1,0 +1,44 @@
+<script>
+  init({
+    title: 'Export Events',
+    desc: 'Test export-started and export-saved events.',
+    links: [
+      'bootstrap-table.min.css'
+    ],
+    scripts: [
+      'https://cdn.jsdelivr.net/npm/tableexport.jquery.plugin@1.29.0/tableExport.min.js',
+      'bootstrap-table.min.js',
+      'extensions/export/bootstrap-table-export.min.js'
+    ]
+  })
+</script>
+
+<table id="table">
+  <thead>
+    <tr>
+      <th data-field="id">ID</th>
+      <th data-field="name">Name</th>
+      <th data-field="price">Price</th>
+    </tr>
+  </thead>
+</table>
+
+<script>
+  function mounted () {
+    $('#table').bootstrapTable({
+      showExport: true,
+      data: [
+        { id: 1, name: 'Item 1', price: '$1' },
+        { id: 2, name: 'Item 2', price: '$2' }
+      ]
+    })
+
+    $('#table').on('export-started.bs.table', function () {
+      window._exportStarted = true
+    })
+    $('#table').on('export-saved.bs.table', function (e, data) {
+      window._exportSaved = true
+      window._exportedData = data
+    })
+  }
+</script>

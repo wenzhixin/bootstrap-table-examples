@@ -1,8 +1,5 @@
-*.name
-.idea/encodings.xml
-*.iml
-.idea/misc.xml
-*.xml
+*.sh
+test.*
+.playwright-mcp
 node_modules
 yarn.lock
-package-lock.json

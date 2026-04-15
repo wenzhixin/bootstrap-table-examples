@@ -1,0 +1,41 @@
+<script>
+  init({
+    title: 'Export Data Type All',
+    desc: 'Test exportDataType=all with pagination.',
+    links: [
+      'bootstrap-table.min.css'
+    ],
+    scripts: [
+      'https://cdn.jsdelivr.net/npm/tableexport.jquery.plugin@1.29.0/tableExport.min.js',
+      'bootstrap-table.min.js',
+      'extensions/export/bootstrap-table-export.min.js'
+    ]
+  })
+</script>
+
+<table id="table">
+  <thead>
+    <tr>
+      <th data-field="id">ID</th>
+      <th data-field="name">Name</th>
+      <th data-field="price">Price</th>
+    </tr>
+  </thead>
+</table>
+
+<script>
+  function mounted () {
+    const data = []
+
+    for (let i = 1; i <= 50; i++) {
+      data.push({ id: i, name: `Item ${i}`, price: `$${i}` })
+    }
+    $('#table').bootstrapTable({
+      showExport: true,
+      exportDataType: 'all',
+      pagination: true,
+      pageSize: 10,
+      data
+    })
+  }
+</script>

@@ -1,0 +1,38 @@
+<script>
+  init({
+    title: 'Export forceExport',
+    desc: 'Test forceExport column option to export hidden columns.',
+    links: [
+      'bootstrap-table.min.css'
+    ],
+    scripts: [
+      'https://cdn.jsdelivr.net/npm/tableexport.jquery.plugin@1.29.0/tableExport.min.js',
+      'bootstrap-table.min.js',
+      'extensions/export/bootstrap-table-export.min.js'
+    ]
+  })
+</script>
+
+<table id="table">
+  <thead>
+    <tr>
+      <th data-field="id">ID</th>
+      <th data-field="name">Name</th>
+      <th data-field="price">Price</th>
+      <th data-field="secret" data-visible="false" data-force-export="true">Secret</th>
+    </tr>
+  </thead>
+</table>
+
+<script>
+  function mounted () {
+    $('#table').bootstrapTable({
+      showExport: true,
+      data: [
+        { id: 1, name: 'Item 1', price: '$1', secret: 's1' },
+        { id: 2, name: 'Item 2', price: '$2', secret: 's2' },
+        { id: 3, name: 'Item 3', price: '$3', secret: 's3' }
+      ]
+    })
+  }
+</script>

@@ -30,7 +30,7 @@ const Utils = {
     if (theme) {
       template += `-${theme}`
     }
-    let url = `${template}.html?v=998&url=${href}`
+    let url = `${template}.html?v=1010&url=${href}`
 
     if (isDebug) {
       url = `${template}.html?t=${+new Date()}&url=${href}`

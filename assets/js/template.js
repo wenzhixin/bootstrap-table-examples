@@ -1,6 +1,6 @@
 window._config = {
   isDebug: location.hash.slice(1) === 'is-debug' ||
-    ['localhost', '127.0.0.1', 'dev.bootstrap-table.com'].includes(location.hostname),
+    ['localhost', '127.0.0.1', 'test.examples.wenzhixin.net.cn'].includes(location.hostname),
   cdnUrl: 'https://cdn.jsdelivr.net/npm/bootstrap-table@1.27.2/dist/',
   localUrl: '../bootstrap-table/src/',
   testUrl: '/src/'

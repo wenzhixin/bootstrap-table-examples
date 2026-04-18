@@ -1,4 +1,4 @@
-const isDebug = ['localhost', '127.0.0.1'].includes(location.hostname)
+const isDebug = ['localhost', '127.0.0.1', 'test.examples.wenzhixin.net.cn'].includes(location.hostname)
 const { computed, createApp, onMounted, ref } = window.Vue
 
 const Utils = {

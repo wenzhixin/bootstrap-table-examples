@@ -1,7 +1,7 @@
 <script>
 init({
   title: 'Show/Hide Column',
-  desc: 'Show/Hide the specified column:<br>`$table.bootstrapTable(\'showColumn\', \'name\')`<br>`$table.bootstrapTable(\'hideColumn\', \'name\')`.',
+  desc: 'Show/Hide the specified column:<br>`$table.bootstrapTable(\'showColumn\', \'name\')`<br>`$table.bootstrapTable(\'hideColumn\', \'name\')`<br><br>Show/Hide multiple columns:<br>`$table.bootstrapTable(\'showColumn\', [\'name\', \'price\'])`<br>`$table.bootstrapTable(\'hideColumn\', [\'name\', \'price\'])`.',
   links: ['bootstrap-table.min.css'],
   scripts: ['bootstrap-table.min.js']
 })
@@ -20,6 +20,18 @@ init({
       class="btn btn-secondary"
     >
       hideColumn
+    </button>
+    <button
+      id="button3"
+      class="btn btn-secondary"
+    >
+      showColumn (batch)
+    </button>
+    <button
+      id="button4"
+      class="btn btn-secondary"
+    >
+      hideColumn (batch)
     </button>
   </div>
   <table
@@ -50,6 +62,8 @@ init({
   const $table = $('#table')
   const $button = $('#button')
   const $button2 = $('#button2')
+  const $button3 = $('#button3')
+  const $button4 = $('#button4')
 
   function mounted () {
     $button.click(function () {
@@ -57,6 +71,12 @@ init({
     })
     $button2.click(function () {
       $table.bootstrapTable('hideColumn', 'name')
+    })
+    $button3.click(function () {
+      $table.bootstrapTable('showColumn', ['name', 'price'])
+    })
+    $button4.click(function () {
+      $table.bootstrapTable('hideColumn', ['name', 'price'])
     })
   }
 </script>

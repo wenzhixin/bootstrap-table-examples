@@ -1,4 +1,4 @@
-const isDebug = ['localhost', '127.0.0.1'].includes(location.hostname)
+const isDebug = ['localhost', '127.0.0.1', 'test.examples.wenzhixin.net.cn'].includes(location.hostname)
 const { computed, createApp, onMounted, ref } = window.Vue
 
 const Utils = {
@@ -30,7 +30,7 @@ const Utils = {
     if (theme) {
       template += `-${theme}`
     }
-    let url = `${template}.html?v=1010&url=${href}`
+    let url = `${template}.html?v=1014&url=${href}`
 
     if (isDebug) {
       url = `${template}.html?t=${+new Date()}&url=${href}`

@@ -16,6 +16,7 @@ init({
   <table
     id="table"
     data-show-print="true"
+    data-show-footer="true"
     data-url="json/data1.json"
   >
     <thead>
@@ -26,7 +27,7 @@ init({
         <th data-field="name">
           Item Name
         </th>
-        <th data-field="price">
+        <th data-field="price" data-footer-formatter="priceFormatter">
           <i class="fa fa-print"></i> Item Price
         </th>
       </tr>
@@ -42,4 +43,6 @@ init({
       printStyles: ['https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css']
     })
   }
+
+  window.priceFormatter = data => `$${data.reduce((sum, item) => sum + parseFloat(item.price.replace('$', '')), 0)}`
 </script>

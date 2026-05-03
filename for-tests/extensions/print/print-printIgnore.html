@@ -1,0 +1,40 @@
+<script>
+  init({
+    title: 'Print printIgnore',
+    desc: 'Test printIgnore column option.',
+    links: [
+      'bootstrap-table.min.css'
+    ],
+    scripts: [
+      'bootstrap-table.min.js',
+      'extensions/print/bootstrap-table-print.min.js'
+    ]
+  })
+</script>
+
+<table
+  id="table"
+  data-show-print="true"
+  data-show-footer="true">
+  <thead>
+    <tr>
+      <th data-field="id">ID</th>
+      <th data-field="name">Name</th>
+      <th data-field="price" data-print-ignore="true" data-footer-formatter="totalFormatter">Price</th>
+    </tr>
+  </thead>
+</table>
+
+<script>
+  function mounted () {
+    $('#table').bootstrapTable({
+      data: [
+        { id: 1, name: 'Item 1', price: '$100' },
+        { id: 2, name: 'Item 2', price: '$200' },
+        { id: 3, name: 'Item 3', price: '$300' }
+      ]
+    })
+  }
+
+  window.totalFormatter = data => 'Total'
+</script>

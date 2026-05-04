@@ -27,7 +27,11 @@ init({
         <th data-field="name">
           Item Name
         </th>
-        <th data-field="price" data-footer-formatter="priceFormatter">
+        <th
+          data-field="price"
+          data-footer-formatter="priceFormatter"
+          data-cell-style="priceStyle"
+        >
           <i class="fa fa-print"></i> Item Price
         </th>
       </tr>
@@ -40,9 +44,33 @@ init({
 
   function mounted () {
     $table.bootstrapTable({
-      printStyles: ['https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css']
+      printStyles: ['https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css'],
+      rowStyle (row, index) {
+        return {
+          css: index % 2 === 0 ? { 'font-weight': 'bold' } : {}
+        }
+      }
     })
   }
 
   window.priceFormatter = data => `$${data.reduce((sum, item) => sum + parseFloat(item.price.replace('$', '')), 0)}`
+
+  window.priceStyle = function (value) {
+    const price = parseFloat(value.replace('$', ''))
+
+    if (price >= 15) {
+      return {
+        css: { 'background-color': '#d4edda', color: '#155724', 'font-weight': 'bold' }
+      }
+    }
+    if (price >= 7) {
+      return {
+        css: { 'background-color': '#fff3cd', color: '#856404', 'font-weight': 'bold' }
+      }
+    }
+    return {
+      css: { 'background-color': '#f8d7da', color: '#721c24', 'font-weight': 'bold' }
+    }
+  }
 </script>
+

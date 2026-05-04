@@ -14,12 +14,13 @@
 
 <table
   id="table"
-  data-show-print="true">
+  data-show-print="true"
+  data-show-footer="true">
   <thead>
     <tr>
       <th data-field="id">ID</th>
       <th data-field="name">Name</th>
-      <th data-field="price" data-print-ignore="true">Price</th>
+      <th data-field="price" data-print-ignore="true" data-footer-formatter="totalFormatter">Price</th>
     </tr>
   </thead>
 </table>
@@ -34,4 +35,6 @@
       ]
     })
   }
+
+  window.totalFormatter = data => 'Total'
 </script>

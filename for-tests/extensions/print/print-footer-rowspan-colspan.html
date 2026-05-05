@@ -1,0 +1,44 @@
+<script>
+  init({
+    title: 'Print footer with rowspan/colspan',
+    desc: 'Test print footer with grouped column headers (rowspan/colspan).',
+    links: [
+      'bootstrap-table.min.css'
+    ],
+    scripts: [
+      'bootstrap-table.min.js',
+      'extensions/print/bootstrap-table-print.min.js'
+    ]
+  })
+</script>
+
+<table
+  id="table"
+  data-show-print="true"
+  data-show-footer="true">
+  <thead>
+    <tr>
+      <th colspan="2">Item Detail</th>
+      <th data-field="id" rowspan="2" data-footer-formatter="totalIdFormatter">ID</th>
+    </tr>
+    <tr>
+      <th data-field="name">Name</th>
+      <th data-field="price" data-footer-formatter="totalPriceFormatter">Price</th>
+    </tr>
+  </thead>
+</table>
+
+<script>
+  function mounted () {
+    $('#table').bootstrapTable({
+      data: [
+        { id: 1, name: 'Item 1', price: 100 },
+        { id: 2, name: 'Item 2', price: 200 },
+        { id: 3, name: 'Item 3', price: 300 }
+      ]
+    })
+  }
+
+  window.totalPriceFormatter = data => `$${data.reduce((sum, item) => sum + item.price, 0)}`
+  window.totalIdFormatter = data => `${data.length} items`
+</script>

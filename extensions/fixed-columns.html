@@ -23,6 +23,12 @@ init({
           checked
         > Enable Height
       </label>
+      <label class="checkbox">
+        <input
+          id="showFooter"
+          type="checkbox"
+        > Enable Footer
+      </label>
     </div>
     <div class="form-inline">
       <span class="mr10">Fixed Number: </span>
@@ -93,12 +99,15 @@ init({
     ]
     const data = []
 
-    for (i = 0; i < cells; i++) {
+    for (let i = 0; i < cells; i++) {
       columns.push({
         field: `field${i}`,
         title: `Cell${i}`,
         sortable: true,
         valign: 'middle',
+        footerFormatter () {
+          return `F${i}`
+        },
         formatter (val) {
           return `<div class="item">${val}</div>`
         },
@@ -126,7 +135,8 @@ init({
       clickToSelect: true,
       fixedColumns: true,
       fixedNumber: +$('#fixedNumber').val(),
-      fixedRightNumber: +$('#fixedRightNumber').val()
+      fixedRightNumber: +$('#fixedRightNumber').val(),
+      showFooter: $('#showFooter').prop('checked')
     })
   }
 
@@ -134,6 +144,9 @@ init({
     buildTable($table)
 
     $('#build').click(function () {
+      buildTable($table)
+    })
+    $('#height, #showFooter').change(function () {
       buildTable($table)
     })
   }

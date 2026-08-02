@@ -174,6 +174,7 @@ const menus = [
       { label: 'Response Handler', href: '#options/response-handler.html' },
       { label: 'Row Attributes', href: '#options/row-attributes.html', show: ['', 'bootstrap3', 'bootstrap4'] },
       { label: 'Row Style', href: '#options/row-style.html' },
+      { label: 'RTL', href: '#options/rtl.html' },
       { label: 'Search', href: '#options/table-search.html' },
       { label: 'Searchable', href: '#options/searchable.html' },
       { label: 'Search Accent Neutralise', href: '#options/search-accent-neutralise.html' },

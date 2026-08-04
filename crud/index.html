@@ -3,11 +3,10 @@
 <head>
   <title>CRUD Table</title>
   <meta charset="utf-8">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-table@1.27.3/dist/bootstrap-table.min.css">
   <style>
-    .mr10 { margin-right: 10px; }
     .alert {
       padding: 0 14px;
       margin-bottom: 0;
@@ -15,8 +14,7 @@
     }
   </style>
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap-table@1.27.3/dist/bootstrap-table.min.js"></script>
 </head>
 <body>
@@ -34,30 +32,28 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title"></h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <div class="form-group">
+          <div class="mb-3">
             <label>Name</label>
             <input type="text" class="form-control" name="name" placeholder="Name">
           </div>
-          <div class="form-group">
+          <div class="mb-3">
             <label>Stars</label>
             <input type="number" class="form-control" name="stargazers_count" placeholder="Stars">
           </div>
-          <div class="form-group">
+          <div class="mb-3">
             <label>Forks</label>
             <input type="number" class="form-control" name="forks_count" placeholder="Forks">
           </div>
-          <div class="form-group">
+          <div class="mb-3">
             <label>Description</label>
             <textarea class="form-control" name="description" placeholder="Description"></textarea>
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           <button type="button" class="btn btn-primary submit">Submit</button>
         </div>
       </div><!-- /.modal-content -->
@@ -67,7 +63,7 @@
 <script>
   const API_URL = 'http://localhost:3001/list/'
   const $table = $('#table')
-  const $modal = $('#modal').modal({ show: false })
+  const modal = new bootstrap.Modal('#modal')
   const $alert = $('.alert').hide()
 
   function showModal (title, row_) {
@@ -79,19 +75,18 @@
       description: ''
     } // default row value
 
-    $modal.data('id', row.id)
-    $modal.find('.modal-title').text(title)
+    $('#modal').data('id', row.id)
+    $('#modal').find('.modal-title').text(title)
     for (const name in row) {
-      if (row[name]) {
-        $modal.find(`[name="${name}"]`).val(row[name])
-      }
+      if (!Object.prototype.hasOwnProperty.call(row, name)) continue
+      $('#modal').find(`[name="${name}"]`).val(row[name])
     }
-    $modal.modal('show')
+    modal.show()
   }
 
   function showAlert (title, type) {
     $alert.attr('class', `alert alert-${type || 'success'}`)
-      .html(`<i class="glyphicon glyphicon-check"></i> ${title}`).show()
+      .html(`<i class="bi bi-check-lg"></i> ${title}`).show()
     setTimeout(function () {
       $alert.hide()
     }, 3000)
@@ -129,8 +124,8 @@
           title: 'Action',
           align: 'center',
           formatter: () => [
-            '<a class="update mr10" href="javascript:" title="Update Item"><i class="fa fa-edit"></i></a>',
-            '<a class="remove" href="javascript:" title="Delete Item"><i class="fa fa-remove"></i></a>'
+            '<a class="update me-2" href="javascript:" title="Update Item"><i class="bi bi-pencil"></i></a>',
+            '<a class="remove" href="javascript:" title="Delete Item"><i class="bi bi-trash"></i></a>'
           ].join(''),
           events: {
             'click .update' (e, value, row) {
@@ -161,26 +156,33 @@
       showModal($(this).text())
     })
 
-    $modal.find('.submit').click(function () {
+    $('#modal').find('.submit').click(function () {
       const row = {}
 
-      $modal.find('input[name]').each(function () {
-        row[$(this).attr('name')] = $(this).val()
+      $('#modal').find('input[name], textarea[name]').each(function () {
+        const name = $(this).attr('name')
+        const value = $(this).val()
+
+        if ($(this).attr('type') === 'number') {
+          row[name] = value === '' ? null : +value
+        } else {
+          row[name] = value
+        }
       })
 
       $.ajax({
-        url: API_URL + ($modal.data('id') || ''),
-        type: $modal.data('id') ? 'put' : 'post',
+        url: API_URL + ($('#modal').data('id') || ''),
+        type: $('#modal').data('id') ? 'put' : 'post',
         contentType: 'application/json',
         data: JSON.stringify(row),
         success () {
-          $modal.modal('hide')
+          modal.hide()
           $table.bootstrapTable('refresh')
-          showAlert(`${$modal.data('id') ? 'Update' : 'Create'} item successful!`, 'success')
+          showAlert(`${$('#modal').data('id') ? 'Update' : 'Create'} item successful!`, 'success')
         },
         error () {
-          $modal.modal('hide')
-          showAlert(`${$modal.data('id') ? 'Update' : 'Create'} item error!`, 'danger')
+          modal.hide()
+          showAlert(`${$('#modal').data('id') ? 'Update' : 'Create'} item error!`, 'danger')
         }
       })
     })

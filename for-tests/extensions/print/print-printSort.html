@@ -1,0 +1,39 @@
+<script>
+  init({
+    title: 'Print printSort',
+    desc: 'Test printSortColumn and printSortOrder options.',
+    links: [
+      'bootstrap-table.min.css'
+    ],
+    scripts: [
+      'bootstrap-table.min.js',
+      'extensions/print/bootstrap-table-print.min.js'
+    ]
+  })
+</script>
+
+<table
+  id="table"
+  data-show-print="true"
+  data-print-sort-column="name"
+  data-print-sort-order="desc">
+  <thead>
+    <tr>
+      <th data-field="id">ID</th>
+      <th data-field="name">Name</th>
+      <th data-field="price">Price</th>
+    </tr>
+  </thead>
+</table>
+
+<script>
+  function mounted () {
+    $('#table').bootstrapTable({
+      data: [
+        { id: 1, name: 'Banana', price: '$100' },
+        { id: 2, name: 'Apple', price: '$200' },
+        { id: 3, name: 'Cherry', price: '$300' }
+      ]
+    })
+  }
+</script>

@@ -4,8 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "http-server": "^13.0.2",
-    "json-server": "^0.17.0",
+    "http-server": "^14.1.1",
+    "json-server": "^0.17.4",
     "npm-run-all": "^4.1.5"
   },
   "scripts": {

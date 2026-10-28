@@ -1,0 +1,55 @@
+<script>
+init({
+  title: 'RTL Support',
+  desc: 'Use the `rtl` option to render the table right-to-left. ' +
+    'Here `rtl: true` mirrors the toolbar, pagination, search box and ' +
+    'sort icons, and the checkbox / index columns move to the right side ' +
+    'natively via `dir="rtl"`. Column alignment keeps its physical meaning ' +
+    'and is not flipped.',
+  links: ['bootstrap-table.min.css'],
+  scripts: ['bootstrap-table.min.js']
+})
+</script>
+
+<template>
+  <table
+    id="table"
+    data-toggle="table"
+    data-rtl="true"
+    data-height="460"
+    data-search="true"
+    data-show-columns="true"
+    data-sort-name="id"
+    data-pagination="true"
+    data-url="json/data1.json"
+  >
+    <thead>
+      <tr>
+        <th
+          data-field="state"
+          data-checkbox="true"
+        >
+          Checkbox
+        </th>
+        <th
+          data-field="id"
+          data-sortable="true"
+        >
+          ID
+        </th>
+        <th
+          data-field="name"
+          data-sortable="true"
+        >
+          Item Name
+        </th>
+        <th
+          data-field="price"
+          data-sortable="true"
+        >
+          Item Price
+        </th>
+      </tr>
+    </thead>
+  </table>
+</template>

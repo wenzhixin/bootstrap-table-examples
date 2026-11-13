@@ -303,6 +303,8 @@ const menus = [
       { label: 'Update Cell', href: '#methods/update-cell.html' },
       { label: 'Update Cell By Unique Id', href: '#methods/update-cell-by-unique-id.html' },
       { label: 'Update Column Title', href: '#methods/update-column-title.html' },
+      { label: 'Update Detail View', href: '#methods/update-detail-view.html' },
+      { label: 'Update Detail View By Unique Id', href: '#methods/update-detail-view-by-unique-id.html' },
       { label: 'Update Format Text', href: '#methods/update-format-text.html' },
       { label: 'Update Row', href: '#methods/update-row.html' }
     ]

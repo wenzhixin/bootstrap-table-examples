@@ -1,0 +1,70 @@
+<script>
+init({
+  title: 'Update Detail View',
+  desc: 'Update the detail view of an expanded row: `$table.bootstrapTable(\'updateDetailView\', index)`.',
+  links: ['bootstrap-table.min.css'],
+  scripts: ['bootstrap-table.min.js']
+})
+</script>
+
+<template>
+  <div id="toolbar">
+    <button
+      id="button"
+      class="btn btn-secondary"
+    >
+      updateDetailView
+    </button>
+  </div>
+  <table
+    id="table"
+    data-toggle="table"
+    data-toolbar="#toolbar"
+    data-height="460"
+    data-detail-view="true"
+    data-detail-view-icon="false"
+    data-detail-view-by-click="true"
+    data-detail-formatter="detailFormatter"
+    data-url="json/data1.json"
+  >
+    <thead>
+      <tr>
+        <th data-field="id">
+          ID
+        </th>
+        <th data-field="name">
+          Item Name
+        </th>
+        <th data-field="price">
+          Item Price
+        </th>
+      </tr>
+    </thead>
+  </table>
+</template>
+
+<script>
+  const $table = $('#table')
+  const $button = $('#button')
+
+  function mounted () {
+    $button.click(function () {
+      $table.bootstrapTable('updateCell', {
+        index: 1,
+        field: 'name',
+        value: 'Updated Name',
+        reinit: false
+      })
+      $table.bootstrapTable('updateDetailView', 1)
+    })
+  }
+
+  window.detailFormatter = (index, row) => {
+    const html = []
+
+    for (const [key, value] of Object.entries(row)) {
+      html.push(`<p><b>${key}:</b> ${value}</p>`)
+    }
+    return html.join('')
+  }
+</script>

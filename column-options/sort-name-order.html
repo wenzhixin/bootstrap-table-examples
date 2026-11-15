@@ -1,7 +1,7 @@
 <script>
 init({
   title: 'Sort Name Order',
-  desc: 'Use `sortName, sortOrder` to define by which column the sort will be done.',
+  desc: 'Use `sortName` to sort this column by another field (`id`), and `order` to make the first click sort descending.',
   links: ['bootstrap-table.min.css'],
   scripts: ['bootstrap-table.min.js']
 })
@@ -25,7 +25,7 @@ init({
           data-field="name"
           data-sortable="true"
           data-sort-name="id"
-          data-sort-order="desc"
+          data-order="desc"
         >
           Item Name
         </th>

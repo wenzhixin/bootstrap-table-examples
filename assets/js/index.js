@@ -10,11 +10,11 @@ const Utils = {
     if (href.includes('#view-')) {
       const parts = href.split('#view-')
 
-      viewType = parts[1] || 'example'
+      viewType = parts[1] === 'source' ? 'html' : parts[1]
       href = parts[0].replace('#', '')
-    } else if (href.includes('view-source')) {
-      // Backward compatibility for legacy view-source hash
-      href = href.replace('#view-source', '').replace('view-source', '')
+    } else if (href === 'view-source') {
+      // The legacy source toggle also worked on the welcome page.
+      href = ''
       viewType = 'html'
     }
 
@@ -85,13 +85,12 @@ const Utils = {
         e.preventDefault()
         const newType = $(this).hasClass('view-example') ? 'example' :
           $(this).hasClass('view-html') ? 'html' : 'data'
-        const currentHref = location.hash.slice(1).split('#')[0] || 'welcome.html'
 
         // example is the default view, no need to add #view-example
         if (newType === 'example') {
-          location.hash = currentHref
+          location.hash = href
         } else {
-          location.hash = `${currentHref}#view-${newType}`
+          location.hash = `${href}#view-${newType}`
         }
       })
 
